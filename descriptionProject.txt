@@ -1,0 +1,14 @@
+En este documento se pretende dar una leve explicación sobre el proyecto, de acuerdo a las estipulaciones
+dadas en la formación. Se tratará dar un orden de versionamiento a las actualizaciones o cambios sutentos a
+este proyecto.
+    Reglas propuestas:
+    Se llevará la versión desde la 0.0.0; es decir que para el primer cambio o actualización se añadira un
+    decimal al cambio de versión.
+
+    --> Un ejemplo: FrontEnd Login 0.0.0 (No hay cambios ni comienzo de versión)
+        FrontEnd Login 0.0.1 (Se muestran los cambios realizados dentro de este archivo y los sujetos a este)
+    
+    NOTA: Siempre al momento de subir una actualización se deberá hacer un commit con los cambios que se le hicieron a X archivo en X línea, para así en caso de que hayan errores, 
+    no se complique tanto el regresar a versiones anteriores con tal del poder resolver ese error.
+
+                -----SE IRÁN DANDO CAMBIOS DE ESTE ARCHIVO DURANTE EL PASO-----
