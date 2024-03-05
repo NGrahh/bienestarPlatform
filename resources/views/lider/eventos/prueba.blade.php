@@ -10,7 +10,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                     <div class="d-flex justify-content-center py-4">
-                        <a href="index.html" class="logo d-flex align-items-center w-auto">
+                        <a href="index.html" class="logo d-flex align-items-center w-auto">//Hacer que lo lleve a la pagina principla como canva
                             <img style="max-height: 60px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="">
                         </a>
                     </div><!-- End Logo -->
