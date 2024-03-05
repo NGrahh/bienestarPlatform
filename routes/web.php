@@ -35,6 +35,6 @@ Route::get('register', [UserController::class, 'register'])->name('auth.register
 
 
 
-Route::get('/forms', function () {
-    return view('auth/forms');
-})->name('forms'); 
+Route::get('/index', function () {
+    return view('auth/index');
+})->name('index'); 
