@@ -44,8 +44,11 @@
                                     <label for="yourTypeDoc" class="form-label"> Tipo documento</label>
                                     <select value="{{old('type_document')}}" name="type_document" class="form-select" id="yourTypeDoc" required>
                                         <option value="">Seleccionar...</option>
-                                        <option value="cc">Cedula Ciudadania</option>
-                                        <option value="ti">Tarjeta identidad</option>
+                                        <option value="ti">Tarjeta de Identidad</option>
+                                        <option value="cc">Cédula de Ciudadanía</option>
+                                        <option value="ce">Cédula de Extranjería</option>
+                                        <option value="pep">PEP</option>
+                                        <option value="ppt">Permiso por Protección Temporal</option>
                                     </select>
                                     <div class="invalid-feedback">Ingrese su tipo de documento</div>
                                     @error('type_document')

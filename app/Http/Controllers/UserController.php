@@ -14,7 +14,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'register', 'store', 'login']);
+        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create']);
     }
 
     /**
@@ -61,7 +61,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('lider.eventos.prueba');
     }
 
     /**
