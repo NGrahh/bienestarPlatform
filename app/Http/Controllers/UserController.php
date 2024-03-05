@@ -74,6 +74,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:100|unique:users',
             'type_document' => 'required|string',
             'document' => 'required|numeric|unique:users|digits_between:10,12',
+            'rol_id'=> 'required|string',
             'password' => 'required|string|min:6',
         ]);
 
@@ -86,8 +87,9 @@ class UserController extends Controller
         User::create([
             'name' => $request->get('name'),
             'email' => $request->get('email'),
-            'document' => $request->get('document'),
             'type_document' => $request->get('type_document'),
+            'document' => $request->get('document'),
+            'rol_id' => $request->get('rol_id'),
             'password' => Hash::make($request->get('password')),
         ]);
 

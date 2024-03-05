@@ -32,3 +32,9 @@ Route::post('login', [UserController::class, 'login'])->name('auth.login');
 Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
 Route::get('register', [UserController::class, 'register'])->name('auth.registerform');
 
+
+
+
+// Route::get('/forms', function () {
+//     return view('auth/forms');
+// })->name('forms'); 
