@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title','login')
+{{-- @section('title','login') --}}
 
 @section('content')
 
@@ -41,15 +41,40 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <label for="yourUsername" class="form-label"> N° documento</label>
+                                    <label for="yourTypeDoc" class="form-label"> Tipo documento</label>
+                                    <select value="{{old('type_document')}}" name="type_document" class="form-select" id="yourTypeDoc" required>
+                                        <option value="">Seleccionar...</option>
+                                        <option value="cc">Cedula Ciudadania</option>
+                                        <option value="ti">Tarjeta identidad</option>
+                                    </select>
+                                    <div class="invalid-feedback">Ingrese su tipo de documento</div>
+                                    @error('type_document')
+                                        <li class="text-danger">{{ $message}}</li>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <label for="yourDocument" class="form-label"> N° documento</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend">#</span>
-                                        <input value="{{old('document')}}" type="text" name="document" class="form-control" id="yourUsername" required>
+                                        <input value="{{old('document')}}" type="text" name="document" class="form-control" id="yourDocument" required>
                                         <div class="invalid-feedback">Ingrese su número de documento</div>
                                     </div>
                                     @error('document')
-                                    <li class="text-danger">{{ $message}}</li>
-                                @enderror
+                                        <li class="text-danger">{{ $message}}</li>
+                                    @enderror
+                                </div>
+                                <div class="col-12">
+                                    <label for="yourRol" class="form-label">Rol</label>
+                                    <select value="{{old('rol_id')}}" name="rol_id" class="form-select" id="yourRol" required>
+                                        <option value="">Seleccionar...</option>
+                                        @foreach ($roles as $role)
+                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback">Ingrese su tipo de documento</div>
+                                    @error('rol_id')
+                                        <li class="text-danger">{{ $message}}</li>
+                                    @enderror
                                 </div>
                                 <div class="col-12">
                                     <label for="yourPassword" class="form-label">Contraseña</label>
