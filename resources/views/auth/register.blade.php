@@ -27,7 +27,7 @@
                                 <div class="col-12">
                                     <label for="yourName" class="form-label">Nombre</label>
                                     <input value="{{old('name')}}" type="text" name="name" class="form-control" id="yourName" required>
-                                    <div class="invalid-feedback">Por favor, ingrese su nombre!</div>
+                                    <div class="invalid-feedback">Ingrese su nombre.</div>
                                     @error('name')
                                         <li class="text-danger">{{ $message}}</li>
                                     @enderror
@@ -35,7 +35,7 @@
                                 <div class="col-12">
                                     <label for="yourEmail" class="form-label">Correo electrónico</label>
                                     <input value="{{old('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
-                                    <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida!</div>
+                                    <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                                     @error('email')
                                         <li class="text-danger">{{ $message}}</li>
                                     @enderror
@@ -50,7 +50,7 @@
                                         <option value="pep">PEP</option>
                                         <option value="ppt">Permiso por Protección Temporal</option>
                                     </select>
-                                    <div class="invalid-feedback">Ingrese su tipo de documento</div>
+                                    <div class="invalid-feedback">Ingrese su tipo de documento.</div>
                                     @error('type_document')
                                         <li class="text-danger">{{ $message}}</li>
                                     @enderror
@@ -60,7 +60,7 @@
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend">#</span>
                                         <input value="{{old('document')}}" type="text" name="document" class="form-control" id="yourDocument" required>
-                                        <div class="invalid-feedback">Ingrese su número de documento</div>
+                                        <div class="invalid-feedback">Ingrese su número de documento.</div>
                                     </div>
                                     @error('document')
                                         <li class="text-danger">{{ $message}}</li>
@@ -82,7 +82,7 @@
                                 <div class="col-12">
                                     <label for="yourPassword" class="form-label">Contraseña</label>
                                     <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                    <div class="invalid-feedback">• Por favor ingresa la contraseña!</div>
+                                    <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
                                 </div>
                                 <div class="col-12">
                                     <button class="btn btn-ba w-100" type="submit">Crear cuenta</button>
