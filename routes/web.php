@@ -41,3 +41,7 @@ Route::get('register', [UserController::class, 'register'])->name('auth.register
 Route::get('/index', function () {
     return view('auth/index');
 })->name('index'); 
+
+Route::get('/forms-eventos', function () {
+    return view('auth/forms-eventos');
+})->name('forms-eventos'); 

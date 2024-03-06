@@ -5,6 +5,7 @@
 @include('layouts.header')
 @include('layouts.menu')
 
+<link rel="stylesheet" href="public\assets\css\micodigosebas.css">
 <main id="main" class="main">
 
     <div class="pagetitle">
