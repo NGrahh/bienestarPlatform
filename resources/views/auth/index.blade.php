@@ -82,6 +82,64 @@
                                 </div>
 
                         </div>
+                        <h2 class="apoyos-titulo">Apoyo</h2>
+
+                       <div class="apoyos-regulares" style="display: flex">
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="img-fluid rounded-start" alt="..." style="border-radius: 500px">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">Apoyo de sostenimiento</h5>
+                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                  <a href="" class="boton-apoyo">Ver</a>
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                          <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="img-fluid rounded-start" alt="..." style="border-radius: 500px">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">Apoyo de sostenimiento</h5>
+                                  <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                  <a href="" class="boton-apoyo">Ver</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>                      
+                                </div>
+                              </div>
+                            </div>
+                            <h2>Eventos</h2>
+                            <div class="eventos-pasado futuro" style="display: flex">
+                              <div class="card text-center" style="width: 18rem;" href="">
+                                <a class="card-body" href="">
+                                 <h5 class="card-title">Foto evento</h5>
+                                 <p class="card-text">Evento pasado</p>
+                                 <input type="text" placeholder="fecha evento">
+                                 </a>
+                                </div>
+  
+                                <div class="card text-center" style="width: 18rem;" href="">
+                                  <a class="card-body" href="">
+                                   <h5 class="card-title">Foto evento</h5>
+                                   <p class="card-text">Evento pasado</p>
+                                   <input type="text" placeholder="fecha evento">
+                                   </a>
+                                  </div>
+                            </div>
+                            
+
+
+                        </div>
+                      </div> +
                     </div>
                 </div>
 
