@@ -80,10 +80,10 @@
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                     <label for="yourRol" class="form-label">Rol</label>
-                                    <select value="{{old('rol_id')}}" name="rol_id" class="form-select" id="yourRol" required>
+                                    <select name="rol_id" class="form-select" id="yourRol" required>
                                         <option value="">Seleccionar...</option>
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option  {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">Ingrese un rol.</div>
@@ -92,20 +92,13 @@
                                     @enderror
                                 </div>
 
-
-
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                     <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
-                                    <select value="{{old('type_rh_id')}}" name="type_rh_id" class="form-select" id="yourTypeRh" required>
+                                    <select name="type_rh_id" class="form-select" id="yourTypeRh" required>
                                         <option value="">Seleccionar...</option>
-                                        <option value="a+">A+</option>
-                                        <option value="o+">O+</option>
-                                        <option value="b+">B+</option>
-                                        <option value="ab+">AB+</option>
-                                        <option value="a-">A-</option>
-                                        <option value="o-">O-</option>
-                                        <option value="b-">B-</option>
-                                        <option value="ab-">AB-</option>
+                                        @foreach ($type_rhs as $type_rh)
+                                        <option  {{ $type_rh->id == old('type_rh_id') ? 'selected' : '' }} value="{{ $type_rh->id }}">{{ $type_rh->name }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="invalid-feedback">Ingrese el tipo de sangre (RH).</div>
                                     @error('type_rh_id')
