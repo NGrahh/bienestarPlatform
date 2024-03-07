@@ -17,10 +17,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('document')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->enum('type_document', ['cc','ti','ce','pep','ppt']);
+            $table->unsignedBigInteger('type_document_id');
+            $table->unsignedBigInteger('rol_id');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            
+            $table->foreign('type_document_id')->references('id')->on('type_document_id');
+            $table->foreign('rol_id')->references('id')->on('roles');
         });
     }
 
