@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Roles;
 use App\Models\TypeDocuments;
+use App\Models\typeRh;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as AuthFacade;
@@ -28,12 +29,12 @@ class UserController extends Controller
 
     public function register()
     {
-        // Obtener todos los roles de la base de datos
         $roles = Roles::where('name', '!=' , 'Admin')->get();
         $type_documents = TypeDocuments::all();
+        $type_rhs = typeRh::all();
 
         // Pasar los roles a la vista 'auth/register'
-        return view('auth.register', ['roles' => $roles, 'type_documents' => $type_documents]);
+        return view('auth.register', ['roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs]);
     }
 
     public function login(Request $request)
