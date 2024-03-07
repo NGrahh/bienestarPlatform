@@ -10,8 +10,8 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                     <div class="d-flex justify-content-center py-4">
-                        <a href="index.html" class="logo d-flex align-items-center w-auto">
-                            <img style="max-height: 60px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="">
+                        <a href="{{route('welcome')}}" class="logo d-flex align-items-center w-auto">
+                            <img style="max-height: 60px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="Bienestar al Aprendiz" >
                         </a>
                     </div><!-- End Logo -->
 
@@ -49,12 +49,6 @@
                                     @enderror
                                 </div>
 
-                                <div class="col-12">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
-                                        <label class="form-check-label" for="rememberMe">Recordarme</label>
-                                    </div>
-                                </div>
                                 <div class="col-12">
                                     <button class="btn btn-ba w-100" type="submit">Ingresar</button>
                                 </div>

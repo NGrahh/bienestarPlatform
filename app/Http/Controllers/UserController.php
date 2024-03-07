@@ -31,7 +31,7 @@ class UserController extends Controller
         $roles = Roles::all();
 
         // Pasar los roles a la vista 'auth/register'
-        return view('auth.register', ['roles' => $roles]);
+        return view('auth.register', ['roles' => $roles, 'type_documents' => []]);
     }
 
     public function login(Request $request)
@@ -71,11 +71,14 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
+            'lastname' => 'required|string|between:2,100',
+            'type_document_id' => 'required|string',
+            'document' => 'required|numeric|unique:users|digits_between:8,12',
             'email' => 'required|string|email|max:100|unique:users',
-            'type_document' => 'required|string',
-            'document' => 'required|numeric|unique:users|digits_between:10,12',
-            'rol_id'=> 'required|string',
+            'type_Rh'=> 'required|string',
             'password' => 'required|string|min:6',
+            'rol_id'=> 'required|string',
+            
         ]);
 
         if ($validator->fails()) {
@@ -86,11 +89,15 @@ class UserController extends Controller
 
         User::create([
             'name' => $request->get('name'),
-            'email' => $request->get('email'),
-            'type_document' => $request->get('type_document'),
+            'lastname' => $request->get('lastname'),
+            'type_document_id' => $request->get('type_document_id'),
             'document' => $request->get('document'),
-            'rol_id' => $request->get('rol_id'),
+            'email' => $request->get('email'),
+            'type_Rh' => $request->get('type_Rh'),
             'password' => Hash::make($request->get('password')),
+            'rol_id' => $request->get('rol_id'),
+            
+            
         ]);
 
         session()->flash('success', 'Usuario registrado correctamente!');
