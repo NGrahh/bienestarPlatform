@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('lastname');
+            $table->string('user_name');
+            $table->string('type_rh_id');
             $table->string('email')->unique();
             $table->string('document')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -23,7 +26,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             
-            $table->foreign('type_document_id')->references('id')->on('type_document_id');
+            $table->foreign('type_document_id')->references('id')->on('type_documents');
             $table->foreign('rol_id')->references('id')->on('roles');
         });
     }

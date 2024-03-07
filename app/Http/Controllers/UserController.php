@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Roles;
+use App\Models\TypeDocuments;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as AuthFacade;
@@ -28,10 +29,11 @@ class UserController extends Controller
     public function register()
     {
         // Obtener todos los roles de la base de datos
-        $roles = Roles::all();
+        $roles = Roles::where('name', '!=' , 'Admin')->get();
+        $type_documents = TypeDocuments::all();
 
         // Pasar los roles a la vista 'auth/register'
-        return view('auth.register', ['roles' => $roles, 'type_documents' => []]);
+        return view('auth.register', ['roles' => $roles, 'type_documents' => $type_documents]);
     }
 
     public function login(Request $request)
@@ -75,7 +77,7 @@ class UserController extends Controller
             'type_document_id' => 'required|string',
             'document' => 'required|numeric|unique:users|digits_between:8,12',
             'email' => 'required|string|email|max:100|unique:users',
-            'type_Rh'=> 'required|string',
+            'type_rh_id'=> 'required|string',
             'password' => 'required|string|min:6',
             'rol_id'=> 'required|string',
             
@@ -90,10 +92,12 @@ class UserController extends Controller
         User::create([
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),
+            // 'user_name' => $request->get('user_name'),
+            'user_name' => '',
             'type_document_id' => $request->get('type_document_id'),
             'document' => $request->get('document'),
             'email' => $request->get('email'),
-            'type_Rh' => $request->get('type_Rh'),
+            'type_rh_id' => $request->get('type_rh_id'),
             'password' => Hash::make($request->get('password')),
             'rol_id' => $request->get('rol_id'),
             

@@ -23,8 +23,8 @@ class User extends Authenticatable
         'type_document_id',
         'document',
         'email',
-        'type_Rh',
-        'UserName',
+        'type_rh_id',
+        'user_name',
         'password',
         'rol_id',
     ];

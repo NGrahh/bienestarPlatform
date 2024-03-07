@@ -45,10 +45,10 @@
 
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <label for="yourTypeDoc" class="form-label"> Tipo documento</label>
-                                    <select value="{{old('type_document_id')}}" name="type_document_id" class="form-select" id="yourTypeDoc" required>
+                                    <select name="type_document_id" class="form-select" id="yourTypeDoc" required>
                                         <option value="">Seleccionar...</option>
                                         @foreach ($type_documents as $type_document)
-                                            <option value="{{ $type_document->id }}">{{ $type_document->name }}</option>
+                                            <option  {{ $type_document->id == old('type_document_id') ? 'selected' : '' }} value="{{ $type_document->id }}">{{ $type_document->name }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">Ingrese el tipo de documento.</div>
@@ -96,7 +96,7 @@
 
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                     <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
-                                    <select value="{{old('type_Rh')}}" name="type_Rh" class="form-select" id="yourTypeRh" required>
+                                    <select value="{{old('type_rh_id')}}" name="type_rh_id" class="form-select" id="yourTypeRh" required>
                                         <option value="">Seleccionar...</option>
                                         <option value="a+">A+</option>
                                         <option value="o+">O+</option>
@@ -108,7 +108,7 @@
                                         <option value="ab-">AB-</option>
                                     </select>
                                     <div class="invalid-feedback">Ingrese el tipo de sangre (RH).</div>
-                                    @error('type_Rh')
+                                    @error('type_rh_id')
                                         <li class="text-danger">{{ $message}}</li>
                                     @enderror
                                 </div>
