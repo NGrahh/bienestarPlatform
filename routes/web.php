@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,11 @@ Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->m
 Route::get('register', [UserController::class, 'register'])->name('auth.registerform');
 
 
+Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
+Route::post('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasenasolicitud'])->name('pass.recuperarcontrasenasolicitud');
+Route::get('/cambiar-contrasena', [PasswordController::class, 'cambiarcontrasena'])->name('pass.cambiarcontrasena');
+
+
 
 
 // Route::get('/forms', function () {
@@ -50,6 +56,10 @@ Route::get('/forms-eventos', function () {
 
 
 // rutasemails
-Route::get('/creacioncuenta', function () {
-    return view('emails/creacioncuenta');
+Route::get('/creacion-cuenta', function () {
+    return view('emails/creacion-cuenta');
+}); 
+
+Route::get('/solicitud-restablecer-password', function () {
+    return view('emails/solicitud-restablecer-password');
 }); 

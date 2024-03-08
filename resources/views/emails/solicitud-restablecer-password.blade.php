@@ -85,6 +85,20 @@
 		.footer a:hover {
 			color: #999999;
 		}
+
+		.btn-ba {
+			background-color: #39A900;
+			color: #fff;
+			border: none;
+			padding: 10px 20px;
+			border-radius: 5px;
+			cursor: pointer;
+			transition: background-color 0.3s ease;
+		}
+
+		.btn-ba:hover {
+			background-color: #308200;
+		}
 	</style>
 
 	<title>Bienvenido</title>
@@ -123,37 +137,53 @@
 
 					<tr>
 						<td align="center" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 14px; font-weight: 400; line-height: 150%; letter-spacing: 2px; padding-top: 27px; padding-bottom: 0; color: #000; font-family: sans-serif;" class="supheader">
-							Bienvenido
+							Solicitud
 						</td>
 					</tr>
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
-                            ¡Bienvenido a la plataforma Bienestar del Aprendiz, {{ $name_user }} {{ $surnames_user }}!
+                            {{-- Hola {{ $name_user }} {{ $surnames_user }}. --}}
                         </td> 
 					</tr>
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
-                            Estamos encantados de tenerte a bordo. Aquí encontrarás un espacio diseñado para acompañarte en tu camino de aprendizaje y crecimiento personal.
+							Hemos recibido una solicitud para restablecer la contraseña de tu cuenta en nuestro sitio web. Si no has solicitado este cambio, puedes ignorar este correo electrónico.
                         </td> 
 					</tr>
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
-                            Aprovecha al máximo todas las herramientas que ofrecemos para visualizar eventos y citas que se adapten a tus necesidades y objetivos. Ya sea que estés planificando sesiones de estudio, reuniones con mentores o momentos para cuidar tu bienestar, estamos aquí para facilitar tu organización y maximizar tu tiempo.
+                            Si has solicitado un cambio de contraseña, por favor sigue el siguiente enlace para restablecer tu contraseña:
                         </td> 
 					</tr>
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
-                            ¡No dudes en explorar todas las posibilidades que nuestra plataforma tiene para ti! Estamos aquí para apoyarte en cada paso de tu viaje educativo.
+                            Donde se solicitara ingresar el codigo que te brindaremos: {{ $codigo }}
                         </td> 
 					</tr>
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
-                            ¡Bienvenido una vez más, {{ $name_user }} {{ $surnames_user }}! Estamos emocionados de acompañarte en este viaje hacia el éxito y el bienestar.
+							<a href="{{route('pass.cambiarcontrasena')}}" target="_blank">
+								<button class="btn btn-ba w-100" type="submit">Cambiar contraseña</button>
+							</a>
+                        </td> 
+					</tr>
+
+					<tr>
+						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
+                            Gracias,
+							<br>
+							<br>
+							Bienestar del aprendiz
+                        </td> 
+					</tr>
+
+					<tr>
+						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
                         </td> 
 					</tr>
 					

@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create']);
+        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena']);
     }
 
     /**
@@ -103,7 +103,7 @@ class UserController extends Controller
         ]);
 
         $dataUser = ['name_user' => $request->get('name'), 'surnames_user' => $request->get('lastname')];
-        Mail::send('emails.creacioncuenta', $dataUser, function ($message) use ($request) {
+        Mail::send('emails.creacion-cuenta', $dataUser, function ($message) use ($request) {
             $message->from('bienestardlaprendiz@gmail.com', 'Nuevo Usuario');
             $message->to($request->get('email'))->subject('Notificación: creación de usuario');
         });
