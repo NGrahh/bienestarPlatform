@@ -45,3 +45,11 @@ Route::get('/index', function () {
 Route::get('/forms-eventos', function () {
     return view('auth/forms-eventos');
 })->name('forms-eventos'); 
+
+
+
+
+// rutasemails
+Route::get('/creacioncuenta', function () {
+    return view('emails/creacioncuenta');
+}); 

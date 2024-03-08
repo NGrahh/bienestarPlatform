@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as AuthFacade;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
@@ -29,7 +30,7 @@ class UserController extends Controller
 
     public function register()
     {
-        $roles = Roles::where('name', '!=' , 'Admin')->get();
+        $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();
         $type_rhs = typeRh::all();
 
@@ -77,10 +78,10 @@ class UserController extends Controller
             'type_document_id' => 'required|string',
             'document' => 'required|numeric|unique:users|digits_between:8,12',
             'email' => 'required|string|email|max:100|unique:users',
-            'type_rh_id'=> 'required|string',
+            'type_rh_id' => 'required|string',
             'password' => 'required|string|min:6',
-            'rol_id'=> 'required|string',
-            
+            'rol_id' => 'required|string',
+
         ]);
 
         if ($validator->fails()) {
@@ -92,7 +93,7 @@ class UserController extends Controller
         User::create([
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),
-            'user_name' => $this->setUserNameAttribute($request->get('name'),$request->get('lastname')),
+            'user_name' => $this->setUserNameAttribute($request->get('name'), $request->get('lastname')),
             'type_document_id' => $request->get('type_document_id'),
             'document' => $request->get('document'),
             'email' => $request->get('email'),
@@ -100,6 +101,12 @@ class UserController extends Controller
             'password' => Hash::make($request->get('password')),
             'rol_id' => $request->get('rol_id'),
         ]);
+
+        $dataUser = ['name_user' => $request->get('name'), 'surnames_user' => $request->get('lastname')];
+        Mail::send('emails.creacioncuenta', $dataUser, function ($message) use ($request) {
+            $message->from('bienestardlaprendiz@gmail.com', 'Nuevo Usuario');
+            $message->to($request->get('email'))->subject('Notificación: creación de usuario');
+        });
 
         session()->flash('success', 'Usuario registrado correctamente!');
 
@@ -147,13 +154,13 @@ class UserController extends Controller
         return redirect(route('auth.login'));
     }
 
-    public function setUserNameAttribute($name,$lastname)
-{
-    // Obtiene las iniciales de nombre y apellido
-    $nameInitials = strtolower(substr($name, 0, 3));
-    $lastnameInitials = strtolower(substr($lastname, 0, 2));
+    public function setUserNameAttribute($name, $lastname)
+    {
+        // Obtiene las iniciales de nombre y apellido
+        $nameInitials = strtolower(substr($name, 0, 3));
+        $lastnameInitials = strtolower(substr($lastname, 0, 2));
 
-    // Concatena las iniciales y las almacena en el campo user_name sin espacios
-    return $nameInitials . $lastnameInitials;
-}
+        // Concatena las iniciales y las almacena en el campo user_name sin espacios
+        return $nameInitials . $lastnameInitials;
+    }
 }
