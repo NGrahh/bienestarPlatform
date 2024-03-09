@@ -161,7 +161,7 @@
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
-                            Donde se solicitara ingresar el codigo que te brindaremos: {{ $codigo }}
+                            Donde se solicitara ingresar el codigo que te brindaremos: {{ $code }}
                         </td> 
 					</tr>
 

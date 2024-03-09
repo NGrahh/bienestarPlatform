@@ -37,6 +37,7 @@ Route::get('register', [UserController::class, 'register'])->name('auth.register
 Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
 Route::post('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasenasolicitud'])->name('pass.recuperarcontrasenasolicitud');
 Route::get('/cambiar-contrasena', [PasswordController::class, 'cambiarcontrasena'])->name('pass.cambiarcontrasena');
+Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontrasena'])->name('pass.restablecercontrasena');
 
 
 
@@ -50,7 +51,7 @@ Route::get('/index', function () {
 
 Route::get('/forms-eventos', function () {
     return view('auth/forms-eventos');
-})->name('forms-eventos'); 
+});
 
 
 

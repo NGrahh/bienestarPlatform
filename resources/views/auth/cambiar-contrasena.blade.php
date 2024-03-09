@@ -25,19 +25,19 @@
 
                             @include('compartido.alertas')
 
-                            <form action="{{route('pass.recuperarcontrasenasolicitud')}}" class="row g-3 needs-validation" novalidate method="POST">
+                            <form action="{{route('pass.restablecercontrasena')}}" class="row g-3 needs-validation" novalidate method="POST">
                                 @csrf
                                 <div class="col-12">
-                                    <label for="yourCodigo" class="form-label">Codigo</label>
-                                    <input value="{{old('code')}}" type="code" name="code" class="form-control {{$errors->has('code')?'is-invalid':''}}" id="yourCodigo" required>
+                                    <label for="yourCodigo" class="form-label">Codigo:</label>
+                                    <input value="{{ old('code') }}" type="code" name="code" class="form-control {{$errors->has('code')?'is-invalid':''}}" id="yourCodigo" required>
                                     <div class="invalid-feedback">Por favor ingresa el codigo.</div>
                                     @error('code')
-                                    <li class="text-danger">{{ $message}}</li>
+                                        <li class="text-danger">{{ $message}}</li>
                                     @enderror
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="yourPassword" class="form-label">Contraseña</label>
+                                    <label for="yourPassword" class="form-label">Contraseña:</label>
                                     <input value="{{old('password')}}" type="password" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}" id="yourPassword" required>
                                     <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
                                     @error('password')
