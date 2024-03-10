@@ -32,6 +32,7 @@ Route::resource('auth', UserController::class);
 Route::post('login', [UserController::class, 'login'])->name('auth.login');
 Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
 Route::get('register', [UserController::class, 'register'])->name('auth.registerform');
+Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
 
 
 Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
@@ -42,25 +43,21 @@ Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontr
 
 
 
-// Route::get('/forms', function () {
-//     return view('auth/forms');
-// })->name('forms'); 
 Route::get('/index', function () {
     return view('auth/index');
 })->name('index'); 
 
-Route::get('/forms-eventos', function () {
-    return view('auth/forms-eventos');
+// Ruta Formulario para agendar cita
+Route::get('/form-appointment', function () {
+    return view('formularios/form-appointment');
 });
 
-
-
-
-// rutasemails
+// rutas Emails
 Route::get('/creacion-cuenta', function () {
     return view('emails/creacion-cuenta');
 }); 
 
+//Ruta Email restablecer contraseña
 Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
