@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-{{-- @section('title','login') --}}
+{{-- @section('title','Agendacion cita') --}}
 
 @section('content')
 <div class="container">
@@ -39,12 +39,12 @@
                     <p class="card-text" align="justify">Con el envío de su información personal a través de este formulario, se entiende que está manifestando expresamente su autorización al SENA para proceder al tratamiento de sus datos personales en los términos arriba expuestos.</p>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="check_si" name="option" value="something" required>
-                      <label class="form-check-label" for="check_si">Sí</label>
+                      <label class="form-check-label" for="check_si">Estoy de acuerdo.</label>
                     </div>
                     <br>
                     <div class="form-check">
                       <input class="form-check-input" type="checkbox" id="check_no" name="option" value="something" required>
-                      <label class="form-check-label" for="check_no">No</label>
+                      <label class="form-check-label" for="check_no">No estoy de acuerdo.</label>
                     </div>
                     <br>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -53,8 +53,7 @@
                     <div id="form_appointment" style="display: none;">
                       <form action="{{route('formularios.form-appointment')}}" class="row g-3 needs-validation" novalidate method="POST">
                         @csrf
-                        <br>
-                        <br>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                           <label for="yourName" class="form-label">Nombre</label>
                           <input value="{{old('name')}}" type="text" name="name" class="form-control" id="yourName" required>
@@ -75,9 +74,9 @@
                           <label for="yourdimensions" class="form-label">Dimension solicitada</label>
                           <select name="dimensionsWelfare" class="form-select" id="yourdimensions" required>
                             <option value="">Seleccionar...</option>
-                            {{-- @foreach ($type_documents as $type_document)
-                                <option  {{ $type_document->id == old('dimensionsWelfare') ? 'selected' : '' }} value="{{ $type_document->id }}">{{ $type_document->name }}</option>
-                            @endforeach --}}
+                            @foreach ($dimensions as $dimension)
+                                <option  {{ $dimension->id == old('dimensionsWelfare') ? 'selected' : '' }} value="{{ $dimension->id }}">{{ $dimension->name }}</option>
+                            @endforeach
                           </select>
                           <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
                           @error('type_document_id')
