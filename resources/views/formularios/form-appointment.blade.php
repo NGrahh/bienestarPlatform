@@ -74,9 +74,9 @@
                           <label for="yourdimensions" class="form-label">Dimension solicitada</label>
                           <select name="dimensionsWelfare" class="form-select" id="yourdimensions" required>
                             <option value="">Seleccionar...</option>
-                            @foreach ($dimensions as $dimension)
+                            {{-- @foreach ($dimensions as $dimension)
                                 <option  {{ $dimension->id == old('dimensionsWelfare') ? 'selected' : '' }} value="{{ $dimension->id }}">{{ $dimension->name }}</option>
-                            @endforeach
+                            @endforeach --}}
                           </select>
                           <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
                           @error('type_document_id')

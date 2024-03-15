@@ -61,3 +61,8 @@ Route::get('/creacion-cuenta', function () {
 Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
+
+//Ruta Email restablecer contraseña
+Route::get('/form-inscription-event', function () {
+    return view('formularios/form-inscription-event');
+}); 
