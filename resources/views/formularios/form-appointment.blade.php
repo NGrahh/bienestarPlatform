@@ -17,7 +17,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="pt-4 pb-2">
-                <h5 class="card-title-ba text-center pb-0 fs-4" >Por favor diligencie el siguiente formulario para la solicitud de su Cita</h5>
+                <h5 class="card-title-ba text-center pb-0 fs-4">Por favor diligencie el siguiente formulario para la solicitud de su Cita</h5>
                 <p class="text-center small"></p>
               </div>
 
@@ -70,19 +70,19 @@
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        {{-- <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                          <label for="TypeDimensions" class="form-label">Dimensión</label>
-                          <select name="type_dimensions" class="form-select" id="TypeDimensions" required>
+                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                          <label for="type_dimensions" class="form-label">Dimensión</label>
+                          <select name="type_dimension" class="form-select" id="type_dimensions" required>
                               <option value="">Seleccionar...</option>
-                              @foreach ($type_dimensions as $type_dimension)
-                                  <option {{$type_dimension->id == old('type_dimensions') ? 'selected' : '' }} value="{{$type_dimension->id }}">{{ $type_dimension->name }}</option>
+                              @foreach($dimensions_types as $Dimensions_type)
+                                  <option {{ $Dimensions_type->id == old('type_dimension') ? 'selected' : '' }} value="{{ $Dimensions_type->id }}">{{ $Dimensions_type->name }}</option>
                               @endforeach
                           </select>
                           <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
-                          @error('TypeDimensions')
-                              <li class="text-danger">{{$message}}</li>
+                          @error('type_dimension')
+                              <li class="text-danger">{{ $message}}</li>
                           @enderror
-                      </div> --}}
+                      </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                           <label for="yourEmail" class="form-label">Correo electrónico</label>
                           <input value="{{old('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
@@ -103,7 +103,11 @@
                           <div class="row mb-3">
                             <label for="inputDate" class="form-label">Fecha</label>
                             <div class="col-sm-12">
-                              <input type="date" class="form-control">
+                              <input name="date" type="date" class="form-control">
+                              <div class="invalid-feedback">Ingrese una fecha.</div>
+                              @error('date')
+                                <li class="text-danger">{{ $message}}</li>
+                              @enderror
                             </div>
                           </div>
                         </div>
@@ -111,13 +115,21 @@
                           <div class="row mb-">
                             <label for="inputTime" class="form-label">Hora</label>
                             <div class="col-sm-12">
-                              <input type="time" class="form-control">
+                              <input name="hour" type="time" class="form-control">
+                              <div class="invalid-feedback">Ingrese una hora.</div>
+                              @error('hour')
+                                <li class="text-danger">{{ $message}}</li>
+                              @enderror
                             </div>
                           </div>
                         </div>
                         <div class="col-sm-12">
                           <label for="yourSubject" class="form-label">Asunto</label>
                           <textarea class="form-control" cols="30" rows="4" name="SubjectCita"></textarea>
+                          <div class="invalid-feedback">Ingrese un asunto.</div>
+                          @error('SubjectCita')
+                            <li class="text-danger">{{ $message}}</li>
+                          @enderror
                         </div>
                         <div class="col-12">
                           <button class="btn btn-ba w-100" type="submit">Enviar</button>

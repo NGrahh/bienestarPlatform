@@ -65,11 +65,13 @@ Route::get('/solicitud-restablecer-password', function () {
 //RUTAS FORMULARIOS
 
 // Ruta Formulario para AGENDAR CITA
-Route::get('/form-appointment', function () {
-    return view('formularios/form-appointment');
-});
+Route::get('form-appointment', [UserController::class, 'mostrarVista'])->name('mostrarVista');
+
+// Ruta Formulario para CREACION EVENTO
+Route::get('form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event'); 
 
 // Ruta Formulario para INSCRIPCION A EVENTO
-Route::get('/form-inscription-event', function () {
-    return view('formularios/form-inscription-event');
-});
+Route::get('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
+
+// Ruta Formulario para INSCRIPCION A EVENTO
+Route::get('form-inscription-supports', [UserController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
