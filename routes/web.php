@@ -47,10 +47,6 @@ Route::get('/index', function () {
     return view('auth/index');
 })->name('index'); 
 
-// Ruta Formulario para agendar cita
-Route::get('/form-appointment', function () {
-    return view('formularios/form-appointment');
-});
 
 // rutas Emails
 Route::get('/creacion-cuenta', function () {
@@ -62,7 +58,25 @@ Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
 
+<<<<<<< HEAD
 //Ruta Email restablecer contraseña
 Route::get('/form-inscription-event', function () {
     return view('formularios/form-inscription-event');
 }); 
+=======
+
+
+
+
+//RUTAS FORMULARIOS
+
+// Ruta Formulario para AGENDAR CITA
+Route::get('/form-appointment', function () {
+    return view('formularios/form-appointment');
+});
+
+// Ruta Formulario para INSCRIPCION A EVENTO
+Route::get('/form-inscription-event', function () {
+    return view('formularios/form-inscription-event');
+});
+>>>>>>> fdfd91086acea2cc61106657a9e4eae8453ca335
