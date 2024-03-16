@@ -71,24 +71,24 @@
                           @enderror
                         </div>
                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                          <label for="type_dimensions" class="form-label">Dimensión</label>
-                          <select name="type_dimension" class="form-select" id="type_dimensions" required>
-                              <option value="">Seleccionar...</option>
-                              @foreach($dimensions_types as $Dimensions_type)
-                                  <option {{ $Dimensions_type->id == old('type_dimension') ? 'selected' : '' }} value="{{ $Dimensions_type->id }}">{{ $Dimensions_type->name }}</option>
-                              @endforeach
+                          <label for="yourdimensions" class="form-label">Dimension solicitada</label>
+                          <select name="dimensionsWelfare" class="form-select" id="yourdimensions" required>
+                            <option value="">Seleccionar...</option>
+                            @foreach ($dimensions as $dimension)
+                                <option  {{ $dimension->id == old('dimensionsWelfare') ? 'selected' : '' }} value="{{ $dimension->id }}">{{ $dimension->name }}</option>
+                            @endforeach
                           </select>
                           <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
-                          @error('type_dimension')
-                              <li class="text-danger">{{ $message}}</li>
+                          @error('type_document_id')
+                          <li class="text-danger">{{ $message}}</li>
                           @enderror
-                      </div>
+                        </div>
                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                           <label for="yourEmail" class="form-label">Correo electrónico</label>
                           <input value="{{old('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
                           <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                           @error('email')
-                          <li class="text-danger">{{$message}}</li>
+                          <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
                         <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
