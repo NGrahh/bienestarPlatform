@@ -131,8 +131,9 @@
                             <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        <div class="col-12">
-                          <button class="btn btn-ba w-100" type="submit">Enviar</button>
+                        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4"><div class="row mb-"></div></div>
+                        <div align="center" class="col-12">
+                          <button  class="btn btn-ba w-50" type="submit">Enviar</button>
                         </div>
                       </form>
                     </div>

@@ -24,36 +24,48 @@ Route::get('/block', function () {
 })->name('block')->middleware('auth');
 
 
-Route::get('/login', function () {
-    return view('auth/login');
-})->name('login');//ALIAS
-
-Route::resource('auth', UserController::class);
-Route::post('login', [UserController::class, 'login'])->name('auth.login');
-Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
-Route::get('register', [UserController::class, 'register'])->name('auth.registerform');
-Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
-
-
-Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
-Route::post('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasenasolicitud'])->name('pass.recuperarcontrasenasolicitud');
-Route::get('/cambiar-contrasena', [PasswordController::class, 'cambiarcontrasena'])->name('pass.cambiarcontrasena');
-Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontrasena'])->name('pass.restablecercontrasena');
-
-
-
+//RUTA INDEX
 
 Route::get('/index', function () {
     return view('auth/index');
 })->name('index'); 
 
 
-// rutas Emails
+
+Route::resource('auth', UserController::class);
+
+//RUTA LOG IN (Iniciar Sesión)
+Route::post('login', [UserController::class, 'login'])->name('auth.login');
+Route::get('/login', function () {
+    return view('auth/login');
+})->name('login');//-> "Alias"
+
+
+//RUTA LOG OUT (Cerrar Sesión)
+Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
+
+//RUTA REGISTER (Registrarse)
+Route::get('register', [UserController::class, 'register'])->name('auth.registerform');
+
+
+
+// RUTA PARA RECUPERAR CONTRASEÑA
+Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
+Route::post('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasenasolicitud'])->name('pass.recuperarcontrasenasolicitud');
+
+// RUTA PARA CAMBIAR CONTRASEÑA
+Route::get('/cambiar-contrasena', [PasswordController::class, 'cambiarcontrasena'])->name('pass.cambiarcontrasena');
+Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontrasena'])->name('pass.restablecercontrasena');
+
+
+//RUTAS ENVÍO EMAILS.
+
+//Ruta envió Email para la CREACIÓN DE CUENTA.
 Route::get('/creacion-cuenta', function () {
     return view('emails/creacion-cuenta');
 }); 
 
-//Ruta Email restablecer contraseña
+//Ruta envió Email para RESTABLECER CONTRASEÑA.
 Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
@@ -66,9 +78,10 @@ Route::get('/solicitud-restablecer-password', function () {
 
 // Ruta Formulario para AGENDAR CITA
 Route::get('form-appointment', [UserController::class, 'mostrarVista'])->name('mostrarVista');
+Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
 
 // Ruta Formulario para CREACION EVENTO
-Route::get('form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event'); 
+Route::get('form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event');
 
 // Ruta Formulario para INSCRIPCION A EVENTO
 Route::get('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
