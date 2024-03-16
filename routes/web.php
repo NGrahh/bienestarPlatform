@@ -58,12 +58,6 @@ Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
 
-<<<<<<< HEAD
-//Ruta Email restablecer contraseña
-Route::get('/form-inscription-event', function () {
-    return view('formularios/form-inscription-event');
-}); 
-=======
 
 
 
@@ -79,4 +73,3 @@ Route::get('/form-appointment', function () {
 Route::get('/form-inscription-event', function () {
     return view('formularios/form-inscription-event');
 });
->>>>>>> fdfd91086acea2cc61106657a9e4eae8453ca335
