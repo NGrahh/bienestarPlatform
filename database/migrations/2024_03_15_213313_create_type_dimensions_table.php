@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('typedimensions', function (Blueprint $table) {
+        Schema::create('type_dimensions', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
@@ -23,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('typedimensions');
+        Schema::dropIfExists('type_dimensions');
     }
 };

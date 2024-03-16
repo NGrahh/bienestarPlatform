@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Roles;
 use App\Models\TypeDocuments;
+use App\Models\TypeDimensions;
 use App\Models\typeRh;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena']);
+        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena', 'mostrarVista' ]);
     }
 
     /**
@@ -163,4 +164,18 @@ class UserController extends Controller
         // Concatena las iniciales y las almacena en el campo user_name sin espacios
         return $nameInitials . $lastnameInitials;
     }
+
+    // public function dimensionForm(){
+    // $dimensions_types = TypeDimensions::all();
+    // return view('formularios.form-appointment', ['type_dimensions' => $dimensions_types]);
+    // }
+
+    public function mostrarVista()
+    {
+        $dimensions_types = TypeDimensions::all(); // Ejemplo de cómo obtener los datos desde un modelo llamado Dimension
+        return view('formularios.form-appointment', compact('dimensions_types'));
+    }
+    
+
+
 }
