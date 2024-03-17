@@ -80,6 +80,11 @@ Route::get('/form-inscription-event', function () {
     return view('formularios/form-inscription-event');
 }); 
 
+//Ruta FOrmulario inscribirse a apoyo.
+Route::get('/form-inscription-supports', function () {
+    return view('formularios/form-inscription-supports');
+}); 
+
 
 
 //RUTAS FORMULARIOS
@@ -94,5 +99,5 @@ Route::get('form-create-event', [UserController::class, 'form-create-event'])->n
 // Ruta Formulario para INSCRIPCION A EVENTO
 Route::get('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
 
-// Ruta Formulario para INSCRIPCION A EVENTO
+// Ruta Formulario para INSCRIPCION A Apoyo
 Route::get('form-inscription-supports', [UserController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
