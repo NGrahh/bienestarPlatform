@@ -70,7 +70,15 @@ Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
 
+//Ruta FOrmulario crear evento.
+Route::get('/form-create-event', function () {
+    return view('formularios/form-create-event');
+}); 
 
+//Ruta FOrmulario inscribirse a evento.
+Route::get('/form-inscription-event', function () {
+    return view('formularios/form-inscription-event');
+}); 
 
 
 
