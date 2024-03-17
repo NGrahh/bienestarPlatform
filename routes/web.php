@@ -100,7 +100,6 @@ Route::get('form-create-event', [UserController::class, 'form-create-event'])->n
 Route::get('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
 
 // Ruta Formulario para INSCRIPCION A LOS APOYOS
-// Ruta Formulario para INSCRIPCION A Apoyo
 Route::get('form-inscription-supports', [UserController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
 
 // RUTAS CRUD

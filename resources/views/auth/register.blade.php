@@ -83,7 +83,7 @@
                                     <select name="rol_id" class="form-select" id="yourRol" required>
                                         <option value="">Seleccionar...</option>
                                         @foreach ($roles as $role)
-                                        <option  {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option id="optionRol"  {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
                                     <div class="invalid-feedback">Ingrese un rol.</div>
@@ -91,7 +91,16 @@
                                         <li class="text-danger">{{ $message}}</li>
                                     @enderror
                                 </div>
-
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="training_program">
+                                    <label for="yourPassword" class="form-label">Programa de formación</label>
+                                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                    <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
+                                </div>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="token_number">
+                                    <label for="yourPassword" class="form-label">Número de ficha</label>
+                                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                    <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
+                                </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                     <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
                                     <select name="type_rh_id" class="form-select" id="yourTypeRh" required>
