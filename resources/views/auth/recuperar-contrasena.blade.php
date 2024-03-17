@@ -53,3 +53,30 @@
 
 </div>
 @endsection
+
+
+
+
+
+{{-- 
+    vh-75: Esta es una clase de Bootstrap que establece la altura de la sección al 75% del tamaño de la ventana (vh significa "viewport height").  
+--}}
+{{-- 
+    d-flex: Esta es otra clase de Bootstrap que se utiliza para hacer que el contenedor sea un contenedor flexible (flex container) 
+--}}
+
+{{-- 
+    flex-column: Esta clase de Bootstrap se utiliza para hacer que los elementos dentro del contenedor se apilen verticalmente en lugar de horizontalmente. Esto es útil cuando quieres que los elementos se muestren uno encima del otro. 
+--}}
+
+{{-- 
+    align-items-center: Esta clase de Bootstrap se utiliza para alinear verticalmente los elementos del contenedor en el centro. En este caso, los elementos dentro de la sección se alinearán verticalmente en el centro de la sección 
+--}}
+
+{{-- 
+    justify-content-center: Esta clase de Bootstrap se utiliza para alinear horizontalmente los elementos del contenedor en el centro. En este caso, los elementos dentro de la sección se alinearán horizontalmente en el centro de la sección 
+--}}
+
+{{-- 
+    py-4: Esta es una clase de Bootstrap que establece un padding vertical (py) de tamaño 4 (equivalente a 1rem o 16px). Esto agrega espacio vertical alrededor del contenido dentro de la sección. 
+--}}

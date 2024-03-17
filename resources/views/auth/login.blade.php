@@ -34,9 +34,9 @@
                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                                         <input value="{{old('email')}}" type="text" name="email" class="form-control {{$errors->has('email') ? 'is-invalid':''}}" id="yourUsername" required>
                                         <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
-                                        @error('email')
+                                        {{-- @error('email')
                                         <li class="text-danger">{{ $message}}</li>
-                                        @enderror
+                                        @enderror --}}
                                     </div>
                                 </div>
 
@@ -69,3 +69,17 @@
 
 </div>
 @endsection
+
+{{-- 
+    col-12: Esta clase se aplica a todas las pantallas y hace que la columna ocupe todo el ancho disponible.
+--}}
+
+{{-- 
+    invalid-feedback se usa para mostrar mensajes de error en campos de formulario que no cumplen con la validación, (CAMPOS VACIOS) 
+--}}
+
+{{-- text-danger, cambia el color del texto a rojo para indicar un error. --}}
+
+{{-- 
+    @error -> para verificar si hay errores de validación asociados con un campo específico, en el cual se deben de cumplir las especificaciones que se le dieron, ya sea el tamaño minimo, maximo o que sea una cadena de texto, o un campo numerico, por ende, en casa de no cumplir con ello, saldra una alerta, indicando lo necesario para suplir el campo
+--}}

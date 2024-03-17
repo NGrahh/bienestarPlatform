@@ -28,6 +28,10 @@ return new class extends Migration
             $table->foreign('type_document_id')->references('id')->on('type_documents');
             $table->foreign('rol_id')->references('id')->on('roles');
             $table->foreign('type_rh_id')->references('id')->on('type_rhs');
+            $table->string('trainingProgram')->nullable();
+            $table->string('yourToken')->nullable();
+            
+
         });
     }
 

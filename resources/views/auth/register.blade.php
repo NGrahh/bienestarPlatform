@@ -91,15 +91,21 @@
                                         <li class="text-danger">{{ $message}}</li>
                                     @enderror
                                 </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="training_program">
-                                    <label for="yourPassword" class="form-label">Programa de formación</label>
-                                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="training_program" >
+                                    <label for="yourTraining" class="form-label">Programa de formación</label>
+                                    <input type="text" name="trainingProgram" class="form-control" id="yourTraining" required disabled>
                                     <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
+                                    @error('trainingProgram')
+                                    <li class="text-danger">{{ $message}}</li>
+                                    @enderror
                                 </div>
-                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="token_number">
-                                    <label for="yourPassword" class="form-label">Número de ficha</label>
-                                    <input type="password" name="password" class="form-control" id="yourPassword" required>
+                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="token_number" >
+                                    <label for="yourToken" class="form-label">Número de ficha</label>
+                                    <input type="text" name="tokenNumber" class="form-control" id="yourToken" required disabled>
                                     <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
+                                    @error('tokenNumber')
+                                    <li class="text-danger">{{ $message}}</li>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                     <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
@@ -119,6 +125,9 @@
                                     <label for="yourPassword" class="form-label">Contraseña</label>
                                     <input type="password" name="password" class="form-control" id="yourPassword" required>
                                     <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
+                                    @error('password')
+                                    <li class="text-danger">{{ $message}}</li>
+                                    @enderror
                                 </div>
 
 
@@ -137,3 +146,28 @@
     </section>
 </div>
 @endsection
+
+
+
+{{-- 
+    col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6: Esta clase se utiliza para definir cómo se comportará la columna en diferentes tamaños de pantalla. En el sistema de rejilla de Bootstrap, las clases de columna están diseñadas para adaptarse a diferentes tamaños de pantalla. Aquí está desglosado el significado de cada parte:
+
+    col-12: Esta clase se aplica a todas las pantallas y hace que la columna ocupe todo el ancho disponible.
+    col-sm-6: Para pantallas pequeñas (sm), la columna ocupará la mitad del ancho disponible.
+    col-md-6: Para pantallas medianas (md), la columna también ocupará la mitad del ancho disponible.
+    col-lg-6: Para pantallas grandes (lg), la columna ocupará la mitad del ancho disponible.
+    col-xl-6: Para pantallas extra grandes (xl), la columna ocupará la mitad del ancho disponible. 
+--}}
+
+
+{{-- 
+    invalid-feedback se usa para mostrar mensajes de error en campos de formulario que no cumplen con la validación, (CAMPOS VACIOS) 
+--}}
+
+{{-- text-danger, cambia el color del texto a rojo para indicar un error. --}}
+
+
+
+{{-- 
+    @error -> para verificar si hay errores de validación asociados con un campo específico, en el cual se deben de cumplir las especificaciones que se le dieron, ya sea el tamaño minimo, maximo o que sea una cadena de texto, o un campo numerico, por ende, en casa de no cumplir con ello, saldra una alerta, indicando lo necesario para suplir el campo
+--}}

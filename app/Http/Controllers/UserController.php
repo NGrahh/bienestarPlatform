@@ -82,6 +82,8 @@ class UserController extends Controller
             'type_rh_id' => 'required|string',
             'password' => 'required|string|min:6',
             'rol_id' => 'required|string',
+            'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:8,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
 
         ]);
 
@@ -101,6 +103,8 @@ class UserController extends Controller
             'type_rh_id' => $request->get('type_rh_id'),
             'password' => Hash::make($request->get('password')),
             'rol_id' => $request->get('rol_id'),
+            'trainingProgram' => $request->get('trainingProgram'),
+            'yourToken' => $request->get('yourToken')
         ]);
 
         $dataUser = ['name_user' => $request->get('name'), 'surnames_user' => $request->get('lastname')];
