@@ -53,11 +53,11 @@ class UserController extends Controller
             $user = AuthFacade::user();
             // Almacenar el nombre y el correo electrónico en la sesión
             session(['name' => $user->name, 'email' => $user->email, 'rol_id' => $user->rol_id]);
-            return redirect(route('welcome'));
+            return redirect(route('home'));
         }
 
         // // Autenticación fallida, redirigir de vuelta al formulario de login con un mensaje de error.json_encode($credentials)
-        session()->flash('error', 'Credenciales incorrectas!!');
+        session()->flash('error', 'Credenciales incorrectas.');
         return redirect(route('auth.login'));
     }
 

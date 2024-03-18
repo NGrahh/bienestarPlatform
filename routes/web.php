@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -16,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+    return view('compartido/home');
+})->name('home');
+
+Route::get('/home', function () {
+    return view('compartido/home');
+})->name('home');
 
 Route::get('/block', function () {
     return view('welcome');
@@ -61,16 +66,8 @@ Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontr
 //RUTAS ENVÍO EMAILS.
 
 //Ruta envió Email para la CREACIÓN DE CUENTA.
-Route::get('/creacion-cuenta', function () {
-    return view('emails/creacion-cuenta');
-}); 
 
-//Ruta envió Email para RESTABLECER CONTRASEÑA.
-Route::get('/solicitud-restablecer-password', function () {
-    return view('emails/solicitud-restablecer-password');
-}); 
-
-
+Route::resource('eventos', EventsController::class)->middleware('auth');
 
 
 
@@ -83,9 +80,15 @@ Route::get('form-appointment', [UserController::class, 'mostrarVista'])->name('m
 Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
 
 // Ruta Formulario para CREACION EVENTO
-Route::get('/form-create-event', [UserController::class, 'form-create-event'])->name('form-create-event');
-Route::post('/form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event');
+// Route::get('/form-create-event', [UserController::class, 'form-create-event'])->name('form-create-event');
+// Route::post('/form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event');
+Route::get('/creacion-eventos', function () {
+    return view('formularios/eventos/form-create-event');
+})->name('forms.create-events');
 
+Route::get('/listado-eventos', function () {
+   
+})->name('forms.list-events'); 
 
 // Ruta Formulario para INSCRIPCION A EVENTO
 Route::get('form-inscription-event', [UserController::class, 'viewjornadas'])->name('viewjornadas');
@@ -96,7 +99,7 @@ Route::post('form-inscription-event', [UserController::class, 'form-inscription-
 Route::get('form-inscription-supports', [UserController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
 
 
-//Ruta FOrmulario inscribirse a apoyo.
+//Ruta Formulario INSCRIBIRSE A UN APOYO
 Route::get('/form-inscription-supports', function () {
     return view('formularios/form-inscription-supports');
 }); 
@@ -119,3 +122,11 @@ Route::get('/form-inscription-supports', function () {
 Route::get('/user_list', function () {
     return view('crud/user_list');
 }); 
+
+
+
+
+
+Route::get('/menu', function () {
+    return view('layouts/menu');
+})->name('menu'); 
