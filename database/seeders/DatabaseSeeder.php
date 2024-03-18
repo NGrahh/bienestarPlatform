@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([TypeDocumentsTableSeeder::class]);
         $this->call([typeRhSeeder::class]);
         $this->call([UsersSeeder::class]);
+        $this->call([day_trainingSeeder::class]);
         $this->call([TypeDimensionsSeeder::class]);
 
 

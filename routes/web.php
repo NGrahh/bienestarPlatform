@@ -70,20 +70,9 @@ Route::get('/solicitud-restablecer-password', function () {
     return view('emails/solicitud-restablecer-password');
 }); 
 
-//Ruta FOrmulario crear evento.
-Route::get('/form-create-event', function () {
-    return view('formularios/form-create-event');
-}); 
 
-//Ruta FOrmulario inscribirse a evento.
-Route::get('/form-inscription-event', function () {
-    return view('formularios/form-inscription-event');
-}); 
 
-//Ruta FOrmulario inscribirse a apoyo.
-Route::get('/form-inscription-supports', function () {
-    return view('formularios/form-inscription-supports');
-}); 
+
 
 
 
@@ -94,13 +83,36 @@ Route::get('form-appointment', [UserController::class, 'mostrarVista'])->name('m
 Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
 
 // Ruta Formulario para CREACION EVENTO
-Route::get('form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event');
+Route::get('/form-create-event', [UserController::class, 'form-create-event'])->name('form-create-event');
+Route::post('/form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event');
+
 
 // Ruta Formulario para INSCRIPCION A EVENTO
-Route::get('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
+Route::get('form-inscription-event', [UserController::class, 'viewjornadas'])->name('viewjornadas');
+Route::post('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
+
 
 // Ruta Formulario para INSCRIPCION A LOS APOYOS
 Route::get('form-inscription-supports', [UserController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
+
+
+//Ruta FOrmulario inscribirse a apoyo.
+Route::get('/form-inscription-supports', function () {
+    return view('formularios/form-inscription-supports');
+}); 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // RUTAS CRUD
 // Route::get('user_list', [UserController::class, 'user_list'])->name('formularios.form-inscription-supports');

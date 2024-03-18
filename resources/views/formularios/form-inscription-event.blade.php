@@ -17,7 +17,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div class="pt-4 pb-2">
-                <h5 class="card-title-ba text-center pb-0 fs-4" >Por favor diligencie el siguiente formulario para la solicitud de su Cita</h5>
+                <h5 class="card-title-ba text-center pb-0 fs-4" >Por favor diligencie el siguiente formulario para incribirse al evento</h5>
                 <p class="text-center small"></p>
               </div>
 
@@ -51,10 +51,10 @@
                       <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                     </div>
                     <div id="form_appointment" style="display: none;">
-                      <form action="{{route('formularios.form-inscription-eventa')}}" class="row g-3 needs-validation" novalidate method="POST">
+                      <form action="{{route('formularios.form-inscription-event')}}" class="row g-3 needs-validation" novalidate method="POST">
                         @csrf
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                           <label for="yourName" class="form-label">Nombre</label>
                           <input value="{{old('name')}}" type="text" name="name" class="form-control" id="yourName" required>
                           <div class="invalid-feedback">Ingrese el nombre.</div>
@@ -62,7 +62,7 @@
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
                           <label for="yourlastname" class="form-label">Apellidos</label>
                           <input value="{{old('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" required>
                           <div class="invalid-feedback">Ingrese los apellidos.</div>
@@ -70,16 +70,16 @@
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                          <label for="yourdimensions" class="form-label">Jornada de formación</label>
-                          <select name="dimensionsWelfare" class="form-select" id="yourdimensions" required>
+                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                          <label for="yourdaytraining" class="form-label">Jornada de formación</label>
+                          <select name="day_training" class="form-select" id="yourdaytraining" required>
                             <option value="">Seleccionar...</option>
-                            @foreach ($dimensions as $dimension)
-                                <option  {{ $dimension->id == old('dimensionsWelfare') ? 'selected' : '' }} value="{{ $dimension->id }}">{{ $dimension->name }}</option>
+                            @foreach ($days_training as $day_training)
+                                <option  {{ $day_training->id == old('day_training') ? 'selected' : '' }} value="{{ $day_training->id }}">{{ $day_training->name }}</option>
                             @endforeach
                           </select>
                           <div class="invalid-feedback">Ingrese su Jornada de formación</div>
-                          @error('type_document_id')
+                          @error('day_training')
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
@@ -91,17 +91,13 @@
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                           <label for="yournumber" class="form-label">Número telefónico</label>
                           <input value="{{old('mobilenumber')}}" type="number" name="mobilenumber" class="form-control" id="yournumber" required>
                           <div class="invalid-feedback">Ingrese un número telefónico.</div>
                           @error('mobilenumber')
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
-                        </div>
-                        <div class="col-sm-12">
-                          <label for="yourSubject" class="form-label">Asunto</label>
-                          <textarea class="form-control" cols="30" rows="4" name="SubjectCita"></textarea>
                         </div>
                         <div class="col-12">
                           <button class="btn btn-ba w-100" type="submit">Enviar</button>

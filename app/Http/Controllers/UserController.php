@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Roles;
 use App\Models\TypeDocuments;
 use App\Models\TypeDimensions;
+use App\Models\typeDayTraining;
 use App\Models\typeRh;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena', 'mostrarVista' ]);
+        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena', 'mostrarVista','viewjornadas' ]);
     }
 
     /**
@@ -176,10 +177,14 @@ class UserController extends Controller
 
     public function mostrarVista()
     {
-        $dimensions_types = TypeDimensions::all(); // Ejemplo de cómo obtener los datos desde un modelo llamado Dimension
+        $dimensions_types =TypeDimensions::all(); // Ejemplo de cómo obtener los datos desde un modelo llamado Dimension
         return view('formularios.form-appointment', compact('dimensions_types'));
     }
     
-
+    public function viewjornadas()
+    {
+        $days_training=typeDayTraining::all(); 
+        return view('formularios.form-inscription-event', compact('days_training'));
+    }
 
 }
