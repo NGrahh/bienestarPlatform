@@ -76,7 +76,7 @@ Route::resource('eventos', EventsController::class)->middleware('auth');
 //RUTAS FORMULARIOS
 
 // Ruta Formulario para AGENDAR CITA
-Route::get('form-appointment', [UserController::class, 'mostrarVista'])->name('mostrarVista');
+Route::get('form-appointment', [UserController::class, 'showDimensions'])->name('showDimensions');
 Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
 
 // Ruta Formulario para CREACION EVENTO
@@ -87,11 +87,11 @@ Route::get('/creacion-eventos', function () {
 })->name('forms.create-events');
 
 Route::get('/listado-eventos', function () {
-   
+
 })->name('forms.list-events'); 
 
 // Ruta Formulario para INSCRIPCION A EVENTO
-Route::get('form-inscription-event', [UserController::class, 'viewjornadas'])->name('viewjornadas');
+Route::get('form-inscription-event', [UserController::class, 'showStudyTime'])->name('showStudyTime');
 Route::post('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
 
 

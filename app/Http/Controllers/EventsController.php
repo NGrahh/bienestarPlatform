@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Events;
 use Illuminate\Http\Request;
+use App\Models\TypeDimensions;
+use App\Models\typeDayTraining;
 
 class EventsController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['mostrarVista','viewjornadas']);
     }
 
     /**
@@ -68,4 +70,20 @@ class EventsController extends Controller
     {
         //
     }
+
+    public function showDimensions()
+    {
+        $dimensions_types =TypeDimensions::all(); 
+        return view('formularios.form-appointment', compact('dimensions_types'));
+    }
+    
+    public function showStudyTime()
+    {
+        $days_training=typeDayTraining::all(); 
+        return view('formularios.form-inscription-event', compact('days_training'));
+    }
+
+
+
+
 }

@@ -8,13 +8,12 @@
         <i class="bi bi-grid"></i>
         <span>Inicio</span>
       </a>
-    </li><!-- End Dashboard Nav -->
-
+    </li>
 
     @if(session('rol_id') == 1)
       @include('layouts.menus.menu-admin')
     @endif
 
   </ul>
-</aside><!-- End Sidebar-->
+</aside>
   
