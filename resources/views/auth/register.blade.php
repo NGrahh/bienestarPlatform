@@ -11,7 +11,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10 col-md-6 d-flex flex-column align-items-center justify-content-center">
                     <div class="d-flex justify-content-center py-4">
-                        <a href="{{route('welcome')}}"class="logo d-flex align-items-center w-auto">
+                        <a href="{{route('home')}}"class="logo d-flex align-items-center w-auto">
                             <img style="max-height: 60px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="Bienestar al Aprendiz">
                         </a>
                     </div><!-- End Logo -->

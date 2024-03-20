@@ -12,6 +12,7 @@
 
     @if(session('rol_id') == 1)
       @include('layouts.menus.menu-admin')
+
     @endif
 
   </ul>

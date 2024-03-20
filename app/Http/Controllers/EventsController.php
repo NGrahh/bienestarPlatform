@@ -2,17 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Events;
-use Illuminate\Http\Request;
 use App\Models\TypeDimensions;
 use App\Models\typeDayTraining;
+use App\Models\Events;
+use Illuminate\Http\Request;
+
 
 class EventsController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['mostrarVista','viewjornadas']);
+        $this->middleware('auth');
     }
 
     /**

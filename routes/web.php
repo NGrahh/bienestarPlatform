@@ -32,7 +32,7 @@ Route::get('/block', function () {
 //RUTA INDEX
 
 Route::get('/index', function () {
-    return view('auth/index');
+    return view('resources/index');
 })->name('index'); 
 
 
@@ -41,6 +41,7 @@ Route::resource('auth', UserController::class);
 
 //RUTA LOG IN (Iniciar Sesión)
 Route::post('login', [UserController::class, 'login'])->name('auth.login');
+
 Route::get('/login', function () {
     return view('auth/login');
 })->name('login');//-> "Alias"
@@ -76,8 +77,8 @@ Route::resource('eventos', EventsController::class)->middleware('auth');
 //RUTAS FORMULARIOS
 
 // Ruta Formulario para AGENDAR CITA
-Route::get('form-appointment', [UserController::class, 'showDimensions'])->name('showDimensions');
-Route::post('form-appointment', [UserController::class, 'form-appointment'])->name('formularios.form-appointment');
+Route::get('form-appointment', [EventsController::class, 'showDimensions'])->name('showDimensions');
+Route::post('form-appointment', [EventsController::class, 'form-appointment'])->name('formularios.form-appointment');
 
 // Ruta Formulario para CREACION EVENTO
 // Route::get('/form-create-event', [UserController::class, 'form-create-event'])->name('form-create-event');
@@ -87,16 +88,15 @@ Route::get('/creacion-eventos', function () {
 })->name('forms.create-events');
 
 Route::get('/listado-eventos', function () {
-
 })->name('forms.list-events'); 
 
 // Ruta Formulario para INSCRIPCION A EVENTO
-Route::get('form-inscription-event', [UserController::class, 'showStudyTime'])->name('showStudyTime');
-Route::post('form-inscription-event', [UserController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
+Route::get('form-inscription-event', [EventsController::class, 'showStudyTime'])->name('showStudyTime');
+Route::post('form-inscription-event', [EventsController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
 
 
 // Ruta Formulario para INSCRIPCION A LOS APOYOS
-Route::get('form-inscription-supports', [UserController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
+Route::get('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
 
 
 //Ruta Formulario INSCRIBIRSE A UN APOYO

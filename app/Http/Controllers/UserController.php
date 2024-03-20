@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena', 'mostrarVista','viewjornadas','home' ]);
+        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena','home' ]);
     }
 
     /**
