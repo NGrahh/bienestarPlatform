@@ -1,5 +1,5 @@
 // Obtener los elementos del formulario y los checkboxes
-let formulario = document.getElementById('form_appointment');
+let formulario = document.getElementById('form');
 let checkSi = document.getElementById('check_si');
 let checkNo = document.getElementById('check_no');
 let volverBtn = document.getElementById('button_volver');

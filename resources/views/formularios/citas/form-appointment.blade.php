@@ -10,8 +10,8 @@
     <h1>Creación de cita</h1>
   </div><!-- End Page Title -->
   <section>
-    <div class="row">
-      <div class="col-lg-12">
+    <div class="row justify-content-center">
+      <div class="col-lg-11 my-5">
           <div class="card mb-3">
               <div class="card-body">
                 <div class="pt-4 pb-2">
@@ -45,7 +45,7 @@
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                       </div>
-                      <div id="form_appointment" style="display: none;">
+                      <div id="form" style="display: none;">
                         <form action="{{route('formularios.form-appointment')}}" class="row g-3 needs-validation" novalidate method="POST">
                           @csrf
                           <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>

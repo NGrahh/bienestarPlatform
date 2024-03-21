@@ -11,8 +11,8 @@
         </div><!-- End Page Title -->
     
         <div class="section">
-          <div class="row">
-            <div class="col-lg-12">
+          <div class="row justify-content-center">
+            <div class="col-lg-11 my-5">
               <div class="card mb-3">
                 <div class="card-body">
                   <div class="pt-4 pb-2">
