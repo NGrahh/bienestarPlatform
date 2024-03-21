@@ -76,7 +76,7 @@ class UserController extends Controller
             'name' => 'required|string|between:2,100',
             'lastname' => 'required|string|between:2,100',
             'type_document_id' => 'required|string',
-            'document' => 'required|numeric|unique:users|digits_between:8,12',
+            'document' => 'required|numeric|unique:users|digits_between:8,15',
             'email' => 'required|string|email|max:100|unique:users',
             'type_rh_id' => 'required|string',
             'password' => 'required|string|min:6',

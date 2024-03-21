@@ -13,7 +13,7 @@ class typeRhSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = [
+        $type_rhs = [
             ['name' => 'A+'],
             ['name' => 'O+'],
             ['name' => 'B+'],
@@ -24,8 +24,8 @@ class typeRhSeeder extends Seeder
             ['name' => 'AB-']
         ];
         
-        foreach ($roles as $role) {
-            typeRh::create($role);
+        foreach ($type_rhs as $type_rh) {
+            typeRh::create($type_rh);
         }
     }
 }
