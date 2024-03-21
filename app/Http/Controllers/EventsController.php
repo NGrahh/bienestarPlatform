@@ -75,13 +75,18 @@ class EventsController extends Controller
     public function showDimensions()
     {
         $dimensions_types =TypeDimensions::all(); 
-        return view('formularios.form-appointment', compact('dimensions_types'));
+        return view('formularios.citas.form-appointment', compact('dimensions_types'));
     }
     
     public function showStudyTime()
     {
         $days_training=typeDayTraining::all(); 
-        return view('formularios.form-inscription-event', compact('days_training'));
+        return view('formularios.eventos.form-inscription-event', compact('days_training'));
+    }
+
+    public function inscrip()
+    {
+        return view('formularios/apoyos/form-inscription-supports');
     }
 
 

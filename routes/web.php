@@ -92,17 +92,20 @@ Route::get('/listado-eventos', function () {
 
 // Ruta Formulario para INSCRIPCION A EVENTO
 Route::get('form-inscription-event', [EventsController::class, 'showStudyTime'])->name('showStudyTime');
-Route::post('form-inscription-event', [EventsController::class, 'form-inscription-event'])->name('formularios.form-inscription-event');
+Route::post('form-inscription-event', [EventsController::class, 'form-inscription-event'])->name('formularios.eventos.form-inscription-event');
 
 
 // Ruta Formulario para INSCRIPCION A LOS APOYOS
-Route::get('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios.form-inscription-supports');
 
 
-//Ruta Formulario INSCRIBIRSE A UN APOYO
-Route::get('/form-inscription-supports', function () {
-    return view('formularios/form-inscription-supports');
-}); 
+Route::get('form-inscription-supports', [EventsController::class, 'inscrip'])->name('inscrip');
+Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios.apoyos.form-inscription-supports');
+
+
+// //Ruta Formulario INSCRIBIRSE A UN APOYO
+// Route::get('/form-inscription-supports', function () {
+//     return view('formularios.apoyos.form-inscription-supports');
+// }); 
 
 
 

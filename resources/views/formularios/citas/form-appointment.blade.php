@@ -5,15 +5,11 @@
 @include('layouts.header')
 @include('layouts.menu')
 
-
-
 <main id="main" class="main">
-
   <div class="pagetitle">
     <h1>Creación de cita</h1>
   </div><!-- End Page Title -->
-
-  <section class="section">
+  <section>
     <div class="row">
       <div class="col-lg-12">
           <div class="card mb-3">
@@ -138,72 +134,13 @@
                           </div>
                         </form>
                       </div>
-  
-  
-  
+                    </div> 
+                  </div>   
               </div>
             </div>
-
+          </div>  
       </div>
-
     </div>
   </section>
-
-</main><!-- End #main -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{{-- <main id="main" class="main">
-  <div class="pagetitle">
-    <h1>Agendación de citas</h1>
-  </div><!-- End Page Title -->
-
-  <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center ">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 col-md-6 d-flex flex-column align-items-center justify-content-center">
-          <div class="d-flex justify-content-center py-4">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div class="pt-4 pb-2">
-                  <h5 class="card-title-ba text-center pb-0 fs-4">Por favor diligencie el siguiente formulario para la solicitud de su Cita</h5>
-                  <p class="text-center small"></p>
-                </div>
-
-                @include('compartido.alertas')
-
-
-                
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-  </section>
-</main> --}}
-
-{{-- <div class="container">
-  
-</div> --}}
+</main>
 @endsection
