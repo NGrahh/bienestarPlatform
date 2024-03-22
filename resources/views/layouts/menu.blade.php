@@ -12,9 +12,23 @@
 
     @if(session('rol_id') == 1)
       @include('layouts.menus.menu-admin')
-
+      @include('layouts.menus.menu-usuarios')
     @endif
 
+    {{-- @if(session('rol_id') == 2)
+      @include()
+    @endif
+
+    @if(session('rol_id') == 3)
+      @include()
+    @endif
+
+    @if(session('rol_id') == 4)
+      @include()
+    @endif
+
+    @if(session('rol_id') == 5)
+      @include()
+    @endif --}}
   </ul>
 </aside>
-  
