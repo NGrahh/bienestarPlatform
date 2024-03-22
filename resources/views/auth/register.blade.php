@@ -93,7 +93,7 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="training_program" >
                                     <label for="yourTraining" class="form-label">Programa de formación</label>
-                                    <input type="text" name="trainingProgram" class="form-control" id="yourTraining" required disabled>
+                                    <input value="{{old('trainingProgram')}}"  type="text" name="trainingProgram" class="form-control" id="yourTraining" required disabled>
                                     <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
                                     @error('trainingProgram')
                                     <li class="text-danger">{{ $message}}</li>
@@ -101,9 +101,9 @@
                                 </div>
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="token_number" >
                                     <label for="yourToken" class="form-label">Número de ficha</label>
-                                    <input type="text" name="tokenNumber" class="form-control" id="yourToken" required disabled>
+                                    <input value="{{old('yourToken')}}" type="text" name="yourToken" class="form-control" id="yourToken" required disabled>
                                     <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
-                                    @error('tokenNumber')
+                                    @error('yourToken')
                                     <li class="text-danger">{{ $message}}</li>
                                     @enderror
                                 </div>
