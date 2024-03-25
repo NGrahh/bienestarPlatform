@@ -40,7 +40,7 @@
                             </ul>
                           </div>
                         </div>
-                        <button class="btn btn-success mt-3"><a href="" class="solicitar">Asistensia</a></button>
+                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar">Solicitar</a></button>
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">

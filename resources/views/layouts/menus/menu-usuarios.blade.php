@@ -54,22 +54,22 @@
         </a>
         <ul id="supports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-                <a href="#">
+                <a href="{{route('Apoyo-fic')}}">
                     <i class="bi bi-circle"></i>Apoyo de sostenimiento FIC<span></span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('Apoyo-regular')}}">
                     <i class="bi bi-circle"></i><span>Apoyo de sostenimiento regular</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('Apoyo-transporte')}}">
                     <i class="bi bi-circle"></i><span>Apoyos de transporte</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('Apoyo-alimentacion')}}">
                     <i class="bi bi-circle"></i><span>Apoyo de alimentación</span>
                 </a>
             </li>
@@ -79,7 +79,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{route('Apoyo-datos')}}">
                     <i class="bi bi-circle"></i><span>Plan de datos</span>
                 </a>
             </li>

@@ -25,22 +25,12 @@
                       </div>
                       <div class="caja">
                         <h3 class="horarios">Horarios de Atención</h3>
-                        <div class="horas">
-                          <div class="dias-semana">
-                            <ul>
-                              <li class="dias semana">Lunes a viernes</li>
-                              <li class="dias sabado">Sábados</li>
-                            </ul>
-                          </div>
-                          <hr>
-                          <div class="horas-dias">
-                            <ul>
-                              <li class="dias horas-semana">Horas</li>
-                              <li class="dias horas-sabado">Horas</li>
-                            </ul>
-                          </div>
+                        <div class="horas" >
+                          <p style="text-align: center" >Los horarios de atencion se le informaran 
+                            a los Aprendices por medio de WhatsApp, se le informara 
+                            tanto el Horario como que se hace cada dia y sus horas</p>
                         </div>
-                        <button class="btn btn-success mt-3"><a href="" class="solicitar">Asistensia</a></button>
+                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar">Asistencia</a></button>
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">

@@ -120,7 +120,7 @@ Route::get('/menu', function () {
     return view('layouts/menu');
 })->name('menu'); 
 
-//Rutas Descripciones Apoyos
+//Rutas Descripciones Servicios
 
 Route::get('/Servicio-deportes', function(){
     return view('layouts.Descripcion.Servicio-deportes');
@@ -141,4 +141,30 @@ Route::get('/Servicio-Psicologia', function(){
 Route::get('/Servicio-Consejeria', function(){
     return view ('layouts.Descripcion.Servicio-Consejeria');
 })-> name ('Servicio-Consejeria');
+
+//Rutas Descripcion Apoyos
+Route::get('/Apoyo-regular', function(){
+    return view ('layouts.Descrip-apoyos.Apoyo-regular');
+})-> name ('Apoyo-regular');
+
+Route::get('/Apoyo-transporte', function(){
+    return view ('layouts.Descrip-apoyos.Apoyo-transporte');
+})-> name ('Apoyo-transporte');
+
+Route::get('/Apoyo-monitoria', function(){
+    return view ('layouts.Descrip-apoyos.Apoyo-monitoria');
+})-> name ('Apoyo-monitoria');
+
+Route::get('/Apoyo-fic', function(){
+    return view ('layouts.Descrip-apoyos.Apoyo-fic');
+})-> name ('Apoyo-fic');
+
+Route::get('/Apoyo-datos', function(){
+    return view ('layouts.Descrip-apoyos.Apoyo-datos');
+})-> name ('Apoyo-datos');
+
+Route::get('/Apoyo-alimentacion', function(){
+    return view ('layouts.Descrip-apoyos.Apoyo-alimentacion');
+})-> name ('Apoyo-alimentacion');
+
 
