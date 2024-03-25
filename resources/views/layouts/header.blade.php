@@ -68,8 +68,8 @@
   
           </ul><!-- End Profile Dropdown Items -->
           @else
-          <a class="" href="#">
-            Login
+          <a class="vinculos" href="{{route('login')}}">
+            <span >Iniciar Sesión</span>
           </a><!-- End Profile Iamge Icon -->
           @endif
         </li><!-- End Profile Nav -->
