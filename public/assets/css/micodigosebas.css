@@ -1,8 +1,4 @@
-body{
-  display: flex;
-  justify-content: end;
-  align-items: flex-end;
-}
+
 .mayor{
   width: 77.2rem;
   height: 41.8rem;
@@ -13,7 +9,6 @@ body{
   margin-left: 1px;
 }
 
-/* Estilos personalizados */
 .titulo {
 font-size: 2.5rem;
 
@@ -44,21 +39,17 @@ font-size: 2rem;
 }
 
 
-li{
-  list-style: none;
-}
-
 .caja{
   margin-top: 2rem;
 }
 
 .imagen {
-  width: 100%; /* Ajustar el ancho al 100% del contenedor */
-  height: 100%; /* Ajustar la altura al 100% del contenedor */
-  object-fit: cover; /* Escalar la imagen para que cubra todo el contenido del div */
-  /* border-radius: 50%; */
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  
 }
 
 .todo_contenido{
   margin: 1rem;
-}
+} 

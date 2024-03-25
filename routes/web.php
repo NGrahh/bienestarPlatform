@@ -120,25 +120,25 @@ Route::get('/menu', function () {
     return view('layouts/menu');
 })->name('menu'); 
 
-//Rutas Descipciones Apoyos
+//Rutas Descripciones Apoyos
 
 Route::get('/Servicio-deportes', function(){
     return view('layouts.Descripcion.Servicio-deportes');
-})->name('Servicio'); 
+})->name('Servicio-deportes'); 
 
 Route::get('/Servicio-enfermeria', function(){
     return view ('layouts.Descripcion.Servicio-enfermeria');
-})-> name ('Servicio');
+})-> name ('Servicio-enfermeria');
 
 Route::get('/Servicio-Musica', function(){
     return view ('layouts.Descripcion.Servicio-Musica');
-})-> name ('Servicio');
+})-> name ('Servicio-Musica');
 
 Route::get('/Servicio-Psicologia', function(){
     return view ('layouts.Descripcion.Servicio-Psicologia');
-})-> name ('Servicio');
+})-> name ('Servicio-Psicologia');
 
 Route::get('/Servicio-Consejeria', function(){
     return view ('layouts.Descripcion.Servicio-Consejeria');
-})-> name ('Servicio');
+})-> name ('Servicio-Consejeria');
 

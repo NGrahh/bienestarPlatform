@@ -6,12 +6,12 @@
         <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="#">
-                    <i class="bi bi-circle"></i>Eventos Proximos<span></span>
+                    <i class="bi bi-circle"></i>Eventos próximos<span></span>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <i class="bi bi-circle"></i><span>Eventos Pasados</span>
+                    <i class="bi bi-circle"></i><span>Eventos pasados</span>
                 </a>
             </li>
         </ul>
@@ -22,28 +22,28 @@
         </a>
         <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-                <a href="resources\views\layouts\Descripcion\Servicio-deportes.blade.php">
+                <a href="{{route('Servicio-deportes')}}">
                     <i class="bi bi-circle"></i><span>Deportes</span>
                 </a>
             </li>
             <li>
-                <a href="resources\views\layouts\Descripcion\Servicio-enfermeria.blade.php">
-                    <i class="bi bi-circle"></i><span>Enfermeria</span>
+                <a href="{{route('Servicio-enfermeria')}}">
+                    <i class="bi bi-circle"></i><span>Enfermería</span>
                 </a>
             </li>
             <li>
-                <a href="resources\views\layouts\Descripcion\Servicio-Psicologia.blade.php">
-                    <i class="bi bi-circle"></i><span>Psicologia</span>
+                <a href="{{route('Servicio-Psicologia')}}">
+                    <i class="bi bi-circle"></i><span>Psicología</span>
                 </a>
             </li>
             <li>
-                <a href="resources\views\layouts\Descripcion\Servicio-Musica.blade.php">
-                    <i class="bi bi-circle"></i><span>Musica</span>
+                <a href="{{route('Servicio-Musica')}}">
+                    <i class="bi bi-circle"></i><span>Música</span>
                 </a>
             </li>
             <li>
-                <a href="resources\views\layouts\Descripcion\Servicio-Consejeria.blade.php">
-                    <i class="bi bi-circle"></i><span>Consejeria</span>
+                <a href="{{route('Servicio-Consejeria')}}">
+                    <i class="bi bi-circle"></i><span>Consejería</span>
                 </a>
             </li>
         </ul>
@@ -59,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="resources\views\layouts\Descripcion\Apoyo-regular.blade.php">
+                <a href="#">
                     <i class="bi bi-circle"></i><span>Apoyo de sostenimiento regular</span>
                 </a>
             </li>
@@ -92,12 +92,32 @@
         <ul id="dimensions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="#">
-                    <i class="bi bi-circle"></i>-----<span></span>
+                    <i class="bi bi-circle"></i>Consejería y atención psicosocial<span></span>
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <i class="bi bi-circle"></i><span>----</span>
+                    <i class="bi bi-circle"></i><span>Arte y cultura</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-circle"></i><span>Deportes</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-circle"></i><span>Promoción y prevención de salud</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-circle"></i><span>Apoyos de sostenimiento</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="bi bi-circle"></i><span>Liderazgo</span>
                 </a>
             </li>
         </ul>
