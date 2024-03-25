@@ -87,7 +87,7 @@ Route::get('/creacion-eventos', function () {
     return view('formularios/eventos/form-create-event');
 })->name('forms.create-events');
 
-Route::get('/listado-eventos', function () {
+Route::get('/listado-eventos', function (){
 })->name('forms.list-events'); 
 
 // Ruta Formulario para INSCRIPCION A EVENTO
@@ -108,18 +108,6 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 // }); 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // RUTAS CRUD
 // Route::get('user_list', [UserController::class, 'user_list'])->name('formularios.form-inscription-supports');
 Route::get('/user_list', function () {
@@ -128,8 +116,29 @@ Route::get('/user_list', function () {
 
 
 
-
-
 Route::get('/menu', function () {
     return view('layouts/menu');
 })->name('menu'); 
+
+//Rutas Descipciones Apoyos
+
+Route::get('/Servicio-deportes', function(){
+    return view('layouts.Descripcion.Servicio-deportes');
+})->name('Servicio'); 
+
+Route::get('/Servicio-enfermeria', function(){
+    return view ('layouts.Descripcion.Servicio-enfermeria');
+})-> name ('Servicio');
+
+Route::get('/Servicio-Musica', function(){
+    return view ('layouts.Descripcion.Servicio-Musica');
+})-> name ('Servicio');
+
+Route::get('/Servicio-Psicologia', function(){
+    return view ('layouts.Descripcion.Servicio-Psicologia');
+})-> name ('Servicio');
+
+Route::get('/Servicio-Consejeria', function(){
+    return view ('layouts.Descripcion.Servicio-Consejeria');
+})-> name ('Servicio');
+

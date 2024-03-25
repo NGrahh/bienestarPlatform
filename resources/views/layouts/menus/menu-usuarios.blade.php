@@ -22,13 +22,28 @@
         </a>
         <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-                <a href="#">
-                    <i class="bi bi-circle"></i>-----<span></span>
+                <a href="resources\views\layouts\Descripcion\Servicio-deportes.blade.php">
+                    <i class="bi bi-circle"></i><span>Deportes</span>
                 </a>
             </li>
             <li>
-                <a href="#">
-                    <i class="bi bi-circle"></i><span>----</span>
+                <a href="resources\views\layouts\Descripcion\Servicio-enfermeria.blade.php">
+                    <i class="bi bi-circle"></i><span>Enfermeria</span>
+                </a>
+            </li>
+            <li>
+                <a href="resources\views\layouts\Descripcion\Servicio-Psicologia.blade.php">
+                    <i class="bi bi-circle"></i><span>Psicologia</span>
+                </a>
+            </li>
+            <li>
+                <a href="resources\views\layouts\Descripcion\Servicio-Musica.blade.php">
+                    <i class="bi bi-circle"></i><span>Musica</span>
+                </a>
+            </li>
+            <li>
+                <a href="resources\views\layouts\Descripcion\Servicio-Consejeria.blade.php">
+                    <i class="bi bi-circle"></i><span>Consejeria</span>
                 </a>
             </li>
         </ul>
@@ -44,7 +59,7 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="resources\views\layouts\Descripcion\Apoyo-regular.blade.php">
                     <i class="bi bi-circle"></i><span>Apoyo de sostenimiento regular</span>
                 </a>
             </li>
