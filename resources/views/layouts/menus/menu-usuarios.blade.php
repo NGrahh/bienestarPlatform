@@ -1,7 +1,7 @@
 <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#events-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-layout-text-window-reverse"></i><span>Eventos</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="ri-pages-line"></i><span>Eventos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
@@ -18,9 +18,9 @@
     </li><!-- End Tables Nav -->
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-layout-text-window-reverse"></i><span>Servicios</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="ri-customer-service-line"></i><span>Servicios</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="resources\views\layouts\Descripcion\Servicio-deportes.blade.php">
                     <i class="bi bi-circle"></i><span>Deportes</span>
@@ -50,9 +50,9 @@
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#supports-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-layout-text-window-reverse"></i><span>Apoyos</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="ri-pantone-line"></i><span>Apoyos</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="supports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="#">
                     <i class="bi bi-circle"></i>Apoyo de sostenimiento FIC<span></span>
@@ -87,9 +87,9 @@
     </li>
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#dimensions-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-layout-text-window-reverse"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="ri-psychotherapy-line"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="dimensions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
                 <a href="#">
                     <i class="bi bi-circle"></i>-----<span></span>

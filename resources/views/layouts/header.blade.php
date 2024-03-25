@@ -22,8 +22,8 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-  
         <li class="nav-item dropdown pe-3">
+        @if(auth()->check())
   
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="{{asset('assets/img/Usernew.png')}}" alt="Profile" class="rounded-circle">
@@ -67,8 +67,12 @@
             </li>
   
           </ul><!-- End Profile Dropdown Items -->
+          @else
+          <a class="" href="#">
+            Login
+          </a><!-- End Profile Iamge Icon -->
+          @endif
         </li><!-- End Profile Nav -->
-  
       </ul> 
     </nav><!-- End Icons Navigation -->
   

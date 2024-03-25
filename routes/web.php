@@ -32,7 +32,7 @@ Route::get('/block', function () {
 //RUTA INDEX
 
 Route::get('/index', function () {
-    return view('resources/index');
+    return view('index');
 })->name('index'); 
 
 
