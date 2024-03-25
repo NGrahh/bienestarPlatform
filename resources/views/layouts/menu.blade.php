@@ -9,28 +9,24 @@
       </a>
     </li>
 
-    @if(session('rol_id') == 0) {{-- visualizar --}}
-      @include('layouts.menus.menu-usuarios')
-    @endif  
-
-    @if(session('rol_id') == 1) {{-- Administrador --}}
+    @if(session('rol_id') == 1)
+      {{-- Administrador --}}
       @include('layouts.menus.menu-admin')
-    @endif
-
-    @if(session('rol_id') == 2) {{-- Lider Bienestar --}}
-      @include('layouts.menus.menu-lider-bienestar')
-    @endif
-
-    @if(session('rol_id') == 3) {{-- Miembro Bienestar --}}
-      @include('layouts.menus.menu-miembroBA')
-    @endif
-
-    @if(session('rol_id') == 4) {{-- Miembro Bienestar apoyo --}}
-      @include('layouts.menus.menu-miembro-BA-apoyo')
-    @endif
-
-    @if(session('rol_id') == 5) {{-- Aprendiz --}}
-      @include('layouts.menus.menu-aprendiz')
+    @elseif(session('rol_id') == 2)
+        {{-- Lider Bienestar --}}
+        @include('layouts.menus.menu-lider-bienestar')
+    @elseif(session('rol_id') == 3)
+        {{-- Miembro Bienestar --}}
+        @include('layouts.menus.menu-miembroBA')
+    @elseif(session('rol_id') == 4)
+        {{-- Miembro Bienestar apoyo --}}
+        @include('layouts.menus.menu-miembro-BA-apoyo')
+    @elseif(session('rol_id') == 5)
+        {{-- Aprendiz --}}
+        @include('layouts.menus.menu-aprendiz')
+    @else
+        {{-- Menú Vacío --}}
+        @include('layouts.menus.menu-usuarios')
     @endif
 
     <li class="nav-item">
