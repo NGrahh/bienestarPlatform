@@ -4,12 +4,12 @@
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{route('home')}}">
-        <i class="bi bi-grid"></i>
+        <i class="ri-home-2-line"></i>
         <span>Inicio</span>
       </a>
     </li>
 
-    @if(session('rol_id') == 0) {{-- Administrador --}}
+    @if(session('rol_id') == 0) {{-- visualizar --}}
       @include('layouts.menus.menu-usuarios')
     @endif  
 
@@ -35,7 +35,7 @@
 
     <li class="nav-item">
       <a class="nav-link collapsed" href="{{route('home')}}">
-        <i class="ri-body-scan-fill"></i>
+        <i class="ri-open-arm-line"></i>
         <span>Quienes somos?</span>
       </a>
     </li>
