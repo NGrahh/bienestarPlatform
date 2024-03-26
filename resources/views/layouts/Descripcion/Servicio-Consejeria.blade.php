@@ -13,7 +13,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div align="center" class="pt-4 pb-2">
-                <h1 class="titulo">Deportes</h1>
+                <h1 class="titulo">Consejeria</h1>
                 <div class="todo_contenido">
                   <div class="row separacion">
                     <div class="col-lg-6 contenido">

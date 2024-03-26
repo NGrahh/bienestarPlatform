@@ -167,4 +167,6 @@ Route::get('/Apoyo-alimentacion', function(){
     return view ('layouts.Descrip-apoyos.Apoyo-alimentacion');
 })-> name ('Apoyo-alimentacion');
 
-
+Route::get('Quienes-somos', function(){
+    return view('layouts.descrip-nosotros.Quienes-somos');
+})-> name ('Nosotros');

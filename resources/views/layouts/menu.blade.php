@@ -30,7 +30,7 @@
     @endif
 
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('home')}}">
+      <a class="nav-link collapsed" href="{{route('Nosotros')}}">
         <i class="ri-open-arm-line"></i>
         <span>Quienes somos?</span>
       </a>
