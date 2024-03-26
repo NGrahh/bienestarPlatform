@@ -55,18 +55,16 @@
                                 <div class="col-12" style="text-align: center">
                                     <a class="small vinculos" href="{{route('pass.recuperarcontrasena')}}">Recuperar contraseña</a>
                                 </div> 
-                                <div class="col-12">
+                                {{-- <div class="col-12">
                                     <p class="small mb-0">No tiene cuenta? <a class="vinculos" href="{{route('auth.registerform')}}">Crear cuenta</a></p>
-                                </div>
+                                </div> --}}
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </section>
-
 </div>
 @endsection
 

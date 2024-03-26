@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('compartido/home');
+    return view ('compartido/home');
 })->name('home');
 
 Route::get('/home', function () {
@@ -170,3 +170,12 @@ Route::get('/Apoyo-alimentacion', function(){
 Route::get('Quienes-somos', function(){
     return view('layouts.descrip-nosotros.Quienes-somos');
 })-> name ('Nosotros');
+
+
+
+
+
+Route::get('/apoyo-sostenimiento-fic', function(){
+    return view ('layouts.Descrip-apoyos.apoyo-sostenimiento-fic');
+})-> name ('apoyo-sostenimiento-fic');
+
