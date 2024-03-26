@@ -136,8 +136,12 @@ li {
                     
 
                     <div class="descripcion">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum atque enim incidunt praesentium, architecto deleniti expedita corporis, nobis iusto doloribus error. Eaque, hic est. Fuga sunt saepe voluptas labore at.Recusandae natus architecto esse dignissimos voluptatem itaque dolorum harum similique, alias necessitatibus. Laboriosam libero corrupti velit maiores voluptatibus accusamus, nobis voluptas animi, eveniet culpa nesciunt saepe inventore minima, iusto ipsum.
-                    </div>
+                      Por bienestar al aprendiz se entiende lo
+                      que le hace bien y le conviene como ser humano, lo que genera satisfacción con la vida y
+                      en consecuencia potencia su desarrollo como persona. Este desarrollo se fortalece a
+                      través de la relación favorable consigo mismo, con los demás miembros de la comunidad,
+                      con la naturaleza y con su ser trascendente, lo que aporta al fortalecimiento de la formación
+                      profesional integral.                    </div>
 
                     <h3 class="nEquipo">Nuestro Equipo</h3>
                     <div class="equipos">
