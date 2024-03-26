@@ -30,7 +30,7 @@
                             a los Aprendices por medio de WhatsApp, se le informara 
                             tanto el Horario como que se hace cada dia y sus horas</p>
                         </div>
-                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar">Asistencia</a></button>
+                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Asistencia</a></button>
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">

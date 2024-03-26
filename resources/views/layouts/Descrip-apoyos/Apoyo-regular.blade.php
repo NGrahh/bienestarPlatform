@@ -43,15 +43,11 @@
                       <div class="card card-body">
                         <p class="text-center">Requisitos para el apoyo regular</p>
                         <ul>
-                          <li>Nombre</li>
-                          <li>Apellido</li>
-                          <li>Correo Electronico</li>
-                          <li>Numero de telefono</li>
-                          <li>Formato de registro</li>
-                          <li>Foto de documento de identidad</li>
-                          <li>Sisben</li>
-                          <li>Foto recibo publico</li>
-                          <li>Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
+                          <li>Estar en estado "en formacion"</li>
+                          <li>Pertenecer a estratos 1 o 2</li>
+                          <li>No tener vinvulo labora, contrato de aprendizaje, patrocinio o practica que genere ingresos</li>
+                          <li>No ser beneficiario de Jovenes en accion</li>
+                          <li>No ser ni haber sido beneficiario de apoyos de sostenimiento en otros programas</li>
                         </ul>
                       </div>
                     </div>

@@ -31,7 +31,9 @@
                 <div class="descripcion">
                     <h2>Descripcion</h2>
                     <p class="text-center">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur vero voluptate eum ipsa repellendus explicabo inventore voluptatem! Pariatur, veniam. Similique, illum quam. Enim, tempore vel impedit consectetur accusantium perspiciatis optio.
+                      El aprendiz debe realizar 60 horas mensuales cumpliendo con las actividades de Monitoria.
+                      El valor del estimulo economico que se le pagara al aprendiz es del 50% del salario minimo legal mensual vigente,
+                      para esta vigencia es de Aeicientos cincuenta mil pesos ($650.000)
                     </p>
                 </div>
                 <div class="botones mt-4 text-center">
@@ -43,16 +45,14 @@
                       <div class="card card-body">
                         <p class="text-center">Requisitos para el apoyo de monitoria</p>
                         <ul>
-                          <li>Nombre</li>
+                          <li>Estar matriculados en un programa de formacion de los niveles técnico o tecnólogos</li>
                           <li>Apellido</li>
-                          <li>Correo Electronico</li>
-                          <li>Numero de telefono</li>
-                          <li>Formato de registro</li>
-                          <li>Foto de documento de identidad</li>
-                          <li>Sisben</li>
-                          <li>Foto recibo publico</li>
-                          <li>Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
-                        </ul>
+                          <li>Haber logrado como mínimo el 25% de los resultados de aprendizaje, establecidos en el programa de formacion</li>
+                          <li>Ser aprendiz SENA con una antigüedad minima de tres(3) meses</li>
+                          <li>No tener medidas formativas, condicionamiento de matricula, faltas academicas o diciplinarias durante el trimestre inmediatamente anterior a la apertura de la convocatoria</li>
+                          <li>Tener disponibilidad para ser monitor de programas de formacion en los lugares requeridos por el Centro de Formacion o en la institucion educativa, y en los horarios previstos para ello</li>
+                          <li>No tener vinculos de parentesco con algun servidor publico o contratista del respectivo centro, dentro del segundo grado de consaguinidad, segundo de afinidad o primero civil</li>
+                          </ul>
                       </div>
                     </div>
                   </div>

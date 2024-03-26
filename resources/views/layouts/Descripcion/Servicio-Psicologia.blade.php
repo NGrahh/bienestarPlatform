@@ -29,18 +29,18 @@
                           <div class="dias-semana">
                             <ul>
                               <li class="dias semana">Lunes a viernes</li>
-                              <li class="dias sabado">Sábados</li>
-                            </ul>
+                              <li class="dias hora">Hora</li>
+                            </ul style="list-style: none">
                           </div>
                           <hr>
                           <div class="horas-dias">
-                            <ul>
-                              <li class="dias horas-semana">Horas</li>
+                            <ul style="list-style: none">
+                              <li class="dias sabado">Sabados</li>
                               <li class="dias horas-sabado">Horas</li>
                             </ul>
                           </div>
                         </div>
-                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar">Solicitar Cita</a></button>
+                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Solicitar Cita</a></button>
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">

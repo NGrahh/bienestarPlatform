@@ -31,7 +31,9 @@
                 <div class="descripcion">
                     <h2>Descripcion</h2>
                     <p class="text-center">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur vero voluptate eum ipsa repellendus explicabo inventore voluptatem! Pariatur, veniam. Similique, illum quam. Enim, tempore vel impedit consectetur accusantium perspiciatis optio.
+                      Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la constriccion,
+                      seleccionados como beneficiarios de este apoyo, durante el tiempo que dure respectivo programa de aprendizaje, para sufragar entro
+                      otros: transporte, alimentacion y utiles para su formacion
                     </p>
                 </div>
                 <div class="botones mt-4 text-center">
@@ -43,14 +45,16 @@
                       <div class="card card-body">
                         <p class="text-center">Requisitos para el apoyo fic</p>
                         <ul>
-                          <li>Nombre</li>
-                          <li>Apellido</li>
-                          <li>Correo Electronico</li>
-                          <li>Numero de telefono</li>
-                          <li>Formato de registro</li>
+                          <li>Estar matriculado en uno de los programas de formacion profesional relacionados con el sector de la industria de la construccion, correspondiente a formacion titulada,
+                            en jornada diurna o nocturna. No aplica para ofertas virtuales y articulacion con la media
+                          </li>
+                          <li>No poseer contrato de aprendizaje o laboral que le represente ingregos economicos, ni ser beneficiarios o titular de alguna pension</li>
+                          <li>Haber culminado satisfactoriamente el primer trimestre de formacion</li>
+                          <li>No estar o haber sido sancionado con condicionamiento de matricula por faltas academicas o diciplinarias durante el trimestre inmediatamente anterior</li>
+                          <li>No ser o haber sido beneficiario de apotos de sostenimiento en otro programa de formacion</li>
                           <li>Foto de documento de identidad</li>
-                          <li>Sisben</li>
-                          <li>Foto recibo publico</li>
+                          <li>No ser o haber sido beneficiario de apoyos de sostenimiento del FIC en otros programas de formacion</li>
+                          <li>No tener otro tipo de subsidio asignado por alcaldia, Juntas Comunales, Organismos del estado (Jovenes en accion), ni otro apoyo del SENA</li>
                           <li>Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
                         </ul>
                       </div>

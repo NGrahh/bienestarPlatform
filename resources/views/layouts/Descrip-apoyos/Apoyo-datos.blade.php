@@ -43,15 +43,7 @@
                       <div class="card card-body">
                         <p class="text-center">Requisitos para el apoyo datos</p>
                         <ul>
-                          <li>Nombre</li>
-                          <li>Apellido</li>
-                          <li>Correo Electronico</li>
-                          <li>Numero de telefono</li>
-                          <li>Formato de registro</li>
-                          <li>Foto de documento de identidad</li>
-                          <li>Sisben</li>
-                          <li>Foto recibo publico</li>
-                          <li>Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
+                          <li></li>
                         </ul>
                       </div>
                     </div>

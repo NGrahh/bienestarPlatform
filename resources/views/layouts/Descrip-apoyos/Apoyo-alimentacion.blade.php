@@ -31,7 +31,8 @@
                 <div class="descripcion">
                     <h2>Descripcion</h2>
                     <p class="text-center">
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Pariatur vero voluptate eum ipsa repellendus explicabo inventore voluptatem! Pariatur, veniam. Similique, illum quam. Enim, tempore vel impedit consectetur accusantium perspiciatis optio.
+                      Es aquel que otorga a los aprendices tecnicos y tegnologos de todas las modalidades y jornadas, 
+                      que cumplen requisitos y cuyo proposito es apoyar la permanecia del aprendiz en su proceso formativo
                     </p>
                 </div>
                 <div class="botones mt-4 text-center">
@@ -43,15 +44,9 @@
                       <div class="card card-body">
                         <p class="text-center">Requisitos para apoyo de alimentacion</p>
                         <ul>
-                          <li>Nombre</li>
-                          <li>Apellido</li>
-                          <li>Correo Electronico</li>
-                          <li>Numero de telefono</li>
-                          <li>Formato de registro</li>
-                          <li>Foto de documento de identidad</li>
-                          <li>Sisben</li>
-                          <li>Foto recibo publico</li>
-                          <li>Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
+                          <li>Diligenciar el formato de registro socioeconomico</li>
+                          <li>Estar en estado "Induccion" o "En formacion" en el reglamento al aprendiz</li>
+                          <li>No ser beneficiario de ningun apoto de sostenimiento</li>
                         </ul>
                       </div>
                     </div>

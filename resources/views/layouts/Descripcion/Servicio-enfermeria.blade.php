@@ -27,15 +27,15 @@
                         <h3 class="horarios">Horarios de Atención</h3>
                         <div class="horas">
                           <div class="dias-semana">
-                            <ul>
+                            <ul style="list-style: none;">
                               <li class="dias semana">Lunes a viernes</li>
-                              <li class="dias sabado">Sábados</li>
+                              <li class="dias hora">Horas</li>
                             </ul>
                           </div>
                           <hr>
                           <div class="horas-dias">
-                            <ul>
-                              <li class="dias horas-semana">Horas</li>
+                            <ul style="list-style: none">
+                              <li class="dias sabado">Sábados</li>
                               <li class="dias horas-sabado">Horas</li>
                             </ul>
                           </div>

@@ -43,15 +43,10 @@
                       <div class="card card-body">
                         <p class="text-center">Requisitos para el apoyo de tranporte</p>
                         <ul>
-                          <li>Nombre</li>
-                          <li>Apellido</li>
-                          <li>Correo Electronico</li>
-                          <li>Numero de telefono</li>
-                          <li>Formato de registro</li>
-                          <li>Foto de documento de identidad</li>
-                          <li>Sisben</li>
-                          <li>Foto recibo publico</li>
-                          <li>Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
+                          <li>Estar en estado "Induccion" o "Es formacion" en etapa lectiva o practica en el aplicativo Sofia Plus</li>
+                          <li>No tener condicionamiento de matricula conforme a lo estipulado en el reglamento al aprendiz</li>
+                          <li>No ser beneficiario de ningun otro apoyo de sostenimiento</li>
+                          <li>Digilenciar adecuadamente el formato de registro socioeconomico</li>
                         </ul>
                       </div>
                     </div>
