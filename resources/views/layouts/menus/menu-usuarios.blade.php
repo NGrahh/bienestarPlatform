@@ -1,4 +1,4 @@
-<ul class="sidebar-nav" id="sidebar-nav">
+
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#events-nav" data-bs-toggle="collapse" href="#">
             <i class="ri-pages-line"></i><span>Eventos</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -122,4 +122,3 @@
             </li>
         </ul>
     </li>
-</ul>
