@@ -175,7 +175,7 @@ Route::get('Quienes-somos', function(){
 
 
 
-Route::get('/apoyo-sostenimiento-fic', function(){
-    return view ('layouts.Descrip-apoyos.apoyo-sostenimiento-fic');
-})-> name ('apoyo-sostenimiento-fic');
+Route::get('/sostenimiento-fic', function(){
+    return view ('layouts.Descrip-apoyos.sostenimiento-fic');
+})-> name ('sostenimiento-fic');
 
