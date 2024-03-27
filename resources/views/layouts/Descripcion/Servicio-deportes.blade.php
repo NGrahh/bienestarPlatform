@@ -6,6 +6,16 @@
 @include('layouts.menu')
 
 <main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Servicio-deportes</h1>
+    <nav class="d-flex justify">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
+        <li class="breadcrumb-item"><a>Servicios</a></li>
+        <li class="breadcrumb-item"><a>Servicio-deportes</a></li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
   <section class="section">
     <div class="container">
       <div class="row justify-content-center">
