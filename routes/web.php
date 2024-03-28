@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('compartido/home');
+    return view ('compartido/home');
 })->name('home');
 
 Route::get('/home', function () {
@@ -32,7 +32,7 @@ Route::get('/block', function () {
 //RUTA INDEX
 
 Route::get('/index', function () {
-    return view('resources/index');
+    return view('index');
 })->name('index'); 
 
 //RUTA PARA OBSERVAR EL INDEX
@@ -92,7 +92,7 @@ Route::get('/creacion-eventos', function () {
     return view('formularios/eventos/form-create-event');
 })->name('forms.create-events');
 
-Route::get('/listado-eventos', function () {
+Route::get('/listado-eventos', function (){
 })->name('forms.list-events'); 
 
 // Ruta Formulario para INSCRIPCION A EVENTO
@@ -113,18 +113,6 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 // }); 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // RUTAS CRUD
 // Route::get('user_list', [UserController::class, 'user_list'])->name('formularios.form-inscription-supports');
 Route::get('/user_list', function () {
@@ -133,8 +121,66 @@ Route::get('/user_list', function () {
 
 
 
-
-
 Route::get('/menu', function () {
     return view('layouts/menu');
 })->name('menu'); 
+
+//Rutas Descripciones Servicios
+
+Route::get('/servicio-deportes', function(){
+    return view('layouts.descripcion.servicio-deportes');
+})->name('Servicio-deportes'); 
+
+Route::get('/servicio-enfermeria', function(){
+    return view ('layouts.descripcion.servicio-enfermeria');
+})-> name ('Servicio-enfermeria');
+
+Route::get('/servicio-Musica', function(){
+    return view ('layouts.descripcion.servicio-musica');
+})-> name ('Servicio-Musica');
+
+Route::get('/servicio-Psicologia', function(){
+    return view ('layouts.descripcion.servicio-psicologia');
+})-> name ('Servicio-Psicologia');
+
+Route::get('/servicio-Consejeria', function(){
+    return view ('layouts.descripcion.servicio-Consejeria');
+})-> name ('Servicio-Consejeria');
+
+//Rutas Descripcion Apoyos
+Route::get('/apoyo-regular', function(){
+    return view ('layouts.descrip-apoyos.apoyo-regular');
+})-> name ('Apoyo-regular');
+
+Route::get('/apoyo-transporte', function(){
+    return view ('layouts.descrip-apoyos.apoyo-transporte');
+})-> name ('Apoyo-transporte');
+
+Route::get('/apoyo-monitoria', function(){
+    return view ('layouts.descrip-apoyos.apoyo-monitoria');
+})-> name ('Apoyo-monitoria');
+
+Route::get('/apoyo-fic', function(){
+    return view ('layouts.descrip-apoyos.apoyo-fic');
+})-> name ('Apoyo-fic');
+
+Route::get('/apoyo-datos', function(){
+    return view ('layouts.descrip-apoyos.apoyo-datos');
+})-> name ('Apoyo-datos');
+
+Route::get('/apoyo-alimentacion', function(){
+    return view ('layouts.descrip-apoyos.apoyo-alimentacion');
+})-> name ('Apoyo-alimentacion');
+
+Route::get('quienes-somos', function(){
+    return view('layouts.descrip-nosotros.quienes-somos');
+})-> name ('Nosotros');
+
+
+
+
+
+Route::get('/sostenimiento-fic', function(){
+    return view ('layouts.descrip-apoyos.sostenimiento-fic');
+})-> name ('sostenimiento-fic');
+

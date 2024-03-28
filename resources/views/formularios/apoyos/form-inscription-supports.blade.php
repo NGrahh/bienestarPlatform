@@ -99,7 +99,7 @@
                       </div>
                       
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <label for="yourphotocoy" class="form-label">Fotocopia documento de identidad</label>
+                        <label for="yourphotocoy" class="form-label">Foto documento de identidad</label>
                         <input value="{{old('photocopy')}}" type="file" name="photocopy" class="form-control" id="yourphotocopy" required>
                         <br><br>
                         <div class="invalid-feedback">Ingrese la fotocopia del documento de identidad</div>

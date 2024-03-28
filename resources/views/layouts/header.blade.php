@@ -22,11 +22,11 @@
             <i class="bi bi-search"></i>
           </a>
         </li><!-- End Search Icon-->
-  
         <li class="nav-item dropdown pe-3">
+        @if(auth()->check())
   
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{asset('assets/img/profile-img.jpg')}}" alt="Profile" class="rounded-circle">
+            <img src="{{asset('assets/img/Usernew.png')}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{session('name')}} {{session('lastname')}}</span>
           </a><!-- End Profile Iamge Icon -->
   
@@ -67,8 +67,12 @@
             </li>
   
           </ul><!-- End Profile Dropdown Items -->
+          @else
+          <a class="vinculos" href="{{route('login')}}">
+            <span >Iniciar Sesión</span>
+          </a><!-- End Profile Iamge Icon -->
+          @endif
         </li><!-- End Profile Nav -->
-  
       </ul> 
     </nav><!-- End Icons Navigation -->
   

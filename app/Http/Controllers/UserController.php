@@ -155,7 +155,7 @@ class UserController extends Controller
 
         $request->session()->flush();
 
-        return redirect(route('auth.login'));
+        return redirect(route('home'));
     }
 
     public function setUserNameAttribute($name, $lastname)
