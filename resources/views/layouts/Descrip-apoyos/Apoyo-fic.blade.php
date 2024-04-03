@@ -9,14 +9,6 @@
 <main id="main" class="main">
     <div class="pagetitle">
         <h1>Apoyo de Sostenimiento FIC</h1>
-        <br>
-        <nav class="d-flex justify">
-            <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('home')}}">Inicio</a></li>
-            <li class="breadcrumb-item" ><a>Apoyos</a></li>
-            <li class="breadcrumb-item"><a>Apoyo de Sostenimiento FIC</a></li>
-            </ol>
-        </nav>
     </div><!-- End Page Title -->
 
     <div class="section">
