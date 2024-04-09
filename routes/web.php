@@ -177,10 +177,14 @@ Route::get('quienes-somos', function(){
 })-> name ('Nosotros');
 
 
-
-
-
 Route::get('/sostenimiento-fic', function(){
     return view ('layouts.descrip-apoyos.sostenimiento-fic');
 })-> name ('sostenimiento-fic');
+
+
+
+Route::get('inicial', function(){
+    return view('layouts.inicio-pagina.inicial');
+})-> name ('pagina-principal');
+
 
