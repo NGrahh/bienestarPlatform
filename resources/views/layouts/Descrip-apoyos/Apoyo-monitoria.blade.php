@@ -72,7 +72,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Creación de eventos</h1>
+        <h1>Apoyo en monitoria</h1>
     </div><!-- End Page Title -->
 
     <div class="section">
@@ -81,13 +81,12 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                            <p class="small"><strong>Nota: </strong>Complete el siguiente formulario para crear un nuevo evento.</p>
+                          <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
                         </div>
                         @include('compartido.alertas')
                         <div class="col-sm-12">
                             <div  class="pt-4 pb-2">
-
-                                <h1 align="center">Apoyo en monitoria</h1>
+                                {{-- <h1 align="center"></h1> --}}
                                 <div align="center"  class="contenedor">
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
