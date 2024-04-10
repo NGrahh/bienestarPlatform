@@ -6,6 +6,95 @@
     @include('layouts.menu')
     <link rel="stylesheet" href="public\assets\css\micodigosebas.css">
 
+    <style>
+      .row-2{
+        margin-left: 4.2rem;
+        text-align: center;
+      }
+      
+      .columna-1{
+        margin-left: -4rem;
+      }
+
+      .columna-2{
+        margin-left: 1.9rem;
+      }
+
+      .columna-3{
+        margin-left: 2rem;
+      }
+
+      .columna-4{
+        margin-left: 1rem;
+      }
+
+      .columna-5{
+        margin-left: 4rem;
+      }
+
+      .apoyos-regulares {
+        flex-basis: 50%; /* Para ocupar el 50% del ancho del contenedor padre */
+        padding: 0.5rem; /* Añade un poco de espacio entre los elementos */
+    }
+
+  
+        .apoyos-regulares {
+            flex-basis: 100%; /* En pantallas más pequeñas, ocuparán el 100% del ancho */
+        }
+    
+
+        .botones a{
+          border: 1px solid black;
+          width: 7rem;
+          height: 2rem;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: black;
+          color: white;
+          margin-left: 5rem;
+        }
+
+        .card-body h3{
+          display: inline-block;
+          justify-content: center;
+          margin-top: 3px;
+        }
+      
+        .contenedor-imagen {
+    width: 300px; /* Ancho deseado del div */
+    height: 200px; /* Alto deseado del div */
+    background-image: url('https://img.freepik.com/vector-premium/linda-pequena-abeja-dibujos-animados-volando_188253-3805.jpg');
+    background-size: cover; /* La imagen se ajustará para cubrir el área del div */
+    background-position: center; /* La imagen se centrará dentro del div */
+}
+
+    .conten-t{
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    main h1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    section{
+      justify-content: center;
+      align-content: center;
+      text-align: center;
+      align-items: center;
+    }
+
+    
+
+    
+    </style>
+
     <main id="main" class="main">
 
         <div class="pagetitle">
@@ -61,75 +150,102 @@
                             </div>
     
                             
-                            <div class="row" style="margin-left: 3rem">
-                                <div class="col-12" style="text-align: center; margin-top: 15px;margin-bottom: 15px">
-                                    <h1>Servicios</h1>
-                                </div> 
-                                <div class="col-sm-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                {{-- -------------------------- --}}
-                                
-    
-                            </div>
-                            <div class="row" style="margin-left: 12rem">
-                              <div class="col-sm-4">
-                                  <div class="card" style="width: 18rem;">
-                                      <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" alt="...">
-                                      <div class="card-body">
-                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <div class="row row-2" style="">
+                              <div class="col-12" style="text-align: center; margin-top: 15px; margin-bottom: 15px">
+                                  <h1>Servicios</h1>
+                              </div> 
+                              <div class="col-sm-4 columna-1">
+                                  <a href="{{route('Servicio-deportes')}}">
+                                      <div class="card" style="width: 18rem;">
+                                          <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" >
+                                          <div class="card-body">
+                                            <h3>Deportes</h3>
+                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          </div>
                                       </div>
-                                  </div>
+                                  </a>
                               </div>
-                              <div class="col-sm-4">
-                                  <div class="card" style="width: 18rem;">
-                                      <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" alt="...">
-                                      <div class="card-body">
-                                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <div class="col-sm-4 columna-2">
+                                  <a href="{{route('Servicio-enfermeria')}}">
+                                      <div class="card " style="width: 18rem;">
+                                          <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" >
+                                          <div class="card-body">
+                                            <h3>Enfermeria</h3>
+                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          </div>
                                       </div>
-                                  </div>
+                                  </a>
+                              </div>
+                              <div class="col-sm-4 columna-3">
+                                  <a href="{{route('Servicio-Psicologia')}}">
+                                      <div class="card" style="width: 18rem;">
+                                          <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" >
+                                          <div class="card-body">
+                                            <h3>Psicologia</h3>
+                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          </div>
+                                      </div>
+                                  </a>
                               </div>
                               {{-- -------------------------- --}}
-                              
-  
                           </div>
-                            <h2 class="apoyos-titulo">Apoyo</h2>
+                          <div class="row row-2" style="">
+                              <div class="col-sm-4 columna-1">
+                                  <a href="{{route('Servicio-Musica')}}">
+                                      <div class="card" style="width: 18rem;">
+                                          <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" >
+                                          <div class="card-body">
+                                            <h3>Musica</h3>
+                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-sm-4 columna-2">
+                                  <a href="{{route('Servicio-Consejeria')}}">
+                                      <div class="card " style="width: 18rem;">
+                                          <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top" >
+                                          <div class="card-body">
+                                            <h3>Consejeria</h3>
+                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              <div class="col-sm-4 columna-3">
+                                  <a href="#">
+                                      <div class="card" style="width: 18rem;">
+                                          <img src="https://www.65ymas.com/uploads/s1/76/67/77/foto.jpeg" class="card-img-top">
+                                          <div class="card-body">
+                                            <h3>Apoyos</h3>
+                                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>
+                              {{-- -------------------------- --}}
+                          </div>
+                          
+                            <h1 class="apoyos-titulo">Apoyo</h1>
     
                           <div class="apoyos-regulares" style="display: flex; ">
-                            <div class="card mb-3" style="max-width: 500px; ">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Apoyo de sostenimiento</h5>
-                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                      <a href="" class="boton-apoyo">Ver</a>
+                            <div class="apoyos-regulares" style="display: flex">
+                              <div class="card mb-3" style="max-width: 540px; ">
+                                  <div class="row g-0" >
+                                    <div class="col-md-4">
+                                      <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Apoyo de sostenimiento FIC</h5>
+                                        <p class="card-text">Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria...</p>
+                                        <div class="botones">
+                                          <a href="">Ver</a>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                              </div>                    
                             </div>
     
                             <div class="apoyos-regulares" style="display: flex">
@@ -140,29 +256,36 @@
                                     </div>
                                     <div class="col-md-8">
                                       <div class="card-body">
-                                        <h5 class="card-title">Apoyo de sostenimiento</h5>
+                                        <h5 class="card-title">Apoyo de sostenimiento regular</h5>
                                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="" class="boton-apoyo">Ver</a>
+                                        <div class="botones">
+                                          <a href="">Ver</a>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                               </div>                    
                             </div>
-                           </div>
+                          </div>
+
                            <div class="apoyos-regulares" style="display: flex;">
-                            <div class="card mb-3" style="max-width: 500px; ">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Apoyo de sostenimiento</h5>
-                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                      <a href="" class="boton-apoyo">Ver</a>
+                            <div class="apoyos-regulares" style="display: flex">
+                              <div class="card mb-3" style="max-width: 540px; ">
+                                  <div class="row g-0" >
+                                    <div class="col-md-4">
+                                      <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Apoyo de transporte</h5>
+                                        <p class="card-text">Es un servicio otordado a los aprendices de formación presencia en convenido con el servicio de transporte MEGABUS (Por ningun motivo se...</p>
+                                        <div class="botones">
+                                          <a href="">Ver</a>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                              </div>                    
                             </div>
     
                             <div class="apoyos-regulares" style="display: flex">
@@ -173,29 +296,36 @@
                                     </div>
                                     <div class="col-md-8">
                                       <div class="card-body">
-                                        <h5 class="card-title">Apoyo de sostenimiento</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="" class="boton-apoyo">Ver</a>
+                                        <h5 class="card-title">Apoyo de alimentacion</h5>
+                                        <p class="card-text">Es aquel que otorga a los aprendices tecnicos y tegnologos de todas las modalidades y jornadas, que cumplen requisitos... </p>
+                                        <div class="botones">
+                                          <a href="">Ver</a>
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
                               </div>                    
                             </div>
                            </div>
+
                            <div class="apoyos-regulares" style="display: flex;">
-                            <div class="card mb-3" style="max-width: 500px; ">
-                                <div class="row g-0">
-                                  <div class="col-md-4">
-                                    <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
-                                  </div>
-                                  <div class="col-md-8">
-                                    <div class="card-body">
-                                      <h5 class="card-title">Apoyo de sostenimiento</h5>
-                                      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                      <a href="" class="boton-apoyo">Ver</a>
+                            <div class="apoyos-regulares" style="display: flex">
+                              <div class="card mb-3" style="max-width: 540px; ">
+                                  <div class="row g-0" >
+                                    <div class="col-md-4">
+                                      <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Centro de convivencia</h5>
+                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                        <div class="botones">
+                                          <a href="">Ver</a>
+                                        </div>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
+                              </div>                    
                             </div>
     
                             <div class="apoyos-regulares" style="display: flex">
@@ -204,35 +334,47 @@
                                     <div class="col-md-4">
                                       <img  src="https://pxbar.com/wp-content/uploads/2023/11/foto-de-perfil-para-whatsapp-para-hombre-1024x1024.jpg" class="img-fluid rounded-start" alt="...">
                                     </div>
-                                    <div class="col-md-8" >
+                                    <div class="col-md-8">
                                       <div class="card-body">
-                                        <h5 class="card-title">Apoyo de sostenimiento</h5>
-                                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                        <a href="" class="boton-apoyo" >Ver</a>
+                                        <h5 class="card-title">Apoyo de datos</h5>
+                                        <p class="card-text">Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria</p>
+                                        <div class="botones">
+                                          <a href="">Ver</a>
+                                        </div>  
                                       </div>
                                     </div>
                                   </div>
                               </div>                    
                             </div>
+
                            </div>
                                 </div>
-                                <h2>Eventos</h2>
-                                <div class="eventos-pasado futuro" style="display: flex">
-                                  <div class="card text-center" style="width: 18rem;" href="">
-                                    <a class="card-body" href="">
-                                     <h5 class="card-title">Foto evento</h5>
-                                     <p class="card-text">Evento pasado</p>
-                                     <input type="text" placeholder="fecha evento">
-                                     </a>
+                                <h1>Eventos</h1>
+                                <div class="conten-t">
+                                  <a href="">
+                                    <div class="eventos-pasado futuro" style="display: flex">
+                                      <div class="card" style="width: 18rem; box-shadow: 0 2px 4px rgba(0, 0, 3, 1.2);">
+                                        <div class="contenedor-imagen">
+                                        </div>
+                                        <div class="card-body ">
+                                            <h5 class="card-title">Título del Evento Pasado</h5>
+                                            <p class="card-text">Fecha: 10 de Abril, 2022</p>
+                                        </div>
                                     </div>
-      
-                                    <div class="card text-center" style="width: 18rem;" href="">
-                                      <a class="card-body" href="">
-                                       <h5 class="card-title">Foto evento</h5>
-                                       <p class="card-text">Evento pasado</p>
-                                       <input type="text" placeholder="fecha evento">
-                                       </a>
+                                  </a>
+  
+                                  <a href="">
+                                    <div class="eventos-pasado futuro" style="display: flex">
+                                      <div class="card" style="width: 18rem; box-shadow: 0 2px 4px rgba(2, 1, 5, 5); margin-left: 2rem">
+                                        <div class="contenedor-imagen">
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Título del Evento Pasado</h5>
+                                            <p class="card-text">Fecha: 10 de Abril, 2022</p>
+                                        </div>
                                       </div>
+                                    </div>
+                                  </a>
                                 </div>
                             </div>
                           </div> 
