@@ -181,6 +181,14 @@ Route::get('/sostenimiento-fic', function(){
     return view ('layouts.descrip-apoyos.sostenimiento-fic');
 })-> name ('sostenimiento-fic');
 
+//Ruta de evento próximo
+Route::get('/evento_proximo', function(){
+    return view ('layouts.Descrip-eventos.evento_proximo');
+})-> name ('evento_proximo');
+
+Route::get('/evento_anterior', function(){
+    return view ('layouts.Descrip-eventos.evento_anterior');
+})-> name ('evento_anterior');
 
 
 Route::get('inicial', function(){
