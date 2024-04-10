@@ -4,12 +4,12 @@
     </a>
     <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-            <a href="#">
+            <a href="{{route('evento_proximo')}}">
                 <i class="bi bi-circle"></i>Eventos próximos<span></span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('evento_anterior')}}">
                 <i class="bi bi-circle"></i><span>Eventos pasados</span>
             </a>
         </li>
