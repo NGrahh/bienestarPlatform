@@ -7,12 +7,12 @@
 
 <main id="main" class="main">
   <div class="pagetitle">
-    <h1>Servicio-deportes</h1>
+    <h1>Servicio deportes</h1>
   </div><!-- End Page Title -->
   <section class="section">
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-lg-11 my-5">
+        <div class="col-lg-12 my-5">
           <div class="card mb-3">
             <div class="card-body">
               <div align="center" class="pt-4 pb-2">
