@@ -197,8 +197,11 @@ Route::get('/evento_anterior', function(){
 })-> name ('evento_anterior');
 
 
-Route::get('inicial', function(){
+Route::get('/inicial', function(){
     return view('layouts.inicio-pagina.inicial');
 })-> name ('pagina-principal');
 
+Route::get('/inicial2', function(){
+    return view('layouts.inicio-pagina.pagina-principal');
+});
 
