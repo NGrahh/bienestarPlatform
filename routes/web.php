@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view ('compartido/home');
-})->name('home');
+    return view('layouts.inicio-pagina.pagina-principal');
+})->name('pagina-principal');
 
-Route::get('/home', function () {
-    return view('compartido/home');
-})->name('home');
+Route::get('/pagina-principal', function () {
+    return view('layouts.inicio-pagina.pagina-principal');
+})->name('pagina-principal');
 
 Route::get('/block', function () {
     return view('welcome');
@@ -178,8 +178,8 @@ Route::get('/apoyo-alimentacion', function(){
     return view ('layouts.descripcion-apoyos.apoyo-alimentacion');
 })-> name ('Apoyo-alimentacion');
 
-Route::get('quienes-somos', function(){
-    return view('layouts.descripcion-equipo.quienes-somos');
+Route::get('/quienes-somos', function(){
+    return view('layouts.descripcion-equipo.quienes-somos2');
 })-> name ('Nosotros');
 
 
@@ -197,11 +197,11 @@ Route::get('/evento_anterior', function(){
 })-> name ('evento_anterior');
 
 
-Route::get('/inicial', function(){
-    return view('layouts.inicio-pagina.inicial');
-})-> name ('pagina-principal');
+// Route::get('/inicial', function(){
+//     return view('layouts.inicio-pagina.inicial');
+// })-> name ('pagina-principal');
 
-Route::get('/inicial2', function(){
-    return view('layouts.inicio-pagina.pagina-principal');
-});
+// Route::get('/inicial2', function(){
+//     return view('layouts.inicio-pagina.pagina-principal');
+// });
 
