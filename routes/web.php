@@ -29,6 +29,28 @@ Route::get('/block', function () {
 })->name('block')->middleware('auth');
 
 
+
+
+
+
+Route::get('/', function () {
+    return view('compartido.home');
+})->name('home');
+
+Route::get('/home', function () {
+    return view('compartido.home');
+})->name('home');
+
+
+
+
+
+
+
+
+
+
+
 //RUTA INDEX
 
 Route::get('/index', function () {
