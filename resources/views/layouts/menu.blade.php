@@ -3,7 +3,7 @@
 
   <ul class="sidebar-nav" id="sidebar-nav">
     <li class="nav-item">
-      <a class="nav-link collapsed" href="{{route('home')}}">
+      <a class="nav-link collapsed" href="{{route('pagina-principal')}}">
         <i class="ri-home-2-line"></i>
         <span>Inicio</span>
       </a>
