@@ -51,15 +51,47 @@
             <div class="card-body">
               <div align="center" class="pt-4 pb-2">
                 <div class="max-conten">
-                  
-                <main>
-        <div class="container">
-              <div class="col col-slider">
-                  <h3>SLIDER</h3>
-              </div>
+                <main> <!-- Inicio Slider -->
+                  <div class="col-12 col-lg-8">
+                                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                    <div class="carousel-indicators">
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                    </div>
+                                    <div class="carousel-inner">
+                                        <div class="carousel-item active">
+                                            <img src="https://cadenaser.com/resizer/U8f_GMYikwDB6TcQDajHRFsnheM=/990x743/filters:format(jpg):quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/PUHDUWOGURLUJJSESSCUIPY7PE.jpg" class="d-block w-100" alt="Deportes">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://colegioruzafa.com/wp-content/uploads/El-papel-de-un-auxiliar-de-enfermer%C3%ADa-en-un-hospital-1080x675.jpg" class="d-block w-100" alt="Enfermería">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://static.wikia.nocookie.net/psicologia/images/7/73/Que-es-psicologia.jpg/revision/latest/scale-to-width-down/1200?cb=20181002142724&path-prefix=es" class="d-block w-100" alt="Psicología">
+                                        </div>
+                                        {{-- ///// --}}
+                                        <div class="carousel-item">
+                                            <img src="https://concepto.de/wp-content/uploads/2020/03/musica-e1584123209397.jpg" class="d-block w-100" alt="Música">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="https://www.enfoquealafamilia.com/wp-content/uploads/2021/01/Consejeria-Ecuador-10-.png" class="d-block w-100" alt="Consejería">
+                                        </div>
+                                    </div>
 
-                </div>
-            </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+
+                                </div><!-- End Slides with indicators -->
+                            </div>
+                      </div>
             <div class="row mt-5">
                 <div class="col-md-6 contaniner-contenidos-info container-contenidos-fecha">
                     <div class="fecha-contenidos">Fecha</div>
