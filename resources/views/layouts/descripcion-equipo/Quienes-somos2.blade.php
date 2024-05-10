@@ -170,7 +170,7 @@
                                     </div>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="https://cadenaser.com/resizer/U8f_GMYikwDB6TcQDajHRFsnheM=/990x743/filters:format(jpg):quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/PUHDUWOGURLUJJSESSCUIPY7PE.jpg" class="d-block w-100" alt="Deportes">
+                                            <img src="{{asset('img/Beatriz.png')}}" class="d-block w-100" alt="Deportes">
                                         </div>
                                         <div class="carousel-item">
                                             <img src="https://colegioruzafa.com/wp-content/uploads/El-papel-de-un-auxiliar-de-enfermer%C3%ADa-en-un-hospital-1080x675.jpg" class="d-block w-100" alt="Enfermería">
