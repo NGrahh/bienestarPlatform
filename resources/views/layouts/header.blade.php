@@ -1,7 +1,7 @@
 <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{{route('pagina-principal')}}" class="logo d-flex align-items-center">
         <img style="max-height: 50px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="">
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
