@@ -55,13 +55,13 @@ Route::get('/home', function () {
 
 Route::get('/index', function () {
     return view('index');
-})->name('index'); 
+})->name('index');
 
 //RUTA PARA OBSERVAR EL INDEX
 
-// Route::get('/index', function () {
-//     return view('index');
-// })->name('index'); 
+Route::get('/index', function () {
+    return view('index');
+})->name('index');
 
 
 Route::resource('auth', UserController::class);
@@ -71,7 +71,7 @@ Route::post('login', [UserController::class, 'login'])->name('auth.login');
 
 Route::get('/login', function () {
     return view('auth/login');
-})->name('login');//-> "Alias"
+})->name('login'); //-> "Alias"
 
 
 //RUTA LOG OUT (Cerrar Sesión)
@@ -114,8 +114,8 @@ Route::get('/creacion-eventos', function () {
     return view('formularios/eventos/form-create-event');
 })->name('forms.create-events');
 
-Route::get('/listado-eventos', function (){
-})->name('forms.list-events'); 
+Route::get('/listado-eventos', function () {
+})->name('forms.list-events');
 
 // Ruta Formulario para INSCRIPCION A EVENTO
 Route::get('form-inscription-event', [EventsController::class, 'showStudyTime'])->name('showStudyTime');
@@ -139,85 +139,91 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 // Route::get('user_list', [UserController::class, 'user_list'])->name('formularios.form-inscription-supports');
 Route::get('/user_list', function () {
     return view('crud/user_list');
-}); 
+});
 
 
 
 Route::get('/menu', function () {
     return view('layouts/menu');
-})->name('menu'); 
+})->name('menu');
 
 
 
 
 //Rutas Descripciones Servicios
 
-Route::get('/servicio-deportes', function(){
+Route::get('/servicio-deportes', function () {
     return view('layouts.descripcion-servicios.servicio-deportes');
-})->name('Servicio-deportes'); 
+})->name('Servicio-deportes');
 
-Route::get('/servicio-enfermeria', function(){
-    return view ('layouts.descripcion-servicios.servicio-enfermeria');
-})-> name ('Servicio-enfermeria');
+Route::get('/servicio-enfermeria', function () {
+    return view('layouts.descripcion-servicios.servicio-enfermeria');
+})->name('Servicio-enfermeria');
 
-Route::get('/servicio-Musica', function(){
-    return view ('layouts.descripcion-servicios.servicio-musica');
-})-> name ('Servicio-Musica');
+Route::get('/servicio-Musica', function () {
+    return view('layouts.descripcion-servicios.servicio-musica');
+})->name('Servicio-Musica');
 
-Route::get('/servicio-Psicologia', function(){
-    return view ('layouts.descripcion-servicios.servicio-psicologia');
-})-> name ('Servicio-Psicologia');
+Route::get('/servicio-Psicologia', function () {
+    return view('layouts.descripcion-servicios.servicio-psicologia');
+})->name('Servicio-Psicologia');
 
-Route::get('/servicio-Consejeria', function(){
-    return view ('layouts.descripcion-servicios.servicio-Consejeria');
-})-> name ('Servicio-Consejeria');
+Route::get('/servicio-Consejeria', function () {
+    return view('layouts.descripcion-servicios.servicio-Consejeria');
+})->name('Servicio-Consejeria');
 
 
 
 
 //Rutas Descripcion Apoyos
-Route::get('/apoyo-regular', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-regular');
-})-> name ('Apoyo-regular');
+Route::get('/apoyo-regular', function () {
+    return view('layouts.descripcion-apoyos.apoyo-regular');
+})->name('Apoyo-regular');
 
-Route::get('/apoyo-transporte', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-transporte');
-})-> name ('Apoyo-transporte');
+Route::get('/apoyo-transporte', function () {
+    return view('layouts.descripcion-apoyos.apoyo-transporte');
+})->name('Apoyo-transporte');
 
-Route::get('/apoyo-monitoria', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-monitoria');
-})-> name ('Apoyo-monitoria');
+Route::get('/apoyo-monitoria', function () {
+    return view('layouts.descripcion-apoyos.apoyo-monitoria');
+})->name('Apoyo-monitoria');
 
-Route::get('/apoyo-fic', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-fic');
-})-> name ('Apoyo-fic');
+Route::get('/apoyo-fic', function () {
+    return view('layouts.descripcion-apoyos.apoyo-fic');
+})->name('Apoyo-fic');
 
-Route::get('/apoyo-datos', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-datos');
-})-> name ('Apoyo-datos');
+Route::get('/apoyo-datos', function () {
+    return view('layouts.descripcion-apoyos.apoyo-datos');
+})->name('Apoyo-datos');
 
-Route::get('/apoyo-alimentacion', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-alimentacion');
-})-> name ('Apoyo-alimentacion');
+Route::get('/apoyo-alimentacion', function () {
+    return view('layouts.descripcion-apoyos.apoyo-alimentacion');
+})->name('Apoyo-alimentacion');
 
-Route::get('/quienes-somos', function(){
+Route::get('/quienes-somos', function () {
     return view('layouts.descripcion-equipo.quienes-somos2');
-})-> name ('Nosotros');
+})->name('Nosotros');
 
 
-Route::get('/sostenimiento-fic', function(){
-    return view ('layouts.descripcion-apoyos.sostenimiento-fic');
-})-> name ('sostenimiento-fic');
+Route::get('/sostenimiento-fic', function () {
+    return view('layouts.descripcion-apoyos.sostenimiento-fic');
+})->name('sostenimiento-fic');
 
 //Ruta de evento próximo
-Route::get('/evento_proximo', function(){
-    return view ('layouts.descripcion-eventos.evento_proximo');
-})-> name ('evento_proximo');
+Route::get('/evento_proximo', function () {
+    return view('layouts.descripcion-eventos.evento_proximo');
+})->name('evento_proximo');
 
-Route::get('/evento_anterior', function(){
-    return view ('layouts.descripcion-eventos.evento_anterior');
-})-> name ('evento_anterior');
+Route::get('/evento_anterior', function () {
+    return view('layouts.descripcion-eventos.evento_anterior');
+})->name('evento_anterior');
 
+//RUTA VER INSCRITOS EVENTOS -> ADMINISTRATIVA 
+
+
+Route::get('/inscritos_eventos', function () {
+    return view('layouts.descripcion-eventos.inscritos_eventos');
+})->name('inscritos_eventos');
 
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
@@ -226,4 +232,3 @@ Route::get('/evento_anterior', function(){
 // Route::get('/inicial2', function(){
 //     return view('layouts.inicio-pagina.pagina-principal');
 // });
-
