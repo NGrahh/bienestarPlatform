@@ -1,1 +1,0 @@
-#   Bienestar al aprendiz
