@@ -5,12 +5,12 @@
 @include('layouts.header')
 @include('layouts.menu')
 
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
 
 
 
 <style>
-    
+  
 .card-body{
   padding: 0;
 }
