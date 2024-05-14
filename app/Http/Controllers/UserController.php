@@ -25,8 +25,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::select('name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
+
+        return view('crud.user_list', compact('users'));
     }
+
+
 
     public function register()
     {
@@ -87,7 +91,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('auth.registerform'))
+            return redirect(route('auth.register'))
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -109,7 +113,7 @@ class UserController extends Controller
         $dataUser = ['name_user' => $request->get('name'), 'surnames_user' => $request->get('lastname')];
         Mail::send('emails.creacion-cuenta', $dataUser, function ($message) use ($request) {
             $message->from('bienestardlaprendiz@gmail.com', 'Nuevo Usuario');
-            $message->to($request->get('email'))->subject('Notificación: creación de usuario');
+            $message->to($request->get('email'))->subject('Notificación: Creación de usuario');
         });
 
         session()->flash('success', 'Usuario registrado correctamente!');

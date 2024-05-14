@@ -78,7 +78,7 @@ Route::get('/login', function () {
 Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
 //RUTA REGISTER (Registrarse)
-Route::get('register', [UserController::class, 'register'])->name('auth.registerform');
+Route::get('register', [UserController::class, 'register'])->name('auth.register');
 
 
 
@@ -134,12 +134,11 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 //     return view('formularios.apoyos.form-inscription-supports');
 // }); 
 
+// Rutas Crud
+Route::get('/user_list', [UserController::class, 'index'])->name('users.index');
+// Route::put('/users/{id}',[Usercontroller::class,'update'])->name('users.update');
+// // Route::patch('/users/{id}',[Usercontroller::class,'update'])->name('users.update');
 
-// RUTAS CRUD
-// Route::get('user_list', [UserController::class, 'user_list'])->name('formularios.form-inscription-supports');
-Route::get('/user_list', function () {
-    return view('crud/user_list');
-}); 
 
 
 

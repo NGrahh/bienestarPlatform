@@ -50,4 +50,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /** Get the role that belongs to the user.*/
+    public function role()
+    {
+        return $this->belongsTo(Roles::class, 'rol_id');
+    }
+
+    public function TypeDocument()
+    {
+        return $this->belongsTo(TypeDocuments::class, 'type_document_id');
+    }
 }
