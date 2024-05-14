@@ -10,11 +10,6 @@
       </a>
     </li>
     <li>
-      <a href="{{route('eventos.index')}}">
-        <i class="bi bi-circle"></i><span>Listado de eventos</span>
-      </a>
-    </li>
-    <li>
       <a href="">
         <i class="bi bi-circle"></i><span>Evento proximo</span>
       </a>
@@ -22,6 +17,16 @@
     <li>
       <a href="">
         <i class="bi bi-circle"></i><span>Evento pasado</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{route('eventos.index')}}">
+        <i class="bi bi-circle"></i><span>Listado de eventos</span>
+      </a>
+    </li>
+    <li>
+      <a href="{{route('inscritos-eventos')}}">
+        <i class="bi bi-circle"></i><span>Inscritos a eventos</span>
       </a>
     </li>
   </ul>

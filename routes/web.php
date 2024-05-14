@@ -218,6 +218,10 @@ Route::get('/evento_anterior', function(){
     return view ('layouts.descripcion-eventos.evento_anterior');
 })-> name ('evento_anterior');
 
+Route::get('/inscrito_eventos', function(){
+    return view ('layouts.crud_eventos.inscritos_eventos');
+})-> name ('inscritos-eventos');
+
 
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
