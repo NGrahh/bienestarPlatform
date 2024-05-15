@@ -47,7 +47,7 @@
                       </div>
                       <br>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
+                        <button class="btn btn-ba w-100" id="button_volver" style="display: none;" href="{{route('inicio-pagina.pagina-principal')}}">Volver al inicio</button>
                       </div>
                       <div id="form" style="display: none;">
                         <form action="{{route('formularios.eventos.form-inscription-event')}}" class="row g-3 needs-validation" novalidate method="POST">

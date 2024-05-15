@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let seleccion_rol = document.getElementById('yourRol');
     let programa_formacion = document.getElementById('training_program');
     let numero_ficha = document.getElementById('token_number');
-    
+
 
     seleccion_rol.addEventListener('change', function () {
         let rol_seleccionado = seleccion_rol.options[seleccion_rol.selectedIndex].text;

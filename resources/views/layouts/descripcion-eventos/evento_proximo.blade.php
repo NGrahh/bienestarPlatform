@@ -104,8 +104,8 @@
         <div class="anadirevento row">
             <div class="col col-anadirevento">
                 <h3>EVENTO</h3>
-                <img src="IMG/plus-circle-regular-24.png" alt="logosumarevento">
-                <h5>Añadir evento</h5>
+                <!-- <img src="IMG/plus-circle-regular-24.png" alt="logosumarevento">
+                <h5>Añadir evento</h5> -->
             </div>
         </div>
         <div class="contenido row">
@@ -128,12 +128,12 @@
             </div>
         </div>
         <div class="contenidos-admin row">
-            <div class="col col-botones">
+            <!-- <div class="col col-botones">
                 <button>EDITAR</button>
             </div>
             <div class="col col-botones">
                 <button>ELIMINAR</button>
-            </div>
+            </div> -->
         </div>
     </div>
               </div>

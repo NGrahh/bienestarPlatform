@@ -10,7 +10,7 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
                     <div class="d-flex justify-content-center py-4">
-                        <a href="index.html" class="logo d-flex align-items-center w-auto">//Hacer que lo lleve a la pagina principla como canva
+                        <a href="index.html" class="logo d-flex align-items-center w-auto">
                             <img style="max-height: 60px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="">
                         </a>
                     </div><!-- End Logo -->
@@ -57,7 +57,7 @@
                                     <button class="btn btn-ba w-100" type="submit">Ingresar</button>
                                 </div>
                                 <div class="col-12">
-                                    <p class="small mb-0">No tiene cuenta? <a class="vinculos" href="{{route('auth.registerform')}}">Crear cuenta</a></p>
+                                    <p class="small mb-0">No tiene cuenta? <a class="vinculos" href="{{route('auth.register')}}">Crear cuenta</a></p>
                                 </div>
                             </form>
                         </div>
