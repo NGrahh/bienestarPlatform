@@ -1,5 +1,5 @@
 @extends('layouts.app')
-{{-- @section('title','Agendacion cita') --}}
+@section('title-page','Inscripción evento')
 @section('content')
 
 @include('layouts.header')

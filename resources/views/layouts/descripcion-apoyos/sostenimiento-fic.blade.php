@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title-page','Apoyo Sostenimiento FIC')
 
 @section('content')
 

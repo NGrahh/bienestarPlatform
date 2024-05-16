@@ -1,5 +1,7 @@
 @extends('layouts.app')
-{{-- @section('title','Agendacion cita') --}}
+
+@section('title-page','Postulación')
+
 @section('content')
 
 @include('layouts.header')

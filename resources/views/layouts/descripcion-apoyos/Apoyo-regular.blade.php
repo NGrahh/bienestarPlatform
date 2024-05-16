@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title-page','Apoyo Regular')
+
 @section('content')
 
 @include('layouts.header')

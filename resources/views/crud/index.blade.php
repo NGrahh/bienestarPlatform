@@ -1,6 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
+@section('title-page','Información Usuarios')
+
 @include('layouts.header')
 @include('layouts.menu')
 
