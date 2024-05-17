@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title-page','Nuestro Equipo')
+
 @section('content')
 
 @include('layouts.header')

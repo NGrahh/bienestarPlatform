@@ -18,6 +18,7 @@
         <i class="bi bi-circle"></i><span>Evento pasado</span>
       </a>
     </li>
+<<<<<<< HEAD
     <li>
       <a href="{{route('eventos.index')}}">
         <i class="bi bi-circle"></i><span>Listado de eventos</span>
@@ -28,6 +29,9 @@
         <i class="bi bi-circle"></i><span>Inscritos a eventos</span>
       </a>
     </li>
+=======
+    
+>>>>>>> ff845d290499b7668124aadee7178ffbe51ed118
   </ul>
   
 </li><!-- End Tables Nav -->
@@ -74,7 +78,21 @@
       </li>
   </ul>
 </li>
-  
+
+
+<li class="nav-item">
+  <a class="nav-link collapsed" data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
+      <i class="ri-pantone-line"></i><span>Cuentas</span><i class="bi bi-chevron-down ms-auto"></i>
+  </a>
+  <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+      <li>
+          <a href="{{route('users.index')}}">
+              <i class="bi bi-circle"></i>Información Usuarios<span></span>
+          </a>
+      </li>
+  </ul>
+</li>
+
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#dimensions-nav" data-bs-toggle="collapse" href="#">
       <i class="ri-psychotherapy-line"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>

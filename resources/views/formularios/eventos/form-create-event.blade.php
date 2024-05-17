@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title-page','Crear Evento')
+
     @include('layouts.header')
     @include('layouts.menu')
 

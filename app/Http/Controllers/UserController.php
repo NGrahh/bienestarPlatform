@@ -17,7 +17,7 @@ class UserController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'register', 'store', 'login', 'create', 'recuperarcontrasena','home' ]);
+        $this->middleware('auth')->except(['index','show','update','destroy', 'register', 'store', 'login', 'create', 'recuperarcontrasena','home' ]);
     }
 
     /**
@@ -25,9 +25,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
-
-        return view('crud.user_list', compact('users'));
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
+        
+        return view('crud.index', compact('users'));
     }
 
 
@@ -126,7 +126,8 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('crud.show', compact('user'));
     }
 
     /**
@@ -134,24 +135,62 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // Obtener el usuario que deseas editar
+        $user = User::findOrFail($id);
+        $roles = Roles::where('name', '!=', 'Admin')->get();
+        $type_documents = TypeDocuments::all();
+        $type_rhs = typeRh::all();
+
+        return view('crud.edit', ['user' => $user, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
-        //
+        // Validar los datos del formulario
+        $request->validate([
+            'name' => 'required|string|between:2,100',
+            'lastname' => 'required|string|between:2,100',
+            'type_document_id' => 'required|string',
+            'document' => 'required|numeric|unique:users,document,'.$id.'|digits_between:8,15',
+            'email' => 'required|string|email|max:100|unique:users,email,'.$id,
+            'type_rh_id' => 'required|string',
+            'rol_id' => 'required|string',
+            'trainingProgram' => 'required_if:rol_id,5|string',
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:8,12'
+        ]);
+    
+        // Obtener el usuario que deseas actualizar
+        $user = User::findOrFail($id);
+    
+        // Actualizar los campos del usuario con los datos del formulario
+        $user->update($request->all());
+    
+        // Redireccionar a una página específica o retornar algún mensaje de éxito
+        return view('crud.index')->with('success', 'Usuario eliminado correctamente.');
     }
-
+    
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    // public function destroy(string $id)
+    // {
+    //     // Buscar el usuario por su ID
+    //     $user = User::findOrFail($id);
+    //     // Eliminar el usuario de la base de datos
+    //     $user->delete();
+    //     // Redireccionar a una página específica o retornar algún mensaje de éxito
+    //     // return redirect()->route('crud.index')->with('success', 'Usuario eliminado correctamente.');
+    //     return view('crud.index')->with('success', 'Usuario eliminado correctamente.');
+    // }
+    public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
+        return redirect()->route('users.index')->with('users', $users);
     }
+    
 
     public function logout(Request $request)
     {

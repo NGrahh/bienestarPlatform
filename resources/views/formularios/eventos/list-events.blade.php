@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title-page','Listado Eventos')
+
 @section('content')
 
     @include('layouts.header')
@@ -21,7 +23,6 @@
         
                     </div>
                   </div>
-             
     
             </div>
     

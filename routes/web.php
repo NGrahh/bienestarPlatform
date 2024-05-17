@@ -134,10 +134,17 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 //     return view('formularios.apoyos.form-inscription-supports');
 // }); 
 
-// Rutas Crud
-Route::get('/user_list', [UserController::class, 'index'])->name('users.index');
-// Route::put('/users/{id}',[Usercontroller::class,'update'])->name('users.update');
-// // Route::patch('/users/{id}',[Usercontroller::class,'update'])->name('users.update');
+// Rutas CRUD
+Route::get('/index', [UserController::class, 'index'])->name('users.index')->middleware('auth');
+
+Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
+
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->middleware('auth'); 
+
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+
 
 
 
