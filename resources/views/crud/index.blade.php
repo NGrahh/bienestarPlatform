@@ -43,7 +43,6 @@
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <a class="btn btn-ba-amarillo px-2" href="{{route('users.edit', ['id' => $user->id])}}"><i class="bx bxs-user-detail"></i></a>
-
                                                 <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST">
                                                     @csrf
                                                     @method('DELETE')
