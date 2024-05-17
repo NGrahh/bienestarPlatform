@@ -1,15 +1,16 @@
 @extends('layouts.app')
 
-@section('title-page','Registro')
+@section('title-page','Crear Cuenta')
 
 @section('content')
 
-<div class="container">
-
+@include('layouts.header')
+@include('layouts.menu')
+<main id="main" class="main">
     <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-lg-10 col-md-6 d-flex flex-column align-items-center justify-content-center">
+                <div class="col-lg-11 col-md-6 d-flex flex-column align-items-center justify-content-center">
                     <div class="d-flex justify-content-center py-4">
                         <a href="{{route('home')}}"class="logo d-flex align-items-center w-auto">
                             <img style="max-height: 60px" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="Bienestar al Aprendiz">
@@ -135,7 +136,7 @@
                                     <button class="btn btn-ba w-100" type="submit">Crear cuenta</button>
                                 </div>  
                                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <p class="small mb-0">Ya tiene cuenta? <a class="vinculos" href="{{route('login')}}">Iniciar sesión</a></p>
+                                    
                                 </div>
                             </form>
                         </div>
@@ -144,7 +145,8 @@
             </div>
         </div>
     </section>
-</div>
+</main>
+@include('layouts.footer')
 @endsection
 
 

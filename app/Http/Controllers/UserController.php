@@ -173,15 +173,22 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    // public function destroy(string $id)
+    // {
+    //     // Buscar el usuario por su ID
+    //     $user = User::findOrFail($id);
+    //     // Eliminar el usuario de la base de datos
+    //     $user->delete();
+    //     // Redireccionar a una página específica o retornar algún mensaje de éxito
+    //     // return redirect()->route('crud.index')->with('success', 'Usuario eliminado correctamente.');
+    //     return view('crud.index')->with('success', 'Usuario eliminado correctamente.');
+    // }
+    public function destroy($id)
     {
-        // Buscar el usuario por su ID
         $user = User::findOrFail($id);
-        // Eliminar el usuario de la base de datos
         $user->delete();
-        // Redireccionar a una página específica o retornar algún mensaje de éxito
-        // return redirect()->route('crud.index')->with('success', 'Usuario eliminado correctamente.');
-        return view('crud.index')->with('success', 'Usuario eliminado correctamente.');
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
+        return redirect()->route('users.index')->with('users', $users);
     }
     
 

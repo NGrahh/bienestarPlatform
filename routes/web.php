@@ -143,7 +143,7 @@ Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->m
 
 Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
 
-Route::delete('/crud/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
 
 

@@ -41,9 +41,14 @@
                                         <td>{{ $user->email }}</td>
                                         <td>{{ $user->role->name }}</td>
                                         <td>
-                                            <div class="d-grid gap-2 d-md-block">
-                                                <a class="btn btn-ba-amarillo px-2" href="{{ route('users.edit', ['id' => $user->id]) }}"><i class="bx bxs-user-detail"></i></a>
-                                                <a class="btn btn-ba-rojo px-2" href="{{ route('users.destroy', ['id' => $user->id]) }}"><i class="bx bxs-user-x"></i></a>
+                                            <div class="d-flex gap-2">
+                                                <a class="btn btn-ba-amarillo px-2" href="{{route('users.edit', ['id' => $user->id])}}"><i class="bx bxs-user-detail"></i></a>
+
+                                                <form action="{{route('users.destroy', ['id' => $user->id])}}" method="POST">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-ba-rojo px-2"><i class="bx bxs-user-x"></i></button>
+                                                </form>
                                             </div>
                                         </td>
                                     </tr>
