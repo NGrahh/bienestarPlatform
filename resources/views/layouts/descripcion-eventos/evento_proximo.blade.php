@@ -128,6 +128,20 @@
             </div>
         </div>
         <div class="contenidos-admin row">
+            <div class="col col-botones">
+            @if(session('rol_id') == 1)
+              <a href="{{route('login')}}">
+                <button>INCRIBIRSE</button>
+              </a>
+            @elseif(session('rol_id') == 5)
+              <a href="{{route('form-inscription-event')}}">
+                <button>INCRIBIRSE</button>
+              </a>
+            @endif
+
+                
+            
+            </div>
             <!-- <div class="col col-botones">
                 <button>EDITAR</button>
             </div>
