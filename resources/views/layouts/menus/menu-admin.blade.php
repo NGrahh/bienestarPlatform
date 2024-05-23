@@ -74,7 +74,7 @@
 
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
-    <i class="ri-pantone-line"></i><span>Cuentas</span><i class="bi bi-chevron-down ms-auto"></i>
+    <i class="bx bxs-user-account"></i><span>Cuentas</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>

@@ -13,9 +13,17 @@ return new class extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('eventname'); // Nombre del evento
+            $table->string('picture'); // Imagen del evento
+            $table->date('eventdate'); // Fecha del evento
+            $table->integer('eventlimit'); // Límite de asistentes
+            $table->date('datestar'); // Fecha de inicio del evento
+            $table->date('dateendevent'); // Fecha de fin del evento
+            $table->string('Subjectevent'); // Asunto del evento
+            $table->timestamps(); 
         });
     }
+    
 
     /**
      * Reverse the migrations.

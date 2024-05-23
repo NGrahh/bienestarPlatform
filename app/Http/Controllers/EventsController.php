@@ -6,6 +6,7 @@ use App\Models\TypeDimensions;
 use App\Models\typeDayTraining;
 use App\Models\Events;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 class EventsController extends Controller
@@ -13,7 +14,7 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('event')->except(['index','show','update','destroy', 'register', 'store', 'create','home' ]);
     }
 
     /**
@@ -21,7 +22,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        return view('formularios/eventos/list-events');
+        $events = Events::select('eventname','date', 'eventlimit','datestar','dateendevent');
+
+        return view('eventoscrud.indexevento', compact('events'));
     }
 
     /**
@@ -37,15 +40,47 @@ class EventsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'eventname' => 'required|string|between:2,100', 
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'eventdate' => 'required|date',
+            'eventlimit' => 'required|numeric|digits_between:1,1000',
+            'datestar' => 'required|date|unique:events,datestar',
+            'dateendevent' => 'required|date',
+            'Subjectevent' => 'required|string|min:1'
+
+        ]);
+
+        if ($validator->fails()) {
+            return redirect(route('forms.create-events'))
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+
+        dd($request->hasfile('picture'));
+        
+        Events::create([
+            'eventname' => $request->get('eventname'),
+            'picture' => $request->get('picture'),
+            'eventdate' => $request->get('eventdate'),
+            'eventlimit' => $request->get('eventlimit'),
+            'datestar' => $request->get('datestar'),
+            'dateendevent' => $request->get('dateendevent'),
+            'Subjectevent' => $request->get('Subjectevent'),
+        ]);
+
+        session()->flash('success', 'Evento registrado correctamente!');
+        return redirect(route('eventoscrud.indexevento'));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Events $events)
+    public function show(string $id)
     {
-        //
+        $event = Events::findOrFail($id);
+        return view('eventoscrud.showevento', compact('event'));
     }
 
     /**

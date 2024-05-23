@@ -26,8 +26,12 @@ class UserController extends Controller
     public function index()
     {
         $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
-        
-        return view('crud.index', compact('users'));
+        $roles = Roles::where('name', '!=', 'Admin')->get();
+        $type_documents = TypeDocuments::all();
+        $type_rhs = typeRh::all();
+
+        return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs], compact('users'));
+
     }
 
 
@@ -86,7 +90,7 @@ class UserController extends Controller
             'password' => 'required|string|min:6',
             'rol_id' => 'required|string',
             'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
-            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:8,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
 
         ]);
 
@@ -118,7 +122,7 @@ class UserController extends Controller
 
         session()->flash('success', 'Usuario registrado correctamente!');
 
-        return redirect(route('auth.login'));
+        return redirect(route('users.index'));
     }
 
     /**
