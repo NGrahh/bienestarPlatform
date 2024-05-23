@@ -31,7 +31,7 @@
                                 <div class="descripcion">
                                     <h2 align="center">Descripcion</h2>
                                     <p align="justify" class="text-center">
-                                      Es un servicio otordado a los aprendices de formación presencia en convenido con el servicio de transporte MEGABUS (Por ningun motivo se entrega dinero a los aprendices)
+                                      Es un servicio otorgado a los aprendices de formación presencia en convenido con el servicio de transporte MEGABUS (Por ningun motivo se entrega dinero a los aprendices)
                                       consta de 40 pasajes al mes durante 4 meses
                                     </p>
                                 </div>
@@ -51,7 +51,7 @@
                                         <div class="accordion-body">
                                             <!-- List group Numbered -->
                                             <ol class="list-group list-group-numbered" style="text-align: justify">
-                                                <li class="list-group-item">Estar en estado "Induccion" o "Es formacion" en etapa lectiva o practica en el aplicativo Sofia Plus</li>
+                                                <li class="list-group-item">Estar en estado "Inducción" o "Es formación" en etapa lectiva o practica en el aplicativo Sofia Plus</li>
                                                 <li class="list-group-item">No tener condicionamiento de matricula conforme a lo estipulado en el reglamento al aprendiz</li>
                                                 <li class="list-group-item" >No ser beneficiario de ningun otro apoyo de sostenimiento</li>
                                                 <li class="list-group-item" >Digilenciar adecuadamente el formato de registro socioeconomico</li>

@@ -69,9 +69,9 @@
                                             <p class="small">
                                                 Servicio Nacional de Aprendizaje (SENA) <br>Centro de Diseño e Innovación Tecnológica Industrial<br>Regional Risaralda<br>
                                                 <strong>Dirección: </strong><a class="vinculos" href="https://www.google.com/maps?q=Transv.+7+Calle+26+Barrio+Santa+Isabel+Dosquebradas">Transv. 7 Calle 26 Barrio Santa Isabel Dosquebradas</a><br>
-                                                Lunes A Viernes (--:-- a.m a --:-- p.m)
+                                                Lunes A Viernes (--:-- a.m a --:-- p.m) - (--:-- p.m a --:-- p.m)
                                             </p>
-                                        </div>
+                                        </div>  
                                     </div>
                                 </div>
                             </div>
