@@ -103,7 +103,7 @@
                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="token_number" >
                                     <label for="yourToken" class="form-label">Número de ficha</label>
                                     <input value="{{old('yourToken')}}" type="text" name="yourToken" class="form-control" id="yourToken" required disabled>
-                                    <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
+                                    <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>   
                                     @error('yourToken')
                                     <li class="text-danger">{{ $message}}</li>
                                     @enderror
