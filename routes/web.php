@@ -135,7 +135,7 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 
 // // Rutas CRUD Eventos
 
-// Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('event');
+Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('auth');
 
 // // Route::get('/show/{id}', [EventsController::class, 'show'])->name('events.show')->middleware('event');
 

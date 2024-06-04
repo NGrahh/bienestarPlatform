@@ -85,7 +85,7 @@
                                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                                             <label for="yourTypeDoc" class="form-label">Tipo documento</label>
                                                                             <select name="type_document_id" class="form-select" id="yourTypeDoc" required>
-                                                                                <option value="">Seleccionar...</option>
+                                                                                <option value="">- Seleccione -</option>
                                                                                 @foreach ($type_documents as $type_document)
                                                                                 <option {{ $user->type_document_id == $type_document->id ? 'selected' : '' }} value="{{ $type_document->id }}">{{ $type_document->name }}</option>
                                                                                 @endforeach
@@ -116,8 +116,8 @@
                                                                         </div>
                                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                                             <label for="yourRol_update" class="form-label">Rol</label>
-                                                                            <select name="rol_id" class="form-select" id="yourRol_update" required>
-                                                                                <option value="">Seleccionar...</option>
+                                                                            <select name="rol_id" data-id-user="{{$user->id}}" class="form-select rol_edit" id="yourRol_update" required>
+                                                                                <option value="">- Seleccione -</option>
                                                                                 @foreach ($roles as $role)
                                                                                     <option {{ $user->rol_id == $role->id ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                                                                                 @endforeach
@@ -128,7 +128,7 @@
                                                                             @enderror
                                                                         </div>
                                                                         
-                                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
+                                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
                                                                             <label for="yourTraining_update" class="form-label">Programa de formación</label>
                                                                             <input value="{{$user->trainingProgram}}" type="text" name="trainingProgram" class="form-control" id="yourTraining_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                                             <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
@@ -137,7 +137,7 @@
                                                                             @enderror
                                                                         </div>
                                                                         
-                                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" id="token_number_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
+                                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="token_number_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
                                                                             <label for="yourToken_update" class="form-label">Número de ficha</label>
                                                                             <input value="{{$user->yourToken}}" type="text" name="yourToken" class="form-control" id="yourToken_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                                             <div class="invalid-feedback">Por favor ingrese el número de ficha.</div>
@@ -145,11 +145,10 @@
                                                                             <li class="text-danger">{{ $message}}</li>
                                                                             @enderror
                                                                         </div>
-                                                                        
                                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                                             <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
                                                                             <select name="type_rh_id" class="form-select" id="yourTypeRh" required>
-                                                                                <option value="">Seleccionar...</option>
+                                                                                <option value="">- Seleccione -</option>
                                                                                 @foreach ($type_rhs as $type_rh)
                                                                                 <option {{ $user->type_rh_id == $type_rh->id ? 'selected' : '' }} value="{{ $type_rh->id }}">{{ $type_rh->name }}</option>
                                                                                 @endforeach
@@ -300,26 +299,26 @@
                         
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourRol" class="form-label">Rol</label>
-                                                            <select name="rol_id" class="form-select" id="yourRol" required>
+                                                            <select name="rol_id" data-user-id="{{$user->id}}" class="form-select rol_create" id="yourRol" required>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($roles as $role)
-                                                                <option id="optionRol"  {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
+                                                                <option id="optionRol" {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="invalid-feedback">Ingrese un rol.</div>
                                                             @error('rol_id')
-                                                                <li class="text-danger">{{ $message}}</li>
+                                                            <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="training_program" >
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{$user->id}}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="training_program">
                                                             <label for="yourTraining" class="form-label">Programa de formación</label>
-                                                            <input value="{{old('trainingProgram')}}"  type="text" name="trainingProgram" class="form-control" id="yourTraining" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                            <input value="{{old('trainingProgram')}}" type="text" name="trainingProgram" class="form-control" id="yourTraining" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                             <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
                                                             @error('trainingProgram')
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="token_number" >
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{$user->id}}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="token_number">
                                                             <label for="yourToken" class="form-label">Número de ficha</label>
                                                             <input value="{{old('yourToken')}}" type="text" name="yourToken" class="form-control" id="yourToken" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                             <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
@@ -327,6 +326,7 @@
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
+                                                        
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
                                                             <select name="type_rh_id" class="form-select" id="yourTypeRh" required>

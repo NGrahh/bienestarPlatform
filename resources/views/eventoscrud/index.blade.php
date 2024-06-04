@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title-page', 'Gestión de eventos')
+@section('title-page','Información Eventos')
 
 @include('layouts.header')
 @include('layouts.menu')
