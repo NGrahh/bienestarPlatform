@@ -65,33 +65,33 @@
                                                                         <h5 class="text-center card-title-ba-azul">Ingrese los datos para editar el evento</h5>
                                                                     </div>
                                                                     @include('compartido.alertas')
-                                                                    <form action="{{ route('events.update', ['id' => $event->id]) }}" class="row g-3 needs-validation" novalidate method="POST">
+                                                                    <form action="{{ route('events.update', ['id' => $event->id]) }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                                                                         @csrf
-                                                                        @method('PUT') <!-- Agregar este campo para indicar que el método es PUT -->
-                                                                        
+                                                                        @method('PUT')
+                                                                    
                                                                         <div class="col-12">
-                                                                            <label for="name" class="form-label">Nombre del evento</label>
-                                                                            <input value="{{ $event->eventname }}" type="text" name="name" class="form-control" id="name" required>
+                                                                            <label for="eventname" class="form-label">Nombre del evento</label>
+                                                                            <input value="{{ $event->eventname }}" type="text" name="eventname" class="form-control" id="eventname" required>
                                                                             <div class="invalid-feedback">Ingrese el nombre del evento.</div>
-                                                                            @error('name')
+                                                                            @error('eventname')
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
                                                                     
                                                                         <div class="col-12 col-md-6">
-                                                                            <label for="limit" class="form-label">Aforo</label>
-                                                                            <input value="{{ $event->eventlimit }}" type="text" name="limit" class="form-control" id="limit" required>
+                                                                            <label for="eventlimit" class="form-label">Aforo</label>
+                                                                            <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" required>
                                                                             <div class="invalid-feedback">Ingrese un aforo.</div>
-                                                                            @error('limit')
+                                                                            @error('eventlimit')
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
                                                                     
                                                                         <div class="col-12 col-md-6">
-                                                                            <label for="date" class="form-label">Fecha del evento</label>
-                                                                            <input value="{{ $event->eventdate }}" type="text" name="date" class="form-control" id="date" required>
+                                                                            <label for="eventdate" class="form-label">Fecha del evento</label>
+                                                                            <input value="{{ $event->eventdate }}" type="text" name="eventdate" class="form-control" id="eventdate" required>
                                                                             <div class="invalid-feedback">Ingrese una fecha.</div>
-                                                                            @error('date')
+                                                                            @error('eventdate')
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
@@ -107,31 +107,30 @@
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
-                                                                        
                                                                     
                                                                         <div class="col-12 col-md-6">
-                                                                            <label for="start_date" class="form-label">Fecha Inicio (Inscripciones)</label>
-                                                                            <input value="{{ $event->datestar }}" type="text" name="start_date" class="form-control" id="start_date" required>
+                                                                            <label for="datestar" class="form-label">Fecha Inicio (Inscripciones)</label>
+                                                                            <input value="{{ $event->datestar }}" type="text" name="datestar" class="form-control" id="datestar" required>
                                                                             <div class="invalid-feedback">Ingrese una fecha inicial.</div>
-                                                                            @error('start_date')
+                                                                            @error('datestar')
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
                                                                     
                                                                         <div class="col-12 col-md-6">
-                                                                            <label for="end_date" class="form-label">Fecha Final (Inscripciones)</label>
-                                                                            <input value="{{ $event->dateendevent }}" type="text" name="end_date" class="form-control" id="end_date" required>
+                                                                            <label for="dateendevent" class="form-label">Fecha Final (Inscripciones)</label>
+                                                                            <input value="{{ $event->dateendevent }}" type="text" name="dateendevent" class="form-control" id="dateendevent" required>
                                                                             <div class="invalid-feedback">Ingrese una fecha final.</div>
-                                                                            @error('end_date')
+                                                                            @error('dateendevent')
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
                                                                     
                                                                         <div class="col-12">
-                                                                            <label for="description" class="form-label">Descripción del evento</label>
-                                                                            <textarea class="form-control" cols="30" rows="4" name="description" required>{{ $event->Subjectevent }}</textarea>
+                                                                            <label for="Subjectevent" class="form-label">Descripción del evento</label>
+                                                                            <textarea class="form-control" cols="30" rows="4" name="Subjectevent" id="Subjectevent" required>{{ $event->Subjectevent }}</textarea>
                                                                             <div class="invalid-feedback">Ingrese una descripción del evento.</div>
-                                                                            @error('description')
+                                                                            @error('Subjectevent')
                                                                             <li class="text-danger">{{ $message }}</li>
                                                                             @enderror
                                                                         </div>
@@ -142,7 +141,8 @@
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                                             </div>
                                                                         </div>
-                                                                    </form>                                                                    
+                                                                    </form>
+                                                                                                                                    
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -169,7 +169,7 @@
                                                             @include('compartido.alertas')
                                                             <div class="modal-body">
                                                                 <div class="card-body">
-                                                                    <form action="{{ route('users.destroy', ['id' => $event->id]) }}" method="POST">
+                                                                    <form action="{{ route('events.destroy', ['id' => $event->id]) }}" method="POST">
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <p>El usuario <strong></strong></p> {{--identificado con el documento de tipo <strong>{{ $user->TypeDocument->name }}</strong> y número <strong>{{ $user->document }}</strong>, será eliminado. Si necesitas recuperar información o tomar alguna medida antes de proceder con la eliminación, ten en cuenta que su correo electrónico es <strong>{{ $user->email }}</strong> y desempeña el rol de <strong>{{ $user->role->name }}</strong> en nuestra organización. --}}
@@ -199,7 +199,7 @@
                                 </button>
                                 <!-- Modal de creación para cada evento -->
                                 <div class="modal fade" id="newEventModal" tabindex="-1">
-                                    <!-- Contenido del modal de creación -->
+                                    
                                 </div><!-- End Large Modal-->
 
                             </div>

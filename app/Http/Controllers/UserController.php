@@ -152,7 +152,7 @@ class UserController extends Controller
             'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
         ]);
-    
+        
         // Obtener el usuario que deseas actualizar
         $user = User::findOrFail($id);
     
