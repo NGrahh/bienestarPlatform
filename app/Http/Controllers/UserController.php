@@ -17,6 +17,7 @@ class UserController extends Controller
 
     public function __construct()
     {
+        // Aplica el middleware 'auth' a todas las rutas de este controlador,excepto a las que se enumeran en el arreglo 'except'.
         $this->middleware('auth')->except(['index','show','update','destroy', 'register', 'store', 'login', 'create', 'recuperarcontrasena','home' ]);
     }
 
@@ -25,9 +26,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
-        
-        return view('crud.index', compact('users'));
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','trainingProgram','yourToken')->with('role')->with('TypeDocument')->get();
+        $roles = Roles::where('name', '!=', 'Admin')->get();
+        $type_documents = TypeDocuments::all();
+        $type_rhs = typeRh::all();
+
+        return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs], compact('users'));
+
     }
 
 
@@ -86,12 +91,12 @@ class UserController extends Controller
             'password' => 'required|string|min:6',
             'rol_id' => 'required|string',
             'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
-            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:8,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
 
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('auth.register'))
+            return redirect(route('users.store'))
                 ->withErrors($validator)
                 ->withInput();
         }
@@ -118,7 +123,7 @@ class UserController extends Controller
 
         session()->flash('success', 'Usuario registrado correctamente!');
 
-        return redirect(route('auth.login'));
+        return redirect(route('users.index'));
     }
 
     /**
@@ -130,19 +135,7 @@ class UserController extends Controller
         return view('crud.show', compact('user'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        // Obtener el usuario que deseas editar
-        $user = User::findOrFail($id);
-        $roles = Roles::where('name', '!=', 'Admin')->get();
-        $type_documents = TypeDocuments::all();
-        $type_rhs = typeRh::all();
 
-        return view('crud.edit', ['user' => $user, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs]);
-    }
 
 
     public function update(Request $request, string $id)
@@ -156,8 +149,8 @@ class UserController extends Controller
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'type_rh_id' => 'required|string',
             'rol_id' => 'required|string',
-            'trainingProgram' => 'required_if:rol_id,5|string',
-            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:8,12'
+            'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
         ]);
     
         // Obtener el usuario que deseas actualizar
@@ -167,30 +160,29 @@ class UserController extends Controller
         $user->update($request->all());
     
         // Redireccionar a una página específica o retornar algún mensaje de éxito
-        return view('crud.index')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
+
     }
     
     /**
      * Remove the specified resource from storage.
      */
-    // public function destroy(string $id)
+    // public function destroy($id)
     // {
-    //     // Buscar el usuario por su ID
     //     $user = User::findOrFail($id);
-    //     // Eliminar el usuario de la base de datos
     //     $user->delete();
-    //     // Redireccionar a una página específica o retornar algún mensaje de éxito
-    //     // return redirect()->route('crud.index')->with('success', 'Usuario eliminado correctamente.');
-    //     return view('crud.index')->with('success', 'Usuario eliminado correctamente.');
+
+    //     return redirect()->route('users.index')->with('users', $users)->with('success', 'Usuario eliminado correctamente.');
     // }
     public function destroy($id)
     {
         $user = User::findOrFail($id);
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id','trainingProgram','yourToken')->with('role')->with('TypeDocument')->get();
         $user->delete();
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id')->with('role')->with('TypeDocument')->get();
-        return redirect()->route('users.index')->with('users', $users);
+        
+        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
     }
-    
+
 
     public function logout(Request $request)
     {
@@ -210,12 +202,4 @@ class UserController extends Controller
         // Concatena las iniciales y las almacena en el campo user_name sin espacios
         return $nameInitials . $lastnameInitials;
     }
-
-    // public function dimensionForm(){
-    // $dimensions_types = TypeDimensions::all();
-    // return view('formularios.form-appointment', ['type_dimensions' => $dimensions_types]);
-    // }
-
-
-
 }

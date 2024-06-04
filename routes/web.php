@@ -29,10 +29,6 @@ Route::get('/block', function () {
 })->name('block')->middleware('auth');
 
 
-
-
-
-
 Route::get('/', function () {
     return view('compartido.home');
 })->name('home');
@@ -41,18 +37,12 @@ Route::get('/home', function () {
     return view('compartido.home');
 })->name('home');
 
-
-
-
-
-
-
-
-
-
+//Ruta para visualizar el perfil
+Route::get('/mi-perfil', function () {
+    return view('compartido.perfil');
+})->name('perfil');
 
 //RUTA INDEX
-
 Route::get('/index', function () {
     return view('index');
 })->name('index'); 
@@ -107,7 +97,7 @@ Route::resource('eventos', EventsController::class)->middleware('auth');
 Route::get('form-appointment', [EventsController::class, 'showDimensions'])->name('showDimensions');
 Route::post('form-appointment', [EventsController::class, 'form-appointment'])->name('formularios.form-appointment');
 
-// Ruta Formulario para CREACION EVENTO
+// Ruta Formulario para CREACIÓN EVENTO
 // Route::get('/form-create-event', [UserController::class, 'form-create-event'])->name('form-create-event');
 // Route::post('/form-create-event', [UserController::class, 'form-create-event'])->name('formularios.form-create-event');
 Route::get('/creacion-eventos', function () {
@@ -117,14 +107,12 @@ Route::get('/creacion-eventos', function () {
 Route::get('/listado-eventos', function (){
 })->name('forms.list-events'); 
 
-// Ruta Formulario para INSCRIPCION A EVENTO
+// Ruta Formulario para INSCRIPCIÓN A EVENTO
 Route::get('form-inscription-event', [EventsController::class, 'showStudyTime'])->name('showStudyTime');
 Route::post('form-inscription-event', [EventsController::class, 'form-inscription-event'])->name('formularios.eventos.form-inscription-event');
 
 
-// Ruta Formulario para INSCRIPCION A LOS APOYOS
-
-
+// Ruta Formulario para INSCRIPCIÓN A LOS APOYOS
 Route::get('form-inscription-supports', [EventsController::class, 'inscrip'])->name('inscrip');
 Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios.apoyos.form-inscription-supports');
 
@@ -135,7 +123,7 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 // }); 
 
 // Rutas CRUD
-Route::get('/index', [UserController::class, 'index'])->name('users.index')->middleware('auth');
+Route::get('/listado-usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 
 Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
 
@@ -145,6 +133,17 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
+// // Rutas CRUD Eventos
+
+Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('auth');
+
+// // Route::get('/show/{id}', [EventsController::class, 'show'])->name('events.show')->middleware('event');
+
+// Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('event'); 
+
+// Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('event');
+
+// Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
 
 

@@ -48,6 +48,26 @@
     --bs-btn-disabled-bg: #FFC107; /* Fondo amarillo */
     --bs-btn-disabled-border-color: #FFC107; /* Borde amarillo */
 }
+
+.btn-ba-gris {
+    --bs-btn-color: #ffffff; /* Texto blanco */
+    --bs-btn-bg: #6c757d; /* Fondo gris */
+    --bs-btn-border-color: #6c757d; /* Borde gris */
+    --bs-btn-hover-color: #ffffff; /* Texto blanco al pasar el ratón */
+    --bs-btn-hover-bg: #5a6268; /* Fondo gris más oscuro al pasar el ratón */
+    --bs-btn-hover-border-color: #545b62; /* Borde gris más oscuro al pasar el ratón */
+    --bs-btn-focus-shadow-rgb: 108, 117, 125; /* Sombra gris al enfocar */
+    --bs-btn-active-color: #ffffff; /* Texto blanco al hacer clic */
+    --bs-btn-active-bg: #5a6268; /* Fondo gris más oscuro al hacer clic */
+    --bs-btn-active-border-color: #545b62; /* Borde gris más oscuro al hacer clic */
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #ffffff; /* Texto blanco cuando está deshabilitado */
+    --bs-btn-disabled-bg: #6c757d; /* Fondo gris */
+    --bs-btn-disabled-border-color: #6c757d; /* Borde gris */
+}
+
+
+
 .card-title-ba {
     padding: 20px 0 15px 0;
     font-size: 18px;
@@ -55,6 +75,16 @@
     color: #39A900;
     font-family: "Poppins", sans-serif;
 }
+
+.card-title-ba-azul {
+    padding: 20px 0 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+    color: #00324D;  /* AZUL-VERDE */
+    font-family: "Poppins", sans-serif;
+}
+
+
 
 .vinculos {
     color: #39A900;

@@ -4,38 +4,10 @@
   </a>
   <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>
-      <a href="{{route('eventos.create')}}">
-        <i class="bi bi-circle"></i><span>Agregar evento</span>
+      <a href="{{route('events.index')}}">
+        <i class="bi bi-circle"></i><span>Información de eventos</span>
       </a>
     </li>
-    <li>
-      <a href="">
-        <i class="bi bi-circle"></i><span>Evento proximo</span>
-      </a>
-    </li>
-    <li>
-      <a href="">
-        <i class="bi bi-circle"></i><span>Evento pasado</span>
-      </a>
-    </li>
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <li>
-      <a href="{{route('eventos.index')}}">
-        <i class="bi bi-circle"></i><span>Listado de eventos</span>
-      </a>
-    </li>
-    <li>
-      <a href="{{route('inscritos-eventos')}}">
-        <i class="bi bi-circle"></i><span>Inscritos a eventos</span>
-      </a>
-    </li>
-=======
-    
->>>>>>> ff845d290499b7668124aadee7178ffbe51ed118
-=======
-
->>>>>>> f84c7e29d1043e3d87b23a1b3fcd5c80340a5c17
   </ul>
 
 </li><!-- End Tables Nav -->
@@ -86,7 +58,7 @@
 
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
-    <i class="ri-pantone-line"></i><span>Cuentas</span><i class="bi bi-chevron-down ms-auto"></i>
+    <i class="bx bxs-user-account"></i><span>Cuentas</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>
