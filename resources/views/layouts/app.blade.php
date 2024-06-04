@@ -52,6 +52,8 @@
     <!-- Vendor JS Files -->
     <script src="{{asset('assets/js/indexform.js')}}"></script>
     <script src="{{asset('assets/js/function_register.js')}}"></script>
+    <script src="{{asset('assets/js/function_edit_user.js')}}"></script>
+    <script src="{{asset('assets/js/toast.js')}}"></script>
     <script src="{{asset('sassets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>

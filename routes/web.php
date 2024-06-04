@@ -37,6 +37,10 @@ Route::get('/home', function () {
     return view('compartido.home');
 })->name('home');
 
+//Ruta para visualizar el perfil
+Route::get('/mi-perfil', function () {
+    return view('compartido.perfil');
+})->name('perfil');
 
 //RUTA INDEX
 Route::get('/index', function () {
@@ -131,13 +135,13 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 
 // // Rutas CRUD Eventos
 
-// Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('auth');
+// Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('event');
 
-// Route::get('/show/{id}', [EventsController::class, 'show'])->name('events.show')->middleware('auth');
+// // Route::get('/show/{id}', [EventsController::class, 'show'])->name('events.show')->middleware('event');
 
-// Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('auth'); 
+// Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('event'); 
 
-// Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
+// Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('event');
 
 // Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 

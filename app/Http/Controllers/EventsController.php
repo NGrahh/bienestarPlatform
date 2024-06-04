@@ -14,7 +14,7 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('event')->except(['index','show','update','destroy', 'register', 'store', 'create','home' ]);
+        $this->middleware('auth')->except(['index','show','update','destroy','store', 'create','home' ]);
     }
 
     /**
@@ -22,9 +22,9 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Events::select('eventname','date', 'eventlimit','datestar','dateendevent');
+        $events = Events::all();
 
-        return view('eventoscrud.indexevento', compact('events'));
+        return view('eventoscrud.index', compact('events'));
     }
 
     /**
@@ -48,7 +48,6 @@ class EventsController extends Controller
             'datestar' => 'required|date|unique:events,datestar',
             'dateendevent' => 'required|date',
             'Subjectevent' => 'required|string|min:1'
-
         ]);
 
         if ($validator->fails()) {
@@ -57,12 +56,16 @@ class EventsController extends Controller
                 ->withInput();
         }
 
+        // Mover la imagen a un directorio público y obtener el nombre del archivo
+        if ($request->hasFile('picture')) {
+            $imageName = time() . '.' . $request->picture->extension();
+            $request->picture->move(public_path('images'), $imageName);
+        }
 
-        dd($request->hasfile('picture'));
-        
+        // Crear el evento y almacenar el nombre del archivo en la base de datos
         Events::create([
             'eventname' => $request->get('eventname'),
-            'picture' => $request->get('picture'),
+            'picture' => $imageName,
             'eventdate' => $request->get('eventdate'),
             'eventlimit' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),
@@ -71,7 +74,7 @@ class EventsController extends Controller
         ]);
 
         session()->flash('success', 'Evento registrado correctamente!');
-        return redirect(route('eventoscrud.indexevento'));
+        return redirect(route('users.index'));
     }
 
     /**
@@ -86,17 +89,53 @@ class EventsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Events $events)
+    public function edit(string $id)
     {
-        //
+        $event = Events::findOrFail($id);
+        return view('events.index', compact('event'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Events $events)
+    
+    // Update the specified resource in storage.
+    
+    public function update(Request $request, Events $event)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'eventname' => 'required|string|between:2,100', 
+            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'eventdate' => 'required|date',
+            'eventlimit' => 'required|numeric|digits_between:1,1000',
+            'datestar' => 'required|date',
+            'dateendevent' => 'required|date',
+            'Subjectevent' => 'required|string|min:1'
+        ]);
+    
+        if ($validator->fails()) {
+            return redirect(route('events.edit', $event->id))
+                ->withErrors($validator)
+                ->withInput();
+        }
+    
+        // Si se ha subido una nueva imagen, moverla y actualizar el nombre en la base de datos
+        if ($request->hasFile('picture')) {
+            $imageName = time() . '.' . $request->picture->extension();
+            $request->picture->move(public_path('images'), $imageName);
+            $event->picture = $imageName;
+        }
+    
+        // Actualizar los demás campos del evento
+        $event->eventname = $request->get('eventname');
+        $event->eventdate = $request->get('eventdate');
+        $event->eventlimit = $request->get('eventlimit');
+        $event->datestar = $request->get('datestar');
+        $event->dateendevent = $request->get('dateendevent');
+        $event->Subjectevent = $request->get('Subjectevent');
+    
+        // Guardar los cambios en la base de datos
+        $event->save();
+    
+        session()->flash('success', 'Evento actualizado correctamente!');
+        return redirect(route('events.show', $event->id));
     }
 
     /**

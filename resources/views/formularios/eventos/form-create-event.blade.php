@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title-page','Crear Evento')
+@section('title-page', 'Crear Evento')
 
 @include('layouts.header')
 @include('layouts.menu')
@@ -11,7 +11,6 @@
   <div class="pagetitle">
     <h1>Creación de eventos</h1>
   </div><!-- End Page Title -->
-
 
   <div class="row justify-content-center">
     <div class="col-lg-11 my-5">
@@ -24,11 +23,9 @@
           <div class="col-sm-12">
             <div class="card">
               <div class="card-body">
-                <form action="{{route('eventos.store')}}" class="row g-3 needs-validation py-4" novalidate method="POST" enctype="multipart/form-data">
+                <form action="{{ route('eventos.store') }}" class="row g-3 needs-validation py-4" novalidate method="POST" enctype="multipart/form-data">
                   @csrf
-                  {{-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
-                          <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div> --}}
-                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 ">
+                  <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                     <label for="nameevent" class="form-label">Nombre del evento</label>
                     <input value="{{ old('eventname') }}" type="text" name="eventname" class="form-control" id="nameevent" required>
                     <div class="invalid-feedback">Ingrese el nombre del evento.</div>
@@ -38,7 +35,7 @@
                   </div>
                   <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                     <label for="pictureevent" class="form-label">Foto del evento</label>
-                    <input value="{{ old('picture') }}" type="file" name="picture" class="form-control" id="pictureevent" required>
+                    <input type="file" name="picture" class="form-control" id="pictureevent" required>
                     <div class="invalid-feedback">Ingrese una foto relacionada al evento.</div>
                     @error('picture')
                     <li class="text-danger">{{ $message }}</li>
@@ -77,9 +74,9 @@
                     <div class="row mb-">
                       <label for="dateendevent" class="form-label">Fecha fin de inscripcion</label>
                       <div class="col-sm-12">
-                        <input name="enddate" type="date" class="form-control" required>
+                        <input name="dateendevent" type="date" class="form-control" required>
                         <div class="invalid-feedback">Ingrese una fecha fin de inscripcion</div>
-                        @error('enddate')
+                        @error('dateendevent')
                         <li class="text-danger">{{ $message }}</li>
                         @enderror
                       </div>
