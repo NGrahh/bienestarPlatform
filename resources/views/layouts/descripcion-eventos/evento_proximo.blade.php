@@ -10,82 +10,77 @@
 
 
 <style>
-    
-.card-body{
-  padding: 0;
-}
-.anadirevento{
-  
-}
-.col-anadirevento{
-  display: grid;
-}
-.col-anadirevento h3{
-  grid-column: 1 / 4;
-  grid-row: 1;
-}
-.col-anadirevento h5{
-  grid-column: 3 / 4;
-  grid-row: 1;
-  margin-left: 40%;
-  margin-right: 0px;
-}
-.col-anadirevento img{
-  grid-column: 3 / 3;
-  grid-row: 1;
-  margin-right: 0px;
-  margin-left: 0px;
-  justify-self: end;
-}
-.contenido{
-  width: 100%;
-  height: 100%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  margin-top: 20px;
-}
-.calendario{
-  background-color: blue;
-  width: 300px;
-  max-width: 40%;
-  height: 400px;
-  display: inline-block;
+
+.mayor{
+
+  height: 23rem;
+  width: 45rem;
 }
 
-.imagen{
-  background-color: gray;
-  width: 500px;
-  height: 400px;
-  display: inline-block;
-}
-.col button{
-  border-radius: 10px;
-  background-color: gray;
-  border: none;
-  width: 35%;
-  height: 45px;
-}
-.contenidos-evento{
-  display: flex;
-  flex-direction: row;
-  gap: 25px;
-  margin-top: 20px;
-}
-.contenidos-evento .col{
-  border-radius: 10px;
-  background-color: gray;
-  border: 1px solid black;
-  max-width: 20%;
-  margin: 0 auto;
-}
-.contenidos-admin .col{
-  margin-top: 20px;
-}
-.contenidos-admin{
+img{
   width: 100%;
   height: 100%;
+  background-repeat: no-repeat; 
 }
+
+.informe{
+  margin-top: 1rem;
+}
+
+hr{
+  border: 1px solid black;
+}
+
+.tiempo{
+  display: flex;
+  justify-content: space-between;
+  height: 12rem;
+  width: 40rem;
+  margin-left: 6rem;
+}
+
+.calen{
+  width: 12rem;
+  height: 12rem;
+  margin-left: 2rem;
+}
+
+.dia{
+  margin-top: 30px;
+}
+
+h2{
+  font-weight: bold;
+  color: green;
+  font-size: 3rem
+}
+
+.boton{
+  width: 17rem;
+  margin-right: 7rem;
+}
+
+.lugar{
+  color: black;
+  margin-top: 50px;
+  font-size: 2rem;
+}
+
+.hotia{
+  color: white;
+  background-color: green;
+  border: 1px solid black;
+  width: 10rem;
+  font-size: 23px;
+  border-radius: 4px;
+  box-shadow: 5px 3px 7px black;
+}
+
+
+
+
+
+
 </style>
 
 
@@ -100,56 +95,25 @@
               <div align="center" class="pt-4 pb-2">
                 <div class="max-conten">
 
-    <div class="container margenes-main">
-        <div class="anadirevento row">
-            <div class="col col-anadirevento">
-                <h3>EVENTO</h3>
-                <!-- <img src="IMG/plus-circle-regular-24.png" alt="logosumarevento">
-                <h5>Añadir evento</h5> -->
-            </div>
-        </div>
-        <div class="contenido row">
-            <div class="calendario col-md-6">
-                <h3>CALENDARIO</h3>
-            </div>
-            <div class="imagen col-md-6">
-                <h3>IMAGEN</h3>
-            </div>
-        </div>
-        <div class="contenidos-evento row">
-            <div class="col">
-                <h5>AFORO</h5>
-            </div>
-            <div class="col">
-                <h5>LUGAR</h5>
-            </div>
-            <div class="col">
-                <h5>FECHA Y HORA</h5>
-            </div>
-        </div>
-        <div class="contenidos-admin row">
-            <div class="col col-botones">
-            @if(session('rol_id') == 1)
-              <a href="{{route('login')}}">
-                <button>INCRIBIRSE</button>
-              </a>
-            @elseif(session('rol_id') == 5)
-              <a href="{{route('form-inscription-event')}}">
-                <button>INCRIBIRSE</button>
-              </a>
-            @endif
+                  <div class="mayor">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/fotos-1533279584.jpg?crop=0.5xw:1xh;center,top&resize=1200:*" alt="">
+                  </div>
+                  <div class="informe">
+                    <h1>Titulo evento</h1>
+                    <hr>
+                    <div class="tiempo">
+                        <div class="calen">
+                          <h3 class="dia">miercoles</h3>
+                          <h2>05</h2>
+                          <h3>junio 2024</h3>
+                        </div>
+                        <div class="boton">
+                          <h2 class="lugar">centro</h2>
+                          <a href=""><button class="hotia">Incribirse</button></a>
+                        </div>
+                    </div>
+                  </div>
 
-                
-            
-            </div>
-            <!-- <div class="col col-botones">
-                <button>EDITAR</button>
-            </div>
-            <div class="col col-botones">
-                <button>ELIMINAR</button>
-            </div> -->
-        </div>
-    </div>
               </div>
             </div>
           </div>
