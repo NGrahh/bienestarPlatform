@@ -351,18 +351,14 @@
                                                         </div>
                         
                         
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                            <button class="btn btn-ba w-100" type="submit">Crear cuenta</button>
-                                                        </div>  
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                            
+                                                        <div class="modal-footer d-flex justify-content-center gap-2">
+                                                            <button type="submit" class="btn btn-ba px-2">Crear usuario</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div><!-- End Large Modal-->
