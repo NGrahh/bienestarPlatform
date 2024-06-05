@@ -228,6 +228,10 @@ Route::get('/inscrito_eventos', function(){
 })-> name ('inscritos-eventos');
 
 
+Route::get('/eventos', function(){
+    return view ('layouts.eventos-ba.eventos');
+})-> name ('eventos');
+
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
 // })-> name ('pagina-principal');
