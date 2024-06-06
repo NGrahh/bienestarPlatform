@@ -20,14 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call([UsersSeeder::class]);
         $this->call([day_trainingSeeder::class]);
         $this->call([TypeDimensionsSeeder::class]);
+        $this->call([ProgramasSeeder::class]);
 
-
-
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
     }
 }

@@ -6,6 +6,7 @@ use App\Models\Roles;
 use App\Models\TypeDocuments;
 use App\Models\typeRh;
 use App\Models\User;
+use App\Models\Programas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as AuthFacade;
 use Illuminate\Support\Facades\Hash;
@@ -26,12 +27,13 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','trainingProgram','yourToken')->with('role')->with('TypeDocument')->get();
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','Program_id','yourToken')->with('role')->with('TypeDocument')->get();
         $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();
+        $programas = Programas::all();
         $type_rhs = typeRh::all();
 
-        return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs], compact('users'));
+        return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs, 'programas' => $programas], compact('users'));
 
     }
 
@@ -41,10 +43,11 @@ class UserController extends Controller
     {
         $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();
+        $programas = Programas::all();
         $type_rhs = typeRh::all();
 
         // Pasar los roles a la vista 'auth/register'
-        return view('auth.register', ['roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs]);
+        return view('auth.register', ['roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs, 'programas' => $programas]);
     }
 
     public function login(Request $request)
@@ -90,7 +93,7 @@ class UserController extends Controller
             'type_rh_id' => 'required|string',
             'password' => 'required|string|min:6',
             'rol_id' => 'required|string',
-            'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'Program_id' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
 
         ]);
@@ -111,7 +114,7 @@ class UserController extends Controller
             'type_rh_id' => $request->get('type_rh_id'),
             'password' => Hash::make($request->get('password')),
             'rol_id' => $request->get('rol_id'),
-            'trainingProgram' => $request->get('trainingProgram'),
+            'Program_id' => $request->get('Program_id'),
             'yourToken' => $request->get('yourToken')
         ]);
 
@@ -149,7 +152,7 @@ class UserController extends Controller
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'type_rh_id' => 'required|string',
             'rol_id' => 'required|string',
-            'trainingProgram' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'Program_id' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
         ]);
         
@@ -177,7 +180,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::findOrFail($id);
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id','trainingProgram','yourToken')->with('role')->with('TypeDocument')->get();
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id','Program_id','yourToken')->with('role')->with('TypeDocument')->get();
         $user->delete();
         
         return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');

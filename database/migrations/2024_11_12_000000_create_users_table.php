@@ -22,14 +22,19 @@ return new class extends Migration
             $table->unsignedBigInteger('type_document_id');
             $table->unsignedBigInteger('rol_id');
             $table->unsignedBigInteger('type_rh_id');
+            $table->string('Program_id')->nullable();
+
+            $table->string('yourToken')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+
             $table->foreign('type_document_id')->references('id')->on('type_documents');
             $table->foreign('rol_id')->references('id')->on('roles');
             $table->foreign('type_rh_id')->references('id')->on('type_rhs');
-            $table->string('trainingProgram')->nullable();
-            $table->string('yourToken')->nullable();
+ 
+            
             
 
         });

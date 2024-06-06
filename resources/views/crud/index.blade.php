@@ -130,9 +130,9 @@
                                                                         
                                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
                                                                             <label for="yourTraining_update" class="form-label">Programa de formación</label>
-                                                                            <input value="{{$user->trainingProgram}}" type="text" name="trainingProgram" class="form-control" id="yourTraining_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                                            <input value="{{$user->Program_id}}" type="text" name="Program_id" class="form-control" id="yourTraining_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                                             <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
-                                                                            @error('trainingProgram')
+                                                                            @error('Program_id')
                                                                             <li class="text-danger">{{ $message}}</li>
                                                                             @enderror
                                                                         </div>
@@ -299,10 +299,10 @@
                         
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourRol" class="form-label">Rol</label>
-                                                            <select name="rol_id" data-user-id="{{$user->id}}" class="form-select rol_create" id="yourRol" required>
+                                                            <select name="rol_id" data-user-id="{{ $user->id }}" class="form-select rol_create" id="yourRol" required>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($roles as $role)
-                                                                <option id="optionRol" {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
+                                                                <option {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                                                                 @endforeach
                                                             </select>
                                                             <div class="invalid-feedback">Ingrese un rol.</div>
@@ -310,22 +310,28 @@
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{$user->id}}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="training_program">
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{ $user->id }}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="training_program">
                                                             <label for="yourTraining" class="form-label">Programa de formación</label>
-                                                            <input value="{{old('trainingProgram')}}" type="text" name="trainingProgram" class="form-control" id="yourTraining" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                            <select name="Program_id" class="form-control" id="yourTraining" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                                <option value="">- Seleccione -</option>
+                                                                @foreach ($programas as $programa)
+                                                                <option {{ $programa->id == old('Program_id') ? 'selected' : '' }} value="{{ $programa->id }}">{{ $programa->name }}</option>
+                                                                @endforeach
+                                                            </select>
                                                             <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
-                                                            @error('trainingProgram')
+                                                            @error('Program_id')
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{$user->id}}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="token_number">
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{ $user->id }}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="token_number">
                                                             <label for="yourToken" class="form-label">Número de ficha</label>
-                                                            <input value="{{old('yourToken')}}" type="text" name="yourToken" class="form-control" id="yourToken" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                            <input value="{{ old('yourToken') }}" type="text" name="yourToken" class="form-control" id="yourToken" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                             <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
                                                             @error('yourToken')
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
+                                                        
                                                         
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
@@ -351,18 +357,14 @@
                                                         </div>
                         
                         
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                            <button class="btn btn-ba w-100" type="submit">Crear cuenta</button>
-                                                        </div>  
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                                            
+                                                        <div class="modal-footer d-flex justify-content-center gap-2">
+                                                            <button type="submit" class="btn btn-ba px-2">Crear usuario</button>
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
                                                     </form>
                                                 </div>
                                             </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                            </div>
+                                            
                                         </div>
                                     </div>
                                 </div><!-- End Large Modal-->

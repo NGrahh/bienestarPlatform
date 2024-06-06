@@ -53,7 +53,7 @@ class UsersSeeder extends Seeder
                 'email' => $faker->unique()->safeEmail,
                 'type_rh_id' => $faker->numberBetween(1, 5),
                 'password' => Hash::make('password'), // Contraseña común para todos, por simplicidad
-                'trainingProgram' => $faker->sentence(3), // Genera un nombre de programa de formación
+                'Program_id' => $faker->numberBetween(1, 10), // Genera un nombre de programa de formación
                 'yourToken' => $faker->unique()->numerify('#######'), // Genera un número de ficha único
                 'rol_id' => $faker->numberBetween(4,5),
             ]);

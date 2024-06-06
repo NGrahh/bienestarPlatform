@@ -27,7 +27,7 @@ class User extends Authenticatable
         'user_name',
         'password',
         'rol_id',
-        'trainingProgram',
+        'Program_id',
         'yourToken'
     ];
 
