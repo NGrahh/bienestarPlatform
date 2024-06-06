@@ -95,9 +95,9 @@
                                     </div>
                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6" style="display: none;" id="training_program">
                                         <label for="yourTraining" class="form-label">Programa de formación</label>
-                                        <input value="{{$user->trainingProgram}}" type="text" name="trainingProgram" class="form-control" id="yourTraining" required disabled>
+                                        <input value="{{$user->Program_id}}" type="text" name="Program_id" class="form-control" id="yourTraining" required disabled>
                                         <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
-                                        @error('trainingProgram')
+                                        @error('Program_id')
                                         <li class="text-danger">{{ $message}}</li>
                                         @enderror
                                     </div>
