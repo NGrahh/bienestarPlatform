@@ -5,6 +5,12 @@
 @include('layouts.header')
 @include('layouts.menu')
 
+<style>
+  .horas{
+    margin-left: -26px
+  }
+</style>
+
 <main id="main" class="main">
   <section class="section">
     <div class="container">
@@ -13,7 +19,7 @@
           <div class="card mb-3">
             <div class="card-body">
               <div align="center" class="pt-4 pb-2">
-                <h1 class="titulo">Musica</h1>
+                <h1 class="titulo">Arte y Cultura</h1>
                 <div class="todo_contenido">
                   <div class="row separacion">
                     <div class="col-lg-6 contenido">
@@ -56,5 +62,5 @@
     </div>
   </section>
 </main>
-
+@include('layouts.footer')
 @endsection

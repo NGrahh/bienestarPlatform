@@ -115,5 +115,5 @@
     
 </main><!-- End #main -->
 
-
+@include('layouts.footer')
 @endsection

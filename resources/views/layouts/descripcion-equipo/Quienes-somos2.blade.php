@@ -221,4 +221,5 @@
         </div>
     </section>
 </main><!-- End #main -->
+@include('layouts.footer')
 @endsection

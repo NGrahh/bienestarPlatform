@@ -5,6 +5,7 @@
 @include('layouts.header')
 @include('layouts.menu')
 
+
 <main id="main" class="main">
   <section class="section">
     <div class="container">
@@ -60,5 +61,5 @@
     </div>
   </section>
 </main>
-
+@include('layouts.footer')
 @endsection

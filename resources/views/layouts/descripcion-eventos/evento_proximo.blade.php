@@ -17,7 +17,7 @@
   width: 45rem;
 }
 
-img{
+.imagennn{
   width: 100%;
   height: 100%;
   background-repeat: no-repeat; 
@@ -77,10 +77,6 @@ h2{
 }
 
 
-
-
-
-
 </style>
 
 
@@ -96,7 +92,7 @@ h2{
                 <div class="max-conten">
 
                   <div class="mayor">
-                    <img src="https://hips.hearstapps.com/hmg-prod/images/fotos-1533279584.jpg?crop=0.5xw:1xh;center,top&resize=1200:*" alt="">
+                    <img src="https://hips.hearstapps.com/hmg-prod/images/fotos-1533279584.jpg?crop=0.5xw:1xh;center,top&resize=1200:*" alt="" class="imagennn">
                   </div>
                   <div class="informe">
                     <h1>Titulo evento</h1>
@@ -126,5 +122,5 @@ h2{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
+@include('layouts.footer')
 @endsection

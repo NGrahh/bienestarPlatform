@@ -70,5 +70,5 @@
         </div>
     </div>
 </main><!-- End #main -->
-
+@include('layouts.footer')
 @endsection

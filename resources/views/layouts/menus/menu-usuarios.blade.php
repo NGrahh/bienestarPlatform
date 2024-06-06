@@ -42,7 +42,7 @@
         </li>
         <li>
             <a href="{{route('Servicio-Consejeria')}}">
-                <i class="bi bi-circle"></i><span>Consejería</span>
+                <i class="bi bi-circle"></i><span>Liderazgo</span>
             </a>
         </li>
     </ul>
