@@ -9,7 +9,7 @@
   
     <div style="justify-content: center"  class="search-bar">
       <form  class="search-form d-flex align-items-center" method="POST" action="#">
-        <input style="type="text name="query" placeholder="Search" title="Enter search keyword">
+        <input style="type="text name="query" placeholder="- Buscar -" title="Enter search keyword">
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
@@ -36,9 +36,9 @@
             {{-- <span>{{session(['rol_id' => $user->rol_id->name]);}}</span> --}}
           </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
+              <a class="dropdown-item d-flex align-items-center" href="{{route('perfil')}}">
                 <i class="bi bi-person"></i>
-                <span>My Profile</span>
+                <span>Mi Perfil</span>
               </a>
             </li>
             <li>
@@ -48,13 +48,9 @@
             <li>
               <a class="dropdown-item d-flex align-items-center" href="#">
                 <i class="bi bi-gear"></i>
-                <span>Account Settings</span>
+                <span>Ajustes</span>
               </a>
             </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            
             <li>
               <hr class="dropdown-divider">
             </li>

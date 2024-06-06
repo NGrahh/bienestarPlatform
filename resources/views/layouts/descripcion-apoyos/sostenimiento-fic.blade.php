@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title-page','Apoyo Sostenimiento FIC')
 
 @section('content')
 
@@ -74,5 +75,5 @@
         </div>
     </div>
 </main><!-- End #main -->
-
+@include('layouts.footer')
 @endsection

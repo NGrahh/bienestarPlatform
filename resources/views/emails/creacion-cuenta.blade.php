@@ -6,7 +6,6 @@
 	<meta name="format-detection" content="telephone=no" />
 
 	<style> 
-		/* Reset styles */
 		body {
 			margin: 0;
 			padding: 0;
@@ -75,7 +74,7 @@
 			}
 		}
 
-		/* Set color for auto links (addresses, dates, etc.) */
+
 		a,
 		a:hover {
 			color: #127DB3;

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title-page','Apoyo FIC')
 
 @section('content')
 
@@ -30,7 +31,7 @@
                                 <div class="descripcion">
                                     <h2 align="center">Descripcion</h2>
                                     <p align="justify" class="text-center">
-                                        Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la constriccion,
+                                        Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la constricción,
                                         seleccionados como beneficiarios de este apoyo, durante el tiempo que dure respectivo programa de aprendizaje, para sufragar entro
                                         otros: transporte, alimentacion y utiles para su formacion
                                     </p>
@@ -74,5 +75,5 @@
         </div>
     </div>
 </main><!-- End #main -->
-
+@include('layouts.footer')
 @endsection

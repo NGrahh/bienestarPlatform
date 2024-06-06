@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title-page','Nuestro Equipo')
+
 @section('content')
 
 @include('layouts.header')
@@ -219,4 +221,5 @@
         </div>
     </section>
 </main><!-- End #main -->
+@include('layouts.footer')
 @endsection

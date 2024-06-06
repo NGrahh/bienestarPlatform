@@ -2,6 +2,8 @@
 
 @section('content')
 
+@section('title-page','Edición usuario')
+
 @include('layouts.header')
 @include('layouts.menu')
 
@@ -16,7 +18,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                          <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
+                            <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
                         </div>
                         @include('compartido.alertas')
                         <div class="col-sm-12">

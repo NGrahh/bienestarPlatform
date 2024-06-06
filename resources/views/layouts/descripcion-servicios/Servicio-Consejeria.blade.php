@@ -5,6 +5,7 @@
 @include('layouts.header')
 @include('layouts.menu')
 
+
 <main id="main" class="main">
   <section class="section">
     <div class="container">
@@ -40,7 +41,11 @@
                             </ul>
                           </div>
                         </div>
-                        <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                        @if(session('rol_id') == 1)
+                          {{-- <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Solicitar</a></button> --}}
+                        @elseif(session('rol_id') == 5)
+                          <button class="btn btn-success mt-3"><a href="{{route('Servicio-Consejeria')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                        @endif
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">
@@ -56,5 +61,5 @@
     </div>
   </section>
 </main>
-
+@include('layouts.footer')
 @endsection
