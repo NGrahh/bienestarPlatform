@@ -4,12 +4,16 @@
   </a>
   <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>
+      <a href="{{route('events.viewevent')}}">
+        <i class="bi bi-circle"></i><span>Eventos</span>
+      </a>
+    </li>
+    <li>
       <a href="{{route('events.index')}}">
         <i class="bi bi-circle"></i><span>Información de eventos</span>
       </a>
     </li>
   </ul>
-
 </li><!-- End Tables Nav -->
 
 <li class="nav-item">

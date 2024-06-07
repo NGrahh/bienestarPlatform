@@ -99,7 +99,7 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('users.store'))
+            return redirect(route('users.index'))
                 ->withErrors($validator)
                 ->withInput();
         }

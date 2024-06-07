@@ -52,7 +52,7 @@
                     <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                   </div>
                   <div id="form" style="display: none;">
-                    <form action="{{route('formularios.apoyos.form-inscription-supports')}}" class="row g-3 needs-validation" novalidate method="POST">
+                    <form action="#" class="row g-3 needs-validation" novalidate method="POST">
                       @csrf
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">

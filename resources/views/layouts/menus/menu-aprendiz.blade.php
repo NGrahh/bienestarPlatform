@@ -89,4 +89,21 @@
         </li>
     </ul>
 </li>
+<li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#link-nav" data-bs-toggle="collapse" href="#">
+        <i class="ri-customer-service-line"></i><span>Inscripciones</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+    <ul id="link-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+            <a href="{{route('form-inscription-supports')}}">
+                <i class="bi bi-circle"></i>Postulación Apoyo<span></span>
+            </a>
+        </li>
+        <li>
+            <a href="{{route('form-appointment')}}">
+                <i class="bi bi-circle"></i><span>Promoción y prevención de salud</span>
+            </a>
+        </li>
 
+    </ul>
+</li>

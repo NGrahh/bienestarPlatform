@@ -3,16 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Events;
+use App\Models\TypeDimensions;
+use App\Models\typeDayTraining; 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class EventsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent']);
     }
+
+
+    public function viewevent()
+    {
+        $events = Events::all();
+        return view('layouts.descripcion-eventos.proximos_eventos', compact('events'));
+    }
+
+
 
     public function index()
     {
@@ -112,4 +122,32 @@ class EventsController extends Controller
         $event->delete();
         return redirect()->route('events.index')->with('success', 'Evento eliminado correctamente.');
     }
+
+
+    public function showDimensions()
+    {
+        $dimensions_types =TypeDimensions::all(); 
+        return view('formularios.citas.form-appointment', compact('dimensions_types'));
+    }
+
+    public function showStudyTime()
+    {
+        $days_training=typeDayTraining::all(); 
+        return view('formularios.eventos.form-inscription-event', compact('days_training'));
+    }
+
+    public function inscrip()
+    {
+        return view('formularios/apoyos/form-inscription-supports');
+    }
+
+
+
 }
+
+
+
+
+
+
+

@@ -95,7 +95,14 @@ Route::resource('eventos', EventsController::class)->middleware('auth');
 
 // Ruta Formulario para AGENDAR CITA
 Route::get('form-appointment', [EventsController::class, 'showDimensions'])->name('showDimensions');
-Route::post('form-appointment', [EventsController::class, 'form-appointment'])->name('formularios.form-appointment');
+Route::post('form-appointment', [EventsController::class, 'form-appointment'])->name('form-appointment');
+
+
+
+
+// Route::get('/form-appointment', function () {
+//     return view('formularios.citas.form-appointment');
+// })->name('form-appointment');
 
 // Ruta Formulario para CREACIÓN EVENTO
 // Route::get('/form-create-event', [UserController::class, 'form-create-event'])->name('form-create-event');
@@ -114,13 +121,11 @@ Route::post('form-inscription-event', [EventsController::class, 'form-inscriptio
 
 // Ruta Formulario para INSCRIPCIÓN A LOS APOYOS
 Route::get('form-inscription-supports', [EventsController::class, 'inscrip'])->name('inscrip');
-Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios.apoyos.form-inscription-supports');
+Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios-apoyos-inscr');
 
 
-// //Ruta Formulario INSCRIBIRSE A UN APOYO
-// Route::get('/form-inscription-supports', function () {
-//     return view('formularios.apoyos.form-inscription-supports');
-// }); 
+
+
 
 // Rutas CRUD
 Route::get('/listado-usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
@@ -150,7 +155,7 @@ Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('event
 
 Route::get('/menu', function () {
     return view('layouts/menu');
-})->name('menu'); 
+}); 
 
 
 
@@ -232,6 +237,13 @@ Route::get('/eventos', function(){
     return view ('layouts.eventos-ba.eventos');
 })-> name ('eventos');
 
+
+
+
+Route::get('/eventos2', [EventsController::class, 'viewevent'])->name('events.viewevent')->middleware('auth');
+
+
+
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
 // })-> name ('pagina-principal');
@@ -240,3 +252,15 @@ Route::get('/eventos', function(){
 //     return view('layouts.inicio-pagina.pagina-principal');
 // });
 
+
+
+
+
+// Rutas de formularios para inscribirse a los apoyos existentes.
+
+
+//Ruta Formulario INSCRIBIRSE A UN APOYO
+
+Route::get('/form-inscription-supports', function () {
+    return view('formularios.apoyos.form-inscription-supports');
+})->name('form-inscription-supports'); 
