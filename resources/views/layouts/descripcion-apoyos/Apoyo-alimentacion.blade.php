@@ -9,7 +9,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Apoyo de Alimentacion</h1>
+        <h1>Apoyo de alimentación</h1>
     </div><!-- End Page Title -->
 
     <div class="section">
@@ -18,7 +18,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                            <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
+                            <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar <strong>con una cuenta activa.</strong></p>
                         </div>
                         @include('compartido.alertas')
                         <div class="col-sm-12">
@@ -28,32 +28,30 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2 align="center">Descripcion</h2>
-                                    <p align="justify" class="text-center">
-                                      Es aquel que otorga a los aprendices tecnicos y tegnologos de todas las modalidades y jornadas, 
-                                      que cumplen requisitos y cuyo proposito es apoyar la permanecia del aprendiz en su proceso formativo
+                                    <h2>Descripcion: </h2>
+                                    <p align="justify" class="text-start">
+                                      Es aquel que otorga a los aprendices técnicos y tecnólogos de todas las modalidades y jornadas, 
+                                      que cumplen requisitos y cuyo propósito es apoyar la permanencia del aprendiz en su proceso formativo.
                                       </p>
                                 </div>
                                 <div class="botones mt-4 text-center">
                                     <a href="{{route('login')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
-
                                 </div>
-
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          Requisitos
+                                          <strong>Requisitos</strong>
                                         </button>
                                       </h2>
                                       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <!-- List group Numbered -->
                                             <ol class="list-group list-group-numbered" style="text-align: justify">
-                                              <li class="list-group-item">Estar matriculados en un programa de formacion de los niveles técnico o tecnólogos</li>
-                                              <li class="list-group-item">Diligenciar el formato de registro socioeconomico</li>
-                                              <li class="list-group-item">Estar en estado "Induccion" o "En formacion" en el reglamento al aprendiz</li>
-                                              <li class="list-group-item">No ser beneficiario de ningun apoto de sostenimiento</li>
+                                              <li class="list-group-item">Estar matriculados en un programa de formación de los niveles técnico o tecnólogos</li>
+                                              <li class="list-group-item">Diligenciar el formato de registro socioeconómico</li>
+                                              <li class="list-group-item">Estar en estado "Inducción" o "En formación" en el reglamento al aprendiz</li>
+                                              <li class="list-group-item">No ser beneficiario de ningun apoyo de sostenimiento</li>
                                             </ol><!-- End List group Numbered -->
                                         </div>
                                       </div>

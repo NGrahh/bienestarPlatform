@@ -9,7 +9,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Apoyo de Sostenimiento FIC</h1>
+        <h1>Apoyo de sostenimiento FIC</h1>
     </div><!-- End Page Title -->
 
     <div class="section">
@@ -18,7 +18,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                            <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
+                            <p class="small"><strong>Nota: </strong>Se hace constar que; para proceder con la postulación, es indispensable contar con <strong>una cuenta activa.</strong></p>
                         </div>
                         @include('compartido.alertas')
                         <div class="col-sm-12">
@@ -29,23 +29,21 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2 align="center">Descripcion</h2>
-                                    <p align="justify" class="text-center">
-                                        Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la constricción,
-                                        seleccionados como beneficiarios de este apoyo, durante el tiempo que dure respectivo programa de aprendizaje, para sufragar entro
-                                        otros: transporte, alimentacion y utiles para su formacion
+                                    <h2>Descripcion: </h2>
+                                    <p align="justify" class="text-start">
+                                        Es el desembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la constricción,
+                                        seleccionados como beneficiarios de este apoyo, durante el tiempo que dure respectivo programa de aprendizaje, para sufragar transporte, alimentacion y utiles para su formación
                                     </p>
                                 </div>
                                 <div class="botones mt-4 text-center">
                                     <a href="{{route('login')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
 
                                 </div>
-
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          Requisitos
+                                          <strong>Requisitos</strong>
                                         </button>
                                       </h2>
                                       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">

@@ -9,7 +9,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Apoyo de Transporte</h1>
+        <h1>Apoyo de transporte</h1>
     </div><!-- End Page Title -->
 
     <div class="section">
@@ -18,7 +18,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                          <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
+                            <p class="small"><strong>Nota: </strong>Se hace constar que; para proceder con la postulación, es indispensable contar con <strong>una cuenta activa.</strong></p>
                         </div>
                         @include('compartido.alertas')
                         <div class="col-sm-12">
@@ -29,9 +29,9 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2 align="center">Descripcion</h2>
-                                    <p align="justify" class="text-center">
-                                      Es un servicio otorgado a los aprendices de formación presencia en convenido con el servicio de transporte MEGABUS (Por ningun motivo se entrega dinero a los aprendices)
+                                    <h2>Descripcion:</h2>
+                                    <p align="justify" class="text-start">
+                                      Es un servicio otorgado a los aprendices de formación con modalidad en presencial. En convenido con el servicio de transporte público masivo <strong>MEGABUS </strong> (Por ningun motivo se entrega dinero a los aprendices)
                                       consta de 40 pasajes al mes durante 4 meses
                                     </p>
                                 </div>
@@ -44,7 +44,7 @@
                                     <div class="accordion-item">
                                       <h2 class="accordion-header" id="flush-headingOne">
                                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          Requisitos
+                                          <strong>Requisitos</strong>
                                         </button>
                                       </h2>
                                       <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
