@@ -49,7 +49,7 @@
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">
-                      <img class="imagen" src="https://i.ibb.co/8scWv32/png-clipart-logo-servicio-nacional-de-aprendizaje-sena-symbol-national-training-service-dragon-ball.png" alt="Descripción de la imagen">
+                      <img class="imagen mt-3" src="https://i.ibb.co/8scWv32/png-clipart-logo-servicio-nacional-de-aprendizaje-sena-symbol-national-training-service-dragon-ball.png" alt="Descripción de la imagen">
                     </div>
                   </div>
                 </div>
