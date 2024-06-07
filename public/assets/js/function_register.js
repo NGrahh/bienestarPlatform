@@ -1,14 +1,13 @@
 $(document).on('change', '.rol_create', function() {
-    let dataUserId = $(this).data('user-id');
     let rolUser = $(this).val();
 
     if (rolUser == 5) {
-        $('.inputs-to-create-' + dataUserId + ' select').prop('disabled', false);
-        $('.inputs-to-create-' + dataUserId + ' input').prop('disabled', false); // Added to enable input fields
-        $('.inputs-to-create-' + dataUserId).show();
+        $('.inputs-to-create select').prop('disabled', false);
+        $('.inputs-to-create input').prop('disabled', false); // Enable input fields
+        $('.inputs-to-create').show();
     } else {
-        $('.inputs-to-create-' + dataUserId + ' select').prop('disabled', true);
-        $('.inputs-to-create-' + dataUserId + ' input').prop('disabled', true); // Added to disable input fields
-        $('.inputs-to-create-' + dataUserId).hide();
+        $('.inputs-to-create select').prop('disabled', true);
+        $('.inputs-to-create input').prop('disabled', true); // Disable input fields
+        $('.inputs-to-create').hide();
     }
 });

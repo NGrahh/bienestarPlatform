@@ -252,7 +252,7 @@
                                                                 <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
+                                                    
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourlastname" class="form-label">Apellidos</label>
                                                             <input value="{{old('lastname')}}" type="text" name="lastname"class="form-control" id="yourlastname" required>
@@ -261,7 +261,7 @@
                                                                 <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
+                                                    
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourTypeDoc" class="form-label"> Tipo documento</label>
                                                             <select name="type_document_id" class="form-select" id="yourTypeDoc" required>
@@ -275,7 +275,7 @@
                                                                 <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
+                                                    
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourDocument" class="form-label"> N° documento</label>
                                                             <div class="input-group has-validation">
@@ -287,7 +287,7 @@
                                                                 <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
+                                                    
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourEmail" class="form-label">Correo electrónico</label>
                                                             <input value="{{old('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
@@ -296,10 +296,10 @@
                                                                 <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
+                                                    
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourRol" class="form-label">Rol</label>
-                                                            <select name="rol_id" data-user-id="{{ $user->id }}" class="form-select rol_create" id="yourRol" required>
+                                                            <select name="rol_id" class="form-select rol_create" id="yourRol" required>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($roles as $role)
                                                                 <option {{ $role->id == old('rol_id') ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
@@ -310,9 +310,10 @@
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{ $user->id }}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="training_program">
+                                                    
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="training_program" style="{{ old('rol_id') != 5 ? 'display: none;' : '' }}">
                                                             <label for="yourTraining" class="form-label">Programa de formación</label>
-                                                            <select name="Program_id" class="form-control" id="yourTraining" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                            <select name="Program_id" class="form-control" id="yourTraining" required {{ old('rol_id') != 5 ? 'disabled' : '' }}>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($programas as $programa)
                                                                 <option {{ $programa->id == old('Program_id') ? 'selected' : '' }} value="{{ $programa->id }}">{{ $programa->name }}</option>
@@ -323,16 +324,16 @@
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create-{{ $user->id }}" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}" id="token_number">
+                                                    
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="token_number" style="{{ old('rol_id') != 5 ? 'display: none;' : '' }}">
                                                             <label for="yourToken" class="form-label">Número de ficha</label>
-                                                            <input value="{{ old('yourToken') }}" type="text" name="yourToken" class="form-control" id="yourToken" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
+                                                            <input value="{{ old('yourToken') }}" type="text" name="yourToken" class="form-control" id="yourToken" required {{ old('rol_id') != 5 ? 'disabled' : '' }}>
                                                             <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
                                                             @error('yourToken')
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                                                        
-                                                        
+                                                    
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
                                                             <select name="type_rh_id" class="form-select" id="yourTypeRh" required>
@@ -346,7 +347,7 @@
                                                                 <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
+                                                    
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourPassword" class="form-label">Contraseña</label>
                                                             <input type="password" name="password" class="form-control" id="yourPassword" required>
@@ -355,13 +356,13 @@
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
                                                         </div>
-                        
-                        
+                                                    
                                                         <div class="modal-footer d-flex justify-content-center gap-2">
                                                             <button type="submit" class="btn btn-ba px-2">Crear usuario</button>
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
                                                     </form>
+                                                    
                                                 </div>
                                             </div>
                                             
