@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class TypeDimensions extends Model
 {
     use HasFactory;
+    protected $fillable = ['name']; 
 }

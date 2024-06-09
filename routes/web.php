@@ -3,6 +3,7 @@
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CitasController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -127,7 +128,8 @@ Route::post('form-inscription-supports', [EventsController::class, 'form-inscrip
 
 
 
-// Rutas CRUD
+// Rutas CRUD (Create, Read, Update, Delete) Usuarios //
+
 Route::get('/listado-usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
 
 Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
@@ -138,7 +140,7 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
-// // Rutas CRUD Eventos
+//  Rutas CRUD (Create, Read, Update, Delete) Eventos //
 
 Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('auth');
 
@@ -149,6 +151,18 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
 
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
+
+//  Rutas CRUD (Create, Read, Update, Delete) Citas //
+
+Route::get('/listado-citas', [CitasController::class, 'index'])->name('citas.index')->middleware('auth');
+
+Route::get('/show/{id}', [CitasController::class, 'show'])->name('citas.show')->middleware('auth');
+
+Route::get('/edit/{id}', [CitasController::class, 'edit'])->name('citas.edit')->middleware('auth'); 
+
+Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.update')->middleware('auth');
+
+Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
 
 

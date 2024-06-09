@@ -69,10 +69,10 @@
                           </div>
                           <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                             <label for="yourdimensions" class="form-label">Dimension solicitada</label>
-                            <select name="dimensionsWelfare" class="form-select" id="yourdimensions" required>
+                            <select name="dimensions_id" class="form-select" id="yourdimensions" required>
                               <option value="">Seleccionar...</option>
                               @foreach ($dimensions_types as $dimensions_type)
-                              <option {{ $dimensions_type->id == old('dimensionsWelfare') ? 'selected' : '' }} value="{{ $dimensions_type->id }}">{{ $dimensions_type->name }}</option>
+                              <option {{ $dimensions_type->id == old('dimensions_id') ? 'selected' : '' }} value="{{ $dimensions_type->id }}">{{ $dimensions_type->name }}</option>
                               @endforeach
                             </select>
                             <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
@@ -122,9 +122,9 @@
                           </div>
                           <div class="col-sm-12">
                             <label for="yourSubject" class="form-label">Asunto</label>
-                            <textarea class="form-control" cols="30" rows="4" name="SubjectCita"></textarea>
+                            <textarea class="form-control" cols="30" rows="4" name="subjectCita"></textarea>
                             <div class="invalid-feedback">Ingrese un asunto.</div>
-                            @error('SubjectCita')
+                            @error('subjectCita')
                             <li class="text-danger">{{ $message}}</li>
                             @enderror
                           </div>
