@@ -17,9 +17,10 @@ class CitasController extends Controller
 
     public function index()
     {
-        $citas = Citas::all();
+        
+        $citas = Citas::with('typeDimensions')->get();
         $dimensions = TypeDimensions::all();
-        return view('citascrud.citasindex', ['dimension'=>$dimensions,],compact('citas'));
+        return view('citascrud.citasindex',compact('citas', 'dimensions'));
         
     }
 
@@ -36,12 +37,14 @@ class CitasController extends Controller
             'dimensions_id' => 'required|string',
             'email' => 'required | string | email | max:100 | unique:users',
             'mobilenumber'=> 'required|numeric|digits_between:7,12',
-            'hour' => 'required | integer |between:0,23',
+            'date' => 'required|date_format:Y-m-d',
+            'hour' => 'required|date_format:H:i|after_or_equal:08:00|before_or_equal:18:00',
+            
             'subjectCita'=>'required | string | min:1',
         ]);
 
         if ($validator->fails()){
-            return redirect(route('citascrud.index'))
+            return redirect(route('citas.index'))
             ->withErrors($validator)
             ->withInput();
         }
@@ -57,13 +60,14 @@ class CitasController extends Controller
             'dimensions_id'=> $request->get('dimensions_id'),
             'email'=> $request->get('email'),
             'mobilenumber'=> $request->get('mobilenumber'),
+            'date' =>$request->get('date'),
             'hour'=> $request->get('hour'),
             'subjectCita'=> $request->get('subjectCita'),
         ]);
 
         session()->flash('success', 'Cita registrada correctamente!');
 
-        return redirect(route('citascrud.index'));
+        return redirect(route('citas.index'));
 
 
     }
@@ -82,16 +86,18 @@ class CitasController extends Controller
             'dimensions_id' => 'required|string',
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'mobilenumber'=> 'required|numeric|digits_between:7,12',
-            'hour' => 'required | integer |between:0,23',
+            'date' => 'required|date_format:Y-m-d',
+            'hour' => 'required|date_format:H:i|after_or_equal:08:00|before_or_equal:18:00',
             'subjectCita'=>'required | string | min:1',
         ]);
 
         // Obtener la cita que deseas actualizar
         $citas  = Citas::findOrFail($id);
-
+        $dimensions = TypeDimensions::all();
+        
         $citas->update($request->all());
 
-        return redirect()->route('citascrud.index')->with('success', 'Cita actualizada correctamente.');
+        return redirect()->route('citas.index',['dimension'=>$dimensions,])->with('success', 'Cita actualizada correctamente.');
 
     }
 
@@ -99,7 +105,7 @@ class CitasController extends Controller
     {
         $citas = Citas::findOrFail($id);
         $citas->delete();
-        return redirect()->route('citascrud.index')->with('success', 'Cita eliminada correctamente.');
+        return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
     }
 
 

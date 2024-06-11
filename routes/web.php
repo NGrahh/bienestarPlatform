@@ -17,6 +17,40 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
+//////// Ruta validaciones para Iniciar, Registrar y Salir del sistema  ////////
+
+// Ingresar al sistema
+Route::get('/login', function () {return view('auth/login');})->name('login');
+Route::post('login', [UserController::class, 'login'])->name('auth.login');
+
+// Salir del sistema
+Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
+
+// Registrar cuenta
+Route::get('register', [UserController::class, 'register'])->name('auth.register');
+
+////////////////////////////////////////////////////////////////////////////////
+
+//////// Ruta recuperar y restablecer contraseña  ////////
+
+// Ruta para recuperar contraseña
+
+Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
+Route::post('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasenasolicitud'])->name('pass.recuperarcontrasenasolicitud');
+
+// Ruta para cambiar la contraseña
+
+Route::get('/cambiar-contrasena', [PasswordController::class, 'cambiarcontrasena'])->name('pass.cambiarcontrasena');
+Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontrasena'])->name('pass.restablecercontrasena');
+
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
 Route::get('/', function () {
     return view('layouts.inicio-pagina.pagina-principal');
 })->name('pagina-principal');
@@ -55,38 +89,25 @@ Route::get('/index', function () {
 // })->name('index'); 
 
 
-Route::resource('auth', UserController::class);
-
-//RUTA LOG IN (Iniciar Sesión)
-Route::post('login', [UserController::class, 'login'])->name('auth.login');
-
-Route::get('/login', function () {
-    return view('auth/login');
-})->name('login');//-> "Alias"
-
-
-//RUTA LOG OUT (Cerrar Sesión)
-Route::get('/logout', [UserController::class, 'logout'])->name('auth.logout')->middleware('auth');
-
-//RUTA REGISTER (Registrarse)
-Route::get('register', [UserController::class, 'register'])->name('auth.register');
 
 
 
-// RUTA PARA RECUPERAR CONTRASEÑA
-Route::get('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasena'])->name('pass.recuperarcontrasena');
-Route::post('/recuperar-contrasena', [PasswordController::class, 'recuperarcontrasenasolicitud'])->name('pass.recuperarcontrasenasolicitud');
 
-// RUTA PARA CAMBIAR CONTRASEÑA
-Route::get('/cambiar-contrasena', [PasswordController::class, 'cambiarcontrasena'])->name('pass.cambiarcontrasena');
-Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontrasena'])->name('pass.restablecercontrasena');
+
+
+
+
+
+
+
+
 
 
 //RUTAS ENVÍO EMAILS.
 
 //Ruta envió Email para la CREACIÓN DE CUENTA.
 
-Route::resource('eventos', EventsController::class)->middleware('auth');
+
 
 
 
@@ -121,48 +142,11 @@ Route::post('form-inscription-event', [EventsController::class, 'form-inscriptio
 
 
 // Ruta Formulario para INSCRIPCIÓN A LOS APOYOS
+
 Route::get('form-inscription-supports', [EventsController::class, 'inscrip'])->name('inscrip');
 Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios-apoyos-inscr');
 
 
-
-
-
-// Rutas CRUD (Create, Read, Update, Delete) Usuarios //
-
-Route::get('/listado-usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
-
-Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
-
-Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->middleware('auth'); 
-
-Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
-
-Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
-
-//  Rutas CRUD (Create, Read, Update, Delete) Eventos //
-
-Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('auth');
-
-Route::get('/show/{id}', [EventsController::class, 'show'])->name('events.show')->middleware('auth');
-
-Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('auth'); 
-
-Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
-
-Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
-
-//  Rutas CRUD (Create, Read, Update, Delete) Citas //
-
-Route::get('/listado-citas', [CitasController::class, 'index'])->name('citas.index')->middleware('auth');
-
-Route::get('/show/{id}', [CitasController::class, 'show'])->name('citas.show')->middleware('auth');
-
-Route::get('/edit/{id}', [CitasController::class, 'edit'])->name('citas.edit')->middleware('auth'); 
-
-Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.update')->middleware('auth');
-
-Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
 
 
@@ -278,3 +262,58 @@ Route::get('/eventos2', [EventsController::class, 'viewevent'])->name('events.vi
 Route::get('/form-inscription-supports', function () {
     return view('formularios.apoyos.form-inscription-supports');
 })->name('form-inscription-supports'); 
+
+
+
+
+// Rutas Crud's (Create, Read, Update, Delete)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Usuarios ///////////////////////////
+
+Route::resource('auth', UserController::class);
+
+Route::get('/listado-usuarios', [UserController::class, 'index'])->name('users.index')->middleware('auth');
+
+Route::get('/show/{id}', [UserController::class, 'show'])->name('users.show')->middleware('auth');
+
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('users.edit')->middleware('auth'); 
+
+Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update')->middleware('auth');
+
+Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Eventos ///////////////////////////
+
+Route::resource('eventos', EventsController::class)->middleware('auth');
+
+Route::get('/listado-eventos', [EventsController::class, 'index'])->name('events.index')->middleware('auth');
+
+Route::get('/show/{id}', [EventsController::class, 'show'])->name('events.show')->middleware('auth');
+
+Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')->middleware('auth'); 
+
+Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
+
+Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Citas ///////////////////////////
+
+Route::resource('citas', CitasController::class)->middleware('auth');
+
+Route::get('/listado-citas', [CitasController::class, 'index'])->name('citas.index')->middleware('auth');
+
+Route::get('/show/{id}', [CitasController::class, 'show'])->name('citas.show')->middleware('auth');
+
+Route::get('/edit/{id}', [CitasController::class, 'edit'])->name('citas.edit')->middleware('auth'); 
+
+Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.update')->middleware('auth');
+
+Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

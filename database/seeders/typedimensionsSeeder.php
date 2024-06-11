@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\TypeDimensions;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TypeDimensionsSeeder extends Seeder
@@ -13,7 +12,7 @@ class TypeDimensionsSeeder extends Seeder
      */
     public function run(): void
     {
-        $dimensions_types = [
+        $dimensions = [
             ['name' => 'Consejería y atención psicosocial'],
             ['name' => 'Arte y cultura'],
             ['name' => 'Deportes'],
@@ -22,8 +21,8 @@ class TypeDimensionsSeeder extends Seeder
             ['name' => 'Liderazgo']
         ];
         
-        foreach ($dimensions_types as $Dimensions_type) {
-            TypeDimensions::create($Dimensions_type);
+        foreach ($dimensions as $dimension) {
+            TypeDimensions::create($dimension);
         }
     }
 }
