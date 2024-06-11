@@ -43,7 +43,7 @@
                                         <td>{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
                                         <td>{{ $cita->email}}</td>
                                         <td>{{ $cita->mobilenumber}}</td>
-                                        <td>{{ $cita->date ? : 'Sin Hora' }}</td>
+                                        <td>{{ $cita->date}}</td>
                                         <td>{{ $cita->hour}}</td>
                                         <td>{{ $cita->subjectCita }}</td>
         
@@ -59,13 +59,13 @@
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="card-title-ba text-center pb-0 fs-4">Editar Usuario</h5>
+                                                                <h5 class="card-title-ba text-center pb-0 fs-4">Editar Cita</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="card-body">
                                                                     <div class="pt-2 pb-2">
-                                                                        <h5 class="text-center card-title-ba-azul">Ingrese los datos personales para editar la cuenta</h5>
+                                                                        <h5 class="card-title-ba-azul">Ingrese los datos personales para actualizar la cita</h5>
                                                                     </div>
 
                                                                     @include('compartido.alertas')
@@ -162,12 +162,12 @@
                                                 </div><!-- Fin del modal de editar -->
 
                                                 <!-- Botón para abrir el modal de eliminación -->
-                                                <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $cita->id }}" title="Eliminar Usuario">
+                                                <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteCitaModal{{ $cita->id }}" title="Eliminar Usuario">
                                                     <i class="bx bxs-user-x"></i>
                                                 </button>
 
                                                 <!-- Modal de eliminación para cada usuario -->
-                                                <div class="modal fade" id="deleteUserModal{{ $cita->id }}" tabindex="-1">
+                                                <div class="modal fade" id="deleteCitaModal{{ $cita->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -185,13 +185,14 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <p>
-                                                                            <strong>ID de Cita:</strong> {{$cita->id}}<br>
-                                                                            <strong>Nombre:</strong> {{$cita->name}} {{$cita->lastname}}<br>
-                                                                            <strong>Dimensión solicitada:</strong> {{$cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión'}}<br>
-                                                                            <strong>Correo Electrónico:</strong> {{$cita->email}}<br>
-                                                                            <strong>Número de Teléfono Móvil:</strong> {{$cita->mobilenumber}}<br>
-                                                                            <strong>Hora de la Cita:</strong> {{$cita->hour}}<br>
-                                                                            <strong>Asunto de la Cita:</strong> {{$cita->subjectCita}}<br>
+                                                                            <strong>ID de Cita:</strong> '{{$cita->id}}'<br>
+                                                                            <strong>Nombre:</strong> '{{$cita->name}} {{$cita->lastname}}'<br>
+                                                                            <strong>Dimensión solicitada:</strong> '{{$cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión'}}'<br>
+                                                                            <strong>Correo Electrónico:</strong> '{{$cita->email}}'<br>
+                                                                            <strong>Número de Teléfono Móvil:</strong> '{{$cita->mobilenumber}}'<br>
+                                                                            <strong>Fecha de la Cita:</strong> '{{$cita->date}}'<br>
+                                                                            <strong>Hora de la Cita:</strong> '{{$cita->hour}}'<br>
+                                                                            <strong>Asunto de la Cita:</strong> '{{$cita->subjectCita}}'<br>
                                                                         </p>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
 

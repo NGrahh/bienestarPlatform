@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('dimensions_id'); // ID de dimensiones
             $table->string('email'); // Email de la cita
             $table->string('mobilenumber'); // Número de móvil de la cita
+            $table->date('date'); // Número de móvil de la cita
             $table->time('hour'); // Hora de la cita
             $table->string('subjectCita'); // Asunto de la cita
             $table->timestamps();

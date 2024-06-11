@@ -28,7 +28,18 @@
     </li>
   </ul>
 </li>
-
+<li class="nav-item">
+  <a class="nav-link collapsed" data-bs-target="#citas-nav" data-bs-toggle="collapse" href="#">
+    <i class="bx bxs-user-account"></i><span>Citas</span><i class="bi bi-chevron-down ms-auto"></i>
+  </a>
+  <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+    <li>
+      <a href="{{route('citas.index')}}">
+        <i class="bi bi-circle"></i>Información Citas<span></span>
+      </a>
+    </li>
+  </ul>
+</li>
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#supports-nav" data-bs-toggle="collapse" href="#">
     <i class="ri-pantone-line"></i><span>Apoyos</span><i class="bi bi-chevron-down ms-auto"></i>

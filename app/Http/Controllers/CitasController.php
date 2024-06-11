@@ -6,6 +6,7 @@ use App\Models\Citas;
 use App\Models\TypeDimensions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\Rules\ValidHour;
 
 class CitasController extends Controller
 {
@@ -38,8 +39,7 @@ class CitasController extends Controller
             'email' => 'required | string | email | max:100 | unique:users',
             'mobilenumber'=> 'required|numeric|digits_between:7,12',
             'date' => 'required|date_format:Y-m-d',
-            'hour' => 'required|date_format:H:i|after_or_equal:08:00|before_or_equal:18:00',
-            
+            'hour' => ['required', 'date_format:H:i', new ValidHour],
             'subjectCita'=>'required | string | min:1',
         ]);
 
@@ -87,7 +87,7 @@ class CitasController extends Controller
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'mobilenumber'=> 'required|numeric|digits_between:7,12',
             'date' => 'required|date_format:Y-m-d',
-            'hour' => 'required|date_format:H:i|after_or_equal:08:00|before_or_equal:18:00',
+            'hour' => ['required', 'date_format:H:i', new ValidHour],
             'subjectCita'=>'required | string | min:1',
         ]);
 
@@ -107,8 +107,4 @@ class CitasController extends Controller
         $citas->delete();
         return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
     }
-
-
-
-
 }
