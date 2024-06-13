@@ -23,31 +23,25 @@
                     
                     <div class="container">
                         <div class="row row-cols-1 row-cols-md-3 g-4">
-                            @foreach($events as $event)
+
+                            @forelse($events as $event)
                                 <div class="col">
-                                    <div class="card h-100">
+                                    <div class="card h-60">
                                         <img src="{{ asset('images/' . $event->picture) }}" 
                                             alt="Imagen del evento" 
                                             class="card-img-top">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $event->eventname }}</h5>
-                                            <p class="card-text">{{ $event->Subjectevent }}</p>
-                                            <p class="card-text">
+                                            <h5 class="card-text">{{ $event->Subjectevent }}<h5>
+                                            <h5 class="card-text">
                                                 <small class="text-muted">Fecha del Evento: {{ $event->eventdate }}</small>
-                                            </p>
-                                            <p class="card-text">
-                                                <small class="text-muted">Aforo: {{ $event->eventlimit }}</small>
-                                            </p>
-                                            <p class="card-text">
-                                                <small class="text-muted">Inicio Inscripción: {{ $event->datestar }}</small>
-                                            </p>
-                                            <p class="card-text">
-                                                <small class="text-muted">Fin Inscripción: {{ $event->dateendevent }}</small>
-                                            </p>
+                                            <h5>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                            @empty
+                                <h5>No hay eventos disponibles.<h5>
+                            @endforelse
                         </div>
                     </div>
                     

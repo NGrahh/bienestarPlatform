@@ -30,7 +30,7 @@
 </li>
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#citas-nav" data-bs-toggle="collapse" href="#">
-    <i class="bx bxs-user-account"></i><span>Citas</span><i class="bi bi-chevron-down ms-auto"></i>
+    <i class="ri-chat-3-line"></i><span>Citas</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>
@@ -88,7 +88,7 @@
 
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#dimensions-nav" data-bs-toggle="collapse" href="#">
-    <i class="ri-psychotherapy-line"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>
+    <i class="ri-vip-crown-line"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="dimensions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
     <li>

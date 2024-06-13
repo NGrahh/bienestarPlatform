@@ -31,7 +31,7 @@
                                         <th>Número telefónico</th>
                                         <th>Fecha</th>
                                         <th>Hora</th>
-                                        <th>Descripción</th>
+                                        <th>Asunto</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -46,7 +46,6 @@
                                         <td>{{ $cita->date}}</td>
                                         <td>{{ $cita->hour}}</td>
                                         <td>{{ $cita->subjectCita }}</td>
-        
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <!-- Botón para abrir el modal de ditar -->
