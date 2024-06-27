@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Events;
 use App\Models\TypeDimensions;
 use App\Models\typeDayTraining; 
@@ -15,12 +16,52 @@ class EventsController extends Controller
         $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent']);
     }
 
+    private $daysOfWeek = [
+        1 => 'Lunes',
+        2 => 'Martes',
+        3 => 'Miércoles',
+        4 => 'Jueves',
+        5 => 'Viernes',
+        6 => 'Sábado',
+        7 => 'Domingo'
+    ];
+
+    private $months = [
+        1 => 'Enero',
+        2 => 'Febrero',
+        3 => 'Marzo',
+        4 => 'Abril',
+        5 => 'Mayo',
+        6 => 'Junio',
+        7 => 'Julio',
+        8 => 'Agosto',
+        9 => 'Septiembre',
+        10 => 'Octubre',
+        11 => 'Noviembre',
+        12 => 'Diciembre'
+    ];
 
     public function viewevent()
     {
-        $events = Events::all();
+        $events = Events::paginate(6);
+
+        // Traducir día de la semana y nombre del mes para cada evento
+        foreach ($events as $event) {
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+        }
+
         return view('layouts.descripcion-eventos.proximos_eventos', compact('events'));
     }
+
+    private function spanishDayOfWeek($day) {
+        return $this->daysOfWeek[$day];
+    }
+
+    private function spanishMonth($month) {
+        return $this->months[$month];
+    }
+
 
 
 
