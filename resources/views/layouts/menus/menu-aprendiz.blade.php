@@ -4,7 +4,7 @@
     </a>
     <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-            <a href="{{route('evento_proximo')}}">
+            <a href="{{route('events.viewevent')}}">
                 <i class="bi bi-circle"></i>Eventos próximos<span></span>
             </a>
         </li>
@@ -89,21 +89,31 @@
         </li>
     </ul>
 </li>
+
 <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#link-nav" data-bs-toggle="collapse" href="#">
-        <i class="ri-customer-service-line"></i><span>Inscripciones</span><i class="bi bi-chevron-down ms-auto"></i>
+    <a class="nav-link collapsed" data-bs-target="#cita-nav" data-bs-toggle="collapse" href="#">
+        <i class="ri-customer-service-line"></i><span>Formularios</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
-    <ul id="link-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="{{route('form-inscription-supports')}}">
-                <i class="bi bi-circle"></i>Postulación Apoyo<span></span>
-            </a>
-        </li>
+    <ul id="cita-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
             <a href="{{route('form-appointment')}}">
-                <i class="bi bi-circle"></i><span>Promoción y prevención de salud</span>
+                <i class="bi bi-circle"></i>Agendar cita<span></span>
             </a>
         </li>
 
+        <li>
+            <a href="{{route('formularios-apoyos-inscr')}}">
+                <i class="bi bi-circle"></i>Apoyos<span></span>
+            </a>
+        </li>
+
+
+
+
+
+        
     </ul>
 </li>
+
+
+

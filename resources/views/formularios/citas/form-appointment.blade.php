@@ -132,7 +132,7 @@
                             <div class="row mb-"></div>
                           </div>
                           <div align="center" class="col-12">
-                            <button class="btn btn-ba w-50" type="submit">Enviar</button>
+                            <button class="btn btn-ba w-50" type="submit">Solicitar</button>
                           </div>
                         </form>
                       </div>

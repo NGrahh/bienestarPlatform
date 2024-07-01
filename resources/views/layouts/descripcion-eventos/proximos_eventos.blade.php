@@ -151,7 +151,7 @@ class="card-img-top">
                                             </div>
                                         
                                             <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
-                                                Inscribirse Modal
+                                                Inscribirse
                                             </button>
 
                                             <div class="modal fade" id="largeModal{{ $event->id }}" tabindex="-1">
@@ -175,7 +175,7 @@ class="card-img-top">
                                                                         <h6>{{ $event->eventdate }}</h6>
                                                                         <p class="text-muted">Aforo Limite:</p>
                                                                         <h6>{{ $event->eventlimit }}</h6>
-                                                                        <p class="text-muted">Fecha Incial de Inscripcion:</p>
+                                                                        <p class="text-muted">Fecha Incial de Inscripción:</p>
                                                                         <h6>{{ $event->datestar }}</h6>
                                                                         <p class="text-muted">Fecha Final de la Inscripción:</p>
                                                                         <h6>{{ $event->dateendevent }}</h6>
@@ -183,8 +183,8 @@ class="card-img-top">
                                                                         <h6>{{ $event->Subjectevent }}</h6>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                                        <button type="button" class="btn btn-ba btn-block"><a href="{{route('showStudyTime')}}">Inscribirse</a></button>
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                        <button type="button" class="btn btn-ba "><a style="color: white" href="{{route('showStudyTime')}}">Inscribirse</a></button>
                                                                     </div>
                                                                 </div>
                                                             </div>

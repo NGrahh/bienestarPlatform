@@ -40,8 +40,8 @@
                             </ul>
                           </div>
                         </div>
-                        @if(session('rol_id') == 1)
-                          {{-- <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Solicitar</a></button> --}}
+                        @if(session('rol_id') == 5)
+                          <button class="btn btn-success mt-3"><a href="{{route('form-appointment')}}" class="solicitar" style="color: black;">Solicitar</a></button>
                         @elseif(session('rol_id') == 5)
                           <button class="btn btn-success mt-3"><a href="{{route('Servicio-Consejeria')}}" class="solicitar" style="color: black;">Solicitar</a></button>
                         @endif

@@ -45,7 +45,11 @@
                             </ul>
                           </div>
                         </div>
-                        <button class="btn btn-success ms-2"><a href="{{route('login')}}" class="solicitar" style="color: black;">Inscribirse</a></button>
+                        @if(session('rol_id') == 5)
+                          <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                        @elseif(session('rol_id') == 1)
+                          <button class="btn btn-success ms-2"><a href="{{route('login')}}" class="solicitar" style="color: black;">Inscribirse</a></button>
+                      @endif
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">
