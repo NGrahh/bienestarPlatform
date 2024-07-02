@@ -65,11 +65,11 @@ Route::get('/block', function () {
 
 
 Route::get('/', function () {
-    return view('compartido.home');
+    return view('layouts.inicio-pagina.pagina-principal');
 })->name('home');
 
-Route::get('/home', function () {
-    return view('compartido.home');
+Route::get('/Bienvenido', function () {
+    return view('layouts.inicio-pagina.pagina-principal');
 })->name('home');
 
 //Ruta para visualizar el perfil
@@ -208,7 +208,7 @@ Route::get('/apoyo-alimentacion', function(){
     return view ('layouts.descripcion-apoyos.apoyo-alimentacion');
 })-> name ('Apoyo-alimentacion');
 
-Route::get('/quienes-somos', function(){
+Route::get('/Nuestro-equipo', function(){
     return view('layouts.descripcion-equipo.quienes-somos2');
 })-> name ('Nosotros');
 

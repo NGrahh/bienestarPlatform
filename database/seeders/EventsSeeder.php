@@ -16,10 +16,10 @@ class EventsSeeder extends Seeder
         $faker = Faker::create();
 
         // Crear 20 eventos adicionales con datos aleatorios
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             Events::create([
                 'eventname'    => $faker->sentence(3), // Nombre del evento
-                'picture'      => $faker->imageUrl(640, 480, 'events', true), // URL de una imagen de evento
+                'picture'      => $faker->imageUrl(400, 400, 'events', true), // URL de una imagen de evento
                 'eventdate'    => $faker->dateTimeBetween('-1 years', '+1 years'), // Fecha del evento
                 'eventlimit'   => $faker->numberBetween(50, 200), // Límite de participantes
                 'datestar'     => $faker->dateTimeBetween('-1 years', 'now'), // Fecha de inicio del evento

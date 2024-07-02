@@ -27,34 +27,37 @@
                                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
                                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
                                     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
                                 </div>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img src="https://cadenaser.com/resizer/U8f_GMYikwDB6TcQDajHRFsnheM=/990x743/filters:format(jpg):quality(70)/cloudfront-eu-central-1.images.arcpublishing.com/prisaradio/PUHDUWOGURLUJJSESSCUIPY7PE.jpg" class="d-block w-100" alt="Deportes">
+                                        <img src="{{asset('img/Deportes.png')}}" class="d-block w-100 rounded" alt="Deportes">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="https://colegioruzafa.com/wp-content/uploads/El-papel-de-un-auxiliar-de-enfermer%C3%ADa-en-un-hospital-1080x675.jpg" class="d-block w-100" alt="Enfermería">
+                                        <img src="{{asset('img/Consejeria.png')}}" class="d-block w-100 rounded" alt="Consejeria">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="https://static.wikia.nocookie.net/psicologia/images/7/73/Que-es-psicologia.jpg/revision/latest/scale-to-width-down/1200?cb=20181002142724&path-prefix=es" class="d-block w-100" alt="Psicología">
-                                    </div>
-                                    {{-- ///// --}}
-                                    <div class="carousel-item">
-                                        <img src="https://concepto.de/wp-content/uploads/2020/03/musica-e1584123209397.jpg" class="d-block w-100" alt="Música">
+                                        <img src="{{asset('img/Arte.png')}}" class="d-block w-100 rounded" alt="Arte">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="https://www.enfoquealafamilia.com/wp-content/uploads/2021/01/Consejeria-Ecuador-10-.png" class="d-block w-100" alt="Consejería">
+                                        <img src="{{asset('img/Salud.png')}}" class="d-block w-100 rounded" alt="Salud">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('img/Apoyos.png')}}" class="d-block w-100 rounded" alt="Apoyos">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="{{asset('img/Liderazgo.png')}}" class="d-block w-100 rounded" alt="Liderazgo">
                                     </div>
                                 </div>
 
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Previous</span>
-                                  </button>
-                                  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+                                    <span class="visually-hidden">Anterior</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                    <span class="visually-hidden">Next</span>
-                                  </button>
+                                    <span class="visually-hidden">Siguiente</span>
+                                </button>
 
                             </div><!-- End Slides with indicators -->
                         </div>
