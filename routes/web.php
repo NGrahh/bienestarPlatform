@@ -236,7 +236,9 @@ Route::get('/eventos', function(){
 })-> name ('eventos');
 
 
-
+Route::get('/apoyos-sostenimiento', function(){
+    return view ('layouts\descripcion-servicios\Servicio-apoyos-sostenimiento');
+})-> name ('apoyos-sostenimiento');
 
 Route::get('/eventos2', [EventsController::class, 'viewevent'])->name('events.viewevent')->middleware('auth');
 
