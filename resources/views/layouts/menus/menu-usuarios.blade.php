@@ -4,17 +4,12 @@
     </a>
     <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-            <a href="{{route('evento_proximo')}}">
-                <i class="bi bi-circle"></i>Eventos próximos<span></span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('evento_anterior')}}">
-                <i class="bi bi-circle"></i><span>Eventos pasados</span>
+            <a href="{{route('events.viewevent')}}">
+                <i class="bi bi-circle"></i>Información eventos<span></span>
             </a>
         </li>
     </ul>
-</li><!-- End Tables Nav -->
+</li>
 <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
         <i class="ri-customer-service-line"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>

@@ -8,6 +8,7 @@ use App\Models\TypeDimensions;
 use App\Models\typeDayTraining; 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class EventsController extends Controller
 {
@@ -41,26 +42,42 @@ class EventsController extends Controller
         12 => 'Diciembre'
     ];
 
-    public function viewevent()
+    public function viewEvent()
     {
-        $events = Events::paginate(6);
-
+        $currentDate = date('Y-m-d');
+    
+        $upcomingEvents = Events::where('eventdate', '>=', $currentDate)->orderBy('eventdate', 'asc')->paginate(3);
+        $pastEvents = Events::where('eventdate', '<', $currentDate)->orderBy('eventdate', 'desc')->paginate(3);
+    
         // Traducir día de la semana y nombre del mes para cada evento
-        foreach ($events as $event) {
+        foreach ($upcomingEvents as $event) {
             $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
             $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
         }
-
-        return view('layouts.descripcion-eventos.proximos_eventos', compact('events'));
+    
+        foreach ($pastEvents as $event) {
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+        }
+    
+        return view('layouts.descripcion-eventos.proximos_eventos', [
+            'upcomingEvents' => $upcomingEvents,
+            'pastEvents' => $pastEvents,
+            'currentDate' => $currentDate
+        ]);
     }
-
-    private function spanishDayOfWeek($day) {
+    
+    private function spanishDayOfWeek($day)
+    {
         return $this->daysOfWeek[$day];
     }
-
-    private function spanishMonth($month) {
+    
+    private function spanishMonth($month)
+    {
         return $this->months[$month];
     }
+    
+    
 
 
 

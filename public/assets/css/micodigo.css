@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@200&display=swap');
+
+
 
 .btn-ba {
     --bs-btn-color: #fff;
@@ -170,3 +173,22 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* sombra ligera */
     margin-bottom: 10px; /* espacio entre el contenedor y el botón */
 }
+
+
+
+
+.titulo-corp {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 35px;
+    color:#39A900;
+}
+
+/* h1, h2, h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600; 
+}
+
+p {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 400; 
+} */
