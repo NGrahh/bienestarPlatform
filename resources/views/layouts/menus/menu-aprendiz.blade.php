@@ -90,30 +90,6 @@
     </ul>
 </li>
 
-<li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#cita-nav" data-bs-toggle="collapse" href="#">
-        <i class="ri-customer-service-line"></i><span>Formularios</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="cita-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="{{route('form-appointment')}}">
-                <i class="bi bi-circle"></i>Agendar cita<span></span>
-            </a>
-        </li>
-
-        <li>
-            <a href="{{route('formularios-apoyos-inscr')}}">
-                <i class="bi bi-circle"></i>Apoyos<span></span>
-            </a>
-        </li>
-
-
-
-
-
-        
-    </ul>
-</li>
 
 
 
