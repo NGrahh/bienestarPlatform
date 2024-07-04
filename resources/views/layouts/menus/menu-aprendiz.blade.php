@@ -5,14 +5,14 @@
     <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
             <a href="{{route('events.viewevent')}}">
-                <i class="bi bi-circle"></i>Eventos próximos<span></span>
+                <i class="bi bi-circle"></i>Eventos - Próximos y Pasados<span></span>
             </a>
         </li>
-        <li>
+        <!-- <li>
             <a href="{{route('evento_anterior')}}">
                 <i class="bi bi-circle"></i><span>Eventos pasados</span>
             </a>
-        </li>
+        </li> -->
     </ul>
 </li><!-- End Tables Nav -->
 <li class="nav-item">
@@ -41,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="{{route('apoyos-sostenimiento')}}">
                 <i class="bi bi-circle"></i><span>Apoyos de sostenimiento</span>
             </a>
         </li>
