@@ -243,6 +243,30 @@ Route::get('/apoyos-sostenimiento', function(){
 Route::get('/eventos2', [EventsController::class, 'viewevent'])->name('events.viewevent')->middleware('auth');
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//RUTAS FORMULARIO INCRIPCIÓN A APOYOS DE SOSTENIMIENTO /
+/////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/formulario-inscripcion-apoyos', function(){
+    return view ('formularios\apoyos\form-inscription-supports');
+})-> name ('formulario-inscripcion-apoyos');
+
+Route::get('/formulario-inscripcion-apoyo-alimentacion', function(){
+    return view ('formularios\apoyos\form-inscription-supports-food');
+})-> name ('formulario-inscripcion-apoyo-alimentacion');
+
+Route::get('/formulario-inscripcion-apoyo-regular', function(){
+    return view ('formularios\apoyos\form-inscription-supports-regular');
+})-> name ('formulario-inscripcion-apoyo-regular');
+
+Route::get('/formulario-inscripcion-apoyo-plan-datos', function(){
+    return view ('formularios\apoyos\form-inscription-supports-dates');
+})-> name ('formulario-inscripcion-apoyo-plan-datos');
+
+Route::get('/formulario-inscripcion-apoyo-transporte', function(){
+    return view ('formularios\apoyos\form-inscription-supports-transport');
+})-> name ('formulario-inscripcion-apoyo-transporte');
+
 
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');

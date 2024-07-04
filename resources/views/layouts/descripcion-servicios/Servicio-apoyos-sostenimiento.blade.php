@@ -45,7 +45,7 @@ img{
                             <div class="card-body">
                             <h5 class="card-title text-center">FIC</h5>
                                 <p class="card-text"></p>
-                                <a href="#" class="btn btn-ba w-100 hidden">Inscribirse</a>
+                                <a href="{{route('formulario-inscripcion-apoyos')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                                 </div>
                                             </div>
                                             <!-- Carta apoyo regular -->
@@ -54,16 +54,16 @@ img{
                             <div class="card-body">
                             <h5 class="card-title text-center"> Regular</h5>
                                 <p class="card-text"></p>
-                                <a href="#" class="btn btn-ba w-100 hidden">Inscribirse</a>
+                                <a href="{{route('formulario-inscripcion-apoyo-regular')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                                 </div>
                                             </div>
                                             <!-- Carta apoyo transporte -->
                                             <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded cartita" style="width: 18rem;">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sena_Colombia_logo.svg/2090px-Sena_Colombia_logo.svg.png" class="card-img-top" alt="">
+                            <img src="https://upload.wikimedia.org/wikipedia/en/a/a1/Megabus_Pereira_logo.png" class="card-img-top" alt="">
                             <div class="card-body">
                             <h5 class="card-title text-center"> Transporte</h5>
                                 <p class="card-text"></p>
-                                <a href="#" class="btn btn-ba w-100 hidden">Inscribirse</a>
+                                <a href="{{route('formulario-inscripcion-apoyo-transporte')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                                 </div>
                                             </div>
                                             <!-- Carta apoyo de alimentacion -->
@@ -72,7 +72,7 @@ img{
                             <div class="card-body">
                             <h5 class="card-title text-center"> Alimentación</h5>
                                 <p class="card-text"></p>
-                                <a href="#" class="btn btn-ba w-100 hidden">Inscribirse</a>
+                                <a href="{{route('formulario-inscripcion-apoyo-alimentacion')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                                 </div>
                                             </div>
                                             <!-- Carta apoyo de plan de datos -->
@@ -81,7 +81,7 @@ img{
                             <div class="card-body">
                             <h5 class="card-title text-center"> Plan de datos</h5>
                                 <p class="card-text"></p>
-                                <a href="#" class="btn btn-ba w-100 hidden">Inscribirse</a>
+                                <a href="{{route('formulario-inscripcion-apoyo-plan-datos')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                                 </div>
                                             </div>
                                         </div>
