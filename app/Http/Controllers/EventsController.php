@@ -6,15 +6,17 @@ namespace App\Http\Controllers;
 use App\Models\Events;
 use App\Models\TypeDimensions;
 use App\Models\typeDayTraining; 
+use App\Models\Programas;
+use App\Models\User;
+use App\Models\Event_registrations;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class EventsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent','viewEventUser']);
     }
 
     private $daysOfWeek = [
@@ -42,7 +44,32 @@ class EventsController extends Controller
         12 => 'Diciembre'
     ];
 
-    public function viewEvent()
+    public function viewevent()
+    {
+        $currentDate = date('Y-m-d');
+    
+        $upcomingEvents = Events::where('eventdate', '>=', $currentDate)->orderBy('eventdate', 'asc')->paginate(3);
+        $pastEvents = Events::where('eventdate', '<', $currentDate)->orderBy('eventdate', 'desc')->paginate(3);
+    
+        // Traducir día de la semana y nombre del mes para cada evento
+        foreach ($upcomingEvents as $event) {
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+        }
+    
+        foreach ($pastEvents as $event) {
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+        }
+    
+        return view('layouts.descripcion-eventos.proximos_eventos', [
+            'upcomingEvents' => $upcomingEvents,
+            'pastEvents' => $pastEvents,
+            'currentDate' => $currentDate
+        ]);
+    }
+
+    public function viewEventUser()
     {
         $currentDate = date('Y-m-d');
     
@@ -188,11 +215,11 @@ class EventsController extends Controller
         return view('formularios.citas.form-appointment', compact('dimensions_types'));
     }
 
-    public function showStudyTime()
-    {
-        $days_training=typeDayTraining::all(); 
-        return view('formularios.eventos.form-inscription-event', compact('days_training'));
-    }
+    // public function showStudyTime()
+    // {
+        
+    //     return view('formularios.eventos.form-inscription-event', compact());
+    // }
 
     public function inscrip()
     {
@@ -200,12 +227,47 @@ class EventsController extends Controller
     }
 
 
+    public function showRegistrationForm($id)
+    {
+        $event = Events::findOrFail($id);
+        $days_training=typeDayTraining::all();
+        $programas = Programas::find(session('Program_id'));
+        $user = auth()->user();
+        $document = $user->document; 
+        return view('formularios.eventos.form-inscription-event', compact('event','days_training', 'programas', 'document'));
+    }
+
+    public function register(Request $request, $eventId)
+    {
+        $event = Events::findOrFail($eventId);
+    
+        // Verificar si el usuario ya está inscrito
+        $registration = Event_registrations::where('event_id', $event->id)
+            ->where('user_id', auth()->id())
+            ->first();
+    
+        if ($registration) {
+            return redirect()->back()->with('error', 'Ya estás inscrito en este evento.');
+        }
+    
+        // Verificar si quedan cupos disponibles
+        if ($event->eventlimit <= 0) {
+            return redirect()->back()->with('error', 'Este evento ha alcanzado su límite de inscripciones.');
+        }
+    
+        // Reducir el límite de aforo en una unidad
+        $event->eventlimit -= 1;
+    
+        // Guardar el evento actualizado en la base de datos
+        $event->save();
+    
+        // Registrar al usuario en el evento
+        Event_registrations::create([
+            'event_id' => $event->id,
+            'user_id' => auth()->id(),
+        ]);
+    
+        return redirect()->back()->with('success', 'Te has inscrito en el evento exitosamente.');
+    }
 
 }
-
-
-
-
-
-
-

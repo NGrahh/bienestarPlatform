@@ -12,7 +12,7 @@
     <div class="pagetitle">
         <h1>Gestión de eventos</h1>
     </div><!-- End Page Title -->
-
+    @include('compartido.alertas')
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -51,7 +51,7 @@
                                                     <i class="bx bxs-user-detail"></i>
                                                 </button>
 
-                                                <!-- Modal de edición para cada usuario -->
+                                                <!-- Modal de edición para cada evento -->
                                                 <div class="modal fade" id="editEventModal{{ $event->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                                         <div class="modal-content">
@@ -64,7 +64,7 @@
                                                                     <div class="pt-2 pb-2">
                                                                         <h5 class="text-center card-title-ba-azul">Ingrese los datos para editar el evento</h5>
                                                                     </div>
-                                                                    @include('compartido.alertas')
+                                                                    
                                                                     <form action="{{ route('events.update', ['id' => $event->id]) }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                                                                         @csrf
                                                                         @method('PUT')
@@ -98,7 +98,7 @@
 
                                                                         <div class="col-12 text-center">
                                                                             <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
-                                                                            <div class="mb-3">
+                                                                            <div class="mb-3 image-container">
                                                                                 <img src="{{ asset('images/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
                                                                             </div>
                                                                             <input type="file" name="picture" class="form-control" id="picture">
@@ -166,7 +166,7 @@
                                                                 </h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            @include('compartido.alertas')
+                                                            
                                                             <div class="modal-body">
                                                                 <div class="card-body">
                                                                     <form action="{{ route('events.destroy', ['id' => $event->id]) }}" method="POST">

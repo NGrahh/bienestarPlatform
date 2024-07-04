@@ -22,7 +22,7 @@ class UsersSeeder extends Seeder
             'lastname' => 'user',
             'user_name' => 'admin',
             'type_document_id' => 2,
-            'document' => 1010,
+            'document' => 101010101,
             'email' => 'admin@gmail.com',
             'type_rh_id' => 1,
             'password' => Hash::make('123456'),
@@ -39,7 +39,7 @@ class UsersSeeder extends Seeder
                 'document' => $faker->unique()->randomNumber(8),
                 'email' => $faker->unique()->safeEmail,
                 'type_rh_id' => $faker->numberBetween(1, 5),
-                'password' => Hash::make('password'), // Contraseña común para todos, por simplicidad
+                'password' => Hash::make('password'),
                 'rol_id' => $faker->numberBetween(1, 3),
             ]);
         }
@@ -52,9 +52,9 @@ class UsersSeeder extends Seeder
                 'document' => $faker->unique()->randomNumber(8),
                 'email' => $faker->unique()->safeEmail,
                 'type_rh_id' => $faker->numberBetween(1, 5),
-                'password' => Hash::make('password'), // Contraseña común para todos, por simplicidad
-                'Program_id' => $faker->numberBetween(1, 10), // Genera un nombre de programa de formación
-                'yourToken' => $faker->unique()->numerify('#######'), // Genera un número de ficha único
+                'password' => Hash::make('password'), 
+                'Program_id' => $faker->numberBetween(1, 10), 
+                'yourToken' => $faker->unique()->numerify('#######'), 
                 'rol_id' => $faker->numberBetween(4,5),
             ]);
         }

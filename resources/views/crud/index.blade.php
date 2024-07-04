@@ -12,9 +12,9 @@
     <div class="pagetitle">
         <h1>Operaciones de gestión de Usuarios</h1>
     </div><!-- End Page Title -->
-    
+    @include('compartido.alertas')
     <section class="section">
-
+        
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
