@@ -82,11 +82,16 @@ Route::get('/index', function () {
     return view('index');
 })->name('index'); 
 
+Route::get('/apoyos-dimen', function () {
+    return view('layouts.dimension-apoyos.apoyos-dimen');
+})->name('apoyos-dimen');
+
 //RUTA PARA OBSERVAR EL INDEX
 
 // Route::get('/index', function () {
 //     return view('index');
 // })->name('index'); 
+
 
 
 

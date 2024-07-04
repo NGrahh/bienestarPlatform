@@ -15,7 +15,7 @@
             <div class="card-body">
               <div align="center" class="pt-4 pb-2">
                 <h1 class="mt-3 mb-3">Consejería</h1>
-                <div class="todo_contenido">
+                <divv class="todo_contenido">
                   <div class="row separacion">
                     <div class="col-lg-6 contenido">
                       <h3 class="Descripcion">Descripción</h3>
@@ -51,7 +51,7 @@
                       <img class="imagen mt-3" src="https://i.ibb.co/8scWv32/png-clipart-logo-servicio-nacional-de-aprendizaje-sena-symbol-national-training-service-dragon-ball.png" alt="Descripción de la imagen">
                     </div>
                   </div>
-                </div>
+                </divv>
               </div>
             </div>
           </div>
