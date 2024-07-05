@@ -137,6 +137,10 @@
                         <button class="btn btn-ba w-50" type="submit">Enviar</button>
                       </div>
                     </form>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                      <label class="form-label">Formato socioeconomico</label><br>
+                      <a href="https://bienestarccysregatl.com.co/apoyo-sost/formato_reg_soc.docx">Descargar</a>
+                    </div>
                   </div>
                 </div>
               </div>
