@@ -75,7 +75,7 @@ Route::get('/Bienvenido', function () {
 //Ruta para visualizar el perfil
 Route::get('/mi-perfil', function () {
     return view('compartido.perfil');
-})->name('perfil');
+})->name('perfil')->middleware('auth');
 
 //RUTA INDEX
 Route::get('/index', function () {
@@ -245,7 +245,7 @@ Route::get('/apoyos-sostenimiento', function(){
     return view ('layouts\descripcion-servicios\Servicio-apoyos-sostenimiento');
 })-> name ('apoyos-sostenimiento');
 
-Route::get('/eventos2', [EventsController::class, 'viewevent'])->name('events.viewevent')->middleware('auth');
+Route::get('/Eventos', [EventsController::class,'viewevent'])->name('events.viewevent')->middleware('auth');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -272,6 +272,8 @@ Route::get('/formulario-inscripcion-apoyo-transporte', function(){
     return view ('formularios\apoyos\form-inscription-supports-transport');
 })-> name ('formulario-inscripcion-apoyo-transporte');
 
+
+Route::get('/Informacion-eventos', [EventsController::class, 'viewEventUser'])->name('events.viewEventUser');
 
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
@@ -330,6 +332,12 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
 
 Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
+
+
+// Registrar persona a un EVENTO
+
+Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
+Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

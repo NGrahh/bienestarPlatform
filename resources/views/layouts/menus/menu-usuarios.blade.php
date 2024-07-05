@@ -4,7 +4,7 @@
     </a>
     <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-            <a href="{{route('events.viewevent')}}">
+            <a href="{{route('events.viewEventUser')}}">
                 <i class="bi bi-circle"></i>Información eventos<span></span>
             </a>
         </li>

@@ -156,6 +156,13 @@ class UserController extends Controller
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
         ]);
         
+            // Verificar si hay errores en la validación
+        if ($request->fails()) {
+            return redirect()->route('users.update', $id)
+                ->withErrors($request)
+                ->withInput()
+                ->with('error', 'Ha ocurrido un error en el formulario.');
+        }
         // Obtener el usuario que deseas actualizar
         $user = User::findOrFail($id);
     
