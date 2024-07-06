@@ -256,7 +256,7 @@ p {
     position: fixed;
     top: 50px;
     right: 10px;
-    z-index: 1050;
+    z-index: 100000000000000000000000000;
     width: 320px;
     /* background-color: white; */
     border-radius: 10px;

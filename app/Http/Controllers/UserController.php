@@ -99,9 +99,12 @@ class UserController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('users.index'))
+            return redirect()->route('users.index')
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->with('error', 'Hubo un problema con uno de los campos. Por favor, verifica los datos ingresados.')
+                ->with('modal_open')
+                ->with('modal_reopen', true);
         }
 
         User::create([
@@ -143,8 +146,8 @@ class UserController extends Controller
 
     public function update(Request $request, string $id)
     {
-        // Validar los datos del formulario
-        $request->validate([
+        // Validar los datos de la solicitud
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|between:2,100',
             'lastname' => 'required|string|between:2,100',
             'type_document_id' => 'required|string',
@@ -152,38 +155,35 @@ class UserController extends Controller
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'type_rh_id' => 'required|string',
             'rol_id' => 'required|string',
-            'Program_id' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
-            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
+            'Program_id' => 'required_if:rol_id,5|string',
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12'
         ]);
+    
         
-            // Verificar si hay errores en la validación
-        if ($request->fails()) {
-            return redirect()->route('users.update', $id)
-                ->withErrors($request)
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            $user = User::findOrFail($id);
+            $currentPage = $request->input('currentPage', 0);
+            return redirect()->route('users.index')
+                ->withErrors($validator)
                 ->withInput()
-                ->with('error', 'Ha ocurrido un error en el formulario.');
+                ->with('current_page', $currentPage)
+                ->with('error', 'Hubo un problema con uno de los campos. Por favor, verifica los datos ingresados.')
+                ->with('modal_open', $user->id)
+                ->with('reopen_modal', true);
         }
+    
         // Obtener el usuario que deseas actualizar
         $user = User::findOrFail($id);
     
         // Actualizar los campos del usuario con los datos del formulario
-        $user->update($request->all());
+        $user->update($request->except(['password']));
     
         // Redireccionar a una página específica o retornar algún mensaje de éxito
         return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
-
     }
     
-    /**
-     * Remove the specified resource from storage.
-     */
-    // public function destroy($id)
-    // {
-    //     $user = User::findOrFail($id);
-    //     $user->delete();
-
-    //     return redirect()->route('users.index')->with('users', $users)->with('success', 'Usuario eliminado correctamente.');
-    // }
+    
     public function destroy($id)
     {
         $user = User::findOrFail($id);

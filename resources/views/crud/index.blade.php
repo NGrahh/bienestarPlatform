@@ -13,6 +13,7 @@
         <h1>Operaciones de gestión de Usuarios</h1>
     </div><!-- End Page Title -->
     @include('compartido.alertas')
+    
     <section class="section">
         
         <div class="row">
@@ -22,6 +23,7 @@
                         <h5 class="card-title">Información de usuarios</h5>
                         <div class="table-responsive">
                             <table class="table datatable table-striped">
+                                <input type="hidden" id="currentPage" name="currentPage" value="">
                                 <thead>
                                     <tr>
                                         <th>Id</th>
@@ -44,12 +46,13 @@
                                         <td>{{ $user->role->name }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <!-- Botón para abrir el modal de ditar -->
+                                            
+                                                <!-- Botón para abrir el modal para actualizar el usuario-->
                                                 <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editUserModal{{ $user->id }}" title="Editar usuario">
                                                     <i class="bx bxs-user-detail"></i>
                                                 </button>
 
-                                                <!-- Modal de edición para cada usuario -->
+                                                <!-- Modal de actualizar para cada usuario -->
                                                 <div class="modal fade" id="editUserModal{{ $user->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                                         <div class="modal-content">
@@ -66,6 +69,7 @@
                                                                     <form action="{{ route('users.update', ['id' => $user->id]) }}" class="row g-3 needs-validation" novalidate method="POST">
                                                                         @csrf
                                                                         @method('PUT')
+                                                                        <input type="hidden" id="currentPage" name="currentPage" value="">
                                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                                             <label for="yourName" class="form-label">Nombre</label>
                                                                             <input value="{{$user->name }}" type="text" name="name" class="form-control" id="yourName" required>
@@ -171,8 +175,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div><!-- Fin del modal de editar -->
+                                                </div><!-- Fin del modal de actualizar -->
 
+                                                
                                                 <!-- Botón para abrir el modal de eliminación -->
                                                 <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $user->id }}" title="Eliminar Usuario">
                                                     <i class="bx bxs-user-x"></i>
@@ -222,9 +227,24 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            {{--///////////////////////////////////////////////////////////////////////////--}}
+                            {{-- Script para capturar la pagina en la cula se ubica el usuario a modificar --}}
+                            <script>
+                                $(document).ready(function() {
+                                    var table = $('.datatable').DataTable();
+                            
+                                    // Capturar la página actual al enviar el formulario
+                                    $('form').on('submit', function() {
+                                        var pageInfo = table.page.info();
+                                        $('#currentPage').val(pageInfo.page);
+                                    });
+                                });
+                            </script>
+                            {{--///////////////////////////////////////////////////////////////////////////--}}
+                            
                             <div class="d-grid gap-1 d-md-flex justify-content-md-end">
                                 <!-- Botón para abrir el modal de creación nuevo usuario -->
-                                <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal">
+                                <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal" >
                                     Crear Cuenta
                                 </button>
                                 <!-- Modal de creación para cada usuario -->
@@ -242,14 +262,14 @@
                                                         <h5 class="text-center card-title-ba-azul">Ingrese los datos personales para crear una cuenta</h5>
                                                     </div>
                                                     
-                                                    <form action="{{route('auth.store')}}" class="row g-3 needs-validation" novalidate method="POST">
+                                                    <form id="form-new-user" action="{{route('auth.store')}}" class="row g-3 needs-validation registro-usuario" novalidate method="POST" >
                                                         @csrf
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourName" class="form-label">Nombre</label>
                                                             <input value="{{old('name')}}" type="text" name="name" class="form-control" id="yourName" required>
                                                             <div class="invalid-feedback">Ingrese el nombre.</div>
                                                             @error('name')
-                                                                <li class="text-danger">{{ $message}}</li>
+                                                                <li class="text-danger text-inputs">{{ $message}}</li>
                                                             @enderror
                                                         </div>
                                                     

@@ -32,6 +32,14 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">
 
+
+
+
+
+
+
+
+    
     <!-- =======================================================
   * Template Name: NiceAdmin
   * Updated: Jan 29 2024 with Bootstrap v5.3.2
@@ -48,10 +56,9 @@
     </main><!-- End #main -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+    
     <!-- Vendor JS Files -->
     <script src="{{asset('assets/js/indexform.js')}}"></script>
-    <script src="{{asset('assets/js/modalexito.js')}}"></script>
     <script src="{{asset('assets/js/toast.js')}}"></script>
     <script src="{{asset('sassets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -64,6 +71,51 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="{{asset('assets/js/function_edit_user.js')}}"></script>
     <script src="{{asset('assets/js/function_register.js')}}"></script>
+    <script src="{{asset('assets/js/function_modal_clear.js')}}"></script>
+    
+
+    {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+    {{-- Función para cuando exista un error en las validaciones del formulario de actualizar Usuario --}}
+
+    <script>
+        $(document).ready(function() {
+            let table = $('.datatable').DataTable();
+    
+            // Capturar la página actual al enviar el formulario
+            $('form').on('submit', function() {
+                let pageInfo = table.page.info();
+                $('#currentPage').val(pageInfo.page);
+            });
+    
+            // Verificar si hay errores de validación y si la sesión contiene la variable 'reopen_modal'
+            @if (session('reopen_modal'))
+                // Obtener el ID del modal desde la sesión
+                let modalId = "#editUserModal{{ session('modal_open') }}";
+                // Abrir el modal correspondiente
+                let modal = new bootstrap.Modal(document.getElementById(modalId.substring(1)));
+                modal.show();
+            @endif
+        });
+    </script>
+
+    {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+    {{-- Función para abrir modal cuando surge error en las validaciones del formulario al crear un usuario --}}
+
+    <script>
+        $(document).ready(function() {
+            // Verificar si hay errores de validación y si la sesión contiene la variable 'reopen_modal'
+            @if (session('reopen_modal'))
+                // Obtener el ID del modal desde la sesión
+                var modalId = "#newUserModal";
+                // Abrir el modal correspondiente
+                var modal = new bootstrap.Modal(document.getElementById(modalId.substring(1)));
+                modal.show();
+            @endif
+        });
+
+    </script> 
+    {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+
 
     <!-- Template Main JS File -->
     <script src="{{asset('assets/js/main.js')}}"></script>
