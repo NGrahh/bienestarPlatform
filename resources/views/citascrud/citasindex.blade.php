@@ -45,7 +45,7 @@
                                         <td>{{ $cita->mobilenumber}}</td>
                                         <td>{{ $cita->date}}</td>
                                         <td>{{ $cita->hour}}</td>
-                                        <td>{{ $cita->subjectCita }}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->subjectCita }}</td>
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <!-- Botón para abrir el modal de ditar -->

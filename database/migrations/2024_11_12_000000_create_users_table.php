@@ -29,11 +29,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
 
-
+            $table->boolean('status')->default(true); 
             $table->foreign('type_document_id')->references('id')->on('type_documents');
             $table->foreign('rol_id')->references('id')->on('roles');
             $table->foreign('type_rh_id')->references('id')->on('type_rhs');
- 
+
             
             
 

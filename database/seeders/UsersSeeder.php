@@ -27,6 +27,8 @@ class UsersSeeder extends Seeder
             'type_rh_id' => 1,
             'password' => Hash::make('123456'),
             'rol_id' => 1,
+            
+
         ]);
 
         // Crear 10 usuarios adicionales con datos aleatorios
@@ -41,6 +43,8 @@ class UsersSeeder extends Seeder
                 'type_rh_id' => $faker->numberBetween(1, 5),
                 'password' => Hash::make('password'),
                 'rol_id' => $faker->numberBetween(1, 3),
+                
+
             ]);
         }
         for ($x = 0; $x < 10; $x++) {
@@ -54,8 +58,9 @@ class UsersSeeder extends Seeder
                 'type_rh_id' => $faker->numberBetween(1, 5),
                 'password' => Hash::make('password'), 
                 'Program_id' => $faker->numberBetween(1, 10), 
-                'yourToken' => $faker->unique()->numerify('#######'), 
+                'yourToken' => $faker->unique()->numerify('#########'), 
                 'rol_id' => $faker->numberBetween(4,5),
+                
             ]);
         }
     }

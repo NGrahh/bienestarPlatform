@@ -37,6 +37,8 @@
     --bs-btn-disabled-border-color: #DC3545; /* Borde rojo */
 }
 
+
+
 .btn-ba-amarillo {
     --bs-btn-color: #212529;
     --bs-btn-bg: #FFC107; /* Fondo amarillo */
@@ -52,7 +54,14 @@
     --bs-btn-disabled-color: #212529;
     --bs-btn-disabled-bg: #FFC107; /* Fondo amarillo */
     --bs-btn-disabled-border-color: #FFC107; /* Borde amarillo */
+    color: #ffffff; /* Color blanco del icono */
 }
+
+.btn-ba-amarillo i {
+    color: #000000; 
+}
+
+
 
 .btn-ba-gris {
     --bs-btn-color: #ffffff; /* Texto blanco */

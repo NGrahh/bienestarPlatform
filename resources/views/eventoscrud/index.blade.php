@@ -31,6 +31,7 @@
                                         <th>Fecha Inicio (inscripción)</th>
                                         <th>Fecha Final (inscripción)</th>
                                         <th>Descripción</th>
+                                        <th>Estado</th>
                                         <th>Acciones</th>
                                     </tr>
                                 </thead>
@@ -44,6 +45,13 @@
                                         <td>{{ $event->datestar }}</td>
                                         <td>{{ $event->dateendevent }}</td>
                                         <td>{{ $event->Subjectevent }}</td>
+                                        <td>
+                                            @if ($event->status ==1 )
+                                                <span class="badge bg-success">Activo</span>
+                                            @else
+                                                <span class="badge bg-danger">Inactivo</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <div class="d-flex gap-2">
                                                 <!-- Botón para abrir el modal de ditar -->
@@ -169,10 +177,15 @@
                                                             
                                                             <div class="modal-body">
                                                                 <div class="card-body">
-                                                                    <form action="{{ route('events.destroy', ['id' => $event->id]) }}" method="POST">
+                                                                    <form action="{{ route('events.disable', ['id' => $event->id]) }}" method="POST">
                                                                         @csrf
-                                                                        @method('DELETE')
-                                                                        <p>El usuario <strong></strong></p> {{--identificado con el documento de tipo <strong>{{ $user->TypeDocument->name }}</strong> y número <strong>{{ $user->document }}</strong>, será eliminado. Si necesitas recuperar información o tomar alguna medida antes de proceder con la eliminación, ten en cuenta que su correo electrónico es <strong>{{ $user->email }}</strong> y desempeña el rol de <strong>{{ $user->role->name }}</strong> en nuestra organización. --}}
+                                                                        @method('PATCH')
+                                                                        <p>El evento <strong>{{ $event->eventname }}</strong>,
+                                                                            programado para el <strong>{{ $event->eventdate }}</strong>,
+                                                                            será deshabilitado.
+                                                                            El tema del evento es <strong>{{ $event->Subjectevent }}</strong>.
+                                                                            Si necesitas más información o tomar alguna medida antes de proceder con la deshabilitación,
+                                                                            asegúrate de tener estos detalles a mano.</p>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
 
                                                                             <button type="submit" class="btn btn-ba-rojo px-2">Eliminar</button>
@@ -193,11 +206,13 @@
                                 </tbody>
                             </table>
                             <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+
                                 <!-- Botón para abrir el modal de creación nuevo usuario -->
                                 <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal">
                                     Crear Evento
                                 </button>
-                                <!-- Modal de creación para cada usuario -->
+
+                                <!-- Modal de creación para usuario -->
                                 <div class="modal fade" id="newUserModal" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
@@ -284,7 +299,7 @@
                                                             <div class="row mb-"></div>
                                                         </div>
                                                         <div class="modal-footer d-flex justify-content-center gap-2">
-                                                            <button type="submit" class="btn btn-ba px-2">Actualizar evento</button>
+                                                            <button type="submit" class="btn btn-ba px-2">Crear Evento</button>
                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
                                                     </form>
@@ -293,7 +308,8 @@
                                             
                                         </div>
                                     </div>
-                                </div><!-- End Large Modal-->
+                                </div>
+                                <!-- Final modal de creación para usuario-->
 
                             </div>
 

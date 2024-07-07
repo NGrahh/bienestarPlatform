@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Validator;
 
 class EventsController extends Controller
 {
+    // La función __construct() en el código proporcionado configura el middleware 'auth' para aplicarse a todas las rutas 
+    // del controlador donde se encuentra este constructor. Sin embargo, excluye ciertas rutas específicas de la aplicación del middleware 
+    // 'auth'. Las rutas excluidas son index, show, update, destroy, register, store, login, create, recuperarcontrasena y home. 
+    // Esto significa que todas las rutas de este controlador estarán protegidas por autenticación, 
+    // excepto las mencionadas anteriormente, que probablemente sean accesibles públicamente o requieran una lógica de acceso diferente
+
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent','viewEventUser']);
@@ -209,17 +215,34 @@ class EventsController extends Controller
     }
 
 
+    public function disable($id)
+    {
+        // Encuentra el Evento por su ID o lanza una excepción si no existe
+        $event = Events::findOrFail($id);
+        
+        // Cambia el estado del Evento de activo a inactivo o viceversa
+        $newStatus = !$event ->status; // Cambia el estado al opuesto al actual
+        
+        // Actualiza el estado en la base de datos
+        $event ->update(['status' => $newStatus]);
+        
+        // Genera el mensaje de éxito basado en el nuevo estado
+        $message = $newStatus ? 'Evento habilitado correctamente.' : 'Evento deshabilitado correctamente.';
+        
+        // Redirige de vuelta a la página de usuarios con un mensaje de éxito
+        return redirect()->route('events.index')->with('success', $message);
+    }
+
+
+
+
     public function showDimensions()
     {
         $dimensions_types =TypeDimensions::all(); 
         return view('formularios.citas.form-appointment', compact('dimensions_types'));
     }
 
-    // public function showStudyTime()
-    // {
-        
-    //     return view('formularios.eventos.form-inscription-event', compact());
-    // }
+    
 
     public function inscrip()
     {

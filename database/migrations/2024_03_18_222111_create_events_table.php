@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('datestar'); // Fecha de inicio del evento
             $table->date('dateendevent'); // Fecha de fin del evento
             $table->string('Subjectevent'); // Asunto del evento
+            $table->boolean('status')->default(true); // Estado de la cuenta
             $table->timestamps(); 
         });
     }
