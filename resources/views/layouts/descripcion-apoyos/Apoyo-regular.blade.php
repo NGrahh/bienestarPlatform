@@ -60,7 +60,11 @@
                                     </div>
                                 </div>
                                 <div class="botones mt-4 text-center">
+                                @if(session('rol_id') == 5)
+                                    <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
+                                @else
                                     <a href="{{route('login')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
+                                @endif
                                 </div>
                             </div>
                         </div>

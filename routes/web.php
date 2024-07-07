@@ -256,6 +256,8 @@ Route::get('/formulario-inscripcion-apoyos', function(){
     return view ('formularios\apoyos\form-inscription-supports');
 })-> name ('formulario-inscripcion-apoyos');
 
+
+
 Route::get('/formulario-inscripcion-apoyo-alimentacion', function(){
     return view ('formularios\apoyos\form-inscription-supports-food');
 })-> name ('formulario-inscripcion-apoyo-alimentacion');
@@ -354,5 +356,7 @@ Route::get('/edit/{id}', [CitasController::class, 'edit'])->name('citas.edit')->
 Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.update')->middleware('auth');
 
 Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

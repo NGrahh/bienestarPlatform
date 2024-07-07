@@ -167,7 +167,7 @@
                                 <img class="imag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sena_Colombia_logo.svg/2090px-Sena_Colombia_logo.svg.png" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo Regular</h1>
-                                    <a href="{{route('formulario-inscripcion-apoyo-regular')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
+                                    <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
 
                                 </div>
                             </div>
@@ -187,7 +187,7 @@
                                 <img class="imag" src="https://upload.wikimedia.org/wikipedia/en/a/a1/Megabus_Pereira_logo.png" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo de Transporte</h1>
-                                    <a href="{{route('formulario-inscripcion-apoyo-transporte')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
+                                    <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
 
                                 </div>
                             </div>
@@ -207,7 +207,7 @@
                                 <img class="imag" src="https://www.recreaciondidactica.com/wp-content/uploads/2019/02/refrigerios-bogota-10.jpg" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo de Alimentación</h1>
-                                    <a href="{{route('formulario-inscripcion-apoyo-alimentacion')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
+                                    <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
 
                                 </div>
                             </div>
@@ -227,7 +227,7 @@
                                 <img class="imag" src="https://i.blogs.es/3ce24a/wifi-datos/450_1000.webp" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo Plan de datos</h1>
-                                    <a href="{{route('formulario-inscripcion-apoyo-plan-datos')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
+                                    <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="botones holiio"><span>Inscribirse</span></button></a>
 
                                 </div>
                             </div>
