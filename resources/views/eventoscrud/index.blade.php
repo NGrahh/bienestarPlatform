@@ -56,8 +56,9 @@
                                             <div class="d-flex gap-2">
                                                 <!-- Botón para abrir el modal de ditar -->
                                                 <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editEventModal{{ $event->id }}" title="Editar usuario">
-                                                    <i class="bx bxs-user-detail"></i>
+                                                    <i class="ri-contacts-fill"></i>
                                                 </button>
+                                                
 
                                                 <!-- Modal de edición para cada evento -->
                                                 <div class="modal fade" id="editEventModal{{ $event->id }}" tabindex="-1">
@@ -157,10 +158,16 @@
                                                     </div>
                                                 </div><!-- Fin del modal de editar -->
 
-                                                <!-- Botón para abrir el modal de eliminación -->
-                                                <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Eliminar Usuario">
-                                                    <i class="bx bxs-user-x"></i>
-                                                </button>
+                                                @if ($event->status) 
+                                                    <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Deshabilitar Usuario">
+                                                        <i class="ri-compass-4-fill"></i> 
+                                                    </button>
+                                                @else
+                                                    <!-- Botón para abrir el modal de deshabilitar -->
+                                                    <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Deshabilitar Usuario">
+                                                        <i class="ri-creative-commons-zero-fill"></i> 
+                                                    </button>
+                                                @endif
 
                                                 <!-- Modal de eliminación para cada usuario -->
                                                 <div class="modal fade" id="deleteUserModal{{ $event->id }}" tabindex="-1">
@@ -187,10 +194,10 @@
                                                                             Si necesitas más información o tomar alguna medida antes de proceder con la deshabilitación,
                                                                             asegúrate de tener estos detalles a mano.</p>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
-
-                                                                            <button type="submit" class="btn btn-ba-rojo px-2">Eliminar</button>
+                                                                            <button type="submit" class="btn {{ $event->status ? 'btn-ba-rojo' : 'btn-ba' }} px-2">
+                                                                                {{ $event->status ? 'Deshabilitar' : 'Habilitar' }}
+                                                                            </button>
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
                                                                         </div>
                                                                     </form>
                                                                 </div>

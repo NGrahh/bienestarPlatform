@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         $this->call([day_trainingSeeder::class]);
         $this->call([TypeDimensionsSeeder::class]);
         $this->call([ProgramasSeeder::class]);
+        $this->call([EventsSeeder::class]);
+        $this->call([CitasSeeder::class]);
 
     }
 }
