@@ -1,4 +1,4 @@
-@extends('layouts.app')
+<!-- @extends('layouts.app')
 {{-- @section('title','Agendacion cita') --}}
 @section('content')
 
@@ -6,8 +6,6 @@
 @include('layouts.menu')
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
-
 
 <style>
 
@@ -123,4 +121,4 @@ h2{
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 @include('layouts.footer')
-@endsection
+@endsection -->

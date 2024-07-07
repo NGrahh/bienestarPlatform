@@ -4,6 +4,12 @@
 
 @include('layouts.header')
 @include('layouts.menu')
+<style>
+.btn{
+    background-color: #39A900;
+    border: none;
+}
+</style>
 
 <main id="main" class="main">
     <div class="pagetitle">
@@ -33,8 +39,11 @@
                                     </p>
                                 </div>
                                 <div class="botones mt-4 text-center">
-                                    <a href="{{route('login')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
-
+                                @if(session('rol_id') == 5)
+                                <button class="btn btn-success mt-3"><a href="{{route('formulario-inscripcion-apoyo-regular')}}" class="solicitar" style="color: white;">Solicitar</a></button>
+                                @else
+                                <button class="btn btn-success ms-2"><a href="{{route('login')}}" class="solicitar" style="color: white;">Inscribirse</a></button>
+                                @endif
                                 </div>
 
                                 <div class="accordion accordion-flush" id="accordionFlushExample">

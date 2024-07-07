@@ -195,9 +195,11 @@
                                                                         </p>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
 
+                                                                        <button type="submit" class="btn btn-ba-verde px-2" wire:click="acceptCita({{ $cita->id }})">Aceptar</button>
+                                                                        <button type="submit" class="btn btn-ba-rojo px-2" wire:click="rejectCita({{ $cita->id }})">Rechazar</button>
+                                                                        <button type="submit" class="btn btn-ba-rojo px-2" wire:click="deleteCita({{ $cita->id }})">Eliminar</button>
                                                                             <button type="submit" class="btn btn-ba-rojo px-2">Eliminar</button>
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -205,7 +207,6 @@
                                                         </div>
                                                     </div>
                                                 </div><!-- Fin del modal de eliminación -->
-
                                             </div>
                                         </td>
                                     </tr>

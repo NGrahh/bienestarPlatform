@@ -10,7 +10,7 @@
     </li>
     <li>
       <a href="{{route('events.index')}}">
-        <i class="bi bi-circle"></i><span>Información de eventos</span>
+      <i class="bi bi-circle"></i>Eventos - Próximos y Pasados<span></span>
       </a>
     </li>
   </ul>

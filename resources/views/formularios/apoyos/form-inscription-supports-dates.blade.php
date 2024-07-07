@@ -7,8 +7,6 @@
 @include('layouts.header')
 @include('layouts.menu')
 
-
-
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -138,7 +136,7 @@
                       </div>
                     </form>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                      <label class="form-label">Formato socioeconomico</label><br>
+                      <label class="form-label"><strong>Formato socioeconomico</strong></label><br>
                       <a href="https://bienestarccysregatl.com.co/apoyo-sost/formato_reg_soc.docx">Descargar</a>
                     </div>
                   </div>

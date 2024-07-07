@@ -57,7 +57,7 @@
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourName" class="form-label">Nombres</label>
-                        <input value="{{old('name')}}" type="text" name="name" class="form-control" id="yourName" required>
+                        <input value="{{$apoyo('name')}}" type="text" name="name" class="form-control" id="yourName" required>
                         <div class="invalid-feedback">Ingrese el nombre.</div>
                         @error('name')
                         <li class="text-danger">{{ $message}}</li>
@@ -65,7 +65,7 @@
                       </div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourlastname" class="form-label">Apellidos</label>
-                        <input value="{{old('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" required>
+                        <input value="{{$apoyos('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" required>
                         <div class="invalid-feedback">Ingrese los apellidos.</div>
                         @error('lastname')
                         <li class="text-danger">{{ $message}}</li>
@@ -73,7 +73,7 @@
                       </div>
                       <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourEmail" class="form-label">Correo electrónico</label>
-                        <input value="{{old('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
+                        <input value="{{$apoyo('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
                         <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                         @error('email')
                         <li class="text-danger">{{ $message}}</li>
@@ -82,7 +82,7 @@
 
                       <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <label for="yournumber" class="form-label">Número telefónico</label>
-                        <input value="{{old('mobilenumber')}}" type="number" name="mobilenumber" class="form-control" id="yournumber" required>
+                        <input value="{{$apoyo('mobilenumber')}}" type="number" name="mobilenumber" class="form-control" id="yournumber" required>
 
                         <div class="invalid-feedback">Ingrese un número telefónico.</div>
                         @error('mobilenumber')
@@ -92,7 +92,7 @@
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for="yourformat" class="form-label">Formato de registro</label>
-                        <input value="{{old('formatuser')}}" type="file" name="formatuser" class="form-control" id="yourformat" required>
+                        <input value="{{$apoyo('formatuser')}}" type="file" name="formatuser" class="form-control" id="yourformat" required>
                         <div class="invalid-feedback">Ingrese un formato de registro.</div>
                         @error('formatuser')
                         <li class="text-danger">{{ $message}}</li>
@@ -101,7 +101,7 @@
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for="yourphotocoy" class="form-label">Foto documento de identidad</label>
-                        <input value="{{old('photocopy')}}" type="file" name="photocopy" class="form-control" id="yourphotocopy" required>
+                        <input value="{{$apoyo('photocopy')}}" type="file" name="photocopy" class="form-control" id="yourphotocopy" required>
                         <div class="invalid-feedback">Ingrese la fotocopia del documento de identidad</div>
                         @error('photocopy')
                         <li class="text-danger">{{ $message}}</li>
@@ -110,7 +110,7 @@
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for="yoursisben" class="form-label">Sisbén</label>
-                        <input value="{{old('sisben')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
+                        <input value="{{$apoyo('sisben')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
                         <div class="invalid-feedback">Ingrese la foto del sisben</div>
                         @error('sisben')
                         <li class="text-danger">{{ $message}}</li>
@@ -119,7 +119,7 @@
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for="yoursisben" class="form-label">Fotocopia Recibo público </label> <label style="color:#332c2c9a" ;>&nbsp (Evidenciar estrato).</label>
-                        <input value="{{old('sisben')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
+                        <input value="{{$apoyo('sisben')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
                         <div class="invalid-feedback">Ingrese la fotocopia del recibo público. </div>
                         @error('sisben')
                         <li class="text-danger">{{ $message}}</li>
@@ -127,7 +127,7 @@
                       </div>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for=" yoursupport" class="form-label">Soportes de las condiciones de vulnerabilidad señaladas en el formato</label>
-                        <input value="{{old('support')}}" type="file" name="support" class="form-control" id="yoursupport" required>
+                        <input value="{{$apoyo('support')}}" type="file" name="support" class="form-control" id="yoursupport" required>
                         <div class="invalid-feedback">Ingrese la foto del soporte de las condiciones.</div>
                         @error('support')
                         <li class="text-danger">{{ $message}}</li>

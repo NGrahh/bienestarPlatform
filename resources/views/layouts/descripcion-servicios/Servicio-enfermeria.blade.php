@@ -29,13 +29,7 @@
                           <div class="dias-semana">
                             <ul style="list-style: none">
                               <li class="dias semana me-2">Lunes a viernes</li>
-                              <li class="dias hora me-2">Horas</li>
-                            </ul>
-                          </div>
-                          <div class="horas-dias">
-                            <ul style="list-style: none">
-                              <li class="dias sabado me-2">Sábados</li>
-                              <li class="dias horas-sabado me-2">Horas</li>
+                              <li class="dias hora me-2">7:30 am -- 12 pm || 1 pm -- 8 pm</li>
                             </ul>
                           </div>
                         </div>

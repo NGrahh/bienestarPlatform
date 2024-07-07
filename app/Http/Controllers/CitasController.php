@@ -7,6 +7,9 @@ use App\Models\TypeDimensions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\ValidHour;
+// use App\Models\Component;
+// use App\Http\Livewire\CitasComponent;
+
 
 class CitasController extends Controller
 {
@@ -111,3 +114,31 @@ class CitasController extends Controller
         return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
     }
 }
+
+
+// class CitasComponent extends Component
+// {
+//     public function acceptCita($id)
+//     {
+//         // Código para aceptar la cita
+//         $cita = Citas::findOrFail($id);
+//         $cita->update(['status' => '1']);
+//         session()->flash('success', 'Cita aceptada correctamente!');
+//     }
+
+//     public function rejectCita($id)
+//     {
+//         // Código para rechazar la cita
+//         $cita = Citas::findOrFail($id);
+//         $cita->update(['status' => '0']);
+//         session()->flash('success', 'Cita rechazada correctamente!');
+//     }
+
+//     public function deleteCita($id)
+//     {
+//         // Código para eliminar la cita
+//         $cita = Citas::findOrFail($id);
+//         $cita->delete();
+//         session()->flash('success', 'Cita eliminada correctamente!');
+//     }
+// }
