@@ -334,7 +334,7 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
 
-Route::delete('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
+Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
 
 // Registrar persona a un EVENTO
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');

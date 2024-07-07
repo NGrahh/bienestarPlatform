@@ -40,7 +40,7 @@
                                     <tr>
                                         <td>{{$cita->id}}</td>
                                         <td>{{ $cita->name }} {{ $cita->lastname }}</td>
-                                        <td>{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
                                         <td>{{ $cita->email}}</td>
                                         <td>{{ $cita->mobilenumber}}</td>
                                         <td>{{ $cita->date}}</td>
