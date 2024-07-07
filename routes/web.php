@@ -317,9 +317,12 @@ Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update
 
 Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy')->middleware('auth');
 
+Route::patch('/users/{id}/disable', [UserController::class, 'disable'])->name('users.disable');
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Eventos ///////////////////////////
+// Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
 Route::resource('eventos', EventsController::class)->middleware('auth');
 
@@ -331,11 +334,9 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
 
-Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
-
+Route::delete('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
 
 // Registrar persona a un EVENTO
-
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
 Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
 

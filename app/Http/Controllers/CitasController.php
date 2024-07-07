@@ -19,7 +19,9 @@ class CitasController extends Controller
     public function index()
     {
         
-        $citas = Citas::with('typeDimensions')->get();
+        $citas = Citas::select('id', 'name', 'lastname', 'dimensions_id', 'email', 'mobilenumber', 'hour', 'date', 'subjectCita')
+            ->with('typeDimensions')
+            ->get();
         $dimensions = TypeDimensions::all();
         return view('citascrud.citasindex',compact('citas', 'dimensions'));
         
@@ -44,9 +46,10 @@ class CitasController extends Controller
         ]);
 
         if ($validator->fails()){
-            return redirect(route('citas.index'))
+            return redirect(route('form-appointment'))
             ->withErrors($validator)
-            ->withInput();
+            ->withInput()
+            ->with('error','No se pudo crear la cita');
         }
 
 

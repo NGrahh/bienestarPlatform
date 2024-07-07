@@ -28,7 +28,8 @@ class User extends Authenticatable
         'password',
         'rol_id',
         'Program_id',
-        'yourToken'
+        'yourToken',
+        'status',
     ];
 
     /**

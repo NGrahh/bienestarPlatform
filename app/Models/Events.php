@@ -17,5 +17,6 @@ class Events extends Model
         'datestar',
         'dateendevent',
         'Subjectevent',
+        'status',
     ];
 }
