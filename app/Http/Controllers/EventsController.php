@@ -22,7 +22,7 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent','viewEventUser']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent','viewEventUser','showRegistrations','register','disable']);
     }
 
     private $daysOfWeek = [
@@ -86,8 +86,15 @@ class EventsController extends Controller
     {
         $currentDate = date('Y-m-d');
     
-        $upcomingEvents = Events::where('eventdate', '>=', $currentDate)->orderBy('eventdate', 'asc')->paginate(3);
-        $pastEvents = Events::where('eventdate', '<', $currentDate)->orderBy('eventdate', 'desc')->paginate(3);
+        $upcomingEvents = Events::where('eventdate', '>=', $currentDate)
+                                ->where('status', true) // Filtrar por estado activo
+                                ->orderBy('eventdate', 'asc')
+                                ->paginate(3);
+    
+        $pastEvents = Events::where('eventdate', '<', $currentDate)
+                            ->where('status', true) // Filtrar por estado activo
+                            ->orderBy('eventdate', 'desc')
+                            ->paginate(3);
     
         // Traducir día de la semana y nombre del mes para cada evento
         foreach ($upcomingEvents as $event) {
@@ -118,9 +125,6 @@ class EventsController extends Controller
     }
     
     
-
-
-
 
     public function index()
     {
@@ -260,12 +264,18 @@ class EventsController extends Controller
     public function showRegistrationForm($id)
     {
         $event = Events::findOrFail($id);
-        $days_training=typeDayTraining::all();
-        $programas = Programas::find(session('Program_id'));
+        $days_training = typeDayTraining::all();
+        $programas = Programas::all();
         $user = auth()->user();
         $document = $user->document; 
-        return view('formularios.eventos.form-inscription-event', compact('event','days_training', 'programas', 'document'));
+
+        if (!session()->has('yourToken')) {
+            session(['yourToken' => $user->yourToken]); 
+        }
+        
+        return view('formularios.eventos.form-inscription-event', compact('event', 'days_training', 'programas', 'document', 'user'));
     }
+    
 
     public function register(Request $request, $eventId)
     {
@@ -299,5 +309,17 @@ class EventsController extends Controller
     
         return redirect()->back()->with('success', 'Te has inscrito en el evento exitosamente.');
     }
+
+
+    public function showRegistrations($eventId)
+    {
+        $event = Events::findOrFail($eventId);
+        
+        // Obtener las inscripciones para el evento
+        $registrations = Event_registrations::where('event_id', $event->id)->get();
+        
+        return view('event_registrations.index', compact('event', 'registrations'));
+    }
+
 
 }

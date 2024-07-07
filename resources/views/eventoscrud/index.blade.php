@@ -47,7 +47,7 @@
                                         <td>{{ $event->Subjectevent }}</td>
                                         <td>
                                             @if ($event->status ==1 )
-                                                <span class="badge bg-success">Activo</span>
+                                                <span class="badge" style="background-color: #39A900">Activo</span>
                                             @else
                                                 <span class="badge bg-danger">Inactivo</span>
                                             @endif
@@ -56,7 +56,7 @@
                                             <div class="d-flex gap-2">
                                                 <!-- Botón para abrir el modal de ditar -->
                                                 <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editEventModal{{ $event->id }}" title="Editar usuario">
-                                                    <i class="ri-contacts-fill"></i>
+                                                    <i class="ri-article-line"></i>
                                                 </button>
                                                 
 
@@ -160,12 +160,12 @@
 
                                                 @if ($event->status) 
                                                     <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Deshabilitar Usuario">
-                                                        <i class="ri-compass-4-fill"></i> 
+                                                        <i class="ri-chat-check-line"></i> 
                                                     </button>
                                                 @else
                                                     <!-- Botón para abrir el modal de deshabilitar -->
-                                                    <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Deshabilitar Usuario">
-                                                        <i class="ri-creative-commons-zero-fill"></i> 
+                                                    <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Habilitar Usuario">
+                                                        <i class="ri-admin-line"></i> 
                                                     </button>
                                                 @endif
 
@@ -204,7 +204,63 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div><!-- Fin del modal de eliminación -->
+                                                </div>
+                                                <!-- Fin del modal de eliminación -->
+
+                                                <!-- Botón para abrir el modal de mirar inscritos -->
+                                                <button type="button" class="btn btn-ba-card px-2 " data-bs-toggle="modal" data-bs-target="#inscripEventModal{{ $event->id }}" title="Inscritos para Evento">
+                                                    <i class=" ri-contacts-book-line"></i>
+                                                </button>
+                                                <!-- Modal de mirar inscritos para cada evento-->
+                                                <div class="modal fade" id="inscripEventModal{{ $event->id }}" tabindex="-1">
+                                                    <div class="modal-dialog modal-xl">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title"><strong>Inscritos para {{ $event->eventname }}</strong></h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="card-body">
+                                                                    @if($event->registrations->isEmpty())
+                                                                        <p>No hay inscritos para este evento.</p>
+                                                                    @else
+                                                                    <div class="table-responsive">
+                                                                        <table class="table datatable table-striped">
+                                                                            <thead>
+                                                                                <tr class="custom-header">
+                                                                                    <th>ID de Usuario</th>
+                                                                                    <th>Nombre de Usuario</th>
+                                                                                    <th>Tipo de Documento</th>
+                                                                                    <th>Documento</th>
+                                                                                    <th>Email</th>
+                                                                                    <th>Rol</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                @foreach($event->registrations as $registration)
+                                                                                    <tr>
+                                                                                        <td>{{ $registration->user->id }}</td>
+                                                                                        <td>{{ $registration->user->name }} {{ $registration->user->lastname }}</td>
+                                                                                        <td>{{ $registration->user->TypeDocument->name }}</td>
+                                                                                        <td>{{ $registration->user->document }}</td>
+                                                                                        <td>{{ $registration->user->email }}</td>
+                                                                                        <td>{{ $registration->user->role->name }}</td>
+                                                                                    </tr>
+                                                                                @endforeach
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <!-- Fin del modal de Inscripciones-->
 
                                             </div>
                                         </td>

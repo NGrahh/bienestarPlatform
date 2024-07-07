@@ -142,7 +142,7 @@ Route::get('/listado-eventos', function (){
 })->name('forms.list-events'); 
 
 // Ruta Formulario para INSCRIPCIÓN A EVENTO
-Route::get('form-inscription-event', [EventsController::class, 'showStudyTime'])->name('showStudyTime');
+// Route::get('form-inscription-event', [EventsController::class, 'showRegistrationForm'])->name('showRegistrationForm');
 Route::post('form-inscription-event', [EventsController::class, 'form-inscription-event'])->name('formularios.eventos.form-inscription-event');
 
 
@@ -339,6 +339,8 @@ Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name
 // Registrar persona a un EVENTO
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
 Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
+
+Route::get('/events/{eventId}/registrations', [EventsController::class, 'showRegistrations'])->name('event.registrations')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

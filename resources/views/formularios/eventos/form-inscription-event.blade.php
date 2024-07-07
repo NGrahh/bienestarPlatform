@@ -15,7 +15,7 @@
 
     <section>
         <div class="row justify-content-center">
-            <div class="col-lg-11 my-5">
+            <div class="col-lg-12 my-2">
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
@@ -53,74 +53,69 @@
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                         <button class="btn btn-ba w-100" id="button_volver" style="display: none;" href="#">Volver al inicio</button>
                                     </div>
-                                    <div id="form" style="display: none;">
-                                        <form action="{{ route('events.register', $event->id) }}" class="row g-3 needs-validation" novalidate method="POST">
-                                            @csrf
-                                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <label for="yourName" class="form-label">Nombre</label>
-                                                <input value="{{ session('name') ?? old('name') }}" type="text" name="name" class="form-control" id="yourName" required disabled>
-                                            </div>
-
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <label for="yourlastname" class="form-label">Apellidos</label>
-                                                <input value="{{ session('lastname') ?? old('lastname') }}" type="text" name="lastname" class="form-control" id="yourlastname" required disabled>
-                                            </div>
-
-                                            
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                <label for="yourDocument" class="form-label">N° documento</label>
-                                                <div class="input-group has-validation">
-                                                    <span class="input-group-text" id="inputGroupPrepend">#</span>
-                                                    <input value="{{ $document ?? old('document')}}" type="text" name="document" class="form-control" id="yourDocument" required disabled>
+                                        <div id="form" style="display: none; " >
+                                            <hr class="mt-4 mb-4 border-top border-dark" style="height: 3px;">
+                                            <div class="row  mt-5">
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+                                                    <h1 class="card-title-ba-azul">Tus datos fueron tomados de la sesión iniciada. No debes ingresar ningún dato adicional. Los términos y condiciones ya fueron aceptados. Presiona "Enviar" para enviar tu inscripción al evento.</h1>
                                                 </div>
+                                                
+                                                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                    <form action="{{ route('events.register', $event->id) }}" class="row g-3 needs-validation mx-5" novalidate method="POST">
+                                                        @csrf
+                                                        <div class="col-12">
+                                                            <!-- Espacio en blanco para ajuste visual -->
+                                                        </div>
                                             
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <label for="yourName" class="form-label">Nombre</label>
+                                                            <input value="{{ session('name') ?? old('name') }}" type="text" name="name" class="form-control" id="yourName" required disabled>
+                                                        </div>
+                                            
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <label for="yourlastname" class="form-label">Apellidos</label>
+                                                            <input value="{{ session('lastname') ?? old('lastname') }}" type="text" name="lastname" class="form-control" id="yourlastname" required disabled>
+                                                        </div>
+                                            
+                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                                            <label for="yourDocument" class="form-label">N° documento</label>
+                                                            <div class="input-group has-validation">
+                                                                <span class="input-group-text" id="inputGroupPrepend">#</span>
+                                                                <input value="{{ $document ?? old('document')}}" type="text" name="document" class="form-control" id="yourDocument" required disabled>
+                                                            </div>
+                                                        </div>
+                                            
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                            <label for="yourEmail" class="form-label">Correo electrónico</label>
+                                                            <input value="{{ session('email') ?? old('email') }}" type="email" name="email" class="form-control" id="yourEmail" required disabled>
+                                                        </div>
+                                            
+                                                        @if(session('rol_id') == 5)
+                                                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="training_program">
+                                                                <label for="yourTraining" class="form-label">Programa de formación</label>
+                                                                <select name="Program_id" class="form-control" id="yourTraining" required disabled>
+                                                                    @foreach($programas as $programa)
+                                                                        <option value="{{ $programa->id }}" {{ $event->program_id == $programa->id ? 'selected' : '' }}>
+                                                                            {{ $programa->name }}
+                                                                        </option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                            
+                                                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="token_number">
+                                                                <label for="yourToken" class="form-label">Número de ficha</label>
+                                                                <input value="{{ session('yourToken')}}" type="text" name="yourToken" class="form-control" id="yourToken" required disabled>
+                                                            </div>
+                                                        @endif
+                                            
+                                                        <div class="col-12 d-flex justify-content-center">
+                                                            <button class="btn btn-ba px-4">Enviar</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
                                             </div>
                                             
-
-                                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                <label for="yourEmail" class="form-label">Correo electrónico</label>
-                                                <input value="{{ session('email') ?? old('email') }}" type="email" name="email" class="form-control" id="yourEmail" required disabled>
-                                                <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
-                                                @error('email')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                            @if(session('rol_id') == 5)
-                                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="training_program">
-                                                <label for="yourTraining" class="form-label">Programa de formación</label>
-                                                <select name="Program_id" class="form-control" id="yourTraining" required disabled>
-                                                    <option value="">- Seleccione -</option>
-                                                    @if($selectedProgram)
-                                                        <option value="{{ $selectedProgram->id }}" selected>{{ $selectedProgram->name }}</option>
-                                                    @endif
-                                                </select>
-                                                <div class="invalid-feedback">Por favor ingrese el programa de formación.</div>
-                                                @error('Program_id')
-                                                    <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-
-                                            <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="token_number">
-                                                <label for="yourToken" class="form-label">Número de ficha</label>
-                                                <input value="{{ session('yourToken') ?? old('yourToken') }}" type="text" name="yourToken" class="form-control" id="yourToken" required disabled>
-                                                <div class="invalid-feedback">Por favor ingrese el número de ficha.</div>
-                                                @error('yourToken')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-
-                                            @endif
-
-
-
-
-
-
-                                            <div class="col-12">
-                                                <button class="btn btn-ba w-100" type="submit">Enviar</button>
-                                            </div>
-                                        </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
