@@ -38,21 +38,17 @@
                         <div class="horas">
                           <div class="dias-semana">
                             <ul style="list-style: none">
-                              <li class="dias semana">Lunes a viernes</li>
-                              <li class="dias hora">Hora</li>
-                            </ul>
-                          </div>
-                          <div class="horas-dias">
-                            <ul style="list-style: none">
-                              <li class="dias sabado">Sabados</li>
-                              <li class="dias horas-sabado">Horas</li>
+                              <li class="dias semana me-2">Lunes a viernes</li>
+                              <li class="dias hora me-2"> 8:30 am -- 1 pm || 1 pm -- 7 pm</li>
                             </ul>
                           </div>
                         </div>
                         @if(session('rol_id') == 5)
-                          <button class="btn btn-success mt-3"><a href="{{route('form-appointment')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                          <button class="btn btn-success mt-3"><a href="{{route('form-appointment')}}" class="solicitar" style="color: white;">Solicitar</a></button>
                         @elseif(session('rol_id') == 4)
-                          <button class="btn btn-success mt-3"><a href="{{route('Servicio-Consejeria')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                          <button class="btn btn-success mt-3"><a href="{{route('Servicio-Consejeria')}}" class="solicitar" style="color: white;">Solicitar</a></button>
+                        @else
+                          <button class="invisible"></button>
                         @endif
                       </div>
                     </div>

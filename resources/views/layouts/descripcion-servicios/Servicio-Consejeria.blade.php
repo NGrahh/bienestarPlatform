@@ -6,6 +6,8 @@
 @include('layouts.menu')
 
 
+
+
 <main id="main" class="main">
   <section class="section">
     <div class="container">
@@ -41,9 +43,9 @@
                           </div>
                         </div>
                         @if(session('rol_id') == 5)
-                          <button class="btn btn-success mt-3"><a href="{{route('form-appointment')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                          <button class="btn btn-success mt-3"><a href="{{route('form-appointment')}}" class="solicitar" style="color: white;">Solicitar</a></button>
                         @elseif(session('rol_id') == 5)
-                          <button class="btn btn-success mt-3"><a href="{{route('Servicio-Consejeria')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                          <button class="btn btn-success mt-3"><a href="{{route('Servicio-Consejeria')}}" class="solicitar" style="color: white;">Solicitar</a></button>
                         @endif
                       </div>
                     </div>
