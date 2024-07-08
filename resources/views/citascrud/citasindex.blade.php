@@ -12,7 +12,7 @@
     <div class="pagetitle">
         <h1>Operaciones de gestión de Citas</h1>
     </div><!-- End Page Title -->
-
+    @include('compartido.alertas')
     <section class="section">
 
         <div class="row">
@@ -39,11 +39,11 @@
                                     @foreach($citas as $cita)
                                     <tr>
                                         <td>{{$cita->id}}</td>
-                                        <td>{{ $cita->name }} {{ $cita->lastname }}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">{{ $cita->name }} {{ $cita->lastname }}</td>
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
-                                        <td>{{ $cita->email}}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 90px;">{{ $cita->email}}</td>
                                         <td>{{ $cita->mobilenumber}}</td>
-                                        <td>{{ $cita->date}}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 50px;">{{ $cita->date}}</td>
                                         <td>{{ $cita->hour}}</td>
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->subjectCita }}</td>
                                         <td>
@@ -67,7 +67,7 @@
                                                                         <h5 class="card-title-ba-azul">Ingrese los datos personales para actualizar la cita</h5>
                                                                     </div>
 
-                                                                    @include('compartido.alertas')
+                                                                    
                                                                     <form action="{{route('citas.update', ['id' => $cita->id])}}" class="row g-3 needs-validation" novalidate method="POST">
                                                                         @csrf
                                                                         @method('PUT')
@@ -184,14 +184,14 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <p>
-                                                                            <strong>ID de Cita:</strong> '{{$cita->id}}'<br>
-                                                                            <strong>Nombre:</strong> '{{$cita->name}} {{$cita->lastname}}'<br>
-                                                                            <strong>Dimensión solicitada:</strong> '{{$cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión'}}'<br>
-                                                                            <strong>Correo Electrónico:</strong> '{{$cita->email}}'<br>
-                                                                            <strong>Número de Teléfono Móvil:</strong> '{{$cita->mobilenumber}}'<br>
-                                                                            <strong>Fecha de la Cita:</strong> '{{$cita->date}}'<br>
-                                                                            <strong>Hora de la Cita:</strong> '{{$cita->hour}}'<br>
-                                                                            <strong>Asunto de la Cita:</strong> '{{$cita->subjectCita}}'<br>
+                                                                            <strong>ID de Cita:</strong> {{$cita->id}}<br>
+                                                                            <strong>Nombre:</strong> {{$cita->name}} {{$cita->lastname}}<br>
+                                                                            <strong>Dimensión solicitada:</strong> {{$cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión'}}<br>
+                                                                            <strong>Correo Electrónico:</strong> {{$cita->email}}<br>
+                                                                            <strong>Número de Teléfono Móvil:</strong> {{$cita->mobilenumber}}<br>
+                                                                            <strong>Fecha de la Cita:</strong> {{$cita->date}}<br>
+                                                                            <strong>Hora de la Cita:</strong> {{$cita->hour}}<br>
+                                                                            <strong>Asunto de la Cita:</strong> {{$cita->subjectCita}}<br>
                                                                         </p>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
 

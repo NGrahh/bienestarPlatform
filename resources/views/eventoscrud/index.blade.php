@@ -12,7 +12,9 @@
     <div class="pagetitle">
         <h1>Gestión de eventos</h1>
     </div><!-- End Page Title -->
+
     @include('compartido.alertas')
+
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -39,7 +41,7 @@
                                     @foreach($events as $event)
                                     <tr>
                                         <td>{{ $event->id }}</td>
-                                        <td>{{ $event->eventname }}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">{{ $event->eventname }}</td>
                                         <td>{{ $event->eventdate }}</td>
                                         <td>{{ $event->eventlimit }}</td>
                                         <td>{{ $event->datestar }}</td>
