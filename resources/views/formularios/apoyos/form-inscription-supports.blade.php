@@ -119,7 +119,7 @@
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for="yoursisben" class="form-label">Fotocopia Recibo público </label> <label style="color:#332c2c9a" ;>&nbsp (Evidenciar estrato).</label>
-                        <input value="{{old('sisben')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
+                        <input value="{{old('receipt')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
                         <div class="invalid-feedback">Ingrese la fotocopia del recibo público. </div>
                         @error('sisben')
                         <li class="text-danger">{{ $message}}</li>

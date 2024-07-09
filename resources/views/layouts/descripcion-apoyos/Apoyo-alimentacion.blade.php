@@ -7,6 +7,13 @@
 @include('layouts.header')
 @include('layouts.menu')
 
+<style>
+.btn{
+    background-color: #39A900;
+    border: none;
+}
+</style>
+
 <main id="main" class="main">
     <div class="pagetitle">
         <h1>Apoyo de alimentación</h1>
@@ -39,6 +46,7 @@
                                     <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
                                 @else
                                     <a href="{{route('login')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
+
                                 @endif
                                 </div>
                                 <div class="accordion accordion-flush" id="accordionFlushExample">

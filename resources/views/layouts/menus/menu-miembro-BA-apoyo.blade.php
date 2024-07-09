@@ -76,7 +76,7 @@
       </a>
     </li>
     <li>
-      <a href="">
+      <a href="{{route('crud-apoyos')}}">
         <i class="bi bi-circle"></i><span>Ver inscritos</span>
       </a>
     </li>

@@ -34,22 +34,22 @@
                         <div class="horas">
                           <div class="dias-semana">
                             <ul style="list-style: none">
-                              <li class="dias semana">Lunes a viernes</li>
-                              <li class="dias hora">Horas</li>
+                            <li class="dias semana me-2">Lunes a viernes</li>
+                            <li class="dias hora me-2"> 10:00 am -- 2 pm</li>
                             </ul>
                           </div>
                           <div class="horas-dias">
                             <ul style="list-style: none">
                               <li class="dias sabado">Sabados</li>
-                              <li class="dias horas-sabado">Horas</li>
+                              <li class="dias horas-sabado">8 am</li>
                             </ul>
                           </div>
                         </div>
                         @if(session('rol_id') == 5)
-                          <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: black;">Solicitar</a></button>
+                          <button class="btn btn-success mt-3"><a href="{{route('login')}}" class="solicitar" style="color: white;">Solicitar</a></button>
                         @elseif(session('rol_id') == 1)
-                          <button class="btn btn-success ms-2"><a href="{{route('login')}}" class="solicitar" style="color: black;">Inscribirse</a></button>
-                      @endif
+                          <button class="btn btn-success ms-2"><a href="{{route('login')}}" class="solicitar" style="color: white;">Inscribirse</a></button>
+                        @endif
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">

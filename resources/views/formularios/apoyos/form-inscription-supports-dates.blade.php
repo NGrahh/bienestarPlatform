@@ -7,8 +7,6 @@
 @include('layouts.header')
 @include('layouts.menu')
 
-
-
 <main id="main" class="main">
 
   <div class="pagetitle">
@@ -52,7 +50,7 @@
                     <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                   </div>
                   <div id="form" style="display: none;">
-                    <form action="#" class="row g-3 needs-validation" novalidate method="POST">
+                    <form action="{{ route('apoyos.store') }}" class="row g-3 needs-validation" novalidate method="POST">
                       @csrf
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -138,7 +136,7 @@
                       </div>
                     </form>
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                      <label class="form-label">Formato socioeconomico</label><br>
+                      <label class="form-label"><strong>Formato socioeconomico</strong></label><br>
                       <a href="https://bienestarccysregatl.com.co/apoyo-sost/formato_reg_soc.docx">Descargar</a>
                     </div>
                   </div>

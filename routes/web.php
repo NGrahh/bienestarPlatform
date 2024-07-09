@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApoyosController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
@@ -148,8 +149,12 @@ Route::post('form-inscription-event', [EventsController::class, 'form-inscriptio
 
 // Ruta Formulario para INSCRIPCIÓN A LOS APOYOS
 
-Route::get('form-inscription-supports', [EventsController::class, 'inscrip'])->name('inscrip');
-Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios-apoyos-inscr');
+// // Ruta para mostrar el formulario de inscripción
+// Route::get('/formulario-inscripcion-apoyos', [ApoyosController::class, 'create'])->name('apoyos.create');
+
+// // Ruta para manejar la solicitud POST del formulario de inscripción
+// Route::post('/formulario-inscripcion-apoyos', [ApoyosController::class, 'store'])->name('apoyos.store');
+
 
 
 
@@ -361,3 +366,11 @@ Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.d
 
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/apoyosindex', function () {
+    return view('apoyoscrud.apoyosindex');
+})->name('crud-apoyos');
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::resource('eventos', EventsController::class)->middleware('auth');

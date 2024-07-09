@@ -6,6 +6,12 @@
 
 @include('layouts.header')
 @include('layouts.menu')
+<style>
+.btn{
+    background-color: #39A900;
+    border: none;
+}
+</style>
 
 <main id="main" class="main">
     <div class="pagetitle">
