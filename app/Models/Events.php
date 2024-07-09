@@ -19,4 +19,15 @@ class Events extends Model
         'Subjectevent',
         'status',
     ];
+    // Definir la relación con las inscripciones
+    public function registrations()
+    {
+        return $this->hasMany(Event_registrations::class, 'event_id');
+    }
+
+
+    public function programa()
+{
+    return $this->belongsTo(Programas::class, 'program_id');
+}
 }

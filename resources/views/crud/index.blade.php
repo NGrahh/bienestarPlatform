@@ -47,7 +47,7 @@
                                         <td>{{ $user->role->name }}</td>
                                         <td>
                                             @if ($user->status ==1 )
-                                                <span class="badge bg-success">Activo</span>
+                                                <span class="badge" style="background-color: #39A900">Activo</span>
                                             @else
                                                 <span class="badge bg-danger">Inactivo</span>
                                             @endif
@@ -58,7 +58,7 @@
                                             
                                                     <!-- Botón para abrir el modal para actualizar el usuario-->
                                                     <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editUserModal{{ $user->id }}" title="Editar usuario">
-                                                        <i class="ri-contacts-fill"></i>
+                                                        <i class="ri-article-line"></i>
                                                     </button>
 
                                                     <!-- Modal de actualizar para cada usuario -->
@@ -193,13 +193,13 @@
 
                                                     @if ($user->status) 
                                                         <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Deshabilitar Usuario">
-                                                            <i class="ri-body-scan-fill"></i> 
+                                                            <i class="ri-chat-check-line"></i> 
                                                         </button>
                                                         
                                                     @else
                                                         <!-- Botón para abrir el modal de deshabilitar -->
                                                         <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Deshabilitar Usuario">
-                                                            <i class="ri-body-scan-fill"></i> 
+                                                            <i class="ri-admin-line"></i> 
                                                         </button>
                                                     @endif
                                                     
@@ -241,7 +241,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Fin del modal de deshabilitación -->
-
+                                                    
                                                 </div>
                                         </td>
                                     </tr>
