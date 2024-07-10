@@ -165,7 +165,7 @@
                                                     <i class="bx bxs-user-x"></i>
                                                 </button>
 
-                                                <!-- Modal de eliminación para cada usuario -->
+                                                <!-- Modal de aceptar cita o posponer -->
                                                 <div class="modal fade" id="deleteCitaModal{{ $cita->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
@@ -206,7 +206,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div><!-- Fin del modal de eliminación -->
+                                                </div><!-- Fin del Modal de aceptar cita o posponer -->
                                             </div>
                                         </td>
                                     </tr>

@@ -76,37 +76,6 @@
                                         <div class="col-lg-12 col-md-4 d-evento"><strong>Correo electrónico: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->email }}</div>
                                     </div>
-                                    
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Inicio de la mañana:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->morning_start ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Fin de la mañana:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->morning_end ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Inicio de la tarde:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->afternoon_start ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Fin de la tarde:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->afternoon_end ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
                                 @endif
                             </div>
                             
@@ -122,9 +91,6 @@
                                         </div>
 
                                     </div>
-
-                                    
-
                                     <div class="row mb-3">
                                         <label for="rol_id" class="col-md-4 col-lg-3 form-label">Rol</label>
                                         <div class="col-md-8 col-lg-9">
@@ -136,10 +102,6 @@
                                             
                                         </div>
                                     </div>
-
-                            
-
-                                    
 
                                     <div class="row mb-3">
                                         <label for="email" class="col-md-4 col-lg-3 form-label">Correo electrónico</label>
@@ -199,45 +161,6 @@
                                         <li class="text-danger">{{ $message }}</li>
                                         @enderror
                                     </div>
-                                    <strong><h5 class="card-title">Por favor, ingrese los horarios de inicio y fin para ambas jornadas (mañana y tarde).</h5></strong> 
-
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="morningStart" class="form-label">Inicio de la mañana</label>
-                                            <input type="time" class="form-control" id="morningStart" name="morning_start" value="{{ old('morning_end') }}"required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('morning_start')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="morningEnd" class="form-label">Fin de la mañana</label>
-                                            <input type="time" class="form-control" id="morningEnd" name="morning_end" value="{{ old('morning_end') }}" required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('morning_end')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="afternoonStart" class="form-label">Inicio de la tarde</label>
-                                            <input type="time" class="form-control" id="afternoonStart" name="afternoon_start" value="{{ old('afternoon_start') }}" required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('afternoon_start')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="afternoonEnd" class="form-label">Fin de la tarde</label>
-                                            <input type="time" class="form-control" id="afternoonEnd" name="afternoon_end" value="{{ old('afternoon_end') }}"required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('afternoon_end')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                        
-                                    </div>
 
 
                                     <div class="row mb-3">
@@ -259,7 +182,7 @@
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                                 <!-- Profile Edit Form -->
-                                <form action="{{ route('perfil.update_user', ['perfil' => auth()->user()->id]) }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('perfil.update', ['perfil' => auth()->user()->id]) }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row mb-3 ">
@@ -275,7 +198,7 @@
                                     <div class="row mb-3">
                                         <label for="name" class="col-md-4 col-lg-3 form-label">Nombre completo</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="name" type="text" class="form-control" id="name" value="{{session('name')}} {{session('lastname')}}"  disabled>
+                                            <input name="name" type="text" class="form-control" id="name" value="{{session('name')}} {{session('lastname')}}" required disabled>
                                         </div>
 
                                     </div>
@@ -283,7 +206,7 @@
                                         <label for="rol_id" class="col-md-4 col-lg-3 form-label">Rol</label>
                                         <div class="col-md-8 col-lg-9">
                                             @if(Auth::check() && Auth::user()->role)
-                                            <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}"  disabled>
+                                            <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}" required disabled>
                                             @else
                                                 <h3>Rol no asignado</h3>
                                             @endif
@@ -293,7 +216,7 @@
                                     <div class="row mb-3">
                                         <label for="email" class="col-md-4 col-lg-3 form-label">Correo electrónico</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="email" value="{{session('email')}}" disabled >
+                                            <input name="email" type="email" class="form-control" id="email" value="{{session('email')}}" disabled required>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -340,48 +263,11 @@
                                         <li class="text-danger">{{ $message }}</li>
                                         @enderror
                                     </div>
-                                    <strong><h5 class="card-title">Por favor, ingrese los horarios de inicio y fin para ambas jornadas, si desea cambiarlos. (mañana y tarde).</h5></strong>
-
-                                        <div class="row mb-3">
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="morningStart" class="form-label">Inicio de la mañana</label>
-                                                <input type="time" class="form-control" id="morningStart" name="morning_start" value="{{ Auth::user()->perfil->morning_start ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('morningStart')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="morningEnd" class="form-label">Fin de la mañana</label>
-                                                <input type="time" class="form-control" id="morningEnd" name="morning_end" value="{{ Auth::user()->perfil->morning_end ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('morning_end')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="afternoonStart" class="form-label">Inicio de la tarde</label>
-                                                <input type="time" class="form-control" id="afternoonStart" name="afternoon_start" value="{{ Auth::user()->perfil->afternoon_start ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('afternoon_start')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="afternoonEnd" class="form-label">Fin de la tarde</label> 
-                                                <input type="time" class="form-control" id="afternoonEnd" name="afternoon_end" value="{{ Auth::user()->perfil->afternoon_end ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('afternoon_end')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                        </div>
+                                    
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-ba">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
                                     </div>
-                                </form>
+                                </form><!-- End Profile Edit Form -->
 
                             </div>
 
@@ -402,11 +288,10 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" id="newProducts" checked>
                                                 <label class="form-check-label" for="newProducts">
-                                                    Información sobre nuevos eventos y apoyos
+                                                    Información sobre nuevos Eventos y Apoyos
                                                 </label>
                                             </div>
                                             
-                            
                                         </div>
                                     </div>
 
@@ -459,19 +344,20 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
-                            <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle">
+                        <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 150px; height: 115px; object-fit: cover;">
+
                         @else
                             <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Default Profile" class="rounded-circle">
                         @endif
-                        <h2 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 50px;">{{ session('name') }} {{ session('lastname') }}</h2>
+                        <h2 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">{{ session('name') }} {{ session('lastname') }}</h2>
                         @if (Auth::check() && Auth::user()->role)
                             <h3>{{ Auth::user()->role->name }}</h3>
                         @else
                             <h3>Rol no asignado</h3>
                         @endif
                         <div class="social-links mt-2">
-                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                            <a href="{{ Auth::user()->perfil->Twitter_Profile ?? 'No hay link!' }}" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="{{ Auth::user()->perfil->Linkedin_Profile ?? 'No hay link!' }}" class="linkedin"><i class="bi bi-linkedin"></i></a>
                         </div>
                     </div>
                 </div>

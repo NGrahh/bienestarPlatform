@@ -10,7 +10,7 @@
     <div class="pagetitle">
         <h1>Eventos</h1>
     </div>
-
+    
     <div class="row justify-content-center">
         <div class="col-lg-12 my-2">
             <div class="card mb-3">

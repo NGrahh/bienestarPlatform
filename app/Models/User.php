@@ -62,4 +62,10 @@ class User extends Authenticatable
     {
         return $this->belongsTo(TypeDocuments::class, 'type_document_id');
     }
+
+    public function perfil()
+    {
+        return $this->hasOne(Perfil::class);
+    }
+
 }

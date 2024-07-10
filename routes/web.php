@@ -4,6 +4,7 @@ use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CitasController;
+use App\Http\Controllers\PerfilController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -72,10 +73,6 @@ Route::get('/Bienvenido', function () {
     return view('layouts.inicio-pagina.pagina-principal');
 })->name('home');
 
-//Ruta para visualizar el perfil
-Route::get('/mi-perfil', function () {
-    return view('compartido.perfil');
-})->name('perfil')->middleware('auth');
 
 //RUTA INDEX
 Route::get('/index', function () {
@@ -359,3 +356,22 @@ Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.updat
 Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+/////////////////////////// Rutas CRUD ( Update, Delete) Perfil ///////////////////////////
+//Ruta para visualizar el perfil
+// Route::get('/mi-perfil', function () {
+//     return view('compartido.perfil');
+// })->name('perfil')->middleware('auth');
+
+
+Route::resource('perfil', PerfilController::class)->middleware('auth');
+Route::get('/mi-perfil', [PerfilController::class, 'index'])->name('perfil.index')->middleware('auth');
+Route::put('/perfil/{perfil}', [PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
+Route::put('/perfil/{perfil}', [PerfilController::class, 'update_user'])->name('perfil.update_user')->middleware('auth');
+
+
+
+

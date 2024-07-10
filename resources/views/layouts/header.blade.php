@@ -26,17 +26,21 @@
         @if(auth()->check())
   
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{asset('assets/img/Usernew.png')}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{session('name')}} {{session('lastname')}}</span>
+            @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
+                <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 40px; height: 50px; object-fit: cover;">
+            @else
+                <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Default Profile" class="rounded-circle">
+            @endif
+            <span class="d-none d-md-block dropdown-toggle ps-2" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{session('name')}} {{session('lastname')}}</span>
           </a><!-- End Profile Iamge Icon -->
   
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
           <li class="dropdown-header">
-            <h6>{{session('name') }} {{session('lastname')}}</h6>
+            <h6 >{{session('name') }} {{session('lastname')}}</h6>
             {{-- <span>{{session(['rol_id' => $user->rol_id->name]);}}</span> --}}
           </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{{route('perfil')}}">
+              <a class="dropdown-item d-flex align-items-center" href="{{route('perfil.index')}}">
                 <i class="bi bi-person"></i>
                 <span>Mi Perfil</span>
               </a>
