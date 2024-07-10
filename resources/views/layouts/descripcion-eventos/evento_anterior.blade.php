@@ -31,9 +31,6 @@
 .container-contenidos-lugar{
   margin-right: 30px;
 }
-.col-comentarios{
-
-}
 .comentarios-contenidos{
   background-color: gray;
   width: 60%;

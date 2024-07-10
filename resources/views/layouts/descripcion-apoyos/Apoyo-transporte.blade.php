@@ -43,9 +43,9 @@
                                 </div>
                                 <div class="botones mt-4 text-center">
                                 @if(session('rol_id') == 5)
-                                <button class="btn btn-success mt-3"><a href="{{route('formulario-inscripcion-apoyo-regular')}}" class="solicitar" style="color: white;">Solicitar</a></button>
+                                    <a href="{{route('formulario-inscripcion-apoyos')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
                                 @else
-                                <button class="btn btn-success ms-2"><a href="{{route('login')}}" class="solicitar" style="color: white;">Inscribirse</a></button>
+                                    <a href="{{route('login')}}"><button class="btn btn-ba mx-3">Postularse</button></a>
                                 @endif
                                 </div>
 

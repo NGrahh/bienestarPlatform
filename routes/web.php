@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\ApoyosController;
 use App\Http\Controllers\EventsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PerfilController;
+use App\Models\Apoyos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// routes/web.php
+Route::get('/apoyos/create', [ApoyosController::class, 'create'])->name('apoyos.create');
+Route::post('/apoyos', [ApoyosController::class, 'store'])->name('apoyos.store');
 
 
 //////// Ruta validaciones para Iniciar, Registrar y Salir del sistema  ////////
@@ -145,8 +150,12 @@ Route::post('form-inscription-event', [EventsController::class, 'form-inscriptio
 
 // Ruta Formulario para INSCRIPCIÓN A LOS APOYOS
 
-Route::get('form-inscription-supports', [EventsController::class, 'inscrip'])->name('inscrip');
-Route::post('form-inscription-supports', [EventsController::class, 'form-inscription-supports'])->name('formularios-apoyos-inscr');
+// // Ruta para mostrar el formulario de inscripción
+// Route::get('/formulario-inscripcion-apoyos', [ApoyosController::class, 'create'])->name('apoyos.create');
+
+// // Ruta para manejar la solicitud POST del formulario de inscripción
+// Route::post('/formulario-inscripcion-apoyos', [ApoyosController::class, 'store'])->name('apoyos.store');
+
 
 
 
@@ -253,6 +262,8 @@ Route::get('/formulario-inscripcion-apoyos', function(){
     return view ('formularios\apoyos\form-inscription-supports');
 })-> name ('formulario-inscripcion-apoyos');
 
+
+
 Route::get('/formulario-inscripcion-apoyo-alimentacion', function(){
     return view ('formularios\apoyos\form-inscription-supports-food');
 })-> name ('formulario-inscripcion-apoyo-alimentacion');
@@ -355,6 +366,8 @@ Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.updat
 
 Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -375,3 +388,24 @@ Route::put('/perfil/{perfil}', [PerfilController::class, 'update_user'])->name('
 
 
 
+Route::resource('apoyos', ApoyosController::class)->middleware('auth');
+
+Route::get('/show/{id}', [ApoyosController::class, 'show'])->name('apoyos.show')->middleware('auth');
+
+Route::get('/edit/{id}', [ApoyosController::class, 'edit'])->name('apoyos.edit')->middleware('auth'); 
+
+Route::put('/apoyos/{id}', [ApoyosController::class, 'update'])->name('apoyos.update')->middleware('auth');
+
+Route::delete('/apoyos/{id}', [ApoyosController::class, 'destroy'])->name('apoyos.destroy')->middleware('auth');
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/apoyosindex', function () {
+    return view('apoyoscrud.apoyosindex');
+})->name('crud-apoyos');
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+// Route::resource('eventos', EventsController::class)->middleware('auth');
