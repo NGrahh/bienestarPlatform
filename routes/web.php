@@ -390,6 +390,8 @@ Route::put('/perfil/{perfil}', [PerfilController::class, 'update_user'])->name('
 
 Route::resource('apoyos', ApoyosController::class)->middleware('auth');
 
+Route::get('/Apoyos', [ApoyosController::class, 'index'])->name('apoyos.index')->middleware('auth');
+
 Route::get('/show/{id}', [ApoyosController::class, 'show'])->name('apoyos.show')->middleware('auth');
 
 Route::get('/edit/{id}', [ApoyosController::class, 'edit'])->name('apoyos.edit')->middleware('auth'); 
@@ -402,9 +404,9 @@ Route::delete('/apoyos/{id}', [ApoyosController::class, 'destroy'])->name('apoyo
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('/apoyosindex', function () {
-    return view('apoyoscrud.apoyosindex');
-})->name('crud-apoyos');
+// Route::get('/apoyosindex', function () {
+//     return view('apoyoscrud.apoyosindex');
+// })->name('crud-apoyos');
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 

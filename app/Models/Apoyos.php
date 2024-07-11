@@ -10,14 +10,13 @@ class Apoyos extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'lastname',
-        'email',
+        'user_id',
         'mobilenumber',
         'formatuser',
         'photocopy',
         'receipt',
-        'sisben'
+        'sisben',
+        'support',
 
     ];
     public function user()

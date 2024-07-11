@@ -13,17 +13,20 @@ return new class extends Migration
     {
         Schema::create('apoyos', function (Blueprint $table) {
         $table->id();
-        $table->string('name');
-        $table->string('lastname');
-        $table->string('email');
+        $table->unsignedBigInteger('user_id');
         $table->string('mobilenumber');
         $table->string('formatuser');
         $table->string('photocopy');
         $table->string('receipt');
         $table->string('sisben');
-        // $table->unsignedBigInteger('user_id');
-        // $table->foreign('user_id')->references('id')->on('user  s')->onDelete('cascade');
+        $table->string('support')->nullable();
+        $table->string('status')->default(true); // Estado de la cuenta;
         $table->timestamps();
+
+        $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
     });
     
     }

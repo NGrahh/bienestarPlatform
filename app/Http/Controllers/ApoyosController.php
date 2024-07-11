@@ -19,8 +19,8 @@ class ApoyosController extends Controller
 
     public function index()
     {
-        $apoyos = Apoyos::select('id', 'name', 'lastname', 'email', 'mobilenumber', 'formatuser', 'photocopy', 'receipt', 'sisben' );
-        return view('apoyos.index', compact('apoyos'));
+        $apoyos = Apoyos::with('user')->get();
+        return view('apoyoscrud.apoyosindex', compact('apoyos'));
     }
 
     /**
