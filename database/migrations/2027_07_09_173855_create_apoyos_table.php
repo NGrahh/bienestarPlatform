@@ -20,7 +20,7 @@ return new class extends Migration
         $table->string('receipt');
         $table->string('sisben');
         $table->string('support')->nullable();
-        $table->string('status')->default(true); // Estado de la cuenta;
+        $table->string('status')->default(true);
         $table->timestamps();
 
         $table->foreign('user_id')

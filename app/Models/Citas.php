@@ -11,18 +11,23 @@ class Citas extends Model
     use HasFactory;
     
     protected $fillable = [
-        'name',
-        'lastname',
+        'user_id',
         'dimensions_id',
-        'email',
         'mobilenumber',
         'hour',
         'date',
+        'status',
         'subjectCita',
     ];
 
     public function typeDimensions()
     {
         return $this->belongsTo(TypeDimensions::class, 'dimensions_id');
+    }
+    // Relación con el modelo User
+    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id'); // 'user_id' es la clave foránea en la tabla 'perfil'
     }
 }

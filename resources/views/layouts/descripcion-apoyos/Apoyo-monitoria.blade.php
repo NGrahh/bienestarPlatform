@@ -24,7 +24,7 @@
                 <div class="card mb-3">
                     <div class="card-body">
                         <div class="pt-4 pb-2">
-                          <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
+                            <p class="small"><strong>Nota: </strong>Se hace constar que, para proceder con la postulación, es indispensable contar con una cuenta activa.</p>
                         </div>
                         @include('compartido.alertas')
                         <div class="col-sm-12">
@@ -34,11 +34,9 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2 align="center">Descripcion</h2>
+                                    <h2 align="center">Descripción:</h2>
                                     <p align="justify" class="text-center">
-                                      El aprendiz debe realizar 60 horas mensuales cumpliendo con las actividades de Monitoria.
-                                      El valor del estimulo economico que se le pagara al aprendiz es del 50% del salario minimo legal mensual vigente,
-                                      para esta vigencia es de Aeicientos cincuenta mil pesos ($650.000)</p>
+                                        El aprendiz debe realizar 60 horas mensuales cumpliendo con las actividades de Monitoria. El valor del estímulo económico que se le pagará al aprendiz es del 50% del salario mínimo legal mensual vigente, para esta vigencia es de seiscientos cincuenta mil pesos ($650,000)</p>
                                 </div>
                                 <div class="botones mt-4 text-center">
                                 @if(session('rol_id') == 5)

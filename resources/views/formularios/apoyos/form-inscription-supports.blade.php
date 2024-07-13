@@ -17,7 +17,7 @@
 
   <section class="section">
     <div class="row justify-content-center">
-      <div class="col-lg-11 my-5">
+      <div class="col-lg-12 my-2">
         <div class="card mb-3">
           <div class=" card-body">
             <div class="pt-4 pb-2">
@@ -52,32 +52,20 @@
                     <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                   </div>
                   <div id="form" style="display: none;">
-                    <form action="{{ route('apoyos.store') }}" class="row g-3 needs-validation" novalidate method="POST">
+                    <form action="{{ route('apoyos.store') }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                       @csrf
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourName" class="form-label">Nombres</label>
-                        <input value="{{session('name')}}" type="text" name="name" class="form-control" id="yourName" required>
-                        <div class="invalid-feedback">Ingrese el nombre.</div>
-                        @error('name')
-                        <li class="text-danger">{{ $message}}</li>
-                        @enderror
+                        <input value="{{session('name')}}" type="text" name="name" class="form-control" id="yourName" disabled>
                       </div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourlastname" class="form-label">Apellidos</label>
-                        <input value="{{session('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" required>
-                        <div class="invalid-feedback">Ingrese los apellidos.</div>
-                        @error('lastname')
-                        <li class="text-danger">{{ $message}}</li>
-                        @enderror
+                        <input value="{{session('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" disabled>
                       </div>
                       <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourEmail" class="form-label">Correo electrónico</label>
-                        <input value="{{session('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
-                        <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
-                        @error('email')
-                        <li class="text-danger">{{ $message}}</li>
-                        @enderror
+                        <input value="{{session('email')}}" type="email" name="email" class="form-control" id="yourEmail" disabled>
                       </div>
 
                       <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
@@ -100,7 +88,7 @@
                       </div>
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <label for="yourphotocoy" class="form-label">Foto documento de identidad</label>
+                        <label for="yourphotocopy" class="form-label">Foto documento de identidad</label>
                         <input value="{{old('photocopy')}}" type="file" name="photocopy" class="form-control" id="yourphotocopy" required>
                         <div class="invalid-feedback">Ingrese la fotocopia del documento de identidad</div>
                         @error('photocopy')
@@ -118,8 +106,8 @@
                       </div>
 
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                        <label for="yoursisben" class="form-label">Fotocopia Recibo público </label> <label style="color:#332c2c9a" ;>&nbsp (Evidenciar estrato).</label>
-                        <input value="{{old('receipt')}}" type="file" name="sisben" class="form-control" id="yoursisben" required>
+                        <label for="yourreceipt" class="form-label">Fotocopia Recibo público </label> <label style="color:#332c2c9a" ;>&nbsp (Evidenciar estrato).</label>
+                        <input value="{{old('receipt')}}" type="file" name="receipt" class="form-control" id="yourreceipt" required>
                         <div class="invalid-feedback">Ingrese la fotocopia del recibo público. </div>
                         @error('sisben')
                         <li class="text-danger">{{ $message}}</li>

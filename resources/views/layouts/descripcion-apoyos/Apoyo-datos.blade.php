@@ -33,9 +33,9 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2>Descripcion: </h2>
+                                    <h2>Descripción: </h2>
                                     <p align="justify" class="text-start">
-                                    Es aquel que suministra al aprendiz de un cantidad modesta de $50.000 pesos durante un trimestre completo (3 meses) en los cuales la idea principal es que el aprendiz use esta cantidad en un plan de datos en el cual pueda tenga alcance mediante un operador. (Tigo, Claro, Wom, etc..) 
+                                        Es aquel que suministra al aprendiz una cantidad modesta de $50,000 pesos durante un trimestre completo (3 meses), en los cuales la idea principal es que el aprendiz use esta cantidad en un plan de datos que pueda utilizar mediante un operador como Tigo, Claro, Wom, etc
                                     </p>
                                 </div>
                                 <div class="botones mt-4 text-center">

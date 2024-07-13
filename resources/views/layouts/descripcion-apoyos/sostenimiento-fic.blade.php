@@ -35,11 +35,9 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2 align="center">Descripcion</h2>
+                                    <h2 align="center">Descripción:</h2>
                                     <p align="justify" class="text-center">
-                                        Es el desoembolso mensual de dinero que realiza a los Aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la constriccion,
-                                        seleccionados como beneficiarios de este apoyo, durante el tiempo que dure respectivo programa de aprendizaje, para sufragar entro
-                                        otros: transporte, alimentacion y utiles para su formacion
+                                        Es el desembolso mensual de dinero que se realiza a los aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la construcción, seleccionados como beneficiarios de este apoyo, durante el tiempo que dure el respectivo programa de aprendizaje, para sufragar, entre otros, transporte, alimentación y útiles para su formación
                                     </p>
                                 </div>
                                 <div class="botones mt-4 text-center">

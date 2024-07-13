@@ -391,14 +391,14 @@
                                                             @enderror
                                                         </div>
                                                     
-                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                        {{-- <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="yourPassword" class="form-label">Contraseña</label>
                                                             <input type="password" name="password" class="form-control" id="yourPassword" required>
                                                             <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
                                                             @error('password')
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
-                                                        </div>
+                                                        </div> --}}
                                                     
                                                         <div class="modal-footer d-flex justify-content-center gap-2">
                                                             <button type="submit" class="btn btn-ba px-2">Crear usuario</button>

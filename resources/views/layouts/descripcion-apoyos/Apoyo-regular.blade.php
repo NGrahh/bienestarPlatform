@@ -33,13 +33,9 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2 align="center" class="text-start">Descripción</h2>
+                                    <h2 align="center" class="text-start">Descripción:</h2>
                                     <p align="justify" class="text-start">
-                                    Los apoyos de sostenimiento regular: son recurso en dinero equivalente al
-                                    cincuenta por ciento (50 %) del Salario Mínimo Legal Mensual Vigente – SMLMV,
-                                    que se les entrega mensualmente a los aprendices en condiciones de
-                                    vulnerabilidad y que se encuentran matriculados en un programa de formación
-                                    técnico laboral o tecnólogo
+                                        Los apoyos de sostenimiento regular son recursos en dinero equivalentes al cincuenta por ciento (50 %) del Salario Mínimo Legal Mensual Vigente (SMLMV), que se les entregan mensualmente a los aprendices en condiciones de vulnerabilidad y que están matriculados en un programa de formación técnico laboral o tecnológico.
                                     </p>
                                 </div>
 

@@ -58,7 +58,7 @@
                             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                               <label for="yourName" class="form-label"><strong>Nombre</strong></label>
-                              <input value="{{session('name')}}" type="text" name="name" class="form-control" id="yourName" required disabled>
+                              <input value="{{session('name')}}" type="text" name="name" class="form-control" id="yourName" disabled>
                               <div class="invalid-feedback">Ingrese el nombre.</div>
                               @error('name')
                               <li class="text-danger">{{ $message}}</li>
@@ -66,7 +66,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                               <label for="yourlastname" class="form-label"><strong>Apellidos</strong></label>
-                              <input value="{{session('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" required disabled>
+                              <input value="{{session('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" disabled>
                               <div class="invalid-feedback">Ingrese los apellidos.</div>
                               @error('lastname')
                               <li class="text-danger">{{ $message}}</li>
@@ -87,7 +87,7 @@
                             </div>
                             <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                               <label for="yourEmail" class="form-label"><strong>Correo electrónico</strong></label>
-                              <input value="{{session('email')}}" type="email" name="email" class="form-control" id="yourEmail" required disabled>
+                              <input value="{{session('email')}}" type="email" name="email" class="form-control" id="yourEmail" disabled>
                               <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                               @error('email')
                               <li class="text-danger">{{ $message}}</li>
@@ -103,36 +103,37 @@
                             </div>
                             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                               <div class="row mb-3">
-                                <label for="inputDate" class="form-label"><strong>Fecha</strong></label>
-                                <div class="col-sm-12">
-                                  <input name="date" type="date" class="form-control">
-                                  <div class="invalid-feedback">Ingrese una fecha.</div>
-                                  @error('date')
-                                  <li class="text-danger">{{ $message}}</li>
-                                  @enderror
-                                </div>
+                                  <label for="inputDate" class="form-label"><strong>Fecha</strong></label>
+                                  <div class="col-sm-12">
+                                      <input name="date" type="date" class="form-control @error('date') is-invalid @enderror" value="{{ old('date') }}">
+                                      <div class="invalid-feedback">Ingrese una fecha.</div>
+                                      @error('date')
+                                      <li class="text-danger">{{ $message }}</li>
+                                      @enderror
+                                  </div>
                               </div>
-                            </div>
-                            <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
-                              <div class="row mb-">
-                                <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                                <div class="col-sm-12">
-                                  <input name="hour" type="time" class="form-control">
-                                  <div class="invalid-feedback">Ingrese una hora.</div>
-                                  @error('hour')
-                                  <li class="text-danger">{{ $message}}</li>
-                                  @enderror
-                                </div>
+                          </div>
+                          <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                              <div class="row mb-3">
+                                  <label for="inputTime" class="form-label"><strong>Hora</strong></label>
+                                  <div class="col-sm-12">
+                                      <input name="hour" type="time" class="form-control @error('hour') is-invalid @enderror" value="{{ old('hour') }}">
+                                      <div class="invalid-feedback">Ingrese una hora.</div>
+                                      @error('hour')
+                                      <li class="text-danger">{{ $message }}</li>
+                                      @enderror
+                                  </div>
                               </div>
-                            </div>
-                            <div class="col-sm-12">
+                          </div>
+                          <div class="col-sm-12">
                               <label for="yourSubject" class="form-label"><strong>Asunto</strong></label>
-                              <textarea class="form-control" cols="30" rows="4" name="subjectCita"></textarea>
+                              <textarea class="form-control @error('subjectCita') is-invalid @enderror" cols="30" rows="4" name="subjectCita">{{ old('subjectCita') }}</textarea>
                               <div class="invalid-feedback">Ingrese un asunto.</div>
                               @error('subjectCita')
-                              <li class="text-danger">{{ $message}}</li>
+                              <li class="text-danger">{{ $message }}</li>
                               @enderror
-                            </div>
+                          </div>
+                          
                             <div class="col-12 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                               <div class="row mb-"></div>
                             </div>

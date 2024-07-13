@@ -11,13 +11,26 @@ use App\Rules\ValidHour;
 
 class PerfilController extends Controller
 {
+    /**
+    * La función __construct() en el código proporcionado configura el middleware 'auth' para aplicarse a todas las rutas 
+    * del controlador donde se encuentra este constructor. Sin embargo, excluye ciertas rutas específicas de la aplicación del middleware 
+    * 'auth'. Las rutas excluidas son index, update, update_user. 
+    * Esto significa que todas las rutas de este controlador estarán protegidas por autenticación.
+    * excepto las mencionadas anteriormente, que probablemente sean accesibles públicamente o requieran una lógica de acceso diferente
+    */
+
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create','update_user']);
     }
+
+
     /**
-     * Display a listing of the resource.
-     */
+    *   Muestra la página de perfil del usuario.
+    *   Esta función comprueba si el usuario está autenticado y redirige a la página de inicio en caso contrario.
+    *   Si el usuario está autenticado, comprueba el rol del usuario y devuelve la vista de perfil apropiada.
+    */
+
     public function index()
     {
         // Obtener el usuario autenticado
@@ -38,22 +51,15 @@ class PerfilController extends Controller
         // Manejar el caso donde el usuario no está autenticado
         return redirect()->route('home')->with('error', 'Debe iniciar sesión para acceder a su perfil.');
     }
-    
-    
 
-    
-    
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
-     */
+    * Crea el perfil del usuario autenticado.
+    *
+    *  Este método valida los datos de la solicitud, crea el perfil del usuario
+    *  con la nueva información y almacena cualquier imagen de perfil subida.
+    */
+
     public function store(Request $request)
     {
         // Definir las reglas de validación
@@ -104,25 +110,14 @@ class PerfilController extends Controller
         return redirect()->route('perfil.index')->with('success', 'Perfil creado exitosamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+    * Actualiza el perfil del Aprendiz autenticado.
+    *
+    *  Este método valida los datos de la solicitud, actualiza el perfil del Aprendiz
+    *  con la nueva información y almacena cualquier imagen de perfil subida.
+    */
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(Request $request)
     {
         $user = Auth::user(); // Obtener el usuario autenticado
@@ -170,54 +165,51 @@ class PerfilController extends Controller
     }
 
 
-
-
-        public function update_user(Request $request)
-        {
-            $user = Auth::user();
-
-            $validator = Validator::make($request->all(), [
-                'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-                'about_me' => 'required|string|min:2',
-                'phone_number' => 'required|string|max:20',
-                'Twitter_Profile' => 'required|string',
-                'Linkedin_Profile' => 'required|string',
-                'morning_start' => ['nullable', 'date_format:H:i:s'],
-                'morning_end' => ['nullable', 'date_format:H:i:s'],
-                'afternoon_start' => ['nullable', 'date_format:H:i:s'],
-                'afternoon_end' => ['nullable', 'date_format:H:i:s'],
-            ]);
-
-            if ($validator->fails()) {
-                return redirect()->back()
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with('error', 'Existe un error en el formulario.');
-            }
-
-            $perfil = Perfil::where('user_id', $user->id)->firstOrFail();
-
-            // Actualizar campos según la solicitud, sin sobrescribir si están vacíos
-            $perfil->update([
-                'about_me' => $request->input('about_me'),
-                'phone_number' => $request->input('phone_number'),
-                'Twitter_Profile' => $request->input('Twitter_Profile'),
-                'Linkedin_Profile' => $request->input('Linkedin_Profile'),
-                'morning_start' => $request->input('morning_start') ?: $perfil->morning_start,
-                'morning_end' => $request->input('morning_end') ?: $perfil->morning_end,
-                'afternoon_start' => $request->input('afternoon_start') ?: $perfil->afternoon_start,
-                'afternoon_end' => $request->input('afternoon_end') ?: $perfil->afternoon_end,
-            ]);
-
-            session()->flash('success', 'Perfil actualizado correctamente.');
-            return redirect(route('perfil.index'));
-        }
-        
     /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    * Actualiza el perfil del usuario con rol autenticado.
+    *
+    *  Este método valida los datos de la solicitud, actualiza el perfil del usuario con rol,
+    *  con la nueva información y almacena cualquier imagen de perfil subida.
+    */
+
+    public function update_user(Request $request)
     {
-        //
+        $user = Auth::user();
+
+        $validator = Validator::make($request->all(), [
+            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'about_me' => 'required|string|min:2',
+            'phone_number' => 'required|string|max:20',
+            'Twitter_Profile' => 'required|string',
+            'Linkedin_Profile' => 'required|string',
+            'morning_start' => ['nullable', 'date_format:H:i:s'],
+            'morning_end' => ['nullable', 'date_format:H:i:s'],
+            'afternoon_start' => ['nullable', 'date_format:H:i:s'],
+            'afternoon_end' => ['nullable', 'date_format:H:i:s'],
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Existe un error en el formulario.');
+        }
+
+        $perfil = Perfil::where('user_id', $user->id)->firstOrFail();
+
+        // Actualizar campos según la solicitud, sin sobrescribir si están vacíos
+        $perfil->update([
+            'about_me' => $request->input('about_me'),
+            'phone_number' => $request->input('phone_number'),
+            'Twitter_Profile' => $request->input('Twitter_Profile'),
+            'Linkedin_Profile' => $request->input('Linkedin_Profile'),
+            'morning_start' => $request->input('morning_start') ?: $perfil->morning_start,
+            'morning_end' => $request->input('morning_end') ?: $perfil->morning_end,
+            'afternoon_start' => $request->input('afternoon_start') ?: $perfil->afternoon_start,
+            'afternoon_end' => $request->input('afternoon_end') ?: $perfil->afternoon_end,
+        ]);
+
+        session()->flash('success', 'Perfil actualizado correctamente.');
+        return redirect(route('perfil.index'));
     }
 }

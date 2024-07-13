@@ -27,16 +27,17 @@
                             <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Descripción</button>
                             </li>
-                            @if (Auth::check() && !Auth::user()->perfil)
-                            <li class="nav-item">
-                                <button class="nav-link " data-bs-toggle="tab" data-bs-target="#profile-create">Crear Perfil</button>
-                            </li>
+                            @if (Auth::check())
+                                @if (!Auth::user()->perfil)
+                                    <li class="nav-item">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-create">Crear Perfil</button>
+                                    </li>
+                                @else
+                                    <li class="nav-item">
+                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
+                                    </li>
+                                @endif
                             @endif
-                            
-
-                            <li class="nav-item">
-                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
-                            </li>
 
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ajustes</button>

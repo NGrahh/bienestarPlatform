@@ -36,48 +36,58 @@ class ApoyosController extends Controller
      */
     public function store(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required',
-        //     'lastname' => 'required',
-        //     'email' => 'required|email',
-        //     'mobilenumber' => 'required',
-        //     'formatuser' => 'required',
-        //     'photocopy' => 'required',
-        //     'receipt' => 'required',
-        //     'sisben' => 'required',
-        // ]);
-
-        if ($request->hasFile('picture')) {
-            $imageName = time() . '.' . $request->picture->extension();
-            $request->picture->move(public_path('images'), $imageName);
+        // Definir reglas de validación
+        $rules = [
+            'mobilenumber' => 'required|numeric|digits_between:7,12',
+            'formatuser' => 'required|file|mimes:doc,docx,pdf|max:2048',
+            'photocopy' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
+            'receipt' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
+            'sisben' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
+            'support' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:2048',
+        ];
+        
+        // Validar la petición
+        $validator = Validator::make($request->all(), $rules);
+        
+        // Manejar errores de validación
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Existe un error en el formulario.');
         }
-
-        $validatos = Validator::make($request -> all(),[
-            'name' => 'required | string | between: 2,100' ,
-            'lastname' => 'required | string | between: 2,100',
-            'email' => 'required|email1 max:100 | unique:users',
-            'mobilenumber' => 'required | numeric | digits_between: 7,12',
-            'formatuser' => 'required | image | mimes:jpn,png,jpeg,gif | max:2048',
-            'photocopy' => 'required | image | mimes:jpn,png,jpeg,gif | max:2048',
-            'receipt' => 'required | image | mimes:jpn,png,jpeg,gif | max:2048',
-            'sisben' => 'required | image | mimes:jpn,png,jpeg,gif | max:2048',
-        ]);
-
+        
+        // Manejar el archivo formatuser (Word o PDF)
+        if ($request->file('formatuser')->isValid()) {
+            $formatuserPath = $request->file('formatuser')->store('uploads');
+        } else {
+            return redirect()->back()->withInput()->with('error', 'El archivo formatuser no es válido.');
+        }
+    
+        // Array para almacenar los nombres de las imágenes
+        $imageNames = [];
+        
+        // Procesar cada archivo de imagen individualmente
+        foreach (['photocopy', 'receipt', 'sisben', 'support'] as $file) {
+            if ($request->hasFile($file)) {
+                $imageName = time() . '_' . $file . '.' . $request->file($file)->extension();
+                $request->file($file)->move(public_path('images/apoyos'), $imageName);
+                $imageNames[$file] = $imageName;
+            }
+        }
+        
+        // Crear el registro en la base de datos
         Apoyos::create([
-            'name' => $request->get('name'),
-            'lastname' => $request->get('name'),
-            'email'=> $request->get('email'),
-            'mobilenumber'=> $request->get('mobilenumber'),
-            'formatuser' => $imageName,
-            'photocopy' => $imageName,
-            'receipt' => $imageName,
-            'sisben' => $imageName
+            'user_id' => auth()->id(), // O cualquier método que obtenga el ID del usuario
+            'mobilenumber' => $request->get('mobilenumber'),
+            'formatuser' => $formatuserPath, // Guardamos la ruta del archivo Word o PDF
+            'photocopy' => $imageNames['photocopy'] ?? null,
+            'receipt' => $imageNames['receipt'] ?? null,
+            'sisben' => $imageNames['sisben'] ?? null,
+            'support' => $imageNames['support'] ?? null,
         ]);
-
+        
         session()->flash('success', 'Inscripción exitosa.');
-        return redirect('apoyos.index');
+        return redirect()->route('form-inscription-supports');
     }
-
+    
     /**
      * Muestra los detalles de un apoyo específico.
      */

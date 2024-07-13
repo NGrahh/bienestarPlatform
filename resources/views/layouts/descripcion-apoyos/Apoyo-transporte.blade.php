@@ -35,10 +35,9 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2>Descripcion:</h2>
+                                    <h2>Descripción:</h2>
                                     <p align="justify" class="text-start">
-                                      Es un servicio otorgado a los aprendices de formación con modalidad en presencial. En convenido con el servicio de transporte público masivo <strong>MEGABUS </strong> (Por ningun motivo se entrega dinero a los aprendices)
-                                      consta de 40 pasajes al mes durante 4 meses
+                                        Es un servicio otorgado a los aprendices de formación con modalidad presencial. En convenio con el servicio de transporte público masivo MEGABUS (Por ningún motivo se entrega dinero a los aprendices), consta de 40 pasajes al mes durante 4 meses
                                     </p>
                                 </div>
                                 <div class="botones mt-4 text-center">

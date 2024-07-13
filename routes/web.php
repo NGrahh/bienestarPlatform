@@ -251,7 +251,7 @@ Route::get('/apoyos-sostenimiento', function(){
     return view ('layouts\descripcion-servicios\Servicio-apoyos-sostenimiento');
 })-> name ('apoyos-sostenimiento');
 
-Route::get('/Eventos', [EventsController::class,'viewevent'])->name('events.viewevent')->middleware('auth');
+
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -281,7 +281,6 @@ Route::get('/formulario-inscripcion-apoyo-transporte', function(){
 })-> name ('formulario-inscripcion-apoyo-transporte');
 
 
-Route::get('/Informacion-eventos', [EventsController::class, 'viewEventUser'])->name('events.viewEventUser');
 
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
@@ -329,8 +328,14 @@ Route::patch('/users/{id}/disable', [UserController::class, 'disable'])->name('u
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+/////////////////////////// Rutas para visualizar eventos ///////////////////////////
+
+Route::get('/Eventos', [EventsController::class,'viewevent'])->name('events.viewevent')->middleware('auth'); // Ruta con autenticación.
+Route::get('/Informacion-eventos', [EventsController::class, 'viewEventUser'])->name('events.viewEventUser'); // Ruta sin autenticación para los "usuarios".
+
 /////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Eventos ///////////////////////////
-// Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
 Route::resource('eventos', EventsController::class)->middleware('auth');
 
@@ -344,10 +349,11 @@ Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.up
 
 Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
 
-// Registrar persona a un EVENTO
+
+/////////////////////////// Rutas el Registro de una persona al Evento ///////////////////////////
+
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
 Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
-
 Route::get('/events/{eventId}/registrations', [EventsController::class, 'showRegistrations'])->name('event.registrations')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -358,13 +364,19 @@ Route::resource('citas', CitasController::class)->middleware('auth');
 
 Route::get('/listado-citas', [CitasController::class, 'index'])->name('citas.index')->middleware('auth');
 
-Route::get('/show/{id}', [CitasController::class, 'show'])->name('citas.show')->middleware('auth');
+Route::get('/Mis-citas', [CitasController::class, 'citaview'])->name('citas.citaview')->middleware('auth');
 
-Route::get('/edit/{id}', [CitasController::class, 'edit'])->name('citas.edit')->middleware('auth'); 
+Route::patch('/listado-citas/{id}', [CitasController::class, 'acceptCita'])->name('citas.accept')->middleware('auth');
 
-Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.update')->middleware('auth');
 
-Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
+// Route::put('/show/{id}', [CitasController::class, 'show'])->name('citas.show')->middleware('auth');
+
+// Route::get('/edit/{id}', [CitasController::class, 'edit'])->name('citas.edit')->middleware('auth'); 
+
+// Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.update')->middleware('auth');
+
+
+// Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
 
 

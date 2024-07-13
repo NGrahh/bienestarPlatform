@@ -16,10 +16,11 @@ class UsersSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        // Crear el usuario administrador
+        // Crear el usuario 'Administrador'
+
         User::create([
-            'name' => 'admin',
-            'lastname' => 'user',
+            'name' => 'Camila',
+            'lastname' => 'Martinez',
             'user_name' => 'admin',
             'type_document_id' => 2,
             'document' => 101010101,
@@ -31,13 +32,32 @@ class UsersSeeder extends Seeder
 
         ]);
 
+        
+        // Crear el usuario 'Administrador'
+
         User::create([
-            'name' => 'aprendiz',
-            'lastname' => 'aprendiz',
-            'user_name' => 'aprendz',
+            'name' => 'Camilo',
+            'lastname' => 'Lopez',
+            'user_name' => 'camil',
             'type_document_id' => 2,
-            'document' => 1234567899,
-            'email' => 'aprendiz@gmail.com',
+            'document' => 1212121221,
+            'email' => 'liderbienestar@gmail.com',
+            'type_rh_id' => 1,
+            'password' => Hash::make('123456'),
+            'rol_id' => 2,
+            
+
+        ]);
+
+        // Crear el usuario 'Aprendiz'
+
+        User::create([
+            'name' => 'Ivan Mauricio',
+            'lastname' => 'Duque Aricapa',
+            'user_name' => 'ivdu',
+            'type_document_id' => 1,
+            'document' => 1089577728,
+            'email' => 'duqueivan493@gmail.com',
             'type_rh_id' => 1,
             'password' => Hash::make('123456789'),
             'rol_id' => 5,
@@ -45,22 +65,51 @@ class UsersSeeder extends Seeder
 
         ]);
 
-        // // Crear 10 usuarios adicionales con datos aleatorios
-        // for ($i = 0; $i < 20; $i++) {
-        //     User::create([
-        //         'name' => $faker->firstName,
-        //         'lastname' => $faker->lastName,
-        //         'user_name' => $faker->userName,
-        //         'type_document_id' => $faker->numberBetween(1, 5),
-        //         'document' => $faker->unique()->randomNumber(8),
-        //         'email' => $faker->unique()->safeEmail,
-        //         'type_rh_id' => $faker->numberBetween(1, 5),
-        //         'password' => Hash::make('password'),
-        //         'rol_id' => $faker->numberBetween(1, 3),
-                
+        // Crear el usuario 'Miembro Bienestar'
 
-        //     ]);
-        // }
+        User::create([
+            'name' => 'Andres',
+            'lastname' => 'Lopez',
+            'user_name' => 'adlopezx',
+            'type_document_id' => 1,
+            'document' => 1089566628,
+            'email' => 'miembrobienestar@gmail.com',
+            'type_rh_id' => 1,
+            'password' => Hash::make('123456789'),
+            'rol_id' => 3,
+        ]);
+
+        // Crear el usuario 'Miembro Bienestar Apoyo'
+
+        User::create([
+            'name' => 'Andres',
+            'lastname' => 'Lopez',
+            'user_name' => 'adlopez',
+            'type_document_id' => 1,
+            'document' => 1089555528,
+            'email' => 'miembrobienestarap@gmail.com',
+            'type_rh_id' => 1,
+            'password' => Hash::make('123456789'),
+            'rol_id' => 4,
+            
+
+        ]);
+        // Crear 10 usuarios adicionales con datos aleatorios
+        for ($i = 0; $i < 10; $i++) {
+            User::create([
+                'name' => $faker->firstName,
+                'lastname' => $faker->lastName,
+                'user_name' => $faker->userName,
+                'type_document_id' => $faker->numberBetween(1, 4),
+                'document' => $faker->unique()->randomNumber(8),
+                'email' => $faker->unique()->safeEmail,
+                'type_rh_id' => $faker->numberBetween(1, 5),
+                'password' => Hash::make('password'),
+                'rol_id' => 5,
+            ]);
+        }
+
+
         // for ($x = 0; $x < 10; $x++) {
         //     User::create([
         //         'name' => $faker->firstName,
@@ -76,5 +125,6 @@ class UsersSeeder extends Seeder
         //         'rol_id' => $faker->numberBetween(4,5),
                 
         //     ]);
-        }
+        // }
     }
+}

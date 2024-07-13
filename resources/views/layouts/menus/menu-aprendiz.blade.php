@@ -98,6 +98,11 @@
                 <i class="bi bi-circle"></i><span>Solicitar mi cita</span>
             </a>
         </li>
+        <li>
+            <a href="{{route('citas.citaview')}}">
+                <i class="bi bi-circle"></i>Mis Citas<span></span>
+            </a>
+        </li>
     </ul>
 </li>
 {{-- Final Item --}}

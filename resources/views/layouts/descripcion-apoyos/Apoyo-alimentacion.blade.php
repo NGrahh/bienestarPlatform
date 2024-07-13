@@ -35,11 +35,10 @@
                                     <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
                                 </div>
                                 <div class="descripcion">
-                                    <h2>Descripcion: </h2>
+                                    <h2>Descripción: </h2>
                                     <p align="justify" class="text-start">
-                                      Es aquel que otorga a los aprendices técnicos y tecnólogos de todas las modalidades y jornadas, 
-                                      que cumplen requisitos y cuyo propósito es apoyar la permanencia del aprendiz en su proceso formativo.
-                                      </p>
+                                        Es aquel que otorga a los aprendices técnicos y tecnólogos de todas las modalidades y jornadas, que cumplen con los requisitos y cuyo propósito es apoyar la permanencia del aprendiz en su proceso formativo
+                                    </p>
                                 </div>
                                 <div class="botones mt-4 text-center">
                                 @if(session('rol_id') == 5)
