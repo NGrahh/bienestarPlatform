@@ -34,12 +34,6 @@
           <i class="bi bi-circle"></i>Información Citas<span></span>
         </a>
       </li>
-      <li>
-        <a href="{{route('citas.citaview')}}">
-          <i class="bi bi-circle"></i>Mis Citas<span></span>
-        </a>
-      </li>
-      
     </ul>
   </li>
   {{-- Final Item --}}
@@ -91,6 +85,11 @@
             <i class="bi bi-circle"></i><span>Información Inscritos</span>
         </a>
     </li>
+    <li>
+        <a href="{{route('apoyosCreated.index')}}">
+          <i class="bi bi-circle"></i>Información Apoyos<span></span>
+        </a>
+      </li>
   </ul>
 </li>
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\ApoyosCreatedController;
 use App\Models\Apoyos;
 use Illuminate\Support\Facades\Route;
 
