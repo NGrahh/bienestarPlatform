@@ -25,7 +25,7 @@ class ApoyosCreatedController extends Controller
     
     public function show($id)
     {
-        $apoyos_created = Apoyos_creared::findOrFail($id);
+        $apoyos_created = Apoyos_created::findOrFail($id);
         return view('apoyos_created.show', compact('apoyos_created'));
     }
 }

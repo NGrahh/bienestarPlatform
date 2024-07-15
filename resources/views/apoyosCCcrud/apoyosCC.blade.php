@@ -38,12 +38,12 @@
                                     @foreach($apoyos_created as $apoyos_created)
                                     <tr>
                                         <td>{{$apoyos_created->id}}</td>
-                                        <td>{{ $apoyos_created->appoiment->appoiment_name }}</td>
-                                        <td>{{ $apoyos_created->appoiment_date_start}}</td>
-                                        <td>{{ $apoyos_created->appoiment_date_end}}</td>
-                                        <td>{{ $apoyos_created->appoiment_status}}</td>
+                                        <td>{{$apoyos_created->appoiment->appoiment_name}}</td>
+                                        <td>{{$apoyos_created->appoiment_date_start}}</td>
+                                        <td>{{$apoyos_created->appoiment_date_end}}</td>
+                                        <td>{{$apoyos_created->appoiment_status}}</td>
                                         <td>
-                                            @if ($apoyo->status ==1 )
+                                            @if ($apoyos_created->appoiment_status ==1 )
                                                 <span class="badge" style="background-color: #39A900">Activo</span>
                                             @else
                                                 <span class="badge bg-danger">Inactivo</span>
