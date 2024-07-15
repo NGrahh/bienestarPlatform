@@ -196,14 +196,14 @@
                                                     <!-- Fin del modal de actualizar -->
 
                                                     {{-- @if ($user->status) @else --}}
-                                                        <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyo->id }}" title="Deshabilitar Usuario">
+                                                        <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyo->id }}" title="Habilitar Usuario">
                                                             <i class="ri-chat-check-line"></i> 
                                                         </button>
                                                         
                                                     
                                                         <!-- Botón para abrir el modal de deshabilitar -->
-                                                        {{-- {{-- @endif
-                                                    --}}<button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyo->id }}" title="Deshabilitar Usuario">
+                                                        {{-- {{-- @endif--}}--}}    
+                                                        <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyo->id }}" title="Deshabilitar Usuario">
                                                             <i class="ri-admin-line"></i> 
                                                         </button> 
                                                     

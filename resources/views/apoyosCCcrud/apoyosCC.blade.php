@@ -41,7 +41,6 @@
                                         <td>{{$apoyos_created->appoiment->appoiment_name}}</td>
                                         <td>{{$apoyos_created->appoiment_date_start}}</td>
                                         <td>{{$apoyos_created->appoiment_date_end}}</td>
-                                        <td>{{$apoyos_created->appoiment_status}}</td>
                                         <td>
                                             @if ($apoyos_created->appoiment_status ==1 )
                                                 <span class="badge" style="background-color: #39A900">Activo</span>
@@ -49,7 +48,19 @@
                                                 <span class="badge bg-danger">Inactivo</span>
                                             @endif
                                         </td>
+                                        <td>
+                                        {{-- @if ($apoyos_created->appoiment_status) @else --}}
+                                        <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyos_created->id }}" title="Habilitar Apoyo">
+                                            <i class="ri-chat-check-line"></i> 
+                                        </button>
                                         
+                                    
+                                        <!-- Botón para abrir el modal de deshabilitar -->
+                                        {{-- @endif--}} 
+                                        <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyos_created->id }}" title="Deshabilitar Apoyo">
+                                            <i class="ri-admin-line"></i> 
+                                        </button> 
+                                        </td>                                           
                                     </tr>
                                     @endforeach
                                 </tbody>
