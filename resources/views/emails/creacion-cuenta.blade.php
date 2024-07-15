@@ -151,6 +151,13 @@
 					</tr>
 
 					<tr>
+						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px; color: #000000; font-family: sans-serif;" class="paragraph">
+							Ingresa a tu cuenta con el siguiente código temporal: <strong>{{ $password }}</strong>.
+							Una vez dentro, te recomendamos ir a tu perfil y cambiar esta contraseña por una que sea segura y fácil de recordar para ti.
+						</td>
+					</tr>
+
+					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
                             ¡Bienvenido una vez más, {{ $name_user }} {{ $surnames_user }}! Estamos emocionados de acompañarte en este viaje hacia el éxito y el bienestar.
                         </td> 
@@ -158,6 +165,7 @@
 
 					<tr>
 						<td align="justify" valign="top" style="border-collapse: collapse; border-spacing: 0; margin: 0; padding: 0; padding-left: 6.25%; padding-right: 6.25%; width: 87.5%; font-size: 17px; font-weight: 300; line-height: 160%; padding-top: 25px;  color: #000000; font-family: sans-serif;" class="paragraph">
+							
                         </td> 
 					</tr>
 					

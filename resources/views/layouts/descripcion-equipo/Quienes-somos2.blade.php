@@ -158,10 +158,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div align="center" class="pagetitle">
+                        
+                            <div align="center" class="pagetitle mt-2">
                                     <h1>Conoce nuestro equipo!</h1>
-                                </div><!-- End Page Title -->
-                            <div class="col-12 col-lg-8">
+                            </div><!-- End Page Title -->
+                        
+                            <div class="col-12 col-lg-8 mt-5">
                                 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
                                     <div class="carousel-indicators">
                                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -172,29 +174,33 @@
                                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
                                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 7"></button>
                                         <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7" aria-label="Slide 8"></button>
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="8" aria-label="Slide 9"></button>
                                     </div>
                                     <div class="carousel-inner">
                                         <div class="carousel-item active">
-                                            <img src="{{asset('img/Beatriz.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/BIENESTAR_EQUIPO.jpg')}}" class="d-block h-100 w-100" alt="Equipo Bienestar al Aprendiz">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="{{asset('img/Juan.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/Beatriz.png')}}" class="d-block h-100 w-100" alt="Beatriz">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="{{asset('img/Carolina.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/Juan.png')}}" class="d-block h-100 w-100" alt="Juan">
+                                        </div>
+                                        <div class="carousel-item">
+                                            <img src="{{asset('img/Carolina.png')}}" class="d-block h-100 w-100" alt="Carolina">
                                         </div>
                                         {{-- ///// --}}
                                         <div class="carousel-item">
-                                            <img src="{{asset('img/JuanSantos.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/JuanSantos.png')}}" class="d-block h-100 w-100" alt="Juan Santos">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="{{asset('img/Juliana.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/Juliana.png')}}" class="d-block h-100 w-100" alt="Juliana">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="{{asset('img/Andres.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/Andres.png')}}" class="d-block h-100 w-100" alt="Andres">
                                         </div>
                                         <div class="carousel-item">
-                                            <img src="{{asset('img/Natalia.png')}}" class="d-block h-100 w-100" alt="">
+                                            <img src="{{asset('img/Natalia.png')}}" class="d-block h-100 w-100" alt="Natalia">
                                         </div>
                                     </div>
 

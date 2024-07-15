@@ -29,7 +29,7 @@
             @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
                 <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 40px; height: 50px; object-fit: cover;">
             @else
-                <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Default Profile" class="rounded-circle">
+                <img src="{{ asset('assets/img/perfil_predeterminado.png') }}" alt="Default Profile" class="rounded-circle">
             @endif
             <span class="d-none d-md-block dropdown-toggle ps-2" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{session('name')}} {{session('lastname')}}</span>
           </a><!-- End Profile Iamge Icon -->

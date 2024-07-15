@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title-page','Información Eventos')
+@section('title-page','Portal Eventos')
 
 @include('layouts.header')
 @include('layouts.menu')
@@ -46,7 +46,7 @@
                                         <td>{{ $event->eventlimit }}</td>
                                         <td>{{ $event->datestar }}</td>
                                         <td>{{ $event->dateendevent }}</td>
-                                        <td>{{ $event->Subjectevent }}</td>
+                                        <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">{{ $event->Subjectevent }}</td>
                                         <td>
                                             @if ($event->status ==1 )
                                                 <span class="badge" style="background-color: #39A900">Activo</span>
@@ -56,12 +56,86 @@
                                         </td>
                                         <td>
                                             <div class="d-flex gap-2">
-                                                <!-- Botón para abrir el modal de ditar -->
+                                                <!-- Botón para abrir el modal de visualizar -->
+                                                <button type="button" class="btn btn-ba-view px-2 " data-bs-toggle="modal" data-bs-target="#viewEventModal{{ $event->id }}" title="Visualizar Usuario">
+                                                    <i class="ri-account-box-line"></i>
+                                                </button>
+                                                <!-- Modal de visualizar para cada evento -->
+                                                <div class="modal fade" id="viewEventModal{{ $event->id }}" tabindex="-1">
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header gap-2">
+                                                                <h5 class="card-title-ba text-center pb-0 fs-4 ">Información Evento</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="card-body">
+
+                                                                    <form class="row g-3 needs-validation">
+
+                                                                        {{-- Imagen del evento --}}
+                                                                        <div class="col-12 text-center">
+                                                                            <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
+                                                                            <div class="mb-3 image-container">
+                                                                                <img src="{{ asset('images/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mt-4">
+                                                                            {{-- Nombre del evento --}}
+                                                                            <div class="col-12">
+                                                                                <label for="eventname" class="form-label">Nombre del evento</label>
+                                                                                <input value="{{ $event->eventname }}" type="text" name="eventname" class="form-control" id="eventname" disabled>
+                                                                            </div>
+                                                                        </div>
+                                                                        
+
+                                                                        {{-- Fechas del evento --}}
+                                                                        <div class="row mt-4">
+                                                                            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                                                                                <label for="eventdate" class="form-label">Fecha del evento</label>
+                                                                                <input value="{{ $event->eventdate }}" type="date" name="eventdate" class="form-control" id="eventdate" disabled>
+                                                                            </div>
+                                                                            {{-- Aforo del evento --}}
+                                                                            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                                                                                <label for="eventlimit" class="form-label">Aforo</label>
+                                                                                <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" disabled>
+                                                                            </div>
+                                                                            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                                                                                <label for="datestar" class="form-label ">Fecha Inicio (Inscripción)</label>
+                                                                                <input value="{{ $event->datestar }}" type="date" name="datestar" class="form-control" id="datestar" disabled>
+                                                                            </div>
+    
+                                                                            <div class="col-12 col-md-6 col-lg-6 mb-3">
+                                                                                <label for="dateendevent" class="form-label ">Fecha Final (Inscripción)</label>
+                                                                                <input value="{{ $event->dateendevent }}" type="date" name="dateendevent" class="form-control" id="dateendevent" disabled>
+                                                                            </div>
+                                                                            
+                                                                        </div>
+
+                                                                        <div class="row mt-4">
+                                                                            <div class="col-12">
+                                                                            <label for="Subjectevent" class="form-label">Descripción del evento</label>
+                                                                            <textarea class="form-control" cols="30" rows="4" name="Subjectevent" id="Subjectevent" disabled>{{ $event->Subjectevent }}</textarea>
+                                                                        </div></div>
+                                                                        
+
+                                                                        <div class=" modal-footer d-flex justify-content-center gap-2 col-12"></div>
+                                                                    </form>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div><!-- Fin del modal de visualizar -->
+
+
+
+
+
+
                                                 <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editEventModal{{ $event->id }}" title="Editar usuario">
                                                     <i class="ri-article-line"></i>
                                                 </button>
-                                                
-
                                                 <!-- Modal de edición para cada evento -->
                                                 <div class="modal fade" id="editEventModal{{ $event->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -100,7 +174,7 @@
 
                                                                         <div class="col-12 col-md-6">
                                                                             <label for="eventdate" class="form-label">Fecha del evento</label>
-                                                                            <input value="{{ $event->eventdate }}" type="text" name="eventdate" class="form-control" id="eventdate" required>
+                                                                            <input value="{{ $event->eventdate }}" type="date" name="eventdate" class="form-control" id="eventdate" required>
                                                                             <div class="invalid-feedback">Ingrese una fecha.</div>
                                                                             @error('eventdate')
                                                                             <li class="text-danger">{{ $message }}</li>
@@ -121,7 +195,7 @@
 
                                                                         <div class="col-12 col-md-6">
                                                                             <label for="datestar" class="form-label">Fecha Inicio (Inscripciones)</label>
-                                                                            <input value="{{ $event->datestar }}" type="text" name="datestar" class="form-control" id="datestar" required>
+                                                                            <input value="{{ $event->datestar }}" type="date" name="datestar" class="form-control" id="datestar" required>
                                                                             <div class="invalid-feedback">Ingrese una fecha inicial.</div>
                                                                             @error('datestar')
                                                                             <li class="text-danger">{{ $message }}</li>
@@ -130,7 +204,7 @@
 
                                                                         <div class="col-12 col-md-6">
                                                                             <label for="dateendevent" class="form-label">Fecha Final (Inscripciones)</label>
-                                                                            <input value="{{ $event->dateendevent }}" type="text" name="dateendevent" class="form-control" id="dateendevent" required>
+                                                                            <input value="{{ $event->dateendevent }}" type="date" name="dateendevent" class="form-control" id="dateendevent" required>
                                                                             <div class="invalid-feedback">Ingrese una fecha final.</div>
                                                                             @error('dateendevent')
                                                                             <li class="text-danger">{{ $message }}</li>
@@ -161,18 +235,18 @@
                                                 </div><!-- Fin del modal de editar -->
 
                                                 @if ($event->status) 
-                                                    <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Deshabilitar Usuario">
+                                                    <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#deleteEventModal{{ $event->id }}" title="Deshabilitar Evento">
                                                         <i class="ri-chat-check-line"></i> 
                                                     </button>
                                                 @else
                                                     <!-- Botón para abrir el modal de deshabilitar -->
-                                                    <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $event->id }}" title="Habilitar Usuario">
+                                                    <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#deleteEventModal{{ $event->id }}" title="Habilitar Evento">
                                                         <i class="ri-admin-line"></i> 
                                                     </button>
                                                 @endif
 
                                                 <!-- Modal de eliminación para cada usuario -->
-                                                <div class="modal fade" id="deleteUserModal{{ $event->id }}" tabindex="-1">
+                                                <div class="modal fade" id="deleteEventModal{{ $event->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -261,7 +335,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
                                                 <!-- Fin del modal de Inscripciones-->
 
                                             </div>
@@ -272,13 +345,13 @@
                             </table>
                             <div class="d-grid gap-1 d-md-flex justify-content-md-end">
 
-                                <!-- Botón para abrir el modal de creación nuevo usuario -->
-                                <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal">
+                                <!-- Botón para abrir el modal de creación nuevo Evento -->
+                                <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newEventModal">
                                     Crear Evento
                                 </button>
 
-                                <!-- Modal de creación para usuario -->
-                                <div class="modal fade" id="newUserModal" tabindex="-1">
+                                <!-- Modal de creación para Evento -->
+                                <div class="modal fade" id="newEventModal" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -330,7 +403,7 @@
                                                             <div class="row mb-3">
                                                                 <label for="datestarevent" class="form-label">Fecha Inicio de inscripción</label>
                                                                 <div class="col-sm-12">
-                                                                    <input name="datestar" type="date" class="form-control" required>
+                                                                    <input name="datestar" type="date" class="form-control" value="{{ old('datestar') }}" required>
                                                                     <div class="invalid-feedback">Ingrese la fecha de inicio de inscripción</div>
                                                                     @error('datestar')
                                                                     <li class="text-danger">{{ $message }}</li>
@@ -343,7 +416,7 @@
                                                             <div class="row mb-">
                                                                 <label for="dateendevent" class="form-label">Fecha fin de inscripcion</label>
                                                                 <div class="col-sm-12">
-                                                                    <input name="dateendevent" type="date" class="form-control" required>
+                                                                    <input name="dateendevent" type="date" class="form-control"  value="{{ old('dateendevent') }}" required>
                                                                     <div class="invalid-feedback">Ingrese una fecha fin de inscripcion</div>
                                                                     @error('dateendevent')
                                                                     <li class="text-danger">{{ $message }}</li>
@@ -353,7 +426,7 @@
                                                         </div>
                                                         <div class="col-sm-12">
                                                             <label for="yourSubject" class="form-label">Descripción del evento</label>
-                                                            <textarea class="form-control" cols="30" rows="4" name="Subjectevent" required></textarea>
+                                                            <textarea class="form-control" cols="30" rows="4" name="Subjectevent" required>{{ old('Subjectevent') }}</textarea>
                                                             <div class="invalid-feedback">Ingrese un asunto.</div>
                                                             @error('Subjectevent')
                                                             <li class="text-danger">{{ $message }}</li>
@@ -374,7 +447,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Final modal de creación para usuario-->
+                                <!-- Final modal de creación para Evento-->
 
                             </div>
 

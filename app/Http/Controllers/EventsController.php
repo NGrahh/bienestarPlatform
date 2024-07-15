@@ -10,6 +10,7 @@ use App\Models\Programas;
 use App\Models\User;
 use App\Models\Event_registrations;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 
 class EventsController extends Controller
@@ -142,17 +143,26 @@ class EventsController extends Controller
         $validator = Validator::make($request->all(), [
             'eventname' => 'required|string|between:2,100',
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'eventdate' => 'required|date',
+            'eventdate' => 'required|date|after_or_equal:today',
             'eventlimit' => 'required|numeric|digits_between:1,1000',
-            'datestar' => 'required|date|unique:events,datestar',
-            'dateendevent' => 'required|date',
+            'datestar' => [
+                'required',
+                'date',
+                'before:eventdate',
+            ],
+            'dateendevent' => [
+                'required',
+                'date',
+                'before:eventdate'
+            ],
             'Subjectevent' => 'required|string|min:1'
         ]);
 
         if ($validator->fails()) {
-            return redirect(route('forms.create-events'))
-                ->withErrors($validator)
-                ->withInput();
+            return redirect()
+            ->back()
+            ->withErrors($validator)
+            ->withInput();
         }
 
         if ($request->hasFile('picture')) {
