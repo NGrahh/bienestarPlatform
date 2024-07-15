@@ -14,9 +14,9 @@ return new class extends Migration
             Schema::create('apoyos_createds', function (Blueprint $table) {
             $table->id();
             $table->string('appoiment_name');
-            $table->string('appoiment_date_start');
-            $table->string('appoiment_date_end');
-            $table->string('appoiment_status')->default(true);
+            $table->date('appoiment_date_start');
+            $table->date('appoiment_date_end');
+            $table->boolean('appoiment_status')->default(true);
             $table->timestamps();
         });
         

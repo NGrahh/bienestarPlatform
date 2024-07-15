@@ -353,10 +353,6 @@ Route::get('/events/{eventId}/registrations', [EventsController::class, 'showReg
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-Route::resource('apoyos_created', ApoyosCreatedController::class)->middleware('auth');
-
-Route::get('/listado-apoyos', [ApoyosCreatedController::class, 'index'])->name('apoyosCreated.index')->middleware('auth');
-
 /////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Citas ///////////////////////////
 
 Route::resource('citas', CitasController::class)->middleware('auth');
@@ -376,7 +372,11 @@ Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.d
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+Route::resource('apoyos_created', ApoyosCreatedController::class)->middleware('auth');
 
+Route::get('/listado-apoyos', [ApoyosCreatedController::class, 'index'])->name('apoyosCreated.index')->middleware('auth');
+
+Route::get('/show/{id}',[ApoyosCreatedController::class, 'show'])-> name('apoyos_created.show')->middleware('auth');
 
 /////////////////////////// Rutas CRUD ( Update, Delete) Perfil ///////////////////////////
 //Ruta para visualizar el perfil

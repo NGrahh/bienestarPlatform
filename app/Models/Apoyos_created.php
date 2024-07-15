@@ -18,7 +18,7 @@ class Apoyos_created extends Model
     ];
     public function appoiment()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(appoiment::class);
     }
 
 }
