@@ -131,11 +131,21 @@
 }
 
 
+.vinculosheader {
+    color: #fdfdfd;
+    text-decoration: none;
+}
+
+.vinculosheader:hover{
+    color:white
+}
 
 .vinculos {
     color: #39A900;
     text-decoration: none;
 }
+
+
 
 .vinculos:hover {
     color: #4CAF50; /* Un tono más claro de verde */

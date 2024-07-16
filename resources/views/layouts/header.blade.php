@@ -12,7 +12,7 @@
       <a href="{{route('pagina-principal')}}" class="logo d-flex align-items-center">
         <img style="max-height: 50px" src="{{asset('img/Bienestar-al-Aprendiz-header.png')}}" >
       </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
+      <i class="bi bi-list toggle-sidebar-btn" style="color: white"></i>
     </div><!-- End Logo -->
   
     {{-- <div style="justify-content: center"  class="search-bar">
@@ -27,7 +27,7 @@
   
         <li class="nav-item d-block d-lg-none">
           <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
+            {{-- <i class="bi bi-search"></i> --}}
           </a>
         </li><!-- End Search Icon-->
         <li class="nav-item dropdown pe-3">
@@ -37,7 +37,7 @@
             @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
                 <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 40px; height: 50px; object-fit: cover;">
             @else
-                <img src="{{ asset('assets/img/perfil_predeterminado.png') }}" alt="Default Profile" class="rounded-circle">
+            <i class='bx bxs-user' style="color: white"></i>
             @endif
             <span class="d-none d-md-block dropdown-toggle ps-2 navigation-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{session('name')}} {{session('lastname')}}</span>
           </a><!-- End Profile Iamge Icon -->
@@ -76,7 +76,7 @@
   
           </ul><!-- End Profile Dropdown Items -->
           @else
-          <a class="vinculos" href="{{route('login')}}">
+          <a class="vinculosheader" href="{{route('login')}}">
             <span >Iniciar Sesión</span>
           </a><!-- End Profile Iamge Icon -->
           @endif
