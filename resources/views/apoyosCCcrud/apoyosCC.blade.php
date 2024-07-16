@@ -83,12 +83,12 @@
                             <div class="d-grid gap-1 d-md-flex justify-content-md-end">
 
                                 <!-- Botón para abrir el modal de creación nuevo usuario -->
-                                <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal" >
+                                <!-- <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal" >
                                     Crear Cuenta
-                                </button>
+                                </button> -->
 
                                 <!-- Modal de creación para usuario -->
-                                <div class="modal fade" id="newUserModal" tabindex="-1">
+                                <!-- <div class="modal fade" id="newUserModal" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -228,7 +228,7 @@
                                             
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Fin del modal de creación para usuario-->
 
                             </div>
