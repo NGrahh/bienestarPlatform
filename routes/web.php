@@ -349,6 +349,7 @@ Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
 Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
 
+// Ruta para visualizar los inscritos para cada evento
 Route::get('/events/{eventId}/registrations', [EventsController::class, 'showRegistrations'])->name('event.registrations')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -389,6 +390,7 @@ Route::resource('perfil', PerfilController::class)->middleware('auth');
 Route::get('/mi-perfil', [PerfilController::class, 'index'])->name('perfil.index')->middleware('auth');
 Route::put('/perfil/{perfil}', [PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
 Route::put('/perfil/{perfil}', [PerfilController::class, 'update_user'])->name('perfil.update_user')->middleware('auth');
+Route::put('/change-pass', [PerfilController::class, 'cambiarContrasena'])->name('perfil.cambiar-contrasena')->middleware('auth');
 
 
 

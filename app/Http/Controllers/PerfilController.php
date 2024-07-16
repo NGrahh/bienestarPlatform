@@ -8,6 +8,7 @@ use App\Models\Perfil;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Rules\ValidHour;
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
@@ -65,7 +66,7 @@ class PerfilController extends Controller
         // Definir las reglas de validación
         $validator = Validator::make($request->all(), [
             'pictureuser' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'required|string|max:255',
+            'about_me' => 'required|string|between:2,300',
             'phone_number' => 'required|string|max:15',
             'Twitter_Profile' => 'required|url|max:255',
             'Linkedin_Profile' => 'required|url|max:255',
@@ -212,4 +213,44 @@ class PerfilController extends Controller
         session()->flash('success', 'Perfil actualizado correctamente.');
         return redirect(route('perfil.index'));
     }
+
+
+    public function cambiarContrasena(Request $request)
+    {
+        // Validar los datos del formulario
+        $request->validate([
+            'password' => 'required|string',
+            'newpassword' => 'required|string|min:8',
+            'renewpassword' => 'required|string|same:newpassword',
+        ]);
+
+        // Obtener el usuario autenticado
+        $user = Auth::user();
+
+        // Verificar que la contraseña actual sea correcta
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect()->back()->withErrors(['password' => 'La contraseña actual es incorrecta.']);
+        }
+
+        User::where('id', $user->id)
+            ->update([
+                'password' => Hash::make($request->newpassword)
+            ]);
+
+
+
+        // Redirigir con un mensaje de éxito
+        return redirect()->route('perfil.index')->with('success', '¡Contraseña cambiada exitosamente!');
+    }
+
+
+
+
+
+
+
+
+
+
+
 }

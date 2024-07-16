@@ -39,9 +39,9 @@
                                 @endif
                             @endif
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ajustes</button>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Cambiar la contraseña</button>
@@ -53,8 +53,9 @@
                             <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 
 
-                                <h5 class="card-title">Detalles del perfil</h5>
+                                
                                 @if (Auth::check() && Auth::user()->perfil)
+                                <h5 class="card-title">Detalles del perfil</h5>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-4  d-evento"><strong>Nombre completo: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->name }} {{ Auth::user()->perfil->user->lastname }}</div>
@@ -175,7 +176,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-ba">Crear Perfil</button>
                                     </div>
                                 </form>
                             </div>
@@ -272,7 +273,7 @@
 
                             </div>
 
-                            <div class="tab-pane fade pt-3" id="profile-settings">
+                            {{-- <div class="tab-pane fade pt-3" id="profile-settings">
 
                                 <!-- Settings Form -->
                                 <form>
@@ -297,16 +298,17 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                                        <button type="submit" class="btn btn-ba">Guardar cambios</button>
                                     </div>
                                 </form><!-- End settings Form -->
 
-                            </div>
+                            </div> --}}
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form>
-
+                                <form action="{{ route('perfil.cambiar-contrasena')}}" class="row g-3 needs-validation mt-4" novalidate method="POST">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="row mb-3">
                                         <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Contraseña actual</label>
                                         <div class="col-md-8 col-lg-9">
@@ -329,7 +331,7 @@
                                     </div>
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-primary">Cambiar la contraseña</button>
+                                        <button type="submit" class="btn btn-ba">Cambiar la contraseña</button>
                                     </div>
                                 </form><!-- End Change Password Form -->
 
@@ -348,7 +350,7 @@
                         <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 150px; height: 115px; object-fit: cover;">
 
                         @else
-                            <img src="{{ asset('assets/img/profile-img.jpg') }}" alt="Default Profile" class="rounded-circle">
+                            <img src="{{ asset('assets/img/perfil_predeterminado.png') }}" alt="Default Profile" class="rounded-circle">
                         @endif
                         <h2 style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 200px;">{{ session('name') }} {{ session('lastname') }}</h2>
                         @if (Auth::check() && Auth::user()->role)

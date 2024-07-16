@@ -43,7 +43,7 @@
                                         <td>{{ $user->name }} {{ $user->lastname }}</td>
                                         <td>{{ $user->TypeDocument->name }}</td>
                                         <td>{{ $user->document }}</td>
-                                        <td>{{ $user->email }}</td>
+                                        <td class="ellipsis">{{ $user->email }}</td>
                                         <td>{{ $user->role->name }}</td>
                                         <td>
                                             @if ($user->status ==1 )

@@ -98,6 +98,14 @@ class UserController extends Controller
         return view('lider.eventos.prueba');
     }
 
+
+    function generarCodigoContrasena() {
+        return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 5);
+    }
+
+
+
+
     // La función se encarga de validar, almacenar en la base de datos, notificar por correo electrónico 
     // y manejar el flujo de redirección y mensajes para el proceso de registro de un nuevo usuario en la aplicación
 
@@ -110,7 +118,6 @@ class UserController extends Controller
             'document' => 'required|numeric|unique:users|digits_between:8,15',
             'email' => 'required|string|email|max:100|unique:users',
             'type_rh_id' => 'required|string',
-            'password' => 'required|string|min:6',
             'rol_id' => 'required|string',
             'Program_id' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
@@ -125,6 +132,8 @@ class UserController extends Controller
                 ->with('modal_open')
                 ->with('modal_reopen', true);
         }
+            
+        $codigoContrasena = $this->generarCodigoContrasena();
 
         User::create([
             'name' => $request->get('name'),
@@ -134,14 +143,20 @@ class UserController extends Controller
             'document' => $request->get('document'),
             'email' => $request->get('email'),
             'type_rh_id' => $request->get('type_rh_id'),
-            'password' => Hash::make($request->get('password')),
+            'password' => Hash::make($codigoContrasena),
             'rol_id' => $request->get('rol_id'),
             'Program_id' => $request->get('Program_id'),
             'yourToken' => $request->get('yourToken'),
             'status' => true, 
         ]);
 
-        $dataUser = ['name_user' => $request->get('name'), 'surnames_user' => $request->get('lastname')];
+        $dataUser = ['name_user' => $request->get('name'), 
+                    'surnames_user' => $request->get('lastname'), 
+                    'password' => $codigoContrasena ];
+
+
+
+
         Mail::send('emails.creacion-cuenta', $dataUser, function ($message) use ($request) {
             $message->from('bienestardlaprendiz@gmail.com', 'Nuevo Usuario');
             $message->to($request->get('email'))->subject('Notificación: Creación de usuario');
