@@ -252,7 +252,15 @@ Route::get('/apoyos-sostenimiento', function(){
     return view ('layouts\descripcion-servicios\Servicio-apoyos-sostenimiento');
 })-> name ('apoyos-sostenimiento');
 
-Route::get('/Eventos', [EventsController::class,'viewevent'])->name('events.viewevent')->middleware('auth');
+
+
+Route::get('/Apoyos-Bienestar', function(){
+    return view ('layouts\descripcion-servicios\apoyos_bienestar_aprendiz');
+})-> name ('apoyos-sostenimientok');
+
+Route::get('/Nuestras-dimensiones', function(){
+    return view ('layouts\dimensiones_bienestar\dimensiones');
+})-> name ('Dimensiones');
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -282,7 +290,7 @@ Route::get('/formulario-inscripcion-apoyo-transporte', function(){
 })-> name ('formulario-inscripcion-apoyo-transporte');
 
 
-Route::get('/Informacion-eventos', [EventsController::class, 'viewEventUser'])->name('events.viewEventUser');
+
 
 // Route::get('/inicial', function(){
 //     return view('layouts.inicio-pagina.inicial');
@@ -330,8 +338,12 @@ Route::patch('/users/{id}/disable', [UserController::class, 'disable'])->name('u
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////// (Rutas), Visualización eventos ///////////////////////////
+
+Route::get('/Eventos', [EventsController::class,'viewevent'])->name('events.viewevent')->middleware('auth');
+Route::get('/Informacion-eventos', [EventsController::class, 'viewEventUser'])->name('events.viewEventUser');
+
 /////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Eventos ///////////////////////////
-// Route::delete('/events/{id}', [EventsController::class, 'destroy'])->name('events.destroy')->middleware('auth');
 
 Route::resource('eventos', EventsController::class)->middleware('auth');
 
@@ -344,6 +356,11 @@ Route::get('/edit/{id}', [EventsController::class, 'edit'])->name('events.edit')
 Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.update')->middleware('auth');
 
 Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
+
+
+
+
+
 
 // Registrar persona a un EVENTO
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');

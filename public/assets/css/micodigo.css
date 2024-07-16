@@ -308,3 +308,18 @@ p {
     white-space: nowrap;
     max-width: 120px;
 }
+
+
+
+
+
+
+.card-bodys {
+    transition: opacity 0.5s ease; /* Transición suave de opacidad durante medio segundo */
+}
+
+.hide {
+    opacity: 0;
+    height: 0; /* Opcional: asegúrate de que el contenido oculto no afecte al diseño */
+    overflow: hidden; /* Opcional: evita que el contenido oculto sea accesible */
+}
