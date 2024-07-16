@@ -77,7 +77,6 @@
 
                                                                     
                                                                     <form class="row g-3 needs-validation" novalidate method="POST">
-                                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                                             <label for="yourName" class="form-label">Nombre</label>
                                                                             <input value="{{$cita->name}}" type="text" name="name" class="form-control" id="yourName" disabled>
@@ -156,9 +155,7 @@
                                                                             @enderror
                                                                         </div>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
-                                                                            <button type="submit" class="btn btn-ba px-2">Aceptar Cita</button>
-
-                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Pendiente.</button>
+                                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -171,13 +168,13 @@
 
                                                 @if ($cita->status) 
                                                 <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $cita->id }}" title="Deshabilitar cita">
-                                                    <i class="ri-chat-check-line"></i> 
+                                                    <i class="ri-eye-off-line"></i> 
                                                 </button>
                                                 
                                             @else
                                                 <!-- Botón para abrir el modal de deshabilitar -->
                                                 <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disablecitaModal{{ $cita->id }}" title="Habilitar cita">
-                                                    <i class="ri-admin-line"></i> 
+                                                    <i class="ri-eye-line"></i> 
                                                 </button>
                                             @endif
 <!-- Modal de deshabilitación para cada usuario -->

@@ -15,7 +15,7 @@ class CitasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview','acceptCita']);
     }
 
 

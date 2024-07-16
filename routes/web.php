@@ -124,8 +124,8 @@ Route::get('/index', function () {
 //RUTAS FORMULARIOS
 
 // Ruta Formulario para AGENDAR CITA
-Route::get('form-appointment', [EventsController::class, 'showDimensions'])->name('showDimensions');
-Route::post('form-appointment', [EventsController::class, 'form-appointment'])->name('form-appointment');
+Route::get('/Solicitar-Cita', [EventsController::class, 'showDimensions'])->name('showDimensions');
+Route::post('/Solicitar-Cita', [EventsController::class, 'form-appointment'])->name('form-appointment');
 
 
 
@@ -385,7 +385,7 @@ Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.updat
 
 Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
-
+Route::get('/citas/{id}', [CitasController::class, 'acceptCita'])->name('citas.accept')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
