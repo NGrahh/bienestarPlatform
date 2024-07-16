@@ -198,7 +198,7 @@
                                                         
                                                     @else
                                                         <!-- Botón para abrir el modal de deshabilitar -->
-                                                        <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Deshabilitar Usuario">
+                                                        <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Habilitar Usuario">
                                                             <i class="ri-admin-line"></i> 
                                                         </button>
                                                     @endif
