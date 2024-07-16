@@ -1,4 +1,12 @@
-<header id="header" class="header fixed-top d-flex align-items-center">
+
+<style>
+.navigation-text{
+  color: white;
+}
+
+</style>
+
+<header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #39A900;">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="{{route('pagina-principal')}}" class="logo d-flex align-items-center">
@@ -31,7 +39,7 @@
             @else
                 <img src="{{ asset('assets/img/perfil_predeterminado.png') }}" alt="Default Profile" class="rounded-circle">
             @endif
-            <span class="d-none d-md-block dropdown-toggle ps-2" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{session('name')}} {{session('lastname')}}</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2 navigation-text" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{session('name')}} {{session('lastname')}}</span>
           </a><!-- End Profile Iamge Icon -->
   
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
