@@ -26,6 +26,6 @@ class DatabaseSeeder extends Seeder
         $this->call([EventsSeeder::class]);
         $this->call([CitasSeeder::class]);
         $this->call([ApoyosSeeder::class]);
-
+        $this->call([ApoyosCreatedSeeder::class]);
     }
 }
