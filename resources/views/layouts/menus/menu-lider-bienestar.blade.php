@@ -60,36 +60,10 @@
 
 {{-- Item Visualizar las dimensiones de bienestar al aprendiz --}} {{-- RF_USUARIO 04 | Cumple: Si | --}}
 <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#">
-        <i class="ri-customer-service-line"></i><span>Dimensiones de bienestar al aprendiz</span><i class="bi bi-chevron-down ms-auto"></i>
+    <a class="nav-link collapsed" href="{{route('Dimensiones')}}">
+        <i class="ri-home-2-line"></i>
+        <span>Nuestra Dimensiones</span>
     </a>
-    <ul id="services-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        <li>
-            <a href="{{route('Servicio-deportes')}}">
-                <i class="bi bi-circle"></i><span>Deportes</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('Servicio-enfermeria')}}">
-                <i class="bi bi-circle"></i><span>Promoción y prevención de salud</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('Servicio-Psicologia')}}">
-                <i class="bi bi-circle"></i><span>Consejería y atención psicosocial</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('Servicio-Musica')}}">
-                <i class="bi bi-circle"></i><span>Arte y cultura</span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('Servicio-Consejeria')}}">
-                <i class="bi bi-circle"></i><span>Liderazgo</span>
-            </a>
-        </li>
-    </ul>
 </li>
 {{-- Final Item  Visualizar las dimensiones de bienestar al aprendiz --}}
 {{----------------------------------------------------------------------------------------}}
