@@ -16,9 +16,8 @@ class ApoyosCreatedSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        // Crear varios usuarios con datos aleatorios
         for ($i = 0; $i < 4; $i++) {
-            apoyos_createds::create([
+            Apoyos_created::create([
                 'appoiment_name' => $faker->sentence(3), //Nombre aleatorio del apoyo
                 'appoiment_date_start' => $faker->dateTimeBetween('-1 years', 'now'), //Fecha apertura del apoyo
                 'appoiment_date_end' => $faker->dateTimeBetween('now', '+1 years'), //Fecha fin del apoyo
