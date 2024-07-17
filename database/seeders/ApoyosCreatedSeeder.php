@@ -16,7 +16,6 @@ class ApoyosCreatedSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        // Crear varios usuarios con datos aleatorios
         for ($i = 0; $i < 4; $i++) {
             Apoyos_created::create([
                 'appoiment_name' => $faker->sentence(3), //Nombre aleatorio del apoyo

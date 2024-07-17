@@ -396,6 +396,8 @@ Route::get('/listado-apoyos', [ApoyosCreatedController::class, 'index'])->name('
 
 Route::get('/show/{id}',[ApoyosCreatedController::class, 'show'])-> name('apoyos_created.show')->middleware('auth');
 
+Route::patch('/apoyos/{id}/disable', [ApoyosCreatedController::class, 'disable'])->name('apoyos_created.disable')->middleware('auth');
+
 /////////////////////////// Rutas CRUD ( Update, Delete) Perfil ///////////////////////////
 //Ruta para visualizar el perfil
 // Route::get('/mi-perfil', function () {
