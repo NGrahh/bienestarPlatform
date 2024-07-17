@@ -30,16 +30,12 @@
                         <h3 class="horarios">Horarios de atención</h3>
                         <div class="horas">
                           <div class="dias-semana">
-                            <ul style="list-style: none">
-                              <li class="dias semana">Lunes a Viernes</li>
-                              <li class="dias hora">Horas</li>
+                          <ul style="list-style: none">
+                              <li class="dias semana me-2">Lunes a viernes</li>
+                              <li class="dias hora me-2"> 8:30 am -- 1 pm || 1 pm -- 7 pm</li>
                             </ul>
                           </div>
                           <div class="horas-dias">
-                            <ul style="list-style: none">
-                              <li class="dias sabado">Sábados</li>
-                              <li class="dias horas-sabado">Horas</li>
-                            </ul>
                           </div>
                         </div>
                         @if(session('rol_id') == 5)

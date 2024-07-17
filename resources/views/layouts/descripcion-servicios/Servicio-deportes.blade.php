@@ -31,7 +31,7 @@
                         <div class="horas" >
                           <p style="text-align: center" class="text-start" >Los horarios de atención se les informarán a los aprendices por medio de WhatsApp. Se les informará tanto el horario como lo que se hace cada día y sus horas.</p>
                         </div>
-                        <button class="btn btn-success"><a href="{{route('login')}}" class="solicitar" style="color: white;">Asistencia</a></button>
+                        <!-- <button class="btn btn-success"><a href="{{route('login')}}" class="solicitar" style="color: white;">Asistencia</a></button> -->
                       </div>
                     </div>
                     <div class="col-lg-6 contenedor">
