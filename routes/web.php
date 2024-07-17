@@ -426,9 +426,9 @@ Route::delete('/apoyos/{id}', [ApoyosController::class, 'destroy'])->name('apoyo
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-Route::get('/apoyosindex', function () {
-    return view('apoyoscrud.apoyosindex');
-})->name('crud-apoyos');
+// Route::get('/apoyosindex', function () {
+//     return view('apoyoscrud.apoyosindex');
+// })->name('crud-apoyos');
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
