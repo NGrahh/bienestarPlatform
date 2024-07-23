@@ -41,9 +41,9 @@
                                 @endif
                             @endif
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ajustes</button>
-                            </li>
+                            </li> --}}
 
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Cambiar la contraseña</button>
@@ -388,7 +388,7 @@
 
                             </div>
 
-                            <div class="tab-pane fade pt-3" id="profile-settings">
+                            {{-- <div class="tab-pane fade pt-3" id="profile-settings">
 
                                 <!-- Settings Form -->
                                 <form>
@@ -418,7 +418,7 @@
                                     </div>
                                 </form><!-- End settings Form -->
 
-                            </div>
+                            </div> --}}
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->

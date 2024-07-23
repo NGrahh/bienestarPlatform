@@ -6,7 +6,7 @@
 
 </style>
 
-<header id="header" class="header fixed-top d-flex align-items-center" style="background-color: #39A900;" >
+<header id="header" class="d-flex align-items-center" style="background-color: #39A900;" >
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="{{route('pagina-principal')}}" class="logo d-flex align-items-center">
@@ -84,4 +84,4 @@
       </ul> 
     </nav><!-- End Icons Navigation -->
   
-  </header><!-- End Header -->
+</header><!-- End Header -->

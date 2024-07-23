@@ -7,7 +7,6 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ApoyosCreatedController;
-use App\Models\Apoyos;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -422,7 +421,7 @@ Route::get('/edit/{id}', [ApoyosController::class, 'edit'])->name('apoyos.edit')
 
 Route::put('/apoyos/{id}', [ApoyosController::class, 'update'])->name('apoyos.update')->middleware('auth');
 
-Route::delete('/apoyos/{id}', [ApoyosController::class, 'destroy'])->name('apoyos.destroy')->middleware('auth');
+Route::patch('/apoyos/{id}', [ApoyosController::class, 'disable'])->name('apoyos.disable')->middleware('auth');
 
 
 

@@ -22,96 +22,154 @@
 
 .btn-ba-rojo {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #DC3545; /* Fondo rojo */
-    --bs-btn-border-color: #DC3545; /* Borde rojo */
+    --bs-btn-bg: #DC3545;
+    /* Fondo rojo */
+    --bs-btn-border-color: #DC3545;
+    /* Borde rojo */
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #C82333; /* Fondo rojo más oscuro al pasar el ratón */
-    --bs-btn-hover-border-color: #BD2130; /* Borde rojo más oscuro al pasar el ratón */
-    --bs-btn-focus-shadow-rgb: 220, 53, 69; /* Sombra roja al enfocar */
+    --bs-btn-hover-bg: #C82333;
+    /* Fondo rojo más oscuro al pasar el ratón */
+    --bs-btn-hover-border-color: #BD2130;
+    /* Borde rojo más oscuro al pasar el ratón */
+    --bs-btn-focus-shadow-rgb: 220, 53, 69;
+    /* Sombra roja al enfocar */
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #C82333; /* Fondo rojo más oscuro al hacer clic */
-    --bs-btn-active-border-color: #BD2130; /* Borde rojo más oscuro al hacer clic */
+    --bs-btn-active-bg: #C82333;
+    /* Fondo rojo más oscuro al hacer clic */
+    --bs-btn-active-border-color: #BD2130;
+    /* Borde rojo más oscuro al hacer clic */
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #DC3545; /* Fondo rojo */
-    --bs-btn-disabled-border-color: #DC3545; /* Borde rojo */
+    --bs-btn-disabled-bg: #DC3545;
+    /* Fondo rojo */
+    --bs-btn-disabled-border-color: #DC3545;
+    /* Borde rojo */
 }
 
 
 
 .btn-ba-amarillo {
     --bs-btn-color: #212529;
-    --bs-btn-bg: #FFC107; /* Fondo amarillo */
-    --bs-btn-border-color: #FFC107; /* Borde amarillo */
+    --bs-btn-bg: #FFC107;
+    /* Fondo amarillo */
+    --bs-btn-border-color: #FFC107;
+    /* Borde amarillo */
     --bs-btn-hover-color: #212529;
-    --bs-btn-hover-bg: #E0A800; /* Fondo amarillo más oscuro al pasar el ratón */
-    --bs-btn-hover-border-color: #D39E00; /* Borde amarillo más oscuro al pasar el ratón */
-    --bs-btn-focus-shadow-rgb: 255, 193, 7; /* Sombra amarilla al enfocar */
+    --bs-btn-hover-bg: #E0A800;
+    /* Fondo amarillo más oscuro al pasar el ratón */
+    --bs-btn-hover-border-color: #D39E00;
+    /* Borde amarillo más oscuro al pasar el ratón */
+    --bs-btn-focus-shadow-rgb: 255, 193, 7;
+    /* Sombra amarilla al enfocar */
     --bs-btn-active-color: #212529;
-    --bs-btn-active-bg: #E0A800; /* Fondo amarillo más oscuro al hacer clic */
-    --bs-btn-active-border-color: #D39E00; /* Borde amarillo más oscuro al hacer clic */
+    --bs-btn-active-bg: #E0A800;
+    /* Fondo amarillo más oscuro al hacer clic */
+    --bs-btn-active-border-color: #D39E00;
+    /* Borde amarillo más oscuro al hacer clic */
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #212529;
-    --bs-btn-disabled-bg: #FFC107; /* Fondo amarillo */
-    --bs-btn-disabled-border-color: #FFC107; /* Borde amarillo */
-    color: #ffffff; /* Color blanco del icono */
+    --bs-btn-disabled-bg: #FFC107;
+    /* Fondo amarillo */
+    --bs-btn-disabled-border-color: #FFC107;
+    /* Borde amarillo */
+    color: #ffffff;
+    /* Color blanco del icono */
 }
 
 .btn-ba-amarillo i {
-    color: #000000; 
+    color: #000000;
 }
 
 
 
 .btn-ba-gris {
-    --bs-btn-color: #ffffff; /* Texto blanco */
-    --bs-btn-bg: #6c757d; /* Fondo gris */
-    --bs-btn-border-color: #6c757d; /* Borde gris */
-    --bs-btn-hover-color: #ffffff; /* Texto blanco al pasar el ratón */
-    --bs-btn-hover-bg: #5a6268; /* Fondo gris más oscuro al pasar el ratón */
-    --bs-btn-hover-border-color: #545b62; /* Borde gris más oscuro al pasar el ratón */
-    --bs-btn-focus-shadow-rgb: 108, 117, 125; /* Sombra gris al enfocar */
-    --bs-btn-active-color: #ffffff; /* Texto blanco al hacer clic */
-    --bs-btn-active-bg: #5a6268; /* Fondo gris más oscuro al hacer clic */
-    --bs-btn-active-border-color: #545b62; /* Borde gris más oscuro al hacer clic */
+    --bs-btn-color: #ffffff;
+    /* Texto blanco */
+    --bs-btn-bg: #6c757d;
+    /* Fondo gris */
+    --bs-btn-border-color: #6c757d;
+    /* Borde gris */
+    --bs-btn-hover-color: #ffffff;
+    /* Texto blanco al pasar el ratón */
+    --bs-btn-hover-bg: #5a6268;
+    /* Fondo gris más oscuro al pasar el ratón */
+    --bs-btn-hover-border-color: #545b62;
+    /* Borde gris más oscuro al pasar el ratón */
+    --bs-btn-focus-shadow-rgb: 108, 117, 125;
+    /* Sombra gris al enfocar */
+    --bs-btn-active-color: #ffffff;
+    /* Texto blanco al hacer clic */
+    --bs-btn-active-bg: #5a6268;
+    /* Fondo gris más oscuro al hacer clic */
+    --bs-btn-active-border-color: #545b62;
+    /* Borde gris más oscuro al hacer clic */
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-    --bs-btn-disabled-color: #ffffff; /* Texto blanco cuando está deshabilitado */
-    --bs-btn-disabled-bg: #6c757d; /* Fondo gris */
-    --bs-btn-disabled-border-color: #6c757d; /* Borde gris */
+    --bs-btn-disabled-color: #ffffff;
+    /* Texto blanco cuando está deshabilitado */
+    --bs-btn-disabled-bg: #6c757d;
+    /* Fondo gris */
+    --bs-btn-disabled-border-color: #6c757d;
+    /* Borde gris */
 }
 
 .btn-ba-card {
     --bs-btn-color: #FFFFFF;
-    --bs-btn-bg: #008080; /* Fondo del botón */
-    --bs-btn-border-color: #008080; /* Borde del botón */
-    --bs-btn-hover-color: #FFFFFF; /* Color del texto al pasar el mouse */
-    --bs-btn-hover-bg: #006666; /* Fondo del botón al pasar el mouse */
-    --bs-btn-hover-border-color: #006666; /* Borde del botón al pasar el mouse */
-    --bs-btn-focus-shadow-rgb: 0, 128, 128; /* Sombra al enfocar el botón */
-    --bs-btn-active-color: #FFFFFF; /* Color del texto al hacer clic */
-    --bs-btn-active-bg: #004d4d; /* Fondo del botón al hacer clic */
-    --bs-btn-active-border-color: #004d4d; /* Borde del botón al hacer clic */
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Sombra al hacer clic */
-    --bs-btn-disabled-color: #FFFFFF; /* Color del texto deshabilitado */
-    --bs-btn-disabled-bg: #008080; /* Fondo del botón deshabilitado */
-    --bs-btn-disabled-border-color: #008080; /* Borde del botón deshabilitado */
+    --bs-btn-bg: #008080;
+    /* Fondo del botón */
+    --bs-btn-border-color: #008080;
+    /* Borde del botón */
+    --bs-btn-hover-color: #FFFFFF;
+    /* Color del texto al pasar el mouse */
+    --bs-btn-hover-bg: #006666;
+    /* Fondo del botón al pasar el mouse */
+    --bs-btn-hover-border-color: #006666;
+    /* Borde del botón al pasar el mouse */
+    --bs-btn-focus-shadow-rgb: 0, 128, 128;
+    /* Sombra al enfocar el botón */
+    --bs-btn-active-color: #FFFFFF;
+    /* Color del texto al hacer clic */
+    --bs-btn-active-bg: #004d4d;
+    /* Fondo del botón al hacer clic */
+    --bs-btn-active-border-color: #004d4d;
+    /* Borde del botón al hacer clic */
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    /* Sombra al hacer clic */
+    --bs-btn-disabled-color: #FFFFFF;
+    /* Color del texto deshabilitado */
+    --bs-btn-disabled-bg: #008080;
+    /* Fondo del botón deshabilitado */
+    --bs-btn-disabled-border-color: #008080;
+    /* Borde del botón deshabilitado */
 }
 
 .btn-ba-view {
     --bs-btn-color: #000000;
-    --bs-btn-bg: #FF5733; /* Fondo del botón */
-    --bs-btn-border-color: #FF5733; /* Borde del botón */
-    --bs-btn-hover-color: #000000; /* Color del texto al pasar el mouse */
-    --bs-btn-hover-bg: #CC4629; /* Fondo del botón al pasar el mouse */
-    --bs-btn-hover-border-color: #CC4629; /* Borde del botón al pasar el mouse */
-    --bs-btn-focus-shadow-rgb: 255, 87, 51; /* Sombra al enfocar el botón */
-    --bs-btn-active-color: #000000; /* Color del texto al hacer clic */
-    --bs-btn-active-bg: #B24023; /* Fondo del botón al hacer clic */
-    --bs-btn-active-border-color: #B24023; /* Borde del botón al hacer clic */
-    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125); /* Sombra al hacer clic */
-    --bs-btn-disabled-color: #000000; /* Color del texto deshabilitado */
-    --bs-btn-disabled-bg: #FF5733; /* Fondo del botón deshabilitado */
-    --bs-btn-disabled-border-color: #FF5733; /* Borde del botón deshabilitado */
+    --bs-btn-bg: #FF5733;
+    /* Fondo del botón */
+    --bs-btn-border-color: #FF5733;
+    /* Borde del botón */
+    --bs-btn-hover-color: #000000;
+    /* Color del texto al pasar el mouse */
+    --bs-btn-hover-bg: #CC4629;
+    /* Fondo del botón al pasar el mouse */
+    --bs-btn-hover-border-color: #CC4629;
+    /* Borde del botón al pasar el mouse */
+    --bs-btn-focus-shadow-rgb: 255, 87, 51;
+    /* Sombra al enfocar el botón */
+    --bs-btn-active-color: #000000;
+    /* Color del texto al hacer clic */
+    --bs-btn-active-bg: #B24023;
+    /* Fondo del botón al hacer clic */
+    --bs-btn-active-border-color: #B24023;
+    /* Borde del botón al hacer clic */
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    /* Sombra al hacer clic */
+    --bs-btn-disabled-color: #000000;
+    /* Color del texto deshabilitado */
+    --bs-btn-disabled-bg: #FF5733;
+    /* Fondo del botón deshabilitado */
+    --bs-btn-disabled-border-color: #FF5733;
+    /* Borde del botón deshabilitado */
 }
 
 .card-title-ba {
@@ -126,7 +184,8 @@
     padding: 20px 0 15px 0;
     font-size: 18px;
     font-weight: 500;
-    color: #00324D;  /* AZUL-VERDE */
+    color: #00324D;
+    /* AZUL-VERDE */
     font-family: "Poppins", sans-serif;
 }
 
@@ -136,8 +195,8 @@
     text-decoration: none;
 }
 
-.vinculosheader:hover{
-    color:white
+.vinculosheader:hover {
+    color: white
 }
 
 .vinculos {
@@ -148,7 +207,8 @@
 
 
 .vinculos:hover {
-    color: #4CAF50; /* Un tono más claro de verde */
+    color: #4CAF50;
+    /* Un tono más claro de verde */
     text-decoration: none;
 }
 
@@ -159,42 +219,46 @@
 /*Css para las tarjetas de los eventos*/
 
 
-.eventocard{
+.eventocard {
     /* background-color:  #FFF9CF  ; */
     background-color: #D9DCFF;
 }
-.eventtitle{
+
+.eventtitle {
     padding: 20px 0 15px 0;
     font-size: 21px;
     font-weight: 500;
     color: #001147;
     font-family: "Roboto Condensed", sans-serif;
- 
+
 }
 
-.eventday{
+.eventday {
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
-    color: #34A853; /* verde oscuro */
+    color: #34A853;
+    /* verde oscuro */
     font-weight: bold;
     padding-left: 10px;
 }
 
-.eventnumero{
+.eventnumero {
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 40px;
-    color: #34A853; /* verde oscuro */
+    color: #34A853;
+    /* verde oscuro */
     font-weight: bold;
     padding-left: 10px;
 }
 
-.eventyear{
+.eventyear {
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
-    color: #455A64; /* gris azulado */
+    color: #455A64;
+    /* gris azulado */
     font-weight: bold;
 
 }
@@ -202,33 +266,47 @@
 .event-date {
     text-align: center;
     padding: 5px;
-    background-color: #F7F7F7; /* fondo claro */
-    border-radius: 10px; /* bordes redondeados */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* sombra ligera */
-    margin-bottom: 10px; /* espacio entre el contenedor y el botón */
+    background-color: #F7F7F7;
+    /* fondo claro */
+    border-radius: 10px;
+    /* bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* sombra ligera */
+    margin-bottom: 10px;
+    /* espacio entre el contenedor y el botón */
 }
 
 @media (max-width: 768px) {
     .eventday {
-        font-size: 1.2rem; /* Tamaño de fuente reducido para pantallas medianas */
+        font-size: 1.2rem;
+        /* Tamaño de fuente reducido para pantallas medianas */
     }
+
     .eventnumero {
-        font-size: 2rem; /* Tamaño de fuente reducido para pantallas medianas */
+        font-size: 2rem;
+        /* Tamaño de fuente reducido para pantallas medianas */
     }
+
     .eventyear {
-        font-size: 1rem; /* Tamaño de fuente reducido para pantallas medianas */
+        font-size: 1rem;
+        /* Tamaño de fuente reducido para pantallas medianas */
     }
 }
 
 @media (max-width: 576px) {
     .eventday {
-        font-size: 1rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+        font-size: 1rem;
+        /* Tamaño de fuente reducido para pantallas pequeñas */
     }
+
     .eventnumero {
-        font-size: 1.5rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+        font-size: 1.5rem;
+        /* Tamaño de fuente reducido para pantallas pequeñas */
     }
+
     .eventyear {
-        font-size: 0.8rem; /* Tamaño de fuente reducido para pantallas pequeñas */
+        font-size: 0.8rem;
+        /* Tamaño de fuente reducido para pantallas pequeñas */
     }
 }
 
@@ -238,7 +316,7 @@
 .titulo-corp {
     font-family: 'Work Sans', sans-serif;
     font-size: 35px;
-    color:#39A900;
+    color: #39A900;
 }
 
 /* h1, h2, h3 {
@@ -253,13 +331,13 @@ p {
 
 
 
-.d-evento{
+.d-evento {
     color: #00324D;
 }
 
 
-.imagen-modal{
-    
+.imagen-modal {
+
     border-radius: 10px 0 0 10px;
     background-color: #F0F1FF;
 }
@@ -268,19 +346,27 @@ p {
 
 
 .image-container {
-    width: 300px;  /* Define el ancho del contenedor */
-    height: 200px; /* Define la altura del contenedor */
-    margin: 0 auto; /* Centra el contenedor */
-    display: flex; /* Alinea la imagen dentro del contenedor */
-    justify-content: center; /* Centra la imagen horizontalmente */
-    align-items: center; /* Centra la imagen verticalmente */
-    overflow: hidden; /* Oculta cualquier contenido que se desborde del contenedor */
+    width: 300px;
+    /* Define el ancho del contenedor */
+    height: 200px;
+    /* Define la altura del contenedor */
+    margin: 0 auto;
+    /* Centra el contenedor */
+    display: flex;
+    /* Alinea la imagen dentro del contenedor */
+    justify-content: center;
+    /* Centra la imagen horizontalmente */
+    align-items: center;
+    /* Centra la imagen verticalmente */
+    overflow: hidden;
+    /* Oculta cualquier contenido que se desborde del contenedor */
 }
 
 .image-container img {
     max-width: 100%;
     max-height: 100%;
-    object-fit: contain; /* Asegura que la imagen se ajuste dentro del contenedor sin recortarse */
+    object-fit: contain;
+    /* Asegura que la imagen se ajuste dentro del contenedor sin recortarse */
 }
 
 
@@ -305,8 +391,10 @@ p {
 
 
 .custom-header {
-    background-color: #f8f9fa; /* Color claro de ejemplo */
-    color: #333; /* Color del texto */
+    background-color: #f8f9fa;
+    /* Color claro de ejemplo */
+    color: #333;
+    /* Color del texto */
 }
 
 
@@ -325,11 +413,163 @@ p {
 
 
 .card-bodys {
-    transition: opacity 0.5s ease; /* Transición suave de opacidad durante medio segundo */
+    transition: opacity 0.5s ease;
+    /* Transición suave de opacidad durante medio segundo */
 }
 
 .hide {
     opacity: 0;
-    height: 0; /* Opcional: asegúrate de que el contenido oculto no afecte al diseño */
-    overflow: hidden; /* Opcional: evita que el contenido oculto sea accesible */
+    height: 0;
+    /* Opcional: asegúrate de que el contenido oculto no afecte al diseño */
+    overflow: hidden;
+    /* Opcional: evita que el contenido oculto sea accesible */
 }
+
+
+
+.custom-table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.custom-table-responsive .table {
+    width: 100%;
+    min-width: 1000px;
+    /* Ajusta esto según tus necesidades */
+}
+
+.custom-table-responsive th,
+.custom-table-responsive td {
+    white-space: nowrap;
+}
+
+
+
+.preloader-it {
+    background: #fff;
+    position: fixed;
+    z-index: 1031;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.loader-pendulums {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+    display: block;
+    margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 4rem;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    border: 0.1em solid #e0e3e4;
+}
+
+.loader-pendulums:before,
+.loader-pendulums:after {
+    content: '';
+    width: 1em;
+    height: 1em;
+    left: -.1em;
+    top: -.1em;
+    padding: .1em;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    -webkit-transform-origin: center center;
+    transform-origin: center center;
+    border: .1em solid;
+    border-color: #5ACC19 transparent transparent transparent;
+    -webkit-animation: pendulum infinite 2s cubic-bezier(0.3, 1.65, 0.7, -0.65);
+    animation: pendulum infinite 2s cubic-bezier(0.3, 1.65, 0.7, -0.65);
+}
+
+.loader-pendulums:before {
+    border-color: #2E8700  transparent transparent transparent;
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+    -webkit-animation-name: pendulum2;
+    animation-name: pendulum2;
+}
+
+@-webkit-keyframes pendulum {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+        -moz-transform: rotate(359deg);
+        -ms-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@keyframes pendulum {
+    from {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    to {
+        -webkit-transform: rotate(359deg);
+        -moz-transform: rotate(359deg);
+        -ms-transform: rotate(359deg);
+        -o-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+@-webkit-keyframes pendulum2 {
+    from {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    to {
+        -webkit-transform: rotate(520deg);
+        -moz-transform: rotate(520deg);
+        -ms-transform: rotate(520deg);
+        -o-transform: rotate(520deg);
+        transform: rotate(520deg);
+    }
+}
+
+@keyframes pendulum2 {
+    from {
+        -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    to {
+        -webkit-transform: rotate(520deg);
+        -moz-transform: rotate(520deg);
+        -ms-transform: rotate(520deg);
+        -o-transform: rotate(520deg);
+        transform: rotate(520deg);
+    }
+}
+

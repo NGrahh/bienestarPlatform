@@ -14,7 +14,7 @@ class ApoyosController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create','disable']);
     }
 
     public function index()
@@ -140,4 +140,27 @@ class ApoyosController extends Controller
         return redirect()->route('apoyos.index')
             ->with('success', 'Apoyo eliminado exitosamente.');
     }
+
+
+    public function disable($id)
+    {
+        // Encuentra el usuario por su ID o lanza una excepción si no existe
+        $apoyo = Apoyos::findOrFail($id);
+        
+        // Cambia el estado del usuario de activo a inactivo o viceversa
+        $newStatus = !$apoyo->status; // Cambia el estado al opuesto al actual
+        
+        // Actualiza el estado en la base de datos
+        $apoyo->update(['status' => $newStatus]);
+        
+        // Genera el mensaje de éxito basado en el nuevo estado
+        $message = $newStatus ? 'Usuario habilitado correctamente.' : 'Usuario deshabilitado correctamente.';
+        
+        // Redirige de vuelta a la página de usuarios con un mensaje de éxito
+        return redirect()->route('apoyos.index')->with('success', $message);
+    }
+
+
+
+
 }

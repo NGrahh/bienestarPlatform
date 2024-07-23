@@ -25,7 +25,7 @@
                             <table class="table datatable table-striped">
                                 <input type="hidden" id="currentPage" name="currentPage" value="">
                                 <thead>
-                                    <tr>
+                                    <tr class="TableDatas"> 
                                         <th>Id</th>
                                         <th>Nombre</th>
                                         <th>N° Telefonico</th>
@@ -195,55 +195,45 @@
                                                     </div> --}}
                                                     <!-- Fin del modal de actualizar -->
 
-                                                    {{-- @if ($user->status) @else --}}
-                                                        <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyo->id }}" title="Habilitar Usuario">
+                                                    @if ($apoyo->status)
+                                                        <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableSupportModal{{ $apoyo->id }}" title="Habilitar Usuario">
                                                             <i class="ri-chat-check-line"></i> 
                                                         </button>
-                                                        
-                                                    
-                                                        <!-- Botón para abrir el modal de deshabilitar -->
-                                                        {{-- {{-- @endif--}}--}}    
-                                                        <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $apoyo->id }}" title="Deshabilitar Usuario">
+                                                    @else
+                                                        <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableSupportModal{{ $apoyo->id }}" title="Deshabilitar Usuario">
                                                             <i class="ri-admin-line"></i> 
-                                                        </button> 
+                                                        </button>
+                                                    @endif   
+                                                        
                                                     
 
                                                     <!-- Modal de deshabilitación para cada usuario -->
-                                                    {{-- <div class="modal fade" id="disableUserModal{{ $user->id }}" tabindex="-1">
+                                                    <div class="modal fade" id="disableSupportModal{{ $apoyo->id }}" tabindex="-1">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title d-evento">
-                                                                        <strong>¿Estás seguro de que deseas deshabilitar este usuario?</strong>
+                                                                        <strong>¿Estás seguro de que deseas deshabilitar este Apoyo?</strong>
                                                                     </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
                                                                 <div class="modal-body">
                                                                     <div class="card-body">
-                                                                        <form action="{{ route('users.disable', ['id' => $user->id]) }}" method="POST">
+                                                                        <form action="{{ route('apoyos.disable', ['id' => $apoyo->id]) }}" method="POST">
                                                                             @csrf
                                                                             @method('PATCH')
-
-                                                                            <p>El usuario <strong>{{ $user->name }} {{ $user->lastname }}</strong>, 
-                                                                                identificado con el documento de tipo <strong>{{ $user->TypeDocument->name }}</strong>
-                                                                                y número <strong>{{ $user->document }}</strong>, será deshabilitado.
-                                                                                Si necesitas recuperar información o tomar alguna medida antes de proceder con la deshabilitación,
-                                                                                ten en cuenta que su correo electrónico es <strong>{{ $user->email }}</strong>
-                                                                                y desempeña el rol de <strong>{{ $user->role->name }}</strong> en nuestra organización.</p>
-
-                                                                                <div class="modal-footer d-flex justify-content-center gap-2">
-                                                                                    <button type="submit" class="btn {{ $user->status ? 'btn-ba-rojo' : 'btn-ba' }} px-2">
-                                                                                        {{ $user->status ? 'Deshabilitar' : 'Habilitar' }}
-                                                                                    </button>
-                                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                                                                                </div>
-                                                                                
+                                                                            <div class="modal-footer d-flex justify-content-center gap-2">
+                                                                                <button type="submit" class="btn {{ $apoyo->status ? 'btn-ba-rojo' : 'btn-ba' }} px-2">
+                                                                                    {{ $apoyo->status ? 'Deshabilitar' : 'Habilitar' }}
+                                                                                </button>
+                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                                            </div>
                                                                         </form>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div> --}}
+                                                    </div>
                                                     <!-- Fin del modal de deshabilitación -->
                                                     
                                                 </div>
@@ -254,7 +244,7 @@
                             </table>
                             {{--///////////////////////////////////////////////////////////////////////////--}}
                             {{-- Script para capturar la pagina en la cula se ubica el usuario a modificar --}}
-                            <script>
+                            {{-- <script>
                                 $(document).ready(function() {
                                     var table = $('.datatable').DataTable();
                             
@@ -264,7 +254,7 @@
                                         $('#currentPage').val(pageInfo.page);
                                     });
                                 });
-                            </script>
+                            </script> --}}
                             {{--///////////////////////////////////////////////////////////////////////////--}}
                             
                             <div class="d-grid gap-1 d-md-flex justify-content-md-end">
