@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('date'); // Número de móvil de la cita
             $table->time('hour'); // Hora de la cita
             $table->string('subjectCita'); // Asunto de la cita
-            $table->boolean('status')->default(false);  // Estado de la cita, siempre va a tener un false, pasara a True cuando sea aceptada.
+            $table->string('status')->default(0);  // Estado de la cita, siempre va a tener un false, pasara a True cuando sea aceptada.
             $table->timestamps();
 
             // Definir las claves foráneas

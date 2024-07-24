@@ -15,21 +15,25 @@ class CitasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview','acceptCita']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview','acceptCita', 'acceptCita' , 'moveCita', 'declineCita']);
     }
 
 
     public function index()
     {
-        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita','citas.status', 'users.name', 'users.lastname', 'users.email')
+        // Realiza la consulta con join y ordenación
+        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.email')
             ->join('users', 'citas.user_id', '=', 'users.id')
-            ->with('typeDimensions') 
+            ->orderBy('citas.status') // Ordenar por status
+            ->orderBy('citas.id')     // Luego por id
+            ->with('typeDimensions')  // Relación, si es necesario
             ->get();
-    
+
         $dimensions = TypeDimensions::all();
-    
+
         return view('citascrud.citasindex', compact('citas', 'dimensions'));
     }
+
 
     public function create()
     {
@@ -143,20 +147,39 @@ class CitasController extends Controller
 
 
 
+    // CÓDIGO DE LA CITA: 
+    // 0: Cita Pendiente
+    // 1: Cita Confirmada
+    // 2: Cita Pospuesta
+    // 3: Cita Finalizada
+
 
     public function acceptCita($id)
     {
         // Código para aceptar la cita
         $cita = Citas::findOrFail($id);
         $cita->update(['status' => '1']);
-        session()->flash('success', 'Cita aceptada correctamente!');
+        session()->flash('success', 'La cita ha sido aceptada exitosamente!');
         return redirect()->route('citas.index');
-
-
     }
 
+    public function moveCita($id)
+    {
+        // Código para posponer la cita
+        $cita = Citas::findOrFail($id);
+        $cita->update(['status' => '2']);
+        session()->flash('success', ' La cita ha sido pospuesta exitosamente!');
+        return redirect()->route('citas.index');
+    }
 
-
+    public function declineCita($id)
+    {
+        // Código para aceptar la cita
+        $cita = Citas::findOrFail($id);
+        $cita->update(['status' => '3']);
+        session()->flash('success', 'La Cita ha sido rechazada exitosamente!');
+        return redirect()->route('citas.index');
+    }
 
 
     public function destroy($id)

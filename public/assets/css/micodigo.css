@@ -494,7 +494,7 @@ p {
 }
 
 .loader-pendulums:before {
-    border-color: #2E8700  transparent transparent transparent;
+    border-color: #2E8700 transparent transparent transparent;
     -webkit-animation-delay: -1s;
     animation-delay: -1s;
     -webkit-animation-name: pendulum2;
@@ -573,3 +573,59 @@ p {
     }
 }
 
+
+.rounded-table {
+    border-radius: 0.5rem;
+    /* Ajusta el valor según el radio de borde que prefieras */
+    border: 2px solid #dee2e6;
+    overflow: hidden;
+    /* Para asegurar que el contenido no se desborde en los bordes redondeados */
+}
+
+
+.table {
+    border-radius: 0.5rem;
+    /* Ajusta el radio del borde redondeado aquí */
+    border-collapse: separate;
+    /* Para que los bordes redondeados se muestren correctamente */
+    width: 100%;
+}
+
+.table th,
+.table td {
+    border: 1px solid #dee2e6;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f8f9fa;
+}
+
+.ellipsis_th {
+    white-space: nowrap; /* Evita el salto de línea */
+    overflow: hidden; /* Oculta el contenido que desborda */
+    text-overflow: ellipsis; /* Muestra los puntos suspensivos */
+    max-width: 150px; /* Ancho máximo por defecto */
+}
+
+/* Media Query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .ellipsis_th {
+        max-width: 100px; /* Ajusta el ancho para pantallas pequeñas */
+    }
+}
+
+/* Media Query para pantallas muy pequeñas */
+@media (max-width: 576px) {
+    .ellipsis_th {
+        max-width: 70px; /* Ajusta el ancho para pantallas muy pequeñas */
+    }
+}
+
+
+
+
+.text-black{
+    color: black;
+}

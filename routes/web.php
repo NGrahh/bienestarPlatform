@@ -384,7 +384,11 @@ Route::put('/citas/{id}', [CitasController::class, 'update'])->name('citas.updat
 
 Route::delete('/citas/{id}', [CitasController::class, 'destroy'])->name('citas.destroy')->middleware('auth');
 
-Route::get('/citas/{id}', [CitasController::class, 'acceptCita'])->name('citas.accept')->middleware('auth');
+Route::put('/citas/{id}/aceptar', [CitasController::class, 'acceptCita'])->name('citas.accept')->middleware('auth');
+
+Route::put('/citas/{id}/posponer', [CitasController::class, 'moveCita'])->name('citas.move')->middleware('auth');
+
+Route::put('/citas/{id}/rechazar', [CitasController::class, 'declineCita'])->name('citas.decline')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
