@@ -120,6 +120,10 @@
    .apoyos{
         text-align: center;
    }
+
+   .regular{
+    margin-left: 3.8rem;
+   }
 </style>
 
 <main id="main" class="main">
@@ -166,7 +170,7 @@
 
                                 <img class="imag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sena_Colombia_logo.svg/2090px-Sena_Colombia_logo.svg.png" alt="">
                                 <div class="apoyos">
-                                    <h1>Apoyo Regular</h1>
+                                    <h1 >Apoyo Regular</h1>
                                     <a href="{{route('Apoyo-regular')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
@@ -186,7 +190,7 @@
 
                                 <img class="imag" src="https://upload.wikimedia.org/wikipedia/en/a/a1/Megabus_Pereira_logo.png" alt="">
                                 <div class="apoyo">
-                                    <h1>Apoyo de Transporte</h1>
+                                    <h1 class="regular">Apoyo de Transporte</h1>
                                     <a href="{{route('Apoyo-transporte')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
