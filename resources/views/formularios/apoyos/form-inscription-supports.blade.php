@@ -115,7 +115,7 @@
                       </div>
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                         <label for=" yoursupport" class="form-label">Soportes de las condiciones de vulnerabilidad señaladas en el formato</label>
-                        <input value="{{old('support')}}" type="file" name="support" class="form-control" id="yoursupport" required>
+                        <input value="{{old('support')}}" type="file" name="support" class="form-control" id="yoursupport" >
                         <div class="invalid-feedback">Ingrese la foto del soporte de las condiciones.</div>
                         @error('support')
                         <li class="text-danger">{{ $message}}</li>
