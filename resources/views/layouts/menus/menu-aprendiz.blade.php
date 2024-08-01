@@ -57,11 +57,11 @@
         <i class="ri-customer-service-line"></i><span>Agendar Cita</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-        {{-- <li>
+        <li>
             <a href="{{route('form-appointment')}}">
                 <i class="bi bi-circle">Solcitar mi cita</i><span></span>
             </a>
-        </li> --}}
+        </li>
         <li>
             <a href="{{route('form-appointment')}}">
                 <i class="bi bi-circle"></i><span>Solicitar mi cita</span>

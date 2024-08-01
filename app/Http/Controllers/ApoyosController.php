@@ -45,34 +45,37 @@ class ApoyosController extends Controller
             'sisben' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048',
             'support' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:2048',
         ];
-        
+    
         // Validar la petición
         $validator = Validator::make($request->all(), $rules);
-        
+    
         // Manejar errores de validación
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Existe un error en el formulario.');
         }
-        
+    
         // Manejar el archivo formatuser (Word o PDF)
         if ($request->file('formatuser')->isValid()) {
-            $formatuserPath = $request->file('formatuser')->store('uploads');
+            $file = $request->file('formatuser');
+            $formatuserPath = $file->move(public_path('images/archivos'), $file->getClientOriginalName());
+            $formatuserPath = 'images/archivos/' . $file->getClientOriginalName(); // Guarda la ruta relativa
         } else {
             return redirect()->back()->withInput()->with('error', 'El archivo formatuser no es válido.');
         }
     
         // Array para almacenar los nombres de las imágenes
         $imageNames = [];
-        
+    
         // Procesar cada archivo de imagen individualmente
         foreach (['photocopy', 'receipt', 'sisben', 'support'] as $file) {
             if ($request->hasFile($file)) {
-                $imageName = time() . '_' . $file . '.' . $request->file($file)->extension();
-                $request->file($file)->move(public_path('images/apoyos'), $imageName);
+                $image = $request->file($file);
+                $imageName = time() . '_' . $file . '.' . $image->extension();
+                $image->move(public_path('images/apoyos'), $imageName);
                 $imageNames[$file] = $imageName;
             }
         }
-        
+    
         // Crear el registro en la base de datos
         Apoyos::create([
             'user_id' => auth()->id(), // O cualquier método que obtenga el ID del usuario
@@ -83,7 +86,7 @@ class ApoyosController extends Controller
             'sisben' => $imageNames['sisben'] ?? null,
             'support' => $imageNames['support'] ?? null,
         ]);
-        
+    
         session()->flash('success', 'Inscripción exitosa.');
         return redirect()->route('form-inscription-supports');
     }

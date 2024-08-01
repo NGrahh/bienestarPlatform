@@ -220,7 +220,7 @@ Route::get('/apoyo-alimentacion', function(){
 })-> name ('Apoyo-alimentacion');
 
 Route::get('/Nuestro-equipo', function(){
-    return view('layouts.descripcion-equipo.quienes-somos2');
+    return view('layouts.descripcion-equipo.Quienes-somos2');
 })-> name ('Nosotros');
 
 
