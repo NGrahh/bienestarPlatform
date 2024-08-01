@@ -1,5 +1,7 @@
 <?php
 
+// Habilitamos el uso de la migración para que pueda ser usada y migrada dentro de la base de datos
+
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,6 +13,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Creamos una nueva tabla en base a una función, la cual se va a integrar en la base de datos
         Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');
@@ -28,6 +31,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // ELiminamos la tabla de la base de datos en caso de que exista
         Schema::dropIfExists('personal_access_tokens');
     }
 };

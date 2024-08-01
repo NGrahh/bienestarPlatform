@@ -1,4 +1,5 @@
 <?php
+// Habilitamos el uso de la migración para que pueda ser usada y migrada dentro de la base de datos
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -11,6 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Se crea una nueva tabla dentro de la base de datos con el nombre de 'type_documents'
         Schema::create('type_documents', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -23,6 +25,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Se elimina la tabla en la base de datos en caso de que esta ya exista
         Schema::dropIfExists('type_documents');
     }
 };
