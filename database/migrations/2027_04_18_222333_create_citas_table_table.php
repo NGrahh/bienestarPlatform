@@ -1,5 +1,5 @@
 <?php
-
+// Habilitamos el uso de la migración para que pueda ser usada y migrada dentro de la base de datos
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,6 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        // Se crea una nueva tabla dentro de la base de datos con el nombre 'citas'
         Schema::create('citas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id'); // Llave foránea ID de Usuario
@@ -34,6 +35,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Se elimina la tabla en caso de que exista en la base de datos
         Schema::dropIfExists('citas');
     }
 };
