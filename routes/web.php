@@ -196,31 +196,31 @@ Route::get('/servicio-Consejeria', function(){
 
 //Rutas Descripcion Apoyos
 Route::get('/apoyo-regular', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-regular');
+    return view ('layouts.descripcion-apoyos.Apoyo-regular');
 })-> name ('Apoyo-regular');
 
 Route::get('/apoyo-transporte', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-transporte');
+    return view ('layouts.descripcion-apoyos.Apoyo-transporte');
 })-> name ('Apoyo-transporte');
 
 Route::get('/apoyo-monitoria', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-monitoria');
+    return view ('layouts.descripcion-apoyos.Apoyo-monitoria');
 })-> name ('Apoyo-monitoria');
 
 Route::get('/apoyo-fic', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-fic');
+    return view ('layouts.descripcion-apoyos.Apoyo-fic');
 })-> name ('Apoyo-fic');
 
 Route::get('/apoyo-datos', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-datos');
+    return view ('layouts.descripcion-apoyos.Apoyo-datos');
 })-> name ('Apoyo-datos');
 
 Route::get('/apoyo-alimentacion', function(){
-    return view ('layouts.descripcion-apoyos.apoyo-alimentacion');
+    return view ('layouts.descripcion-apoyos.Apoyo-alimentacion');
 })-> name ('Apoyo-alimentacion');
 
 Route::get('/Nuestro-equipo', function(){
-    return view('layouts.descripcion-equipo.quienes-somos2');
+    return view('layouts.descripcion-equipo.Quienes-somos2');
 })-> name ('Nosotros');
 
 
@@ -248,17 +248,17 @@ Route::get('/eventos', function(){
 
 
 Route::get('/apoyos-sostenimiento', function(){
-    return view ('layouts\descripcion-servicios\Servicio-apoyos-sostenimiento');
+    return view ('layouts.descripcion-servicios.Servicio-apoyos-sostenimiento');
 })-> name ('apoyos-sostenimiento');
 
 
 
 Route::get('/Apoyos-Bienestar', function(){
-    return view ('layouts\descripcion-servicios\apoyos_bienestar_aprendiz');
+    return view ('layouts.descripcion.servicios.apoyos_bienestar_aprendiz');
 })-> name ('apoyos-sostenimientok');
 
 Route::get('/Nuestras-dimensiones', function(){
-    return view ('layouts\dimensiones_bienestar\dimensiones');
+    return view ('layouts.dimensiones_bienestar.dimensiones');
 })-> name ('Dimensiones');
 
 
