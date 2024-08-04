@@ -164,22 +164,25 @@
                                                                     <form method="POST" action="{{ route('citas.accept', ['id' => $cita->id]) }}" class="mx-2"> 
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <button type="submit" class="btn btn-ba text-black" >Aceptar</button>
+                                                                        <button type="submit" class="btn btn-ba text-black" ><i class="bi person-check"></i></button>
                                                                     </form>
                                                             
                                                                     <form method="POST" action="{{ route('citas.move', ['id' => $cita->id]) }}" class="mx-2"> 
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <button type="submit" class="btn btn-ba-amarillo text-black" >Posponer</button>
+                                                                        <button type="submit" class="btn btn-ba-amarillo text-black" ><i class="bi alarm-fille"></i></button>
                                                                     </form>
                                                             
                                                                     <form method="POST" action="{{ route('citas.decline', ['id' => $cita->id]) }}" class="mx-2"> 
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <button type="submit" class="btn btn-ba-rojo text-black">Rechazar</button>
+                                                                        <button type="submit" class="btn btn-ba-rojo text-black"><i class="bi person-x"></i></button>
+                                                                        {{-- <button type="button" class="btn btn-ba-card px-2">
+                                                                            <i class="bx bxs-comment-check"></i>
+                                                                        </button> --}}
                                                                     </form>
                                                             
-                                                                    <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal">Cancelar</button>
+                                                                    <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal"><i class="bi person-x"></i></button>
                                                                 </div>
                                                             </div>
                                                             
