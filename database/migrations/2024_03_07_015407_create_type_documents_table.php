@@ -13,10 +13,10 @@ return new class extends Migration
     public function up(): void
     {
         // Se crea una nueva tabla dentro de la base de datos con el nombre de 'type_documents'
-        Schema::create('type_documents', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('type_documents', function (Blueprint $table) { // nombre de la base la tabla
+            $table->id(); // id del tipo de documento
+            $table->string('name'); //el nombre del documento
+            $table->timestamps(); //fechas de creación/ actualizción
         });
     }
 

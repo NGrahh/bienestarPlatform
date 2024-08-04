@@ -14,10 +14,10 @@ return new class extends Migration
     public function up(): void
     {
         // Creamos una nueva tabla en la base de datos con el nombre de 'type_day_training'
-        Schema::create('type_day_trainings', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('type_day_trainings', function (Blueprint $table) { // Nombre y creación de la tabla 
+            $table->id(); //id de 
+            $table->string('name'); // nombre de 
+            $table->timestamps(); // id 
         });
     }
 

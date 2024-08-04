@@ -12,11 +12,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Se crea una tabla adentro de la base de datos con el nombrre 'type_rhs'
-        Schema::create('type_rhs', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        // Se crea una tabla adentro de la base de datos con el nombrre 'type_rhs' 
+        Schema::create('type_rhs', function (Blueprint $table) { // nombre de la tabla
+            $table->id(); // id del tipo de rh (tipo de sangre)
+            $table->string('name'); //nombre del tipo de RH (O+, A-, etc)
+            $table->timestamps(); // fecha de actualización / creación
         });
     }
 
