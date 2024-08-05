@@ -10,6 +10,7 @@ LOG_LEVEL=debug
 
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
+# DB_PORT=3307 (EN CASO DE QUE NO FUNCIONE EL 3306, poner el 3307 -> Descomentar esta línea y borrar los parentesis)
 DB_PORT=3306
 DB_DATABASE=bienestar
 DB_USERNAME=root
