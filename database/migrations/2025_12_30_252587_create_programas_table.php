@@ -12,10 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         // Se crea la tabla en la base de datos con el nombre de 'programas'
-        Schema::create('programas', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('programas', function (Blueprint $table) { // nombre de la tabla
+            $table->id();// id del pograma
+            $table->string('name'); // nombre del programa
+            $table->timestamps(); // fecha de actualización / creación
         });
     }
 

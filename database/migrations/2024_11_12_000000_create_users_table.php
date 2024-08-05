@@ -13,28 +13,28 @@ return new class extends Migration
     public function up(): void
     {
         // Se crea una nueva tabla dentro de la base de datos con el nombre de 'users'
-        Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('lastname');
-            $table->string('user_name')->unique();
-            $table->string('email')->unique();
-            $table->string('document')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->unsignedBigInteger('type_document_id');
-            $table->unsignedBigInteger('rol_id');
-            $table->unsignedBigInteger('type_rh_id');
-            $table->string('Program_id')->nullable();
+        Schema::create('users', function (Blueprint $table) { // nombre de la tabla
+            $table->id(); // id del usuario
+            $table->string('name'); // nombre del usuario
+            $table->string('lastname'); // apellido del usuario
+            $table->string('user_name')->unique(); // nombre de usuario del usuario
+            $table->string('email')->unique(); // email del usuario
+            $table->string('document')->unique(); // documento del usuario (número del documento)
+            $table->timestamp('email_verified_at')->nullable(); // fecha de verificación del usuario
+            $table->unsignedBigInteger('type_document_id'); // id del tipo de documento
+            $table->unsignedBigInteger('rol_id'); // rol que cumple el usuario dentro de la plataforma
+            $table->unsignedBigInteger('type_rh_id'); // id del tipo de rh
+            $table->string('Program_id')->nullable(); // id del programa al que pertenece el usuario (en caso de ser aprendiz)
 
-            $table->string('yourToken')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('yourToken')->nullable(); // token personal del usuario
+            $table->string('password'); // contraseña del usuario
+            $table->rememberToken(); // token del usuario
+            $table->timestamps(); // fecha de actualización / creación
 
-            $table->boolean('status')->default(true); 
-            $table->foreign('type_document_id')->references('id')->on('type_documents');
-            $table->foreign('rol_id')->references('id')->on('roles');
-            $table->foreign('type_rh_id')->references('id')->on('type_rhs');
+            $table->boolean('status')->default(true); // status de activación del usuario
+            $table->foreign('type_document_id')->references('id')->on('type_documents'); // id del tipo de documento
+            $table->foreign('rol_id')->references('id')->on('roles'); // el rol que cumple el usuario dentro de la plataforma
+            $table->foreign('type_rh_id')->references('id')->on('type_rhs'); // id de tipo de rh
 
             
             
