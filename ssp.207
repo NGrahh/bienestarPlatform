@@ -1,1 +1,7 @@
-ssh -p 22 imduq6639@157.173.205.207
+ssh -p 22 imduq6639@157.173.205.207C
+
+
+
+
+git config --global user.email "duqueivan493@gmail.com"
+git config --global user.name "MauroDeveloper7"

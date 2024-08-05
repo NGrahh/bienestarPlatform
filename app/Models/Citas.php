@@ -18,6 +18,7 @@ class Citas extends Model
         'date',
         'status',
         'subjectCita',
+        'reason'
     ];
 
     public function typeDimensions()

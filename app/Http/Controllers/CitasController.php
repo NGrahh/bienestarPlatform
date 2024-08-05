@@ -15,24 +15,55 @@ class CitasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview','acceptCita', 'acceptCita' , 'moveCita', 'declineCita']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview','handleAction']);
     }
 
 
-    public function index()
+    // public function index(Request $request)
+    // {
+    //     // Obtener el ID de la dimensión seleccionada de la solicitud
+    //     $selectedDimensionId = $request->input('dimension_id');
+
+    //     // Realiza la consulta con join y ordenación
+    //     $query = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.email')
+    //         ->join('users', 'citas.user_id', '=', 'users.id')
+    //         ->orderBy('citas.status') // Ordenar por status
+    //         ->orderBy('citas.id')     // Luego por id
+    //         ->with('typeDimensions');  // Relación, si es necesario
+
+    //     // Filtrar por dimensión si se seleccionó una
+    //     if ($selectedDimensionId) {
+    //         $query->where('citas.dimensions_id', $selectedDimensionId);
+    //     }
+
+    //     $citas = $query->get();
+    //     $dimensions = TypeDimensions::all();
+
+    //     return view('citascrud.citasindex', compact('citas', 'dimensions'));
+    // }
+    public function index(Request $request)
     {
+        // Obtener el ID de la dimensión seleccionada de la solicitud
+        $selectedDimensionId = $request->input('dimension_id');
+    
         // Realiza la consulta con join y ordenación
-        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.email')
+        $query = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.email')
             ->join('users', 'citas.user_id', '=', 'users.id')
             ->orderBy('citas.status') // Ordenar por status
             ->orderBy('citas.id')     // Luego por id
-            ->with('typeDimensions')  // Relación, si es necesario
-            ->get();
-
+            ->with('typeDimensions');  // Relación, si es necesario
+    
+        // Filtrar por dimensión si se seleccionó una
+        if ($selectedDimensionId) {
+            $query->where('citas.dimensions_id', $selectedDimensionId);
+        }
+    
+        $citas = $query->get();
         $dimensions = TypeDimensions::all();
-
-        return view('citascrud.citasindex', compact('citas', 'dimensions'));
+    
+        return view('citascrud.citasindex', compact('citas', 'dimensions', 'selectedDimensionId'));
     }
+    
 
 
     public function create()
@@ -42,7 +73,7 @@ class CitasController extends Controller
 
     public function store(Request $request)
     {
-            // Validación de los campos del formulario
+        // Validación de los campos del formulario
         $validator = Validator::make($request->all(), [
             'dimensions_id' => 'required|string',
             'mobilenumber' => 'required|numeric|digits_between:7,12',
@@ -60,38 +91,46 @@ class CitasController extends Controller
             'subjectCita' => 'required|string|min:1',
         ]);
         
-            if ($validator->fails()) {
-                return redirect(route('form-appointment'))
-                    ->withErrors($validator)
-                    ->withInput()
-                    ->with('error', 'No se pudo crear la cita');
-            }
+        if ($validator->fails()) {
+            return redirect(route('form-appointment'))
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'No se pudo crear la cita');
+        }
+
+        // Validación personalizada para asegurarse de que no exista una cita en la misma dimensión 
+        // dentro de 30 minutos antes o después de la hora solicitada
+        $existingAppointment = Citas::where('dimensions_id', $request->get('dimensions_id'))
+            ->whereDate('date', $request->get('date'))
+            ->where(function ($query) use ($request) {
+                $startTime = strtotime($request->get('hour')) - 1800; // 30 minutos antes
+                $endTime = strtotime($request->get('hour')) + 1800; // 30 minutos después
+                
+                $query->whereBetween('hour', [date('H:i', $startTime), date('H:i', $endTime)]);
+            })
+            ->first();
         
-            // Validación personalizada para asegurarse de que no exista una cita a la misma hora y dimensión
-            $existingAppointment = Citas::where('dimensions_id', $request->get('dimensions_id'))
-                ->where('date', $request->get('date'))
-                ->where('hour', $request->get('hour'))
-                ->first();
-        
-            if ($existingAppointment) {
-                return redirect(route('form-appointment'))
-                    ->withInput()
-                    ->with('error', 'Ya existe una cita a la misma hora en la misma dimensión');
-            }
-        
-            Citas::create([
-                'user_id' => Auth::id(),
-                'dimensions_id' => $request->get('dimensions_id'),
-                'mobilenumber' => $request->get('mobilenumber'),
-                'date' => $request->get('date'),
-                'hour' => $request->get('hour'),
-                'subjectCita' => $request->get('subjectCita'),
-            ]);
-        
-            session()->flash('success', 'Cita registrada correctamente!');
-        
-            return redirect(route('form-appointment'));
+        if ($existingAppointment) {
+            return redirect(route('form-appointment'))
+                ->withInput()
+                ->with('error', 'Ya existe una cita en la misma dimensión dentro de los 30 minutos antes o después.');
+        }
+
+        // Crear la nueva cita
+        Citas::create([
+            'user_id' => Auth::id(),
+            'dimensions_id' => $request->get('dimensions_id'),
+            'mobilenumber' => $request->get('mobilenumber'),
+            'date' => $request->get('date'),
+            'hour' => $request->get('hour'),
+            'subjectCita' => $request->get('subjectCita'),
+        ]);
+
+        session()->flash('success', 'Cita registrada correctamente!');
+
+        return redirect(route('form-appointment'));
     }
+
     
 
     public function show($id)
@@ -111,7 +150,7 @@ class CitasController extends Controller
             'dimensions_id' => 'required|string',
             'mobilenumber' => 'required|numeric|digits_between:7,12',
             'date' => 'required|date_format:Y-m-d',
-            'hour' => ['required', 'date_format:H:i', new ValidHour],
+            'hour' => ['required', 'date_format:H:i:s', new ValidHour],
             'subjectCita' => 'required|string|min:1',
         ]);
     
@@ -125,25 +164,26 @@ class CitasController extends Controller
         $cita->update($request->all());
     
         session()->flash('success', 'Cita actualizada correctamente!');
-        return redirect(route('citas.index'));
+        return back();
+
     }
 
 
     public function citaview()
     {
         $userId = Auth::id();
-
-        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.email')
+    
+        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status','citas.reason', 'users.name', 'users.lastname', 'users.email')
             ->join('users', 'citas.user_id', '=', 'users.id')
             ->where('citas.user_id', $userId)
             ->with('typeDimensions') // Si es necesario cargar alguna relación adicional
             ->get();
-
+    
         $dimensions = TypeDimensions::all();
-
+    
         return view('citascrud.miscitas', compact('citas', 'dimensions'));
     }
-
+    
 
 
 
@@ -153,33 +193,84 @@ class CitasController extends Controller
     // 2: Cita Pospuesta
     // 3: Cita Finalizada
 
-
-    public function acceptCita($id)
+    public function handleAction(Request $request, $id)
     {
-        // Código para aceptar la cita
         $cita = Citas::findOrFail($id);
-        $cita->update(['status' => '1']);
-        session()->flash('success', 'La cita ha sido aceptada exitosamente!');
-        return redirect()->route('citas.index');
+        $action = $request->input('action');
+        $reason = $request->input('reason');
+        
+        // Validar datos solo cuando sea necesario
+        $validator = Validator::make($request->all(), [
+            'reason' => 'nullable|string|max:1000'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        switch ($action) {
+            case 'accept':
+                $cita->update(['status' => '1']);
+                session()->flash('success', 'La cita ha sido aceptada exitosamente!');
+                break;
+
+            case 'move':
+                $cita->update(['status' => '2', 'reason' => $reason]);
+                session()->flash('success', 'La cita ha sido pospuesta exitosamente!');
+                break;
+
+            case 'decline':
+                $cita->update(['status' => '3', 'reason' => $reason]);
+                session()->flash('success', 'La cita ha sido rechazada exitosamente!');
+                break;
+
+            default:
+                session()->flash('error', 'Acción no válida.');
+                return redirect()->back();
+        }
+
+        return redirect()->route('citas.index', ['dimension_id' => $request->input('dimension_id')]);
     }
 
-    public function moveCita($id)
-    {
-        // Código para posponer la cita
-        $cita = Citas::findOrFail($id);
-        $cita->update(['status' => '2']);
-        session()->flash('success', ' La cita ha sido pospuesta exitosamente!');
-        return redirect()->route('citas.index');
-    }
+    
 
-    public function declineCita($id)
-    {
-        // Código para aceptar la cita
-        $cita = Citas::findOrFail($id);
-        $cita->update(['status' => '3']);
-        session()->flash('success', 'La Cita ha sido rechazada exitosamente!');
-        return redirect()->route('citas.index');
-    }
+    // public function acceptCita($id)
+    // {
+    //     // Código para aceptar la cita
+    //     $cita = Citas::findOrFail($id);
+    //     $cita->update(['status' => '1']);
+
+    //     // Mantener la categoría seleccionada
+    //     $dimensionId = request()->input('dimension_id');
+    //     session()->flash('success', 'La cita ha sido aceptada exitosamente!');
+    //     return back()->withInput(['dimension_id' => $dimensionId]);
+    // }
+
+    // public function moveCita($id)
+    // {
+    //     // Código para posponer la cita
+    //     $cita = Citas::findOrFail($id);
+    //     $cita->update(['status' => '2']);
+
+    //     // Mantener la categoría seleccionada
+    //     $dimensionId = request()->input('dimension_id');
+    //     session()->flash('success', 'La cita ha sido pospuesta exitosamente!');
+    //     return back()->withInput(['dimension_id' => $dimensionId]);
+    // }
+
+    // public function declineCita($id)
+    // {
+    //     // Código para rechazar la cita
+    //     $cita = Citas::findOrFail($id);
+    //     $cita->update(['status' => '3']);
+
+    //     // Mantener la categoría seleccionada
+    //     $dimensionId = request()->input('dimension_id');
+    //     session()->flash('success', 'La Cita ha sido rechazada exitosamente!');
+    //     return back()->withInput(['dimension_id' => $dimensionId]);
+    // }
+    
+    
 
 
     public function destroy($id)

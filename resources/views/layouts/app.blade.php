@@ -65,6 +65,7 @@
     
     <!-- Vendor JS Files -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
     <script>
         /**Load function start**/
         $(window).on("load",function(){
@@ -75,9 +76,9 @@
         });
         /**Load function end***/
     </script>
+
     <script src="{{asset('assets/js/indexform.js')}}"></script>
-    <script src="{{asset('assets/js/toast.js')}}"></script>
-    <script src="{{asset('sassets/vendor/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>
     <script src="{{asset('assets/vendor/echarts/echarts.min.js')}}"></script>
@@ -88,6 +89,8 @@
     <script src="{{asset('assets/js/function_edit_user.js')}}"></script>
     <script src="{{asset('assets/js/function_register.js')}}"></script>
     <script src="{{asset('assets/js/function_modal_clear.js')}}"></script>
+    <script src="{{asset('assets/js/motivoCita.js')}}"></script>
+    
 
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
     {{-- Función para cuando exista un error en las validaciones del formulario de actualizar Usuario --}}
@@ -135,7 +138,6 @@
     <!-- Template Main JS File -->
     <script src="{{asset('assets/js/main.js')}}"></script>
 
-  
 </body>
 
 </html>

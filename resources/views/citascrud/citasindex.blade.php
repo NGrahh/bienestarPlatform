@@ -12,7 +12,7 @@
 
     <div class="pagetitle">
         <h1>Operaciones de gestión de Citas</h1>
-    </div><!-- End Page Title -->
+    </div>
     @include('compartido.alertas')
     <section class="section">
         
@@ -20,15 +20,41 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Información de Citas</h5>
                         
+                        <div class="row">
+                            <div class="col-12 mt-3">
+                            
+                                
+                                <form method="GET" action="{{ route('citas.index') }}" class="mb-3">
+                                    <div class="alert alert-info" role="alert">
+                                        <strong>Seleccione la Dimensión Correspondiente:</strong> 
+                                        Por favor, elija la dimensión a la que pertenece para visualizar las citas solicitadas en esa categoría. Esto le permitirá filtrar las citas de acuerdo con la dimensión seleccionada y ver solo las citas relevantes.
+                                    </div>
+                                    <div class="input-group">
+                                        <div class="row">
+                                            <div class="col-12 mt-3">
+                                                <select name="dimension_id" class="form-select" onchange="this.form.submit()">
+                                                    <option value="">Selecciona una dimensión</option>
+                                                    @foreach($dimensions as $dimension)
+                                                        <option value="{{ $dimension->id }}" {{ request('dimension_id') == $dimension->id ? 'selected' : '' }}>
+                                                            {{ $dimension->name }}
+                                                        </option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <hr class="my-4">
                         <div class="table-responsive">
                             <table class="table datatable rounded-table">
                                 <thead>
                                     <tr>
                                         <th scope="col">Id</th>
                                         <th scope="col">Nombre</th>
-                                        <th scope="col" >Dimensión S.</th>
+                                        <th scope="col" >Dimensión</th>
                                         <th scope="col">C.electrónico</th>
                                         <th scope="col">Número T.</th>
                                         <th scope="col">Fecha</th>
@@ -56,7 +82,7 @@
                                             {{-- 2: Cita Pospuesta --}}
                                             {{-- 3: Cita Finalizada --}}
                                             @if($cita->status == 0 )
-                                            <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> Pendiente</span>
+                                                <span class="badge bg-info text-dark"><i class="bi bi-info-circle me-1"></i> Pendiente</span>
                                             @elseif($cita->status == 1 )
                                                 <span class="badge bg-success">Aceptada</span>
                                             @elseif($cita->status == 2 )
@@ -160,30 +186,32 @@
 
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <div class="d-flex justify-content-center w-100">
-                                                                    <form method="POST" action="{{ route('citas.accept', ['id' => $cita->id]) }}" class="mx-2"> 
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <button type="submit" class="btn btn-ba text-black" ><i class="bi person-check"></i></button>
-                                                                    </form>
-                                                            
-                                                                    <form method="POST" action="{{ route('citas.move', ['id' => $cita->id]) }}" class="mx-2"> 
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <button type="submit" class="btn btn-ba-amarillo text-black" ><i class="bi alarm-fille"></i></button>
-                                                                    </form>
-                                                            
-                                                                    <form method="POST" action="{{ route('citas.decline', ['id' => $cita->id]) }}" class="mx-2"> 
-                                                                        @csrf
-                                                                        @method('PUT')
-                                                                        <button type="submit" class="btn btn-ba-rojo text-black"><i class="bi person-x"></i></button>
-                                                                        {{-- <button type="button" class="btn btn-ba-card px-2">
-                                                                            <i class="bx bxs-comment-check"></i>
-                                                                        </button> --}}
-                                                                    </form>
-                                                            
-                                                                    <button type="button" class="btn btn-secondary mx-2" data-bs-dismiss="modal"><i class="bi person-x"></i></button>
-                                                                </div>
+                                                                <form method="POST" action="{{ route('citas.handleAction', ['id' => $cita->id]) }}" id="actionForm" class="mx-2 w-100" novalidate>
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <input type="hidden" name="dimension_id" value="{{ request('dimension_id') }}">
+                                                                
+                                                                    <div class="form-group">
+                                                                        <label for="actionSelect"><strong>Elige una acción: </strong></label>
+                                                                        <select id="actionSelect" name="action" class="form-select" required>
+                                                                            <option value="">Selecciona una acción</option>
+                                                                            <option value="accept" {{ $cita->status === '1' ? 'selected' : '' }}>Aceptar</option>
+                                                                            <option value="move" {{ $cita->status === '2' ? 'selected' : '' }}>Posponer</option>
+                                                                            <option value="decline" {{ $cita->status === '3' ? 'selected' : '' }}>Rechazar</option>
+                                                                        </select>
+                                                                    </div>
+                                                                
+                                                                    <div id="reasonContainer" class="d-none mt-3">
+                                                                        <div class="form-group">
+                                                                            <label for="reason"><strong>Motivo: </strong></label>
+                                                                            <textarea id="reason" name="reason" class="form-control" rows="3" placeholder="Escribe el motivo aquí..." required>{{ old('reason', $cita->reason ?? '') }}</textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="text-center mt-3">
+                                                                        <button type="submit" class="btn btn-ba">Enviar</button>
+                                                                    </div>
+                                                                </form>
                                                             </div>
                                                             
                                                         </div>
