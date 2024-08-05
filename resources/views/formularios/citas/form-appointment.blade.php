@@ -27,17 +27,17 @@
                 
                   <h5 class="card-title px-3" align="justify">¿Autoriza a la institución la entrega de su información con la finalidad de verificar la información presentada en este formato (Personas naturales o jurídicas, entidades públicas o privadas)?</h5>
                   <p class="card-text px-3" align="justify">Con el envío de su información personal a través de este formulario, se entiende que está manifestando expresamente su autorización al SENA para proceder al tratamiento de sus datos personales en los términos arriba expuestos.</p>
-                  <div class="form-check px-3">
+                  <div class="form-check px-5 pt-4">
                     <input class="form-check-input" type="checkbox" id="check_si" name="option" value="something" required>
                     <label class="form-check-label" for="check_si">Estoy de acuerdo.</label>
                   </div>
                   <br>
-                  <div class="form-check">
+                  <div class="form-check px-5">
                     <input class="form-check-input" type="checkbox" id="check_no" name="option" value="something" required>
                     <label class="form-check-label" for="check_no">No estoy de acuerdo.</label>
                   </div>
                   <br>
-                  <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <div class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-12">
                     <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                   </div>
                   <div id="form" style="display: none;" class="mt-5">
@@ -46,8 +46,8 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                       <form action="{{ route('citas.store') }}" class="row g-3 needs-validation py-4 mx-5" novalidate method="POST">
                         @csrf
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-5">
                           <label for="yourName" class="form-label"><strong>Nombre</strong></label>
                           <input value="{{session('name')}}" type="text" name="name" class="form-control" id="yourName" disabled>
                           <div class="invalid-feedback">Ingrese el nombre.</div>
@@ -55,7 +55,7 @@
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6 mt-5">
                           <label for="yourlastname" class="form-label"><strong>Apellidos</strong></label>
                           <input value="{{session('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" disabled>
                           <div class="invalid-feedback">Ingrese los apellidos.</div>
@@ -63,7 +63,7 @@
                           <li class="text-danger">{{ $message}}</li>
                           @enderror
                         </div>
-                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                           <label for="yourdimensions" class="form-label"><strong>Dimension solicitada</strong></label>
                           <select name="dimensions_id" class="form-select" id="yourdimensions" required>
                             <option value="">Seleccionar...</option>
