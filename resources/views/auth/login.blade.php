@@ -60,7 +60,8 @@
                                         
                                         <input value="{{old('password')}}" type="password" name="password" class="form-control {{$errors->has('password') ? 'is-invalid':''}}" id="yourPassword" required>
                                         <span class="input-group-text" id="inputGroupPrepend">
-                                            <i class="bi bi-eye-fill" id="togglePassword" style="cursor: pointer;"></i>
+                                            <i class="bi bi-eye-fill" id="togglePassword" style="cursor: pointer; font-size: 24px;"></i>
+
                                         </span>
                                         <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
                                         @error('password')
