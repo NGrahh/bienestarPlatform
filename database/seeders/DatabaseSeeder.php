@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-
+use App\Models\hours;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,5 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call([CitasSeeder::class]);
         $this->call([ApoyosSeeder::class]);
         $this->call([ApoyosCreatedSeeder::class]);
+        $this->call([citas_acciones::class]);  
     }
 }

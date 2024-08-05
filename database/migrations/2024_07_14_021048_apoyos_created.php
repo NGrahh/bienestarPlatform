@@ -14,7 +14,7 @@ return new class extends Migration
         public function up(): void
         {
             // Creamos una nueva tabla adentro de la base datos en base a una función de Laravel
-            Schema::create('apoyos_createds', function (Blueprint $table) {
+            Schema::create('apoyos_createds', function (Blueprint $table) { 
             $table->id();
             $table->string('appoiment_name');
             $table->date('appoiment_date_start');

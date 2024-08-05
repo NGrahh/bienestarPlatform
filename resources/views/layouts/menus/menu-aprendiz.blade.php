@@ -57,16 +57,20 @@
         <i class="ri-customer-service-line"></i><span>Agendar Cita</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+<<<<<<< HEAD
+=======
+
+>>>>>>> c6006e2d811bd333a86f918e616ea9ea84d2adfe
         <li>
             <a href="{{route('form-appointment')}}">
                 <i class="bi bi-circle"></i><span>Solicitar mi cita</span>
             </a>
         </li>
-        {{-- <li>
+        <li>
             <a href="{{route('citas.citaview')}}">
                 <i class="bi bi-circle"></i>Mis Citas<span></span>
             </a>
-        </li> --}}
+        </li>
     </ul>
 </li>
 {{-- Final Item --}}

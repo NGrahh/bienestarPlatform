@@ -21,6 +21,7 @@ return new class extends Migration
             $table->time('hour'); // Hora de la cita
             $table->string('subjectCita'); // Asunto de la cita
             $table->string('status')->default(0);  // Estado de la cita, siempre va a tener un false, pasara a True cuando sea aceptada.
+            $table->string('reason')->nullable();
             $table->timestamps();
 
             // Definir las claves foráneas
