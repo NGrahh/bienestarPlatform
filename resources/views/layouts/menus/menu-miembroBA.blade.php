@@ -17,45 +17,19 @@
 {{-- Final Item Eventos Proximos y Pasados --}}
 {{----------------------------------------------------------------------------------------}}
 
-{{-- Item Acceder a las distintas secciones del sitio web --}} {{-- RF_USUARIO 03  | Cumple: Si | --}}
+{{-- Item Acceder a las distintas secciones del sitio web --}} {{-- RF_USUARIO 03 --}}
+<!-- <li class="nav-item">
+    <a class="nav-link collapsed" data-bs-target="#supports-nav" data-bs-toggle="collapse" href="apoyos-sostenimiento">
+        <i class="ri-pantone-line"></i><span>Apoyos</span><i class="bi bi-chevron-down ms-auto"></i>
+    </a>
+</li> -->
 <li class="nav-item">
-  <a class="nav-link collapsed" data-bs-target="#supports-nav" data-bs-toggle="collapse" href="#">
-      <i class="ri-pantone-line"></i><span>Apoyos</span><i class="bi bi-chevron-down ms-auto"></i>
-  </a>
-  <ul id="supports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-          <a href="{{route('Apoyo-fic')}}">
-              <i class="bi bi-circle"></i>Apoyo de sostenimiento FIC<span></span>
-          </a>
-      </li>
-      <li>
-          <a href="{{route('Apoyo-regular')}}">
-              <i class="bi bi-circle"></i><span>Apoyo de sostenimiento regular</span>
-          </a>
-      </li>
-      <li>
-          <a href="{{route('Apoyo-transporte')}}">
-              <i class="bi bi-circle"></i><span>Apoyos de transporte</span>
-          </a>
-      </li>
-      <li>
-          <a href="{{route('Apoyo-alimentacion')}}">
-              <i class="bi bi-circle"></i><span>Apoyo de alimentación</span>
-          </a>
-      </li>
-      <li>
-          <a href="#">
-              <i class="bi bi-circle"></i><span>Centros de convivencia</span>
-          </a>
-      </li>
-      <li>
-          <a href="{{route('Apoyo-datos')}}">
-              <i class="bi bi-circle"></i><span>Plan de datos</span>
-          </a>
-      </li>
-  </ul>
+      <a class="nav-link collapsed" href="{{route('apoyos-sostenimiento')}}">
+        <i class="ri-pantone-line"></i>
+        <span>Apoyos de sostenimiento</span>
+      </a>
 </li>
-{{-- Final Item Acceder a las distintas secciones del sitio web | Cumple: Si | --}}
+{{-- Final Item Acceder a las distintas secciones del sitio web --}}
 {{----------------------------------------------------------------------------------------}}
 
 

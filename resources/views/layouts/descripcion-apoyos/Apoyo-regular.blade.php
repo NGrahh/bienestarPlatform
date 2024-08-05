@@ -35,10 +35,19 @@
                                 <div class="descripcion">
                                     <h2 align="center" class="text-start">Descripción:</h2>
                                     <p align="justify" class="text-start">
-                                        Los apoyos de sostenimiento regular son recursos en dinero equivalentes al cincuenta por ciento (50 %) del Salario Mínimo Legal Mensual Vigente (SMLMV), que se les entregan mensualmente a los aprendices en condiciones de vulnerabilidad y que están matriculados en un programa de formación técnico laboral o tecnológico.
+                                        Los apoyos de sostenimiento regular son recursos en dinero equivalentes al cincuenta por ciento (50 %) del Salario Mínimo Legal Mensual Vigente (SMLMV), que se les entregan mensualmente a los aprendices en condiciones de vulnerabilidad y que están matriculados en un programa de formacin técnico laboral o tecnológico.
                                     </p>
                                 </div>
+                                <div class="botones mt-4 text-center">
+                                @if(session('rol_id') == 5)
+                                    <a href="{{ route('formulario-inscripcion-apoyos') }}"><button class="btn btn-ba mx-3">Postularse</button></a>
+                                @elseif(session('rol_id') == 1 || session('rol_id') == 2 || session('rol_id') == 3 || session('rol_id') == 4)
+                                    <p></p>
+                                @else
+                                    <a href="{{ route('login') }}"><button class="btn btn-ba mx-3">Iniciar sesión</button></a>
+                                @endif
 
+                                </div>
 
                                 <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
@@ -61,16 +70,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="botones mt-4 text-center">
-                                @if(session('rol_id') == 5)
-                                    <a href="{{ route('formulario-inscripcion-apoyos') }}"><button class="btn btn-ba mx-3">Postularse</button></a>
-                                @elseif(session('rol_id') == 1 || session('rol_id') == 2 || session('rol_id') == 3 || session('rol_id') == 4)
-                                    <p></p>
-                                @else
-                                    <a href="{{ route('login') }}"><button class="btn btn-ba mx-3">Iniciar sesión</button></a>
-                                @endif
-
-                                </div>
+                                
                             </div>
                         </div>
                     </div>

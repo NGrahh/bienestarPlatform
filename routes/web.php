@@ -267,7 +267,7 @@ Route::get('/Nuestras-dimensiones', function(){
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/formulario-inscripcion-apoyos', function(){
-    return view ('formularios\apoyos\form-inscription-supports');
+    return view ('formularios.apoyos.form-inscription-supports');
 })-> name ('formulario-inscripcion-apoyos');
 
 

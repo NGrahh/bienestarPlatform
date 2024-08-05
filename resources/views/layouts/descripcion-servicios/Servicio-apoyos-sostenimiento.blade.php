@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title-page','Apoyo Datos')
+@section('title-page','Apoyos')
 @section('content')
 
 @include('layouts.header')

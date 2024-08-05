@@ -59,11 +59,6 @@
     <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
             <a href="{{route('form-appointment')}}">
-                <i class="bi bi-circle">Solcitar mi cita</i><span></span>
-            </a>
-        </li>
-        <li>
-            <a href="{{route('form-appointment')}}">
                 <i class="bi bi-circle"></i><span>Solicitar mi cita</span>
             </a>
         </li>
