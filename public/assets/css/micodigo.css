@@ -632,3 +632,15 @@ p {
 .text-black{
     color: black;
 }
+
+
+
+.position-relative {
+    position: relative;
+}
+
+.bi-eye {
+    font-size: 1.25rem;
+    color: #6c757d;
+    cursor: pointer;
+}
