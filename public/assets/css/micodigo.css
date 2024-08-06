@@ -644,3 +644,17 @@ p {
     color: #6c757d;
     cursor: pointer;
 }
+
+
+
+@media (min-width: 768px) {
+    #toggleText {
+        display: none; /* Oculta el texto en pantallas medianas y grandes */
+    }
+}
+
+@media (max-width: 767px) {
+    #toggleText {
+        display: block; /* Muestra el texto en pantallas pequeñas */
+    }
+}

@@ -43,17 +43,21 @@
                                 <div class="col-12 position-relative">
                                     <label for="yourPassword" class="form-label">Contraseña</label>
                                     <div class="input-group has-validation">
-                                        
                                         <input value="{{old('password')}}" type="password" name="password" class="form-control {{$errors->has('password') ? 'is-invalid':''}}" id="yourPassword" required>
                                         <span class="input-group-text" id="inputGroupPrepend">
-                                            <i class="bi bi-eye-fill" id="togglePassword" style="cursor: pointer"></i>
+                                            <i class="bi bi-eye-fill" id="togglePassword" style="cursor: pointer;"></i>
                                         </span>
-                                        <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
-                                        @error('password')
-                                        <li class="text-danger">{{ $message}}</li>
-                                        @enderror
                                     </div>
+                                    <div class="d-block d-md-none text-end mt-2">
+                                        <span id="toggleText" style="font-size: 14px; color: gray; cursor: pointer;">Mostrar clave</span>
+                                    </div>
+                                    <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
+                                    @error('password')
+                                    <li class="text-danger">{{ $message }}</li>
+                                    @enderror
                                 </div>
+                                
+                                
 
 
 
