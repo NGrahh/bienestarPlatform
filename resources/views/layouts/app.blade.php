@@ -77,7 +77,9 @@
         /**Load function end***/
     </script>
 
-    <script src="{{asset('assets/js/indexform.js')}}"></script>
+
+    
+    <!-- Librerías de terceros -->
     <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
     <script src="{{asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets/vendor/chart.js/chart.umd.js')}}"></script>
@@ -86,11 +88,16 @@
     <script src="{{asset('assets/vendor/simple-datatables/simple-datatables.js')}}"></script>
     <script src="{{asset('assets/vendor/tinymce/tinymce.min.js')}}"></script>
     <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+
+    <!-- Scripts personalizados -->
+    <script src="{{asset('assets/js/R_P_Cita.js')}}"></script>
+    <script src="{{asset('assets/js/indexform.js')}}"></script>
     <script src="{{asset('assets/js/function_edit_user.js')}}"></script>
     <script src="{{asset('assets/js/function_register.js')}}"></script>
     <script src="{{asset('assets/js/function_modal_clear.js')}}"></script>
     <script src="{{asset('assets/js/motivoCita.js')}}"></script>
     <script src="{{asset('assets/js/password.js')}}"></script>
+
     
 
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
@@ -118,7 +125,7 @@
     </script> --}}
 
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
-    {{-- Función para abrir modal cuando surge error en las validaciones del formulario al crear un usuario --}}
+    {{-- Función para abrir modal cuando surge error en las validaciones del formulario al crear un usuario
 
     <script>
         $(document).ready(function() {
@@ -133,7 +140,7 @@
         });
 
     </script> 
-    {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+    //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
 
 
     <!-- Template Main JS File -->

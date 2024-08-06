@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Citas;
 use App\Models\User;
 use App\Models\TypeDimensions;
+use App\Models\accionesCitas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\ValidHour;
@@ -60,8 +61,9 @@ class CitasController extends Controller
     
         $citas = $query->get();
         $dimensions = TypeDimensions::all();
+        $acciones=accionesCitas::all();
     
-        return view('citascrud.citasindex', compact('citas', 'dimensions', 'selectedDimensionId'));
+        return view('citascrud.citasindex', compact('citas', 'acciones','dimensions', 'selectedDimensionId'));
     }
     
 
@@ -183,43 +185,47 @@ class CitasController extends Controller
     
         return view('citascrud.miscitas', compact('citas', 'dimensions'));
     }
-    
-
-
 
     // CÓDIGO DE LA CITA: 
     // 0: Cita Pendiente
     // 1: Cita Confirmada
     // 2: Cita Pospuesta
     // 3: Cita Finalizada
-
     public function handleAction(Request $request, $id)
     {
         $cita = Citas::findOrFail($id);
-        $action = $request->input('action');
+        $action = $request->input('actions');
         $reason = $request->input('reason');
         
-        // Validar datos solo cuando sea necesario
-        $validator = Validator::make($request->all(), [
-            'reason' => 'nullable|string|max:1000'
-        ]);
+        // Definir reglas de validación condicionales
+        $rules = [
+            'actions' => 'required|integer|in:1,2,3',
+            'reason' => 'nullable|string|max:1000',
+        ];
+
+        if (in_array($action, [2, 3])) {
+            $rules['reason'] = 'required|string|max:1000';
+        }
+        
+        // Validar los datos
+        $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
         switch ($action) {
-            case 'accept':
+            case 1:
                 $cita->update(['status' => '1']);
                 session()->flash('success', 'La cita ha sido aceptada exitosamente!');
                 break;
 
-            case 'move':
+            case 2:
                 $cita->update(['status' => '2', 'reason' => $reason]);
                 session()->flash('success', 'La cita ha sido pospuesta exitosamente!');
                 break;
 
-            case 'decline':
+            case 3:
                 $cita->update(['status' => '3', 'reason' => $reason]);
                 session()->flash('success', 'La cita ha sido rechazada exitosamente!');
                 break;
@@ -280,25 +286,3 @@ class CitasController extends Controller
         return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
     }
 }
-
-
-// class CitasComponent extends Component
-// {
-//     
-
-//     public function rejectCita($id)
-//     {
-//         // Código para rechazar la cita
-//         $cita = Citas::findOrFail($id);
-//         $cita->update(['status' => '0']);
-//         session()->flash('success', 'Cita rechazada correctamente!');
-//     }
-
-//     public function deleteCita($id)
-//     {
-//         // Código para eliminar la cita
-//         $cita = Citas::findOrFail($id);
-//         $cita->delete();
-//         session()->flash('success', 'Cita eliminada correctamente!');
-//     }
-// }

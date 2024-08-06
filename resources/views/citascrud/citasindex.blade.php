@@ -174,46 +174,48 @@
                                                 </button>
                         
                                                 <!-- Modal de Acciones -->
-                                                <div class="modal fade" id="actionsCitaModal{{ $cita->id }}" tabindex="-1" >
+                                                <div class="modal fade" id="actionsCitaModal{{ $cita->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered modal-md">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" >Confirmar acción</h5>
+                                                                <h5 class="modal-title">Confirmar acción</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <p>¿Estás seguro de que quieres proceder con la cita solicitada por <strong>{{ $cita->name }} {{ $cita->lastname }}</strong>? La cita está programada para la dimensión <strong>{{ $cita->typeDimensions->name }}</strong> y el asunto de la consulta es <strong>{{ $cita->subjectCita }}</strong>.</p>
-
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <form method="POST" action="{{ route('citas.handleAction', ['id' => $cita->id]) }}" id="actionForm" class="mx-2 w-100" novalidate>
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <input type="hidden" name="dimension_id" value="{{ request('dimension_id') }}">
-                                                                
+
                                                                     <div class="form-group">
-                                                                        <label for="actionSelect"><strong>Elige una acción: </strong></label>
-                                                                        <select id="actionSelect" name="action" class="form-select" required>
-                                                                            <option value="">Selecciona una acción</option>
-                                                                            <option value="accept" {{ $cita->status === '1' ? 'selected' : '' }}>Aceptar</option>
-                                                                            <option value="move" {{ $cita->status === '2' ? 'selected' : '' }}>Posponer</option>
-                                                                            <option value="decline" {{ $cita->status === '3' ? 'selected' : '' }}>Rechazar</option>
+                                                                        <label for="youractions" class="form-label"><strong>Acciones Cita</strong></label>
+                                                                        <select name="actions" class="form-select" id="youractions" required>
+                                                                            <option value="">Seleccionar...</option>
+                                                                            @foreach ($acciones as $action)
+                                                                                <option {{ $action->id == old('actions') ? 'selected' : '' }} value="{{ $action->id }}">{{ $action->name }}</option>
+                                                                            @endforeach
                                                                         </select>
-                                                                    </div>
-                                                                
-                                                                    <div id="reasonContainer" class="d-none mt-3">
-                                                                        <div class="form-group">
-                                                                            <label for="reason"><strong>Motivo: </strong></label>
-                                                                            <textarea id="reason" name="reason" class="form-control" rows="3" placeholder="Escribe el motivo aquí..." required>{{ old('reason', $cita->reason ?? '') }}</textarea>
+                                                                        <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
+                                                                        @error('actions')
+                                                                            <li class="text-danger">{{ $message }}</li>
+                                                                        @enderror
+
+                                                                        <div id="reason-container" class="d-none mt-3">
+                                                                            <div class="form-group">
+                                                                                <label for="reason"><strong>Motivo: </strong></label>
+                                                                                <textarea id="reason" name="reason" class="form-control" rows="3" placeholder="Escribe el motivo aquí...">{{ old('reason', $cita->reason ?? '') }}</textarea>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                
+
                                                                     <div class="text-center mt-3">
                                                                         <button type="submit" class="btn btn-ba">Enviar</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
-                                                            
                                                         </div>
                                                     </div>
                                                 </div>
