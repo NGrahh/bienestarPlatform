@@ -100,7 +100,7 @@
                                                 <button type="button" class="btn btn-ba-card px-2" data-bs-toggle="modal" data-bs-target="#showCitaModal{{ $cita->id }}" title="Visualizar Cita">
                                                     <i class="bx bxs-user-detail"></i>
                                                 </button>
-                        
+                                                
                                                 <!-- Modal de para visualizar cada cita -->
                                                 <div class="modal fade" id="showCitaModal{{ $cita->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -167,7 +167,7 @@
                                                 </div>
                                                 <!-- Fin del modal-->
 
-
+                                                
                                                 {{-- Botón para abri modal --}}
                                                 <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#actionsCitaModal{{ $cita->id }}" title="Acciones cita">
                                                     <i class="bx bxs-layer-plus" style="color: white"></i>  
@@ -175,22 +175,21 @@
                         
                                                 <!-- Modal de Acciones -->
                                                 <div class="modal fade" id="actionsCitaModal{{ $cita->id }}" tabindex="-1">
-                                                    <div class="modal-dialog modal-dialog-centered modal-md">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title">Confirmar acción</h5>
-                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                        <div class="modal-content border-0 rounded-3 shadow-lg">
+                                                            <div class="modal-header bg-info text-white">
+                                                                <h5 class="modal-title text-black">Confirmar Acción</h5>
+                                                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <p>¿Estás seguro de que quieres proceder con la cita solicitada por <strong>{{ $cita->name }} {{ $cita->lastname }}</strong>? La cita está programada para la dimensión <strong>{{ $cita->typeDimensions->name }}</strong> y el asunto de la consulta es <strong>{{ $cita->subjectCita }}</strong>.</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <form method="POST" action="{{ route('citas.handleAction', ['id' => $cita->id]) }}" id="actionForm" class="mx-2 w-100" novalidate>
+
+                                                                <form method="POST" action="{{ route('citas.handleAction', ['id' => $cita->id]) }}" id="actionForm" novalidate>
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <input type="hidden" name="dimension_id" value="{{ request('dimension_id') }}">
 
-                                                                    <div class="form-group">
+                                                                    <div class="mb-3">
                                                                         <label for="youractions" class="form-label"><strong>Acciones Cita</strong></label>
                                                                         <select name="actions" class="form-select" id="youractions" required>
                                                                             <option value="">Seleccionar...</option>
@@ -198,21 +197,23 @@
                                                                                 <option {{ $action->id == old('actions') ? 'selected' : '' }} value="{{ $action->id }}">{{ $action->name }}</option>
                                                                             @endforeach
                                                                         </select>
-                                                                        <div class="invalid-feedback">Ingrese la dimensión solicitada.</div>
+                                                                        <div class="invalid-feedback">Debe seleccionar una acción.</div>
                                                                         @error('actions')
-                                                                            <li class="text-danger">{{ $message }}</li>
+                                                                            <div class="text-danger mt-2">{{ $message }}</div>
                                                                         @enderror
+                                                                    </div>
 
-                                                                        <div id="reason-container" class="d-none mt-3">
-                                                                            <div class="form-group">
-                                                                                <label for="reason"><strong>Motivo: </strong></label>
-                                                                                <textarea id="reason" name="reason" class="form-control" rows="3" placeholder="Escribe el motivo aquí...">{{ old('reason', $cita->reason ?? '') }}</textarea>
-                                                                            </div>
+                                                                    <!-- Contenedor del motivo se muestra o oculta según la selección -->
+                                                                    <div id="reason-container" class="mt-3">
+                                                                        <div class="form-group">
+                                                                            <label for="reason" class="form-label"><strong>El motivo solo es requerido si seleccionas "Posponer" o "Rechazar".</strong></label>
+                                                                            <textarea id="reason" name="reason" class="form-control" rows="4" placeholder="Escribe el motivo aquí...">{{ old('reason', $cita->reason ?? '') }}</textarea>
                                                                         </div>
                                                                     </div>
 
                                                                     <div class="text-center mt-3">
-                                                                        <button type="submit" class="btn btn-ba">Enviar</button>
+                                                                        <button type="submit" class="btn btn-success">Confirmar Acción</button>
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                                     </div>
                                                                 </form>
                                                             </div>
@@ -220,6 +221,9 @@
                                                     </div>
                                                 </div>
                                                 <!-- Fin del modal -->
+
+                                                
+
                                             </div>
                                         </td>
                                     </tr>

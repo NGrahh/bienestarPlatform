@@ -211,7 +211,7 @@ class CitasController extends Controller
         $validator = Validator::make($request->all(), $rules);
 
         if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Debes dar un motivo!');
         }
 
         switch ($action) {

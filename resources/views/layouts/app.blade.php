@@ -90,7 +90,7 @@
     <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
 
     <!-- Scripts personalizados -->
-    <script src="{{asset('assets/js/R_P_Cita.js')}}"></script>
+    
     <script src="{{asset('assets/js/indexform.js')}}"></script>
     <script src="{{asset('assets/js/function_edit_user.js')}}"></script>
     <script src="{{asset('assets/js/function_register.js')}}"></script>
