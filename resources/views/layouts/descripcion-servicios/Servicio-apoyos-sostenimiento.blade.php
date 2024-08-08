@@ -148,7 +148,7 @@
                             </div> -->
                             <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
 
-                                <img class="imag" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfPDpbwWPqvDEZ0yA2_KD4EmkUdcvzcYBC5g&s" alt="">
+                                <img class="imag" src="{{asset('img/fic.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo fic</h1>
                                     <a href="{{route('Apoyo-fic')}}"><button class="botones holiio"><span>Ver</span></button></a>
@@ -168,7 +168,7 @@
                             </div> -->
                             <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
 
-                                <img class="imag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Sena_Colombia_logo.svg/2090px-Sena_Colombia_logo.svg.png" alt="">
+                                <img class="imag" src="{{asset('img/regular.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1 >Apoyo Regular</h1>
                                     <a href="{{route('Apoyo-regular')}}"><button class="botones holiio"><span>Ver</span></button></a>
@@ -188,7 +188,7 @@
                             </div> -->
                             <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
 
-                                <img class="imag" src="https://upload.wikimedia.org/wikipedia/en/a/a1/Megabus_Pereira_logo.png" alt="">
+                                <img class="imag" src="{{asset('img/transporte.png')}}" alt="">
                                 <div class="apoyo">
                                     <h1 class="regular">Apoyo de Transporte</h1>
                                     <a href="{{route('Apoyo-transporte')}}"><button class="botones holiio"><span>Ver</span></button></a>
@@ -208,7 +208,7 @@
                             </div> -->
                             <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
 
-                                <img class="imag" src="https://www.recreaciondidactica.com/wp-content/uploads/2019/02/refrigerios-bogota-10.jpg" alt="">
+                                <img class="imag" src="{{asset('img/alimentacion.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo de Alimentación</h1>
                                     <a href="{{route('Apoyo-alimentacion')}}"><button class="botones holiio"><span>Ver</span></button></a>
@@ -228,7 +228,7 @@
                             </div> -->
                             <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
 
-                                <img class="imag" src="https://i.blogs.es/3ce24a/wifi-datos/450_1000.webp" alt="">
+                                <img class="imag" src="{{asset('img/datos.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo Plan de datos</h1>
                                     <a href="{{route('Apoyo-datos')}}"><button class="botones holiio"><span>Ver</span></button></a>
