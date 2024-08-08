@@ -194,7 +194,10 @@
                                                                         <select name="actions" class="form-select" id="youractions" required>
                                                                             <option value="">Seleccionar...</option>
                                                                             @foreach ($acciones as $action)
-                                                                                <option {{ $action->id == old('actions') ? 'selected' : '' }} value="{{ $action->id }}">{{ $action->name }}</option>
+                                                                                <option value="{{ $action->id }}" 
+                                                                                    {{ old('actions', $action) == $action->id ? 'selected' : '' }}>{{ $action->name }}
+                                                                                </option>
+                                                                                
                                                                             @endforeach
                                                                         </select>
                                                                         <div class="invalid-feedback">Debe seleccionar una acción.</div>

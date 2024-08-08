@@ -419,38 +419,68 @@
                                 </form><!-- End settings Form -->
 
                             </div> --}}
-
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form action="{{ route('perfil.cambiar-contrasena')}}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
-
+                                <form action="{{ route('perfil.cambiarcontrasena') }}" class="row g-3 needs-validation mt-3" novalidate method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                            
                                     <div class="row mb-3">
                                         <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Contraseña actual</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="password" type="password" class="form-control" id="currentPassword">
+                                            <input name="password" type="password" class="form-control @error('password') is-invalid @enderror" id="currentPassword">
+                                            @error('password')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-
+                            
                                     <div class="row mb-3">
                                         <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">Nueva contraseña</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="newpassword" type="password" class="form-control" id="newPassword">
+                                            <input name="newpassword" type="password" class="form-control @error('newpassword') is-invalid @enderror" id="newPassword">
+                                            <small id="passwordHelp" class="form-text text-muted mt-4">
+                                                <ul id="passwordRequirements">
+                                                    <li id="length" class="invalid"><strong>8 caracteres mínimos</strong></li>
+                                                    <li id="lowercase" class="invalid"><strong>Al menos una letra minúscula</strong></li>
+                                                    <li id="uppercase" class="invalid"><strong>Al menos una letra mayúscula</strong></li>
+                                                    <li id="number" class="invalid"><strong>Al menos un número</strong></li>
+                                                    <li id="special" class="invalid"><strong>Al menos un carácter especial (@$!%*?&)</strong></li>
+                                                </ul>
+                                            </small>
+                                            @error('newpassword')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-
+                            
                                     <div class="row mb-3">
                                         <label for="renewPassword" class="col-md-4 col-lg-3 col-form-label">Re-ingrese nueva contraseña</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="renewpassword" type="password" class="form-control" id="renewPassword">
+                                            <input name="renewpassword" type="password" class="form-control @error('renewpassword') is-invalid @enderror" id="renewPassword">
+                                            @error('renewpassword')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
-
+                            
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-ba">Cambiar la contraseña</button>
                                     </div>
                                 </form><!-- End Change Password Form -->
-
                             </div>
+                            
+                            
+                            {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+                            <script>
+                            
+                            </script>
+                            
+                            <style>
+                            
+                            </style> --}}
+                            
+                            
 
                         </div><!-- End Bordered Tabs -->
 
