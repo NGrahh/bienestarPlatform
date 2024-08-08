@@ -15,13 +15,24 @@
 
     @include('compartido.alertas')
 
+
+
+    
+
+
+
+
     <section class="section">
+        
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Información de eventos</h5>
-
+                        
+                        <div class="alert alert-info" role="alert">
+                            <strong>¡Bienvenido a la sección de gestión de eventos!</strong> 
+                                Aquí podrás administrar todos los aspectos relacionados con tus eventos de manera eficiente y sencilla. Ya sea que estés creando un nuevo evento, actualizando detalles, revisando la lista de eventos existentes o des-habilitando eventos que ya no sean necesarios.
+                        </div>
                         <div class="table-responsive">
                             <table class="table datatable rounded-table">
                                 <thead>
