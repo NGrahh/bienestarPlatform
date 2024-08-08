@@ -199,7 +199,7 @@ class EventsController extends Controller
             'eventlimit' => 'required|numeric|digits_between:1,1000',
             'datestar' => 'required|date',
             'dateendevent' => 'required|date',
-            'Subjectevent' => 'required|string|min:1'
+            'Subjectevent' => 'required|string|between:2,4000'
         ]);
 
         if ($validator->fails()) {
