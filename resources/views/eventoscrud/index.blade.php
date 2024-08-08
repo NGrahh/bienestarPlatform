@@ -29,7 +29,7 @@
                 <div class="card">
                     <div class="card-body">
                         
-                        <div class="alert alert-info" role="alert">
+                        <div class="alert alert-info mt-4" role="alert">
                             <strong>¡Bienvenido a la sección de gestión de eventos!</strong> 
                                 Aquí podrás administrar todos los aspectos relacionados con tus eventos de manera eficiente y sencilla. Ya sea que estés creando un nuevo evento, actualizando detalles, revisando la lista de eventos existentes o des-habilitando eventos que ya no sean necesarios.
                         </div>
