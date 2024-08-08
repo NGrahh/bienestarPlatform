@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Rules\ValidHour;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class CitasController extends Controller
 {
@@ -89,7 +89,20 @@ class CitasController extends Controller
                     }
                 },
             ],
-            'hour' => ['required', 'date_format:H:i', new ValidHour],
+            'hour' => [
+                'required',
+                'date_format:H:i',
+                function ($request, $value, $fail) {
+                    // Validación personalizada para asegurar que la hora no sea anterior a la hora actual
+                    $currentDateTime = now();
+                    $appointmentDateTime = strtotime($request->input('date') . ' ' . $value);
+
+                    if ($appointmentDateTime < $currentDateTime->timestamp) {
+                        $fail('La hora ingresada ya ha pasado.');
+                    }
+                },
+                new ValidHour
+            ],
             'subjectCita' => 'required|string|min:1',
         ]);
         
@@ -133,6 +146,7 @@ class CitasController extends Controller
         return redirect(route('form-appointment'));
     }
 
+
     
 
     public function show($id)
@@ -175,6 +189,18 @@ class CitasController extends Controller
     {
         $userId = Auth::id();
     
+        $generalAppointments = DB::table('citas')
+            ->select('citas.date', 'citas.hour')
+            ->get();
+
+        // Obtener perfiles de usuarios con roles 2, 3 y 4
+        $responsibles = DB::table('perfil')
+            ->join('users', 'perfil.user_id', '=', 'users.id')
+            ->whereIn('users.rol_id', [2, 3, 4])
+            ->select('users.name', 'users.lastname', 'perfil.morning_start', 'perfil.morning_end', 'perfil.afternoon_start', 'perfil.afternoon_end')
+            ->get();
+
+
         $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status','citas.reason', 'users.name', 'users.lastname', 'users.email')
             ->join('users', 'citas.user_id', '=', 'users.id')
             ->where('citas.user_id', $userId)
@@ -183,7 +209,7 @@ class CitasController extends Controller
     
         $dimensions = TypeDimensions::all();
     
-        return view('citascrud.miscitas', compact('citas', 'dimensions'));
+        return view('citascrud.miscitas', compact('citas', 'dimensions','responsibles','generalAppointments'));
     }
 
     // CÓDIGO DE LA CITA: 
@@ -235,48 +261,11 @@ class CitasController extends Controller
                 return redirect()->back();
         }
 
-        return redirect()->route('citas.index', ['dimension_id' => $request->input('dimension_id')]);
+        return redirect()->route('citas.index', [
+            'dimension_id' => $request->input('dimension_id'),
+            //'selected_action' => $action->input('actions')  // Añadir el valor de la acción seleccionada
+        ]);
     }
-
-    
-
-    // public function acceptCita($id)
-    // {
-    //     // Código para aceptar la cita
-    //     $cita = Citas::findOrFail($id);
-    //     $cita->update(['status' => '1']);
-
-    //     // Mantener la categoría seleccionada
-    //     $dimensionId = request()->input('dimension_id');
-    //     session()->flash('success', 'La cita ha sido aceptada exitosamente!');
-    //     return back()->withInput(['dimension_id' => $dimensionId]);
-    // }
-
-    // public function moveCita($id)
-    // {
-    //     // Código para posponer la cita
-    //     $cita = Citas::findOrFail($id);
-    //     $cita->update(['status' => '2']);
-
-    //     // Mantener la categoría seleccionada
-    //     $dimensionId = request()->input('dimension_id');
-    //     session()->flash('success', 'La cita ha sido pospuesta exitosamente!');
-    //     return back()->withInput(['dimension_id' => $dimensionId]);
-    // }
-
-    // public function declineCita($id)
-    // {
-    //     // Código para rechazar la cita
-    //     $cita = Citas::findOrFail($id);
-    //     $cita->update(['status' => '3']);
-
-    //     // Mantener la categoría seleccionada
-    //     $dimensionId = request()->input('dimension_id');
-    //     session()->flash('success', 'La Cita ha sido rechazada exitosamente!');
-    //     return back()->withInput(['dimension_id' => $dimensionId]);
-    // }
-    
-    
 
 
     public function destroy($id)
@@ -285,4 +274,39 @@ class CitasController extends Controller
         $citas->delete();
         return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
     }
+
+
+    // public function citaview()
+    // {
+    //     $userId = Auth::id();
+        
+    //     // Obtener citas del usuario autenticado
+    //     $occupiedAppointments = DB::table('citas')
+    //         ->select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'citas.reason', 'users.name', 'users.lastname', 'users.email', 'type_dimensions.name as dimension_name')
+    //         ->join('users', 'citas.user_id', '=', 'users.id')
+    //         ->join('type_dimensions', 'citas.dimensions_id', '=', 'type_dimensions.id')
+    //         ->where('citas.user_id', $userId)
+    //         ->get();
+
+    //     // Obtener perfiles de usuarios con roles 2, 3 y 4
+    //     $responsibles = DB::table('perfil')
+    //         ->join('users', 'perfil.user_id', '=', 'users.id')
+    //         ->whereIn('users.rol_id', [2, 3, 4])
+    //         ->select('users.name', 'users.lastname', 'perfil.morning_start', 'perfil.morning_end', 'perfil.afternoon_start', 'perfil.afternoon_end')
+    //         ->get();
+
+    //     // Obtener citas generales
+        
+    //         $dimensions = TypeDimensions::all();
+    //     return view('citascrud.miscitas', compact('occupiedAppointments', 'responsibles', 'generalAppointments','dimensions'));
+    
+
+
+
+
+
+
+
+
+
 }

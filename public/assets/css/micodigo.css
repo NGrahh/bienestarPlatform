@@ -658,3 +658,10 @@ p {
         display: block; /* Muestra el texto en pantallas pequeñas */
     }
 }
+
+.valid {
+    color: #4f249e;
+}
+.invalid {
+    color: rgb(255, 0, 0);
+}

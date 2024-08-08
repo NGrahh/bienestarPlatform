@@ -22,7 +22,7 @@ class PerfilController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create','update_user']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create','update_user','cambiarContrasena']);
     }
 
 
@@ -217,13 +217,26 @@ class PerfilController extends Controller
 
     public function cambiarContrasena(Request $request)
     {
+
         // Validar los datos del formulario
-        $request->validate([
+        $validator = Validator::make($request->all(), [
             'password' => 'required|string',
-            'newpassword' => 'required|string|min:8',
+            'newpassword' => [
+                'required',
+                'string',
+                'min:8',
+                'regex:/[a-z]/',         // Al menos una letra minúscula
+                'regex:/[A-Z]/',         // Al menos una letra mayúscula
+                'regex:/[0-9]/',         // Al menos un número
+                'regex:/[@$!%*?&]/',     // Al menos un carácter especial
+            ],
             'renewpassword' => 'required|string|same:newpassword',
         ]);
 
+        // Verificar si la validación falla
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput()->with('error', '¡No se pudo efectuar el cambio!');
+        }
         // Obtener el usuario autenticado
         $user = Auth::user();
 
@@ -242,15 +255,5 @@ class PerfilController extends Controller
         // Redirigir con un mensaje de éxito
         return redirect()->route('perfil.index')->with('success', '¡Contraseña cambiada exitosamente!');
     }
-
-
-
-
-
-
-
-
-
-
 
 }
