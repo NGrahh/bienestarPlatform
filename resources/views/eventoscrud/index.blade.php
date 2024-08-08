@@ -92,7 +92,8 @@
                                                                             <div class="col-12 text-center">
                                                                                 <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
                                                                                 <div class="mb-3 image-container">
-                                                                                    <img src="{{ asset('images/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
+                                                                                    <img src="{{ asset('eventoimg/imgs/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
+
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mt-4">
@@ -200,7 +201,8 @@
                                                                             <div class="col-12 text-center">
                                                                                 <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
                                                                                 <div class="mb-3 image-container">
-                                                                                    <img src="{{ asset('images/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
+                                                                                    <img src="{{ asset('eventoimg/imgs/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
+
                                                                                 </div>
                                                                                 <input type="file" name="picture" class="form-control" id="picture">
                                                                                 <div class="invalid-feedback">Ingrese una foto relacionada al evento.</div>

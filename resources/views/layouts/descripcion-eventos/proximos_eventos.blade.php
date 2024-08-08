@@ -40,7 +40,8 @@
                             <div class="eventocard card" style="width: 100%; max-width: 540px;">
                                 <div class="row g-0">
                                     <div class="col-md-4">
-                                        <img src="{{ asset('images/' . $event->picture) }}" class="rounded-start img-fluid" style="object-fit: cover; width: 100%; height: 100%;" width="100px" height="200px">
+                                        
+                                        <img src="{{ asset('eventoimg/imgs/' . $event->picture) }}" class="rounded-start img-fluid" style="object-fit: cover; width: 100%; height: 100%;" width="100px" height="200px">
                                     </div>
                                     <div class="col-md-8">
                                         <div class="card-body">
@@ -74,7 +75,7 @@
                                                                     </div>
                                                                     <div class="modal-body d-flex flex-column justify-content-center align-items-center mt-4">
                                                                         <div class="container-fluid mt-5" style="overflow: hidden;">
-                                                                            <img src="{{ asset('images/'. $event->picture) }}" alt="Imagen de ejemplo" class="img-fluid mx-auto shadow-sm p-3 mb-5 rounded" style="object-fit: cover; width: 100%; height: 100%;" width="100px" height="200px">
+                                                                            <img src="{{asset('eventoimg/imgs/'. $event->picture) }}" alt="Imagen de ejemplo" class="img-fluid mx-auto shadow-sm p-3 mb-5 rounded" style="object-fit: cover; width: 100%; height: 100%;" width="100px" height="200px">
                                                                         </div>
                                                                     </div>
                                                                 </div>
