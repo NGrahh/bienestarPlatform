@@ -188,7 +188,7 @@
                             </div> -->
                             <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
 
-                                <img class="imag" src="{{asset('img/transporte.png')}}" alt="">
+                                <img class="imag" src="{{asset('img/mega.png')}}" alt="">
                                 <div class="apoyo">
                                     <h1 class="regular">Apoyo de Transporte</h1>
                                     <a href="{{route('Apoyo-transporte')}}"><button class="botones holiio"><span>Ver</span></button></a>
