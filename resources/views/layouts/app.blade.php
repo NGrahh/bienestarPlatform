@@ -96,7 +96,7 @@
     <script src="{{asset('assets/js/function_register.js')}}"></script>
     <script src="{{asset('assets/js/function_modal_clear.js')}}"></script>
     <script src="{{asset('assets/js/motivoCita.js')}}"></script>
-    <script src="{{asset('assets/js/password.js')}}"></script>
+    {{-- <script src="{{asset('assets/js/password.js')}}"></script> --}}
     <script src="{{asset('assets/js/verificarpass.js')}}"></script>
 
     
