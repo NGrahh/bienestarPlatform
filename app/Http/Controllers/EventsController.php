@@ -63,7 +63,7 @@ class EventsController extends Controller
         $pastEvents = Events::where('eventdate', '<', $currentDate)
                             ->where('status', true) // Filtrar por estado activo
                             ->orderBy('eventdate', 'desc')
-                            ->paginate(3);
+                            ->paginate(4);
     
         // Traducir día de la semana y nombre del mes para cada evento
         foreach ($upcomingEvents as $event) {

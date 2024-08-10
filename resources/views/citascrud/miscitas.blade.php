@@ -114,9 +114,12 @@
                                                                             <textarea class="form-control" cols="30" rows="4" name="subjectCita" required>{{$cita->subjectCita}}</textarea >
                                                                         </div>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">
-                                                                            <button type="submit" class="btn btn-ba px-2">Actualizar usuario</button>
+                                                                            @if ($cita->status !== '1')
+                                                                                <button type="submit" class="btn btn-ba px-2">Actualizar Cita</button>
+                                                                            @endif
                                                                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                                         </div>
+                                                                        
                                                                     </form>
                                                                 </div>
                                                             </div>

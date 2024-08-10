@@ -92,11 +92,11 @@ class CitasController extends Controller
             'hour' => [
                 'required',
                 'date_format:H:i',
-                function ($request, $value, $fail) {
+                function ($attribute, $value, $fail) use ($request) {
                     // Validación personalizada para asegurar que la hora no sea anterior a la hora actual
                     $currentDateTime = now();
                     $appointmentDateTime = strtotime($request->input('date') . ' ' . $value);
-
+    
                     if ($appointmentDateTime < $currentDateTime->timestamp) {
                         $fail('La hora ingresada ya ha pasado.');
                     }
@@ -112,7 +112,7 @@ class CitasController extends Controller
                 ->withInput()
                 ->with('error', 'No se pudo crear la cita');
         }
-
+    
         // Validación personalizada para asegurarse de que no exista una cita en la misma dimensión 
         // dentro de 30 minutos antes o después de la hora solicitada
         $existingAppointment = Citas::where('dimensions_id', $request->get('dimensions_id'))
@@ -130,7 +130,7 @@ class CitasController extends Controller
                 ->withInput()
                 ->with('error', 'Ya existe una cita en la misma dimensión dentro de los 30 minutos antes o después.');
         }
-
+    
         // Crear la nueva cita
         Citas::create([
             'user_id' => Auth::id(),
@@ -140,11 +140,12 @@ class CitasController extends Controller
             'hour' => $request->get('hour'),
             'subjectCita' => $request->get('subjectCita'),
         ]);
-
+    
         session()->flash('success', 'Cita registrada correctamente!');
-
+    
         return redirect(route('form-appointment'));
     }
+    
 
 
     
@@ -161,7 +162,14 @@ class CitasController extends Controller
     public function update(Request $request, $id)
     {
         $cita = Citas::findOrFail($id);
-        
+
+        // Verifica el estado de la cita
+        if ($cita->status === 1) {
+            return redirect()->back()
+                ->with('error', 'No se puede modificar una cita que ya ha sido aceptada.');
+        }
+
+
         $validator = Validator::make($request->all(), [
             'dimensions_id' => 'required|string',
             'mobilenumber' => 'required|numeric|digits_between:7,12',
@@ -274,39 +282,5 @@ class CitasController extends Controller
         $citas->delete();
         return redirect()->route('citas.index')->with('success', 'Cita eliminada correctamente.');
     }
-
-
-    // public function citaview()
-    // {
-    //     $userId = Auth::id();
-        
-    //     // Obtener citas del usuario autenticado
-    //     $occupiedAppointments = DB::table('citas')
-    //         ->select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'citas.reason', 'users.name', 'users.lastname', 'users.email', 'type_dimensions.name as dimension_name')
-    //         ->join('users', 'citas.user_id', '=', 'users.id')
-    //         ->join('type_dimensions', 'citas.dimensions_id', '=', 'type_dimensions.id')
-    //         ->where('citas.user_id', $userId)
-    //         ->get();
-
-    //     // Obtener perfiles de usuarios con roles 2, 3 y 4
-    //     $responsibles = DB::table('perfil')
-    //         ->join('users', 'perfil.user_id', '=', 'users.id')
-    //         ->whereIn('users.rol_id', [2, 3, 4])
-    //         ->select('users.name', 'users.lastname', 'perfil.morning_start', 'perfil.morning_end', 'perfil.afternoon_start', 'perfil.afternoon_end')
-    //         ->get();
-
-    //     // Obtener citas generales
-        
-    //         $dimensions = TypeDimensions::all();
-    //     return view('citascrud.miscitas', compact('occupiedAppointments', 'responsibles', 'generalAppointments','dimensions'));
-    
-
-
-
-
-
-
-
-
 
 }
