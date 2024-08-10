@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ApoyosCreatedController;
+use App\Http\Controllers\imageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,11 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/store', [imageController::class, 'store'])->name('img.store');
+
+
+
 
 // routes/web.php
 Route::get('/apoyos/create', [ApoyosController::class, 'create'])->name('apoyos.create');
@@ -357,6 +363,7 @@ Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.up
 Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
 
 
+Route::get('files/eventoimg/imgs/{image}', [EventsController::class, 'getImage'])->name('getImage')->middleware('auth');
 
 
 

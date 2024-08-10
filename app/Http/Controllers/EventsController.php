@@ -157,21 +157,29 @@ class EventsController extends Controller
             ],
             'Subjectevent' => 'required|string|min:1'
         ]);
-
+    
         if ($validator->fails()) {
             return redirect()
-            ->back()
-            ->withErrors($validator)
-            ->withInput();
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
         }
-
+        $imageName = null; // Inicializa la variable para el nombre de la imagen
+    
         if ($request->hasFile('picture')) {
             $image = $request->file('picture');
             $imageName = time() . '.' . $image->extension();
-            $image->move(public_path('eventoimg/imgs'), $imageName);
+            $path = $image->storeAs('public/files/eventoimg/imgs', $imageName);
+    
+            // Verifica si la imagen se guardó correctamente
+            if (!$path) {
+                return redirect()
+                    ->back()
+                    ->withErrors(['picture' => 'Error al guardar la imagen.'])
+                    ->withInput();
+            }
         }
-        
-
+    
         Events::create([
             'eventname' => $request->get('eventname'),
             'picture' => $imageName,
@@ -181,10 +189,23 @@ class EventsController extends Controller
             'dateendevent' => $request->get('dateendevent'),
             'Subjectevent' => $request->get('Subjectevent')
         ]);
-
+    
         session()->flash('success', 'Evento registrado correctamente!');
         return redirect(route('events.index'));
     }
+    
+    public function getImage($imageName){
+        $path = storage_path('app/public/files/eventoimg/imgs/' . $imageName);
+        if (!file_exists($path)) {
+            abort(404);
+        }
+        return response()->file($path);
+    }
+    
+
+
+
+
 
     public function show(string $id)
     {
@@ -213,13 +234,25 @@ class EventsController extends Controller
         $event = Events::findOrFail($id);
 
         if ($request->hasFile('picture')) {
-            $imageName = time() . '.' . $request->picture->extension();
+        /*  $imageName = time() . '.' . $request->picture->extension();
             $request->picture->move(public_path('eventoimg/imgs'), $imageName);
-            $event->picture = $imageName;
+            $event->picture = $imageName; */
+            $image = $request->file('picture');
+            $imageName = time() . '.' . $image->extension();
+            $path = $image->storeAs('public/files/eventoimg/imgs', $imageName);
+    
+            // Verifica si la imagen se guardó correctamente
+            if (!$path) {
+                return redirect()
+                    ->back()
+                    ->withErrors(['picture' => 'Error al guardar la imagen.'])
+                    ->withInput();
+            }
         }
 
         $event->update([
             'eventname' => $request->get('eventname'),
+            'picture' => $imageName,
             'eventdate' => $request->get('eventdate'),
             'eventlimit' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),

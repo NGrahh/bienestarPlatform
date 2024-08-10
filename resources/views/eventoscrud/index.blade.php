@@ -92,8 +92,7 @@
                                                                             <div class="col-12 text-center">
                                                                                 <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
                                                                                 <div class="mb-3 image-container">
-                                                                                    <img src="{{ asset('eventoimg/imgs/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
-
+                                                                                    <img src="{{ route('getImage', ['image' => $event->picture]) }}" alt="Imagen actual del evento" class="img-fluid">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mt-4">
@@ -201,7 +200,8 @@
                                                                             <div class="col-12 text-center">
                                                                                 <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
                                                                                 <div class="mb-3 image-container">
-                                                                                    <img src="{{ asset('eventoimg/imgs/' . $event->picture) }}" alt="Imagen actual del evento" class="img-fluid">
+                                                                                    <img src="{{ route('getImage', ['image' => $event->picture]) }}" alt="Imagen del evento" class="img-fluid">
+
 
                                                                                 </div>
                                                                                 <input type="file" name="picture" class="form-control" id="picture">
@@ -264,14 +264,20 @@
                                                         </button>
                                                     @endif
 
-                                                    <!-- Modal de eliminación para cada usuario -->
+                                                    <!-- Modal para habilitar y deshabilitar un evento -->
                                                     <div class="modal fade" id="deleteEventModal{{ $event->id }}" tabindex="-1">
                                                         <div class="modal-dialog modal-dialog-centered">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
                                                                     <h5 class="modal-title">
                                                                         <strong>
-                                                                            ¿Estás seguro de que deseas eliminar este usuario? Esta acción no se puede deshacer.
+                                                                            
+                                                                            @if ($event->status) 
+                                                                                ¿Estás seguro de que deseas deshabilitar este evento?
+                                                                                
+                                                                            @else
+                                                                                ¿Estás seguro de que deseas Habilitar este evento?
+                                                                            @endif
                                                                         </strong>
                                                                     </h5>
                                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -300,12 +306,13 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <!-- Fin del modal de eliminación -->
+                                                    <!-- Fin del modal de "Habilitar" y "Deshabilitar" -->
 
                                                     <!-- Botón para abrir el modal de mirar inscritos -->
                                                     <button type="button" class="btn btn-ba-card px-2 " data-bs-toggle="modal" data-bs-target="#inscripEventModal{{ $event->id }}" title="Inscritos para Evento">
                                                         <i class=" ri-contacts-book-line"></i>
                                                     </button>
+
                                                     <!-- Modal de mirar inscritos para cada evento-->
                                                     <div class="modal fade" id="inscripEventModal{{ $event->id }}" tabindex="-1">
                                                         <div class="modal-dialog modal-xl">
