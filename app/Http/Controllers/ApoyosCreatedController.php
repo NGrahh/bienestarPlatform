@@ -37,9 +37,6 @@ class ApoyosCreatedController extends Controller
         return view('apoyos_created.show', compact('apoyos_created'));
     }
 
-
-
-    
     public function disable($id)
     {
         // Busca el registro en la tabla 'Apoyos_created' utilizando el ID proporcionado.
