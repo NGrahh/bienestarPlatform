@@ -9,13 +9,6 @@ use Illuminate\Support\Facades\Storage;
 class imageController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     // Aplica el middleware 'auth' a todas las rutas de este controlador,excepto a las que se enumeran en el arreglo 'except'.
-    //     $this->middleware('auth')->except(['store','getImage']);
-    // }
-
-
     public function store (Request $request){
         $image = new Image();
         // script para subir la imagen
@@ -30,13 +23,9 @@ class imageController extends Controller
         return view('welcome', compact('images'));  
     }
 
-
     public function getImage($image){
         $path = storage_path('app/private/image/'.$image);
         return response()->file($path);
     }
-
-
-
 
 }
