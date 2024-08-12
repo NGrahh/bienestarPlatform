@@ -13,6 +13,7 @@
         grid-template-rows: repeat(2, 1fr);
         grid-column-gap: 20px;
         grid-row-gap: 20px;
+        
     }
 
     .btn {
@@ -33,13 +34,75 @@
     /*-----------*/
 
     .cuadro {
-        height: 18rem;
-        width: 18rem;
+        height: 17.5rem;
+        width: 17.5rem;
         overflow: hidden;
         position: relative;
         background-color: white;
         
 
+    }
+    @media (max-width: 980px) {
+        .container-cartas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        
+    }
+    .c-1{
+        grid-area: 1/1;
+    }
+    .c-2{
+        grid-area: 1/2;
+    }
+    .c-3{
+        grid-area: 2/1;
+    }
+    .c-4{
+        grid-area: 2/2;
+    }
+    .c-5{
+        grid-area: 3/1;
+    }
+    }
+
+    @media (max-width: 680px) {
+        .container-cartas {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(5, 1fr);
+        grid-column-gap: 20px;
+        grid-row-gap: 20px;
+        place-items: center;
+        
+    }
+    .c-1{
+        grid-area: 1/1;
+    }
+    .c-2{
+        grid-area: 2/1;
+    }
+    .c-3{
+        grid-area: 3/1;
+    }
+    .c-4{
+        grid-area: 4/1;
+    }
+    .c-5{
+        grid-area: 5/1;
+    }
+    }  
+    
+    @media (max-width: 350px){
+        .cuadro {
+        height: 16rem;
+        width: 16rem;
+        overflow: hidden;
+        position: relative;
+        background-color: white;
+    }
     }
 
     .imag {
@@ -146,7 +209,7 @@
                                     <a href="{{route('formulario-inscripcion-apoyos')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                 </div>
                             </div> -->
-                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
+                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary c-1">
 
                                 <img class="imag" src="{{asset('img/fic.png')}}" alt="">
                                 <div class="apoyos">
@@ -166,7 +229,7 @@
                                     <a href="{{route('formulario-inscripcion-apoyo-regular')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                 </div>
                             </div> -->
-                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
+                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary c-2">
 
                                 <img class="imag" src="{{asset('img/regular.png')}}" alt="">
                                 <div class="apoyos">
@@ -186,7 +249,7 @@
                                     <a href="{{route('formulario-inscripcion-apoyo-transporte')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                 </div>
                             </div> -->
-                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
+                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary c-3">
 
                                 <img class="imag" src="{{asset('img/mega.png')}}" alt="">
                                 <div class="apoyo">
@@ -206,7 +269,7 @@
                                     <a href="{{route('formulario-inscripcion-apoyo-alimentacion')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                 </div>
                             </div> -->
-                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
+                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary c-4">
 
                                 <img class="imag" src="{{asset('img/alimentacion.png')}}" alt="">
                                 <div class="apoyos">
@@ -226,7 +289,7 @@
                                     <a href="{{route('formulario-inscripcion-apoyo-plan-datos')}}" class="btn btn-ba w-100 hidden">Inscribirse</a>
                                 </div>
                             </div> -->
-                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary">
+                            <div class="cuadro shadow-lg p-1 mb-5 bg-body-tertiary c-5">
 
                                 <img class="imag" src="{{asset('img/datos.png')}}" alt="">
                                 <div class="apoyos">
