@@ -6,71 +6,100 @@
 
 @include('layouts.header')
 @include('layouts.menu')
-<style>
-.btn{
-    background-color: #39A900;
-    border: none;
-}
-</style>
 
 <main id="main" class="main">
+    <!-- Page Title -->
     <div class="pagetitle">
-        <h1>Apoyo de transporte</h1>
+        <h1>Apoyo de Transporte</h1>
     </div><!-- End Page Title -->
 
+    <!-- Main Section -->
     <div class="section">
         <div class="row justify-content-center">
             <div class="col-lg-12 my-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="pt-4 pb-2">
-                            <p class="small"><strong>Nota: </strong>Se hace constar que; para proceder con la postulación, es indispensable contar con <strong>una cuenta activa.</strong></p>
-                        </div>
-                        @include('compartido.alertas')
-                        <div class="col-sm-12">
-                            <div  class="pt-4 pb-2">
+                        <!-- Nota -->
+                        @if (Auth::check())
+                            @if ($tipo_apoyo_id == 5 && $status == '1')
+                                <p class="small mt-3">
+                                    <strong>Nota:</strong> Actualmente, las inscripciones para el apoyo de transporte están abiertas. Puedes proceder con la inscripción. Para más información, por favor, efectua la inscripción ¡Buena Suerte!.
+                                </p>
+                            @else
+                                <p class="small mt-3">
+                                    <strong>Nota:</strong> Actualmente, las inscripciones para el apoyo de transporte están cerradas. Te recomendamos que permanezcas atento a futuras actualizaciones sobre la apertura de inscripciones. Para más información, por favor, contacta con la administración.
+                                </p>
+                            @endif
+                        @else
+                            <!-- Usuario no autenticado -->
+                            <div class="pt-4 pb-2">
+                                <p class="small">
+                                    <strong>Nota:</strong> Se hace constar que, para proceder con la postulación, es indispensable contar con <strong>una cuenta activa.</strong>
+                                </p>
+                            </div>
+                        @endif
 
-                                {{-- <h1 align="center"></h1> --}}
-                                <div align="center"  class="contenedor">
-                                    <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
-                                </div>
-                                <div class="descripcion">
-                                    <h2>Descripción:</h2>
-                                    <p align="justify" class="text-start">
-                                        Es un servicio otorgado a los aprendices de formación con modalidad presencial. En convenio con el servicio de transporte público masivo MEGABUS (Por ningún motivo se entrega dinero a los aprendices), consta de 40 pasajes al mes durante 4 meses
-                                    </p>
-                                </div>
-                                <div class="botones mt-4 text-center">
-                                @if(session('rol_id') == 5)
-                                    <a href="{{ route('formulario-inscripcion-apoyos') }}"><button class="btn btn-ba mx-3">Postularse</button></a>
-                                @elseif(session('rol_id') == 1 || session('rol_id') == 2 || session('rol_id') == 3 || session('rol_id') == 4)
-                                    <p></p>
-                                @else
-                                    <a href="{{ route('login') }}"><button class="btn btn-ba mx-3">Iniciar sesión</button></a>
-                                @endif
 
-                                </div>
 
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <!-- Contenido Principal -->
+                        <div class="row">
+                            <!-- Imagen -->
+                            <div class="col-lg-12 d-flex justify-content-center align-items-center my-4">
+                                <img src="{{ asset('imagenesApoyos/Apoyo_Transporte.png') }}" class="img-fluid rounded shadow-lg" alt="Apoyo Fic" style="max-width: 50%;">
+                            </div>
+
+                            <div class="col-lg-12 mt-5">
+                                <div class="pagetitle mx-3">
+                                    <h1>¿De qué trata el apoyo de transporte?</h1>
+                                </div>
+                                <p class="text-justify mx-3">
+                                    Es un servicio otorgado a los aprendices de formación con modalidad presencial. En convenio con el servicio de transporte público masivo MEGABUS (Por ningún motivo se entrega dinero a los aprendices), consta de 40 pasajes al mes durante 4 meses
+                                </p>
+                            </div>
+
+                            <div class="col-lg-12 mt-3">
+                                <!-- Requisitos -->
+                                <div class="accordion accordion-flush mx-3" id="accordionFlushExample">
                                     <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          <strong>Requisitos</strong>
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <!-- List group Numbered -->
-                                            <ol class="list-group list-group-numbered" style="text-align: justify">
-                                                <li class="list-group-item">Estar en estado "Inducción" o "Es formación" en etapa lectiva o practica en el aplicativo Sofia Plus</li>
-                                                <li class="list-group-item">No tener condicionamiento de matricula conforme a lo estipulado en el reglamento al aprendiz</li>
-                                                <li class="list-group-item" >No ser beneficiario de ningun otro apoyo de sostenimiento</li>
-                                                <li class="list-group-item" >Digilenciar adecuadamente el formato de registro socioeconomico</li>
-                                            </ol><!-- End List group Numbered -->
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                <strong>Requisitos</strong>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <ul class="list-group" style="text-align: justify">
+                                                    <li class="list-group-item mt-4"><i class="bi bi-collection me-1 text-primary"></i><strong>Estar en estado "Inducción" o "Es formación" en etapa lectiva o practica en el aplicativo Sofia Plus</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No tener condicionamiento de matricula conforme a lo estipulado en el reglamento al aprendiz</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No ser beneficiario de ningun otro apoyo de sostenimiento</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>Digilenciar adecuadamente el formato de registro socioeconomico</strong></li>
+                
+                                                </ul><!-- End List group Numbered -->
+                                            </div>
                                         </div>
-                                      </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="col-lg-12  mt-5">
+                                <div class="pagetitle mx-3">
+                                    <h1>Información Importante!</h1>
+                                </div><!-- End Page Title -->
+                                @if ($tipo_apoyo_id == 4 && $status == '1')
+                                <p class="text-justify mx-3">
+                                    Actualmente, el apoyo de transporte se encuentra habilitado para nuevas inscripciones.
+                                </p>
+                                <div class="d-flex justify-content-center align-items-center pt-2">
+                                    <!-- Enlace con el ID del apoyo en la URL -->
+                                    <a href="{{ route('formulario_p', ['apoyo_id' => $apoyo_id]) }}" class="btn btn-ba">
+                                        Inscribirse Ahora
+                                    </a>
+                                </div>
+                                @else
+                                <p class="text-justify mx-3">
+                                    Actualmente, el apoyo de transporte no se encuentra habilitado para nuevas inscripciones. Por favor, mantente atento a las futuras actualizaciones o contacta con la administración para más detalles.
+                                </p>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -78,6 +107,7 @@
             </div>
         </div>
     </div>
-</main><!-- End #main -->
+</main>
+
 @include('layouts.footer')
 @endsection

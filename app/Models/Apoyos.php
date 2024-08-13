@@ -10,6 +10,7 @@ class Apoyos extends Model
     use HasFactory;
 
     protected $fillable = [
+        'apoyo_id',
         'user_id',
         'mobilenumber',
         'formatuser',

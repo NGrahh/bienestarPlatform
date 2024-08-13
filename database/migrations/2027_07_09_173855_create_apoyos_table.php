@@ -14,6 +14,7 @@ return new class extends Migration
         // Se crea la tabla en la base de datos con el nombre 'apoyos'
         Schema::create('apoyos', function (Blueprint $table) {
         $table->id();
+        $table->unsignedBigInteger('apoyo_id'); // Agregar el campo 'apoyo_id'
         $table->unsignedBigInteger('user_id');
         $table->string('mobilenumber');
         $table->string('formatuser');
@@ -28,6 +29,12 @@ return new class extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
+
+        
+        $table->foreign('apoyo_id')
+                ->references('id')
+                ->on('apoyos_createds')
+                ->onDelete('cascade');        
     });
     
     }

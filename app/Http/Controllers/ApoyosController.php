@@ -30,7 +30,7 @@ class ApoyosController extends Controller
         return view('formularios/apoyos/form-inscription-supports');
     }
 
-    public function store(Request $request)
+    public function store_user(Request $request)
     {
         // Definir reglas de validación para los campos del formulario.
         $rules = [

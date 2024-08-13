@@ -21,7 +21,7 @@
         <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
-   --}}
+  --}}
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
   
@@ -35,7 +35,7 @@
   
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
-                <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 40px; height: 50px; object-fit: cover;">
+                <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle shadow-lg" style="height: 50px; object-fit: cover;">
             @else
             <i class='bx bxs-user' style="color: white"></i>
             @endif

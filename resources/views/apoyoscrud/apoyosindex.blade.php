@@ -51,17 +51,7 @@
                                                     $fileUrl = asset('images/archivos/' . $apoyo->formatuser);
                                                     
                                                 @endphp
-                                            
-                                                @if($fileExtension == 'pdf')
-                                                    <!-- Mostrar PDF -->
-                                                    <embed src="{{ $fileUrl }}" width="100" height="100" type="application/pdf">
-                                                @elseif(in_array($fileExtension, ['doc', 'docx']))
-                                                    <!-- Mostrar Documento de Word con Google Docs Viewer -->
-                                                    <iframe src="https://view.officeapps.live.com/op/view.aspx?src={{ urlencode($fileUrl) }}" width="100%" height="600" frameborder="0"></iframe>
-                                                @else
-                                                    <!-- Enlace para otros tipos de archivos -->
-                                                    <a href="{{ $fileUrl }}" target="_blank">Ver Archivo</a>
-                                                @endif
+                                        
                                             </td>
                                             
                                             

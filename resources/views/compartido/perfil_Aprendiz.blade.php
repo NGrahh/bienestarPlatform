@@ -60,10 +60,10 @@
                                         <div class="col-lg-12 col-md-4  d-evento"><strong>Nombre completo: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->name }} {{ Auth::user()->perfil->user->lastname }}</div>
                                     </div>
-
-                                    <div class="col-lg-12 col-md-4 d-evento "><strong>Sobre mi: </strong></div>
-                                    <p class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->about_me }}</p>
-
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-4 d-evento"><strong>Sobre mi: </strong></div>
+                                        <p class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->about_me }}</p>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-4 d-evento"><strong>Rol: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->role->name }}</div>
@@ -347,7 +347,39 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
-                        <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile" class="rounded-circle" style="width: 150px; height: 115px; object-fit: cover;">
+                        <!-- Imagen de perfil -->
+                        <!-- Imagen de perfil -->
+                            <!-- Imagen de perfil -->
+                            <img 
+                            src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" 
+                            alt="Profile" 
+                            class="rounded-circle profile-img" 
+                            style="width: 150px; height: 115px; object-fit: cover; cursor: pointer;"
+                            data-bs-toggle="modal"
+                            data-bs-target="#Profile{{ Auth::user()->id }}">
+
+                            <!-- Modal de Bootstrap para mostrar la imagen -->
+                            <div class="modal fade" id="Profile{{ Auth::user()->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                                    <div class="modal-content_perfil">
+                                        <div class="modal-body_perfil p-0">
+                                            <!-- Imagen dentro del modal -->
+                                            <img 
+                                                src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" 
+                                                alt="Profile" 
+                                                class="img-fluid_perfil"
+                                                >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
 
                         @else
                             <img src="{{ asset('assets/img/perfil_predeterminado.png') }}" alt="Default Profile" class="rounded-circle">

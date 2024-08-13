@@ -52,8 +52,12 @@
                     <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
                   </div>
                   <div id="form" style="display: none;">
-                    <form action="{{ route('apoyos.store') }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('apoyos.store_user') }}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                       @csrf
+                          <!-- Campo oculto para el ID del apoyo -->
+                      <input type="hidden" name="apoyo_id" value="{{ $apoyo_id }}">
+
+
                       <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12"></div>
                       <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label for="yourName" class="form-label">Nombres</label>

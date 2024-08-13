@@ -151,7 +151,7 @@
                                 <img class="imag" src="{{asset('img/fic.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo fic</h1>
-                                    <a href="{{route('Apoyo-fic')}}"><button class="botones holiio"><span>Ver</span></button></a>
+                                    <a href="{{route('apoyo.fic')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
                             </div>
@@ -171,7 +171,7 @@
                                 <img class="imag" src="{{asset('img/regular.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1 >Apoyo Regular</h1>
-                                    <a href="{{route('Apoyo-regular')}}"><button class="botones holiio"><span>Ver</span></button></a>
+                                    <a href="{{route('apoyo.sostenimiento')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
                             </div>
@@ -191,7 +191,7 @@
                                 <img class="imag" src="{{asset('img/mega.png')}}" alt="">
                                 <div class="apoyo">
                                     <h1 class="regular">Apoyo de Transporte</h1>
-                                    <a href="{{route('Apoyo-transporte')}}"><button class="botones holiio"><span>Ver</span></button></a>
+                                    <a href="{{route('apoyo.transporte')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
                             </div>
@@ -211,7 +211,7 @@
                                 <img class="imag" src="{{asset('img/alimentacion.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo de Alimentación</h1>
-                                    <a href="{{route('Apoyo-alimentacion')}}"><button class="botones holiio"><span>Ver</span></button></a>
+                                    <a href="{{route('apoyo.alimentacion')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
                             </div>
@@ -231,7 +231,7 @@
                                 <img class="imag" src="{{asset('img/datos.png')}}" alt="">
                                 <div class="apoyos">
                                     <h1>Apoyo Plan de datos</h1>
-                                    <a href="{{route('Apoyo-datos')}}"><button class="botones holiio"><span>Ver</span></button></a>
+                                    <a href="{{route('apoyo.datos')}}"><button class="botones holiio"><span>Ver</span></button></a>
 
                                 </div>
                             </div>

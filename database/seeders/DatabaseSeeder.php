@@ -25,8 +25,7 @@ class DatabaseSeeder extends Seeder
         $this->call([ProgramasSeeder::class]);
         $this->call([EventsSeeder::class]);
         $this->call([CitasSeeder::class]);
-        $this->call([ApoyosSeeder::class]);
-        $this->call([ApoyosCreatedSeeder::class]);
         $this->call([citas_acciones::class]);  
+        $this->call([ApoyosTableSeeder::class]);  
     }
 }

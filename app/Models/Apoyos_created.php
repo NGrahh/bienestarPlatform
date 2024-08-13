@@ -10,16 +10,17 @@ class Apoyos_created extends Model
     use HasFactory;
 // esta información sirve crear un apoyo 
     protected $fillable = [
-        'appoiment_name',
+        'apoyo_id',
+        'tipo_apoyo_id',
         'appoiment_date_start',
         'appoiment_date_end',
-        'appoiment_status'
+        'status'
 
     ];
-    public function appoiment()
+    // Define la relación con tipos_apoyos
+    public function tipoApoyo()
     {
-        //a cada apoyo se le agrega un id para poder representar
-        return $this->belongsTo(Apoyos_created::class, 'id');
+        return $this->belongsTo(tipos_apoyos::class, 'tipo_apoyo_id');
     }
 
 }

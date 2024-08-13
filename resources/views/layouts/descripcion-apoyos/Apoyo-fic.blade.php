@@ -6,76 +6,117 @@
 
 @include('layouts.header')
 @include('layouts.menu')
-<style>
-.btn{
-    background-color: #39A900;
-    border: none;
-}
-</style>
+
 
 <main id="main" class="main">
+    <!-- Page Title -->
     <div class="pagetitle">
-        <h1>Apoyo de sostenimiento FIC</h1>
+        <h1>Apoyo de Sostenimiento FIC</h1>
     </div><!-- End Page Title -->
 
+    <!-- Main Section -->
     <div class="section">
         <div class="row justify-content-center">
             <div class="col-lg-12 my-4">
                 <div class="card mb-3">
                     <div class="card-body">
-                        <div class="pt-4 pb-2">
-                            <p class="small"><strong>Nota: </strong>Se hace constar que; para proceder con la postulación, es indispensable contar con <strong>una cuenta activa.</strong></p>
-                        </div>
-                        @include('compartido.alertas')
-                        <div class="col-sm-12">
-                            <div  class="pt-4 pb-2">
+                        <!-- Nota -->
+                        @if (Auth::check())
+                            @if ($tipo_apoyo_id == 1 && $status == '1')
+                                <p class="small mt-3">
+                                    <strong>Nota:</strong> Actualmente, las inscripciones para el apoyo FIC están abiertas. Puedes proceder con la inscripción. Para más información, por favor, efectua la inscripción ¡Buena Suerte!.
+                                </p>
+                            @else
+                                <p class="small mt-3">
+                                    <strong>Nota:</strong> Actualmente, las inscripciones para el apoyo FIC están cerradas. Te recomendamos que permanezcas atento a futuras actualizaciones sobre la apertura de inscripciones. Para más información, por favor, contacta con la administración.
+                                </p>
+                            @endif
+                        @else
+                            <!-- Usuario no autenticado -->
+                            <div class="pt-4 pb-2">
+                                <p class="small">
+                                    <strong>Nota:</strong> Se hace constar que, para proceder con la postulación, es indispensable contar con <strong>una cuenta activa.</strong>
+                                </p>
+                            </div>
+                        @endif
 
-                                <h1 align="center"></h1>
-                                <div align="center"  class="contenedor">
-                                    <img src="https://sena.edu.co/Style%20Library/alayout/images/logoSena.png" alt="Descripción de la imagen" class="img-fluid imagen-ajustada">
-                                </div>
-                                <div class="descripcion">
-                                    <h2>Descripción: </h2>
-                                    <p align="justify" class="text-start">
-                                        Es el desembolso mensual de dinero que se realiza a los aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la construcción, seleccionados como beneficiarios de este apoyo, durante el tiempo que dure el respectivo programa de aprendizaje, para sufragar transporte, alimentación y útiles para su formación
-                                    </p>
-                                </div>
-                                <div class="botones mt-4 text-center">
-                                @if(session('rol_id') == 5)
-                                    <a href="{{ route('formulario-inscripcion-apoyos') }}"><button class="btn btn-ba mx-3">Postularse</button></a>
-                                @elseif(session('rol_id') == 1 || session('rol_id') == 2 || session('rol_id') == 3 || session('rol_id') == 4)
-                                    <p></p>
-                                @else
-                                    <a href="{{ route('login') }}"><button class="btn btn-ba mx-3">Iniciar sesión</button></a>
-                                @endif
 
+                        <!-- Contenido Principal -->
+                        <div class="row">
+                            <!-- Imagen -->
+                            <div class="col-lg-12 d-flex justify-content-center align-items-center my-4">
+                                <img src="{{ asset('imagenesApoyos/Apoyo_Fic.png') }}" class="img-fluid rounded shadow-lg" alt="Apoyo Fic" style="max-width: 50%;">
+                            </div>
+
+                            <div class="col-lg-12 mt-5">
+                                <div class="pagetitle mx-3">
+                                    <h1>¿De qué trata el apoyo FIC?</h1>
                                 </div>
-                                <div class="accordion accordion-flush" id="accordionFlushExample">
+                                <p class="text-justify mx-3">
+                                    Es el desembolso mensual de dinero que se realiza a los aprendices que sean formados en oficios y ocupaciones relacionados con la industria de la construcción, seleccionados como beneficiarios de este apoyo, durante el tiempo que dure el respectivo programa de aprendizaje, para sufragar transporte, alimentación y útiles para su formación.
+                                </p>
+                                <p class="text-justify mx-3">
+                                    Abajo podrás encontrar los requisitos necesarios para la postulación al apoyo FIC. Te recomendamos revisar todos los criterios cuidadosamente para asegurarte de cumplir con todos ellos antes de proceder con tu solicitud.
+                                </p>
+                                <p class="text-justify mx-3">
+                                    Te recomendamos revisar todos los criterios cuidadosamente para asegurarte de cumplir con todos ellos antes de proceder con tu solicitud.
+                                    Recuerda que cada requisito es fundamental para garantizar tu elegibilidad. Si tienes alguna duda sobre alguno de los puntos o necesitas asistencia adicional, no dudes en ponerte en contacto con el equipo de soporte.
+                                    Tu diligencia en este proceso es clave para completar tu postulación de manera efectiva y eficiente. ¡Buena suerte!
+                                </p>
+                            </div>
+
+                            <div class="col-lg-12 mt-3">
+                                <!-- Requisitos -->
+                                <div class="accordion accordion-flush mx-3" id="accordionFlushExample">
                                     <div class="accordion-item">
-                                      <h2 class="accordion-header" id="flush-headingOne">
-                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                          <strong>Requisitos</strong>
-                                        </button>
-                                      </h2>
-                                      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body">
-                                            <!-- List group Numbered -->
-                                            <ol class="list-group list-group-numbered" style="text-align: justify">
-                                                <li class="list-group-item">Estar matriculado en uno de los programas de formacion profesional relacionados con el sector de la industria de la construccion, correspondiente a formacion titulada, en jornada diurna o nocturna. No aplica para ofertas virtuales y articulacion con la media
-                                                </li>
-                                                <li class="list-group-item">No poseer contrato de aprendizaje o laboral que le represente ingregos economicos, ni ser beneficiarios o titular de alguna pension</li>
-                                                <li class="list-group-item">Haber culminado satisfactoriamente el primer trimestre de formacion</li>
-                                                <li class="list-group-item" >No estar o haber sido sancionado con condicionamiento de matricula por faltas academicas o diciplinarias durante el trimestre inmediatamente anterior</li>
-                                                <li class="list-group-item" >No ser o haber sido beneficiario de apotos de sostenimiento en otro programa de formacion</li>
-                                                <li class="list-group-item" >Foto de documento de identidad</li>
-                                                <li class="list-group-item" >No ser o haber sido beneficiario de apoyos de sostenimiento del FIC en otros programas de formacion</li>
-                                                <li class="list-group-item" >No tener otro tipo de subsidio asignado por alcaldia, Juntas Comunales, Organismos del estado (Jovenes en accion), ni otro apoyo del SENA</li>
-                                                <li class="list-group-item" >Soportes de la condicion de vulnerabilidad "en caso de ser si, se le pedira foto de la condicion"</li>
-                                            </ol><!-- End List group Numbered -->
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed fs-4" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                <strong>Requisitos</strong>
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body">
+                                                <ul class="list-group" style="text-align: justify">
+                                                    <li class="list-group-item mt-4"><i class="bi bi-collection me-1 text-primary"></i><strong>Estar matriculado en uno de los programas de formación profesional relacionados con el sector de la industria de la construcción, correspondiente a formación titulada, en jornada diurna o nocturna (No aplica para ofertas virtuales y articulación con la media).</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No poseer contrato de aprendizaje o laboral que le represente ingresos económicos, ni ser beneficiario o titular de alguna pensión.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>Haber culminado satisfactoriamente el primer trimestre de formación.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No estar o haber sido sancionado con condicionamiento de matrícula por faltas académicas o disciplinarias durante el trimestre inmediatamente anterior.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No ser o haber sido beneficiario de apoyos de sostenimiento en otro programa de formación.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>Foto de documento de identidad.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No ser o haber sido beneficiario de apoyos de sostenimiento del FIC en otros programas de formación.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No tener otro tipo de subsidio asignado por alcaldía, Juntas Comunales, Organismos del estado (Jóvenes en Acción), ni otro apoyo del SENA.</strong></li>
+                                                    <li class="list-group-item mb-3"><i class="bi bi-collection me-1 text-primary"></i><strong>Soportes de la condición de vulnerabilidad "en caso de ser así, se le pedirá foto de la condición."</strong></li>
+                                                </ul><!-- End List group Numbered -->
+                                            </div>
                                         </div>
-                                      </div>
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="col-lg-12  mt-5">
+                                <div class="pagetitle mx-3">
+                                    <h1>Información Importante!</h1>
+                                </div><!-- End Page Title -->
+
+                                @if ($tipo_apoyo_id == 1 && $status == '1')
+                                    <p class="text-justify mx-3">
+                                        Actualmente, el apoyo FIC se encuentra habilitado para nuevas inscripciones.
+                                    </p>
+                                    <div class="d-flex justify-content-center align-items-center pt-2">
+                                        <!-- Enlace con el ID del apoyo en la URL -->
+                                        <a href="{{ route('formulario_p', ['apoyo_id' => $apoyo_id]) }}" class="btn btn-ba">
+                                            Inscribirse Ahora
+                                        </a>
+                                    </div>
+                                @else
+                                    <p class="text-justify mx-3">
+                                        Actualmente, el apoyo FIC no se encuentra habilitado para nuevas inscripciones. Por favor, mantente atento a las futuras actualizaciones o contacta con la administración para más detalles.
+                                    </p>
+                                @endif
+
+
+
+                                
                             </div>
                         </div>
                     </div>
@@ -83,6 +124,7 @@
             </div>
         </div>
     </div>
-</main><!-- End #main -->
+</main>
+
 @include('layouts.footer')
 @endsection

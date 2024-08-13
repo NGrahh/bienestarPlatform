@@ -213,9 +213,9 @@ Route::get('/apoyo-monitoria', function(){
     return view ('layouts.descripcion-apoyos.Apoyo-monitoria');
 })-> name ('Apoyo-monitoria');
 
-Route::get('/apoyo-fic', function(){
-    return view ('layouts.descripcion-apoyos.Apoyo-fic');
-})-> name ('Apoyo-fic');
+// Route::get('/apoyo-fic', function(){
+//     return view ('layouts.descripcion-apoyos.Apoyo-fic');
+// })-> name ('Apoyo-fic');
 
 Route::get('/apoyo-datos', function(){
     return view ('layouts.descripcion-apoyos.Apoyo-datos');
@@ -407,6 +407,37 @@ Route::get('/listado-apoyos', [ApoyosCreatedController::class, 'index'])->name('
 Route::get('/show/{id}',[ApoyosCreatedController::class, 'show'])-> name('apoyos_created.show')->middleware('auth');
 
 Route::patch('/apoyos/{id}/disable', [ApoyosCreatedController::class, 'disable'])->name('apoyos_created.disable')->middleware('auth');
+
+Route::post('/apoyos/store', [ApoyosCreatedController::class, 'store'])->name('apoyos.store');
+
+Route::post('/apoyos/user/store', [ApoyosCreatedController::class, 'store_user'])->name('apoyos.store_user');
+
+Route::get('/Apoyo-FIC', [ApoyosCreatedController::class, 'Ap_fic'])->name('apoyo.fic')->middleware('auth');
+
+Route::get('/Apoyo-Alimentacion', [ApoyosCreatedController::class, 'Ap_alimentacion'])->name('apoyo.alimentacion')->middleware('auth');
+
+Route::get('/Apoyo-Datos', [ApoyosCreatedController::class, 'Ap_datos'])->name('apoyo.datos')->middleware('auth');
+
+Route::get('/Apoyo-Sostenimiento-Regular', [ApoyosCreatedController::class, 'Ap_sostenimiento'])->name('apoyo.sostenimiento')->middleware('auth');
+
+Route::get('/Apoyo-Transporte', [ApoyosCreatedController::class, 'Ap_transporte'])->name('apoyo.transporte')->middleware('auth');
+
+
+
+
+
+Route::get('/Formulario-Postulacion/{apoyo_id}', [ApoyosCreatedController::class, 'formulario_p'])->name('formulario_p')->middleware('auth');
+
+
+
+
+
+
+
+
+
+
+
 
 /////////////////////////// Rutas CRUD ( Update, Delete) Perfil ///////////////////////////
 //Ruta para visualizar el perfil

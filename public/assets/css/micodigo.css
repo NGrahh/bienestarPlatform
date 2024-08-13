@@ -665,3 +665,57 @@ p {
 .invalid {
     color: rgb(170, 0, 0);
 }
+
+
+
+
+/* Estilo del modal para eliminar el color blanco de fondo */
+.modal-content_perfil {
+    border-radius: 0; /* Opcional: elimina los bordes redondeados si no son necesarios */
+    background-color: transparent; /* Elimina el color de fondo blanco */
+    box-shadow: none; /* Opcional: elimina la sombra del modal */
+}
+
+/* Ajusta la imagen para que ocupe todo el modal */
+.modal-body_perfil {
+    padding: 0; /* Elimina el padding para que la imagen ocupe todo el espacio */
+    display: flex; /* Utiliza Flexbox para centrar la imagen */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+/* Ajusta la imagen para que sea grande y redonda */
+.img-fluid_perfil {
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    max-width: 100vw; /* Ajusta el ancho máximo a un porcentaje de la ventana */
+    max-height: 100vh; /* Ajusta la altura máxima a un porcentaje de la ventana */
+    width:auto; /* Establece el ancho fijo */
+    height: auto; /* Establece la altura fija */
+    display: block; /* Elimina el espacio en blanco debajo de la imagen */
+    margin: auto; /* Centra la imagen horizontalmente */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
