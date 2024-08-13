@@ -18,16 +18,17 @@ class UsersSeeder extends Seeder
 
         // Crear el usuario 'Administrador'
 
-        User::create([
-            'name' => 'Camila',
-            'lastname' => 'Martinez',
-            'user_name' => 'admin',
-            'type_document_id' => 2,
-            'document' => 101010101,
-            'email' => 'admin@gmail.com',
-            'type_rh_id' => 1,
-            'password' => Hash::make('123456'),
-            'rol_id' => 1,
+        User::create([ //Este comando de php, creará el usuario de acuerdo a los atributos asignados aquí
+            'name' => 'Camila', //Nombre del usuario al activar las migraciones
+            'lastname' => 'Martinez', //Apellido del usuario
+            'user_name' => 'admin', //nombre de usuario que le asignará al usuario
+            'type_document_id' => 2, // tipo de documento asignado al usuario 
+            'document' => 101010101, // número de documento del usuario
+            'email' => 'admin@gmail.com', // email del usurio
+            'type_rh_id' => 1, // tipo de rh del usario (O+, AB-, etc)
+            'password' => Hash::make('123456'),  // Se crea la contraseña '123456' de manera encriptada
+            // 'password' => Hash::make('Kemba2005*') Aquí se muestra la contraseña en el host
+            'rol_id' => 1, // El tipo de rol que cumplirá este usuario
             
 
         ]);
