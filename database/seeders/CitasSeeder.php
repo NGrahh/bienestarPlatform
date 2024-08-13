@@ -15,7 +15,7 @@ class CitasSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create();
+        $faker = Faker::create(); // Usamos la dependecia de composer, faker, para ingresar datos falsos o alatorios en alguna tabla y base de datos.
 
         for ($i = 0; $i < 20; $i++) {
             Citas::create([

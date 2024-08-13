@@ -25,7 +25,7 @@ class ApoyosSeeder extends Seeder
                 'mobilenumber' => $faker->numerify('###########'),
                 'formatuser' => $faker->imageUrl(400, 400, 'events', true), // URL de una imagen de evento
                 'photocopy' => $faker->imageUrl(400, 400, 'events', true), // URL de una imagen de evento
-                'receipt' => $faker->imageUrl(400, 400, 'events', true),
+                'receipt' => $faker->imageUrl(400, 400, 'events', true),  
                 'sisben' => $faker->imageUrl(400, 400, 'events', true),
                 'support' => $faker->imageUrl(400, 400, 'events', true),
             ]);

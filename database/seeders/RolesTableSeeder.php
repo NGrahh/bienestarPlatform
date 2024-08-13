@@ -12,7 +12,8 @@ class RolesTableSeeder extends Seeder
      */
     public function run(): void
     {
-        $roles = [
+        $roles = [ // Nombre del objeto en dónde se almacenarán y mostrarán los tipos de roles que cumpliran los usuarios.
+            //Nombres de los roles que se les podrá asignar a los usuarios.
             ['name' => 'Admin'],
             ['name' => 'Lider bienestar'],
             ['name' => 'Miembro bienestar'],
@@ -20,8 +21,8 @@ class RolesTableSeeder extends Seeder
             ['name' => 'Aprendiz'],
         ];
         
-        foreach ($roles as $role) {
-            Roles::create($role);
+        foreach ($roles as $role) { //Nombre de la variable / campo en el cual se podrá designar el rol para el usuario.
+            Roles::create($role); // Aquí ya se muestra la creación del campo para que se puedan mostrar los roles. 
         }
         
     }

@@ -15,8 +15,8 @@ class ApoyosTableSeeder extends Seeder
     public function run()
     {
         // Datos para la tabla 'apoyos'
-        $apoyos = [
-            ['name' => 'Apoyo Fic'],
+        $apoyos = [ // Nombre de lo tabla en donde se almacenarán los datos respectivos
+            ['name' => 'Apoyo Fic'], // Aquí se integra el nombre del apoyo FIC dentro de la tabla
             ['name' => 'Apoyo Alimentación'],
             ['name' => 'Apoyo Datos'],
             ['name' => 'Apoyo Sostenimiento'],
@@ -24,6 +24,6 @@ class ApoyosTableSeeder extends Seeder
         ];
 
         // Insertar los datos en la tabla 'apoyos'
-        DB::table('tipos_apoyos')->insert($apoyos);
+        DB::table('tipos_apoyos')->insert($apoyos); // Aquí es el nombre de la tabla en donde se ingresarán los datos que se muestran arriba.
     }
 }

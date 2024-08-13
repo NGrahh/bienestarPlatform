@@ -12,7 +12,8 @@ class ProgramasSeeder extends Seeder
      */
     public function run(): void
     {
-        $programas = [
+        $programas = [ //Nombre del objeto que contiene todos los tipos de programas seleccionables en el momento de crear algún aprendiz o incluso en algún formulario.
+            //Nombres de cada uno de los programas que puede llegar a tener el centro, (los conocidos hasta el momento)
             ['name' => 'Análisis y Desarrollo de Software'],
             ['name' => 'Construcción en Edificaciones'],
             ['name' => 'Control de Calidad en Confección Industrial'],
@@ -33,8 +34,8 @@ class ProgramasSeeder extends Seeder
             ['name' => 'Supervisión en procesos de confección']
         ];
 
-        foreach ($programas as $programa) {
-            Programas::create($programa);
+        foreach ($programas as $programa) { // Se crea el objeto programa, para que pueda recorrer los datos que se quieren enviar a la tabla y base datos
+            Programas::create($programa); // Se crea lo mencionado, se crea el objeto de programa para que se pueda seleccionar el tipo de programa
         }
     }
 }
