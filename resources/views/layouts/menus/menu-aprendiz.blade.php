@@ -38,7 +38,7 @@
 <li class="nav-item">
     <a class="nav-link collapsed" href="{{route('Dimensiones')}}">
         <i class="ri-home-2-line"></i>
-        <span>Nuestra Dimensiones</span>
+        <span>Nuestras dimensiones</span>
     </a>
 </li>
 {{-- Final Item  Visualizar las dimensiones de bienestar al aprendiz --}}
