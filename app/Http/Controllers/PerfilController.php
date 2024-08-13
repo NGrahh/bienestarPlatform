@@ -25,7 +25,6 @@ class PerfilController extends Controller
         $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create','update_user','cambiarContrasena']);
     }
 
-
     /**
     *   Muestra la página de perfil del usuario.
     *   Esta función comprueba si el usuario está autenticado y redirige a la página de inicio en caso contrario.
@@ -52,7 +51,6 @@ class PerfilController extends Controller
         // Manejar el caso donde el usuario no está autenticado
         return redirect()->route('home')->with('error', 'Debe iniciar sesión para acceder a su perfil.');
     }
-
 
     /**
     * Crea el perfil del usuario autenticado.
@@ -111,7 +109,6 @@ class PerfilController extends Controller
         return redirect()->route('perfil.index')->with('success', 'Perfil creado exitosamente.');
     }
 
-
     /**
     * Actualiza el perfil del Aprendiz autenticado.
     *
@@ -165,7 +162,6 @@ class PerfilController extends Controller
         return redirect(route('perfil.index'));
     }
 
-
     /**
     * Actualiza el perfil del usuario con rol autenticado.
     *
@@ -213,7 +209,6 @@ class PerfilController extends Controller
         session()->flash('success', 'Perfil actualizado correctamente.');
         return redirect(route('perfil.index'));
     }
-
 
     public function cambiarContrasena(Request $request)
     {

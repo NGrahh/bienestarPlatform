@@ -145,44 +145,5 @@ class ApoyosController extends Controller
         // Redirige al usuario a la página de índice de 'apoyos' con un mensaje de éxito.
         return redirect()->route('apoyos.index')->with('success', $message);
     }
-
-    // public function destroy($id)
-    // {
-    //     // Busca el registro en la tabla 'Apoyos' con el ID proporcionado.
-    //     // Si no se encuentra el registro, lanza una excepción 'ModelNotFoundException' que
-    //     // mostrará una página 404.
-    //     $apoyo = Apoyos::findOrFail($id);
     
-    //     // Elimina el registro encontrado de la base de datos.
-    //     $apoyo->delete();
-    
-    //     // Redirige a la ruta 'apoyos.index' con un mensaje de éxito en la sesión.
-    //     return redirect()->route('apoyos.index')
-    //         ->with('success', 'Apoyo eliminado exitosamente.');
-    // }    
-
-    // public function show($id)
-    // {
-    //     // Busca el registro de 'Apoyos' con el ID proporcionado.
-    //     // Si no se encuentra el registro, lanza una excepción 'ModelNotFoundException' que
-    //     // mostrará una página 404.
-    //     $apoyo = Apoyos::findOrFail($id);
-    
-    //     // Devuelve la vista 'apoyos.show' con la variable 'apoyo' disponible para la vista.
-    //     // 'compact' crea un array asociativo con la variable 'apoyo' para pasarla a la vista.
-    //     return view('apoyos.show', compact('apoyo'));
-    // }
-
-    // public function edit($id)
-    // {
-    //     // Busca el registro de 'Apoyos' con el ID proporcionado.
-    //     // Si no se encuentra el registro, lanza una excepción 'ModelNotFoundException' que
-    //     // mostrará una página 404.
-    //     $apoyo = Apoyos::findOrFail($id);
-    
-    //     // Devuelve la vista 'apoyos.edit' con la variable 'apoyo' disponible para la vista.
-    //     // 'compact' crea un array asociativo con la variable 'apoyo' para pasarla a la vista.
-    //     return view('apoyos.edit', compact('apoyo'));
-    // }
-
 }

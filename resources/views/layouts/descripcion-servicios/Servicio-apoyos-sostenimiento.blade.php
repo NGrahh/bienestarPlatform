@@ -191,7 +191,7 @@
 
 <main id="main" class="main">
     <div class="pagetitle">
-        <h1>Apoyos de sostenimiento</h1>
+        <h1>Apoyos</h1>
     </div><!-- End Page Title -->
 
     <div class="section">

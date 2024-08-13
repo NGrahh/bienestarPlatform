@@ -132,7 +132,6 @@ class PasswordController extends Controller
         // Genera una cadena aleatoria de 5 caracteres a partir de números y letras mayúsculas
         return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 5);
     }
-    
 
     function cleanSessions() {
         // Verifica si hay un mensaje de error o un correo electrónico en las sesiones
