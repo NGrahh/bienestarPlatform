@@ -91,20 +91,14 @@ class UserController extends Controller
         return redirect(route('auth.login'));
     }
 
-
-
     public function create()
     {
         return view('lider.eventos.prueba');
     }
 
-
     function generarCodigoContrasena() {
         return substr(str_shuffle('0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'), 0, 5);
     }
-
-
-
 
     // La función se encarga de validar, almacenar en la base de datos, notificar por correo electrónico 
     // y manejar el flujo de redirección y mensajes para el proceso de registro de un nuevo usuario en la aplicación
@@ -167,18 +161,15 @@ class UserController extends Controller
         return redirect(route('users.index'));
     }
 
-    
     public function show(string $id)
     {
         $user = User::findOrFail($id);
         return view('crud.show', compact('user'));
     }
 
-
     // Esta función maneja el proceso de validación, actualización de datos y redirección para actualizar 
     // la información de un usuario específico en la aplicación, asegurando que los datos sean válidos y 
     // proporcionando retroalimentación adecuada en caso de errores o éxito en la operación de actualización
-
     public function update(Request $request, string $id)
     {
         // Validar los datos de la solicitud
@@ -220,7 +211,6 @@ class UserController extends Controller
     
     // Esta función maneja la eliminación de un usuario específico de la base de datos y proporciona retroalimentación 
     // al usuario mediante un mensaje de éxito después de completar la operación de eliminación.
-    
     public function destroy($id)
     {
         $user = User::findOrFail($id);
@@ -229,7 +219,6 @@ class UserController extends Controller
         
         return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
     }
-
 
     // Esta función maneja la habilitación y deshabilitación de un usuario específico de la base de datos y proporciona retroalimentación 
     // al usuario mediante un mensaje de éxito después de completar la operación de habilitación y deshabilitación.
@@ -251,8 +240,6 @@ class UserController extends Controller
         // Redirige de vuelta a la página de usuarios con un mensaje de éxito
         return redirect()->route('users.index')->with('success', $message);
     }
-
-
 
     // EEsta función es responsable de cerrar la sesión de usuario, limpiar la sesión actual para eliminar cualquier dato persistente y 
     // redirigir al usuario a una página específica después de cerrar sesión, en este caso, la página de inicio de la aplicación (home).

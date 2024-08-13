@@ -33,7 +33,7 @@ class UsersSeeder extends Seeder
         ]);
 
         
-        // Crear el usuario 'Administrador'
+        
 
         User::create([
             'name' => 'Camilo',
@@ -41,7 +41,7 @@ class UsersSeeder extends Seeder
             'user_name' => 'camil',
             'type_document_id' => 2,
             'document' => 1212121221,
-            'email' => 'liderbienestar@gmail.com',
+            'email' => 'd ',
             'type_rh_id' => 1,
             'password' => Hash::make('123456'),
             'rol_id' => 2,

@@ -15,13 +15,6 @@ class ApoyosCreatedController extends Controller
         $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create']);
     }
 
-
-
-
-
-
-
-    
     public function store_user(Request $request)
     {
         // Definir reglas de validación para los campos del formul+ario.
@@ -86,10 +79,6 @@ class ApoyosCreatedController extends Controller
         return redirect()->route('formulario_p', ['apoyo_id' => $apoyo->apoyo_id]);
 
     }
-    
-
-
-
 
     public function index()
     {
@@ -179,9 +168,6 @@ class ApoyosCreatedController extends Controller
         // Redirige al usuario a la vista de índice de 'apoyosCreated' con un mensaje de éxito en la sesión.
         return redirect()->route('apoyosCreated.index')->with('success', $message);
     }
-
-
-
 
     public function Ap_fic()
     {
@@ -298,16 +284,6 @@ class ApoyosCreatedController extends Controller
         }
     }
 
-
-
-
-
-
-
-
-
-    
-    
     public function formulario_p($apoyo_id)
     {
         // Opcionalmente, valida el ID o recupera el modelo si es necesario
@@ -315,5 +291,5 @@ class ApoyosCreatedController extends Controller
         // dd($apoyo_id); // Esto mostrará el valor del apoyo_id y detendrá la ejecución
         return view('formularios.apoyos.form-inscription-supports', ['apoyo_id' => $apoyo_id]);
     }
-    
+
 }
