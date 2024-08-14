@@ -20,7 +20,10 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title">Información de usuarios</h5>
+                        <div class="alert alert-info mt-4 mb-5" role="alert">
+                            <strong>¡Bienvenido a la sección de gestión de usuarios!</strong><br>
+                            Aquí podrás administrar todos los aspectos relacionados con los usuarios de manera eficiente y sencilla. Ya sea que estés creando un nuevo usuario, actualizando detalles, o des/habilitando usuarios que ya no sean necesarios.
+                        </div>
                         <div class="table-responsive">
                             <table class="table datatable rounded-table">
                                 <input type="hidden" id="currentPage" name="currentPage" value="">
@@ -31,6 +34,7 @@
                                         <th>T.identificación</th>
                                         <th>N.identificación</th>
                                         <th>C.electrónico</th>
+                                        <th>N.telefónico</th>
                                         <th>Rol</th>
                                         <th>Estado</th> 
                                         <th>Acciones</th>
@@ -39,11 +43,16 @@
                                 <tbody>
                                     @foreach($users as $user)
                                     <tr>
-                                        <td class="ellipsis">{{$user->id}}</td>
+                                        <td class="ellipsis">
+                                            <div class="d-flex justify-content-center align-items-center pt-2">
+                                                <strong>{{$user->id}}</strong>
+                                            </div>
+                                        </td>
                                         <td class="ellipsis">{{ $user->name }} {{ $user->lastname }}</td>
                                         <td class="ellipsis">{{ $user->TypeDocument->name }}</td>
                                         <td class="ellipsis">{{ $user->document }}</td>
                                         <td class="ellipsis">{{ $user->email }}</td>
+                                        <td class="ellipsis">{{ $user->numberphone }}</td>
                                         <td class="ellipsis">{{ $user->role->name }}</td>
                                         <td>
                                             <div class="d-flex justify-content-center align-items-center pt-2">
@@ -83,7 +92,7 @@
                                                                                 @method('PUT')
                                                                                 <input type="hidden" id="currentPage" name="currentPage" value="">
                                                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourName" class="form-label">Nombre</label>
+                                                                                    <label for="yourName" class="form-label"><strong>Nombre</strong></label>
                                                                                     <input value="{{$user->name }}" type="text" name="name" class="form-control" id="yourName" required>
                                                                                     <div class="invalid-feedback">Ingrese el nombre.</div>
                                                                                     @error('name')
@@ -91,7 +100,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourlastname" class="form-label">Apellidos</label>
+                                                                                    <label for="yourlastname" class="form-label"><strong>Apellidos</strong></label>
                                                                                     <input value="{{$user->lastname }}" type="text" name="lastname" class="form-control" id="yourlastname" required>
                                                                                     <div class="invalid-feedback">Ingrese los apellidos.</div>
                                                                                     @error('lastname')
@@ -99,7 +108,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourTypeDoc" class="form-label">Tipo documento</label>
+                                                                                    <label for="yourTypeDoc" class="form-label"><strong>Tipo documento</strong></label>
                                                                                     <select name="type_document_id" class="form-select" id="yourTypeDoc" required>
                                                                                         <option value="">- Seleccione -</option>
                                                                                         @foreach ($type_documents as $type_document)
@@ -112,7 +121,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourDocument" class="form-label"> N° documento</label>
+                                                                                    <label for="yourDocument" class="form-label"><strong>Número documento</strong></label>
                                                                                     <div class="input-group has-validation">
                                                                                         <span class="input-group-text" id="inputGroupPrepend">#</span>
                                                                                         <input value="{{$user->document}}" type="text" name="document" class="form-control" id="yourDocument" required>
@@ -123,7 +132,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourEmail" class="form-label">Correo electrónico</label>
+                                                                                    <label for="yourEmail" class="form-label"><strong>Correo electrónico</strong></label>
                                                                                     <input value="{{$user->email}}" type="email" name="email" class="form-control" id="yourEmail" required>
                                                                                     <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                                                                                     @error('email')
@@ -131,7 +140,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourRol_update" class="form-label">Rol</label>
+                                                                                    <label for="yourRol_update" class="form-label"><strong>Rol</strong></label>
                                                                                     <select name="rol_id" data-id-user="{{$user->id}}" class="form-select rol_edit" id="yourRol_update" required>
                                                                                         <option value="">- Seleccione -</option>
                                                                                         @foreach ($roles as $role)
@@ -145,7 +154,7 @@
                                                                                 </div>
                                                                                 
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
-                                                                                    <label for="yourTraining_update" class="form-label">Programa de formación</label>
+                                                                                    <label for="yourTraining_update" class="form-label"><strong>Programa de formación</strong></label>
                                                                                     <select name="Program_id" class="form-select" id="yourTraining_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                                                         <option value="">- Seleccione -</option>
                                                                                         @foreach ($programas as $programa)
@@ -158,7 +167,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="token_number_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
-                                                                                    <label for="yourToken_update" class="form-label">Número de ficha</label>
+                                                                                    <label for="yourToken_update" class="form-label"><strong>Número de ficha</strong></label>
                                                                                     <input value="{{$user->yourToken}}" type="text" name="yourToken" class="form-control" id="yourToken_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
                                                                                     <div class="invalid-feedback">Por favor ingrese el número de ficha.</div>
                                                                                     @error('yourToken')
@@ -166,7 +175,7 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
+                                                                                    <label for="yourTypeRh" class="form-label"><strong>Tipo de sangre (RH)</strong> </label>
                                                                                     <select name="type_rh_id" class="form-select" id="yourTypeRh" required>
                                                                                         <option value="">- Seleccione -</option>
                                                                                         @foreach ($type_rhs as $type_rh)
@@ -179,8 +188,14 @@
                                                                                     @enderror
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                                                    <br><br>
+                                                                                    <label for="phonenumber" class="form-label"><Strong>Número telefónico</Strong> </label>
+                                                                                    <input value="{{$user->numberphone}}" type="number" name="numberphone" class="form-control" id="phonenumber" required>
+                                                                                    <div class="invalid-feedback">Por favor ingresa el número telefónico.</div> 
+                                                                                    @error('numberphone')
+                                                                                    <li class="text-danger">{{ $message}}</li>
+                                                                                    @enderror
                                                                                 </div>
+
                                                                                 <div class="modal-footer d-flex justify-content-center gap-2">
                                                                                     <button type="submit" class="btn btn-ba px-2">Actualizar usuario</button>
                                                                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -267,7 +282,7 @@
                             </script>
                             {{--///////////////////////////////////////////////////////////////////////////--}}
                             
-                            <div class="d-grid gap-1 d-md-flex justify-content-md-end">
+                            <div class="d-grid gap-1 d-md-flex justify-content-md-end mt-5 mb-5">
                                 
                                 <!-- Botón para abrir el modal de creación nuevo usuario -->
                                 <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newUserModal" >
@@ -292,7 +307,7 @@
                                                     <form id="form-new-user" action="{{route('auth.store')}}" class="row g-3 needs-validation registro-usuario" novalidate method="POST" >
                                                         @csrf
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourName" class="form-label">Nombre</label>
+                                                            <label for="yourName" class="form-label"><strong>Nombre</strong></label>
                                                             <input value="{{old('name')}}" type="text" name="name" class="form-control" id="yourName" required>
                                                             <div class="invalid-feedback">Ingrese el nombre.</div>
                                                             @error('name')
@@ -301,7 +316,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourlastname" class="form-label">Apellidos</label>
+                                                            <label for="yourlastname" class="form-label"><strong>Apellidos</strong></label>
                                                             <input value="{{old('lastname')}}" type="text" name="lastname"class="form-control" id="yourlastname" required>
                                                             <div class="invalid-feedback">Ingrese los apellidos.</div>
                                                             @error('lastname')
@@ -310,7 +325,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourTypeDoc" class="form-label"> Tipo documento</label>
+                                                            <label for="yourTypeDoc" class="form-label"><strong>Tipo documento</strong> </label>
                                                             <select name="type_document_id" class="form-select" id="yourTypeDoc" required>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($type_documents as $type_document)
@@ -324,7 +339,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourDocument" class="form-label"> N° documento</label>
+                                                            <label for="yourDocument" class="form-label"><strong>Número documento</strong></label>
                                                             <div class="input-group has-validation">
                                                                 <span class="input-group-text" id="inputGroupPrepend">#</span>
                                                                 <input value="{{old('document')}}" type="text" name="document" class="form-control" id="yourDocument" required>
@@ -336,7 +351,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourEmail" class="form-label">Correo electrónico</label>
+                                                            <label for="yourEmail" class="form-label"><strong>Correo electrónico</strong></label>
                                                             <input value="{{old('email')}}" type="email" name="email" class="form-control" id="yourEmail" required>
                                                             <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                                                             @error('email')
@@ -345,7 +360,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourRol" class="form-label">Rol</label>
+                                                            <label for="yourRol" class="form-label"><strong>Rol</strong></label>
                                                             <select name="rol_id" class="form-select rol_create" id="yourRol" required>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($roles as $role)
@@ -359,8 +374,8 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="training_program" style="{{ old('rol_id') != 5 ? 'display: none;' : '' }}">
-                                                            <label for="yourTraining" class="form-label">Programa de formación</label>
-                                                            <select name="Program_id" class="form-control" id="yourTraining" required {{ old('rol_id') != 5 ? 'disabled' : '' }}>
+                                                            <label for="yourTraining" class="form-label"><strong>Programa de formación</strong></label>
+                                                            <select name="Program_id" class="form-select" id="yourTraining" required {{ old('rol_id') != 5 ? 'disabled' : '' }}>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($programas as $programa)
                                                                 <option {{ $programa->id == old('Program_id') ? 'selected' : '' }} value="{{ $programa->id }}">{{ $programa->name }}</option>
@@ -373,7 +388,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="token_number" style="{{ old('rol_id') != 5 ? 'display: none;' : '' }}">
-                                                            <label for="yourToken" class="form-label">Número de ficha</label>
+                                                            <label for="yourToken" class="form-label"><strong>Número de ficha</strong></label>
                                                             <input value="{{ old('yourToken') }}" type="text" name="yourToken" class="form-control" id="yourToken" required {{ old('rol_id') != 5 ? 'disabled' : '' }}>
                                                             <div class="invalid-feedback">Por favor ingrese el numero de ficha.</div>
                                                             @error('yourToken')
@@ -382,7 +397,7 @@
                                                         </div>
                                                     
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourTypeRh" class="form-label"> Tipo de sangre (RH)</label>
+                                                            <label for="yourTypeRh" class="form-label"> <strong>Tipo de sangre (RH)</strong></label>
                                                             <select name="type_rh_id" class="form-select" id="yourTypeRh" required>
                                                                 <option value="">- Seleccione -</option>
                                                                 @foreach ($type_rhs as $type_rh)
@@ -395,18 +410,18 @@
                                                             @enderror
                                                         </div>
                                                     
-                                                        {{-- <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                            <label for="yourPassword" class="form-label">Contraseña</label>
-                                                            <input type="password" name="password" class="form-control" id="yourPassword" required>
-                                                            <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
-                                                            @error('password')
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                            <label for="phonenumber" class="form-label"><Strong>Número telefónico</Strong> </label>
+                                                            <input type="number" name="numberphone" class="form-control" id="phonenumber" required>
+                                                            <div class="invalid-feedback">Por favor ingresa el número telefónico.</div> 
+                                                            @error('numberphone')
                                                             <li class="text-danger">{{ $message}}</li>
                                                             @enderror
-                                                        </div> --}}
+                                                        </div>
                                                     
-                                                        <div class="modal-footer d-flex justify-content-center gap-2">
-                                                            <button type="submit" class="btn btn-ba px-2">Crear usuario</button>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                        <div class="modal-footer d-flex justify-content-center gap-2 ">
+                                                            <button type="submit" class="btn btn-ba px-2 mt-4">Crear usuario</button>
+                                                            <button type="button" class="btn btn-secondary mt-4" data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
                                                     </form>
                                                     

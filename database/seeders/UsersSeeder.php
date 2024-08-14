@@ -25,6 +25,7 @@ class UsersSeeder extends Seeder
             'type_document_id' => 2, // tipo de documento asignado al usuario 
             'document' => 101010101, // número de documento del usuario
             'email' => 'admin@gmail.com', // email del usurio
+            'numberphone'=> 2020202020,
             'type_rh_id' => 1, // tipo de rh del usario (O+, AB-, etc)
             'password' => Hash::make('123456'),  // Se crea la contraseña '123456' de manera encriptada
             // 'password' => Hash::make('Kemba2005*') Aquí se muestra la contraseña en el host
@@ -44,6 +45,7 @@ class UsersSeeder extends Seeder
             'document' => 1212121221,
             'email' => 'd ',
             'type_rh_id' => 1,
+            'numberphone'=>30303030,
             'password' => Hash::make('123456'),
             'rol_id' => 2,
             
@@ -60,6 +62,7 @@ class UsersSeeder extends Seeder
             'document' => 1089577728,
             'email' => 'duqueivan493@gmail.com',
             'type_rh_id' => 1,
+            'numberphone'=> 4040404040,
             'password' => Hash::make('123456789'),
             'rol_id' => 5,
             
@@ -76,6 +79,7 @@ class UsersSeeder extends Seeder
             'document' => 1089566628,
             'email' => 'miembrobienestar@gmail.com',
             'type_rh_id' => 1,
+            'numberphone'=> 5050505050,
             'password' => Hash::make('123456789'),
             'rol_id' => 3,
         ]);
@@ -90,6 +94,7 @@ class UsersSeeder extends Seeder
             'document' => 1089555528,
             'email' => 'miembrobienestarap@gmail.com',
             'type_rh_id' => 1,
+            'numberphone'=>606060606,
             'password' => Hash::make('123456789'),
             'rol_id' => 4,
             
@@ -105,6 +110,7 @@ class UsersSeeder extends Seeder
                 'document' => $faker->unique()->randomNumber(8),
                 'email' => $faker->unique()->safeEmail,
                 'type_rh_id' => $faker->numberBetween(1, 5),
+                'numberphone' => $faker->unique()->randomNumber(8),
                 'password' => Hash::make('password'),
                 'rol_id' => 5,
             ]);

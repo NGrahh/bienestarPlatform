@@ -185,7 +185,7 @@ class EventsController extends Controller
                 'date',
                 'before:eventdate' // La fecha de fin del evento es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
             ],
-            'Subjectevent' => 'required|string|min:1' // El asunto del evento es requerido, debe ser una cadena con al menos un carácter
+            'Subjectevent' => 'required|string|max:5000' // El asunto del evento es requerido, debe ser una cadena con al menos un carácter
         ]);
     
         // Si la validación falla, se redirige de vuelta al formulario con los errores y los datos ingresados
@@ -282,7 +282,7 @@ class EventsController extends Controller
     
         // Busca el evento en la base de datos usando el ID proporcionado
         $event = Events::findOrFail($id);
-    
+    // Inicializa $imageName como null
         // Verifica si se ha subido un archivo de imagen
         if ($request->hasFile('picture')) {
             // Se comentaron las líneas anteriores de manejo de archivos y se agregaron nuevas líneas para almacenar la imagen
@@ -306,7 +306,7 @@ class EventsController extends Controller
         // Actualiza los datos del evento con la información proporcionada
         $event->update([
             'eventname' => $request->get('eventname'),
-            'picture' => $imageName, // Se actualiza con el nombre de la nueva imagen si se subió una
+            'picture' => $imageName,
             'eventdate' => $request->get('eventdate'),
             'eventlimit' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),
