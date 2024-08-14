@@ -103,7 +103,7 @@
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
     {{-- Función para cuando exista un error en las validaciones del formulario de actualizar Usuario --}}
 
-    <{{-- script>
+    <!-- {{-- script>
         $(document).ready(function() {
             let table = $('.datatable').DataTable();
     
@@ -122,7 +122,7 @@
                 modal.show();
             @endif
         });
-    </script> --}}
+    </script> --}} -->
 
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
     {{-- Función para abrir modal cuando surge error en las validaciones del formulario al crear un usuario

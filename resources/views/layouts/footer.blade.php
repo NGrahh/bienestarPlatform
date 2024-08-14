@@ -195,6 +195,7 @@
             <div class="gobierno__ministerio-container gobierno__ministerio-container--img">
                 <img loading="lazy" src="{{asset('img/logoGovCol-logo.svg')}}" alt="logogovcol logo" class="gobierno__img">
             </div>
+            <br>
             <div class="gobierno__ministerio-container">
                 <a href="https://petro.presidencia.gov.co" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #c61720;"></span>
                     Presidencia</a>
