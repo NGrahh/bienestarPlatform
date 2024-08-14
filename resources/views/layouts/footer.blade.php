@@ -68,7 +68,8 @@
 
     .gobierno__ministerio-container--img {
         align-items: flex-start;
-
+        grid-column: span 7;
+        justify-self: center;
     }
 
     .gobierno__img {
@@ -98,93 +99,94 @@
         
     }
     @media (max-width: 1200px) {
-    .entidades {
-        grid-template-columns: repeat(4, 1fr);
-        justify-items: center;
-    }
 
-    .entidades__link--ministerio {
-        grid-column: 1/-1;
-    }
+        .entidades {
+            grid-template-columns: repeat(4, 1fr);
+            justify-items: center;
+        }
 
-    .gobierno__container {
-        grid-template-columns: repeat(3, 1fr);
-        align-items: center;
-    }
+        .entidades__link--ministerio {
+            grid-column: 1/-1;
+        }
 
-    .gobierno__ministerio-container {
-        align-items: center;
-    }
+        .gobierno__container {
+            grid-template-columns: repeat(3, 1fr);
+            align-items: center;
+        }
 
-    .gobierno__ministerio-container--img {
-        align-items: center;
-        margin: auto;
-        grid-column: span 3;
-        width: 100%;
-        display: flex;
-        align-items: center;
-    }
+        .gobierno__ministerio-container {
+            align-items: center;
+        }
 
-
-    .gobierno__ministerios {
-        font-size: 0.80rem;
-    }
-
-    .gobierno__ministerios--img {
-        justify-content: center;
-    }
-
-    .more-information__container {
-        display: flex;
-
-    }
-
-    .more-information__item--text {
-        align-items: start;
-    }
-
-    /* Reutilizable */
+        .gobierno__ministerio-container--img {
+            align-items: center;
+            margin: auto;
+            grid-column: span 3;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
 
 
-    .more-information__container,
-    .more-information__item {
-        align-items: center;
-    }
+        .gobierno__ministerios {
+            font-size: 0.80rem;
+        }
 
-    .more-information__icontec-img,
-    .gobierno__img {
-        width: 100%;
-    }
+        .gobierno__ministerios--img {
+            justify-content: center;
+        }
 
-    .more-information__container {
-        gap: 1.5rem;
-    }
+        .more-information__container {
+            display: flex;
 
-    }
+        }
 
-    @media (max-width: 767px) {
+        .more-information__item--text {
+            align-items: start;
+        }
 
-    .entidades {
-        grid-template-columns: repeat(2, 1fr);
-        justify-items: center;
-    }
+        /* Reutilizable */
 
-    .gobierno__container {
-        grid-template-columns: repeat(auto-fit, minmax(164px, 2fr));
-    }
 
-    .gobierno__ministerio-container--img {
-        grid-column: 1/-1;
-    }
+        .more-information__container,
+        .more-information__item {
+            align-items: center;
+        }
 
-    .gobierno__ministerios {
-        font-size: 0.688rem;
-    }
+        .more-information__icontec-img,
+        .gobierno__img {
+            width: 100%;
+        }
 
-    .gobierno__ministerio-container {
-        width: 100%;
-    }
-    }
+        .more-information__container {
+            gap: 1.5rem;
+        }
+
+        }
+
+        @media (max-width: 767px) {
+
+        .entidades {
+            grid-template-columns: repeat(2, 1fr);
+            justify-items: center;
+        }
+
+        .gobierno__container {
+            grid-template-columns: repeat(auto-fit, minmax(164px, 2fr));
+        }
+
+        .gobierno__ministerio-container--img {
+            grid-column: 1/-1;
+        }
+
+        .gobierno__ministerios {
+            font-size: 0.688rem;
+        }
+
+        .gobierno__ministerio-container {
+            width: 100%;
+        }
+        }
 </style>
 
 <footer id="footer" class="footer">
@@ -195,7 +197,6 @@
             <div class="gobierno__ministerio-container gobierno__ministerio-container--img">
                 <img loading="lazy" src="{{asset('img/logoGovCol-logo.svg')}}" alt="logogovcol logo" class="gobierno__img">
             </div>
-            <br>
             <div class="gobierno__ministerio-container">
                 <a href="https://petro.presidencia.gov.co" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #c61720;"></span>
                     Presidencia</a>
