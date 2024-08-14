@@ -173,19 +173,22 @@ class EventsController extends Controller
         $validator = Validator::make($request->all(), [
             'eventname' => 'required|string|between:2,100', // El nombre del evento es requerido, debe ser una cadena y tener entre 2 y 100 caracteres
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // La imagen es requerida, debe ser un archivo de imagen con las extensiones especificadas y no debe superar los 2MB
+            'place' => 'required|string|between:2,500',
             'eventdate' => 'required|date|after_or_equal:today', // La fecha del evento es requerida, debe ser una fecha válida y no puede ser anterior a hoy
             'eventlimit' => 'required|numeric|digits_between:1,1000', // El límite de eventos es requerido, debe ser un número con entre 1 y 1000 dígitos
             'datestar' => [
                 'required',
                 'date',
-                'before:eventdate', // La fecha de inicio es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
+                'before:eventdate',
+                'after_or_equal:today' // La fecha de inicio es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
             ],
             'dateendevent' => [
                 'required',
                 'date',
-                'before:eventdate' // La fecha de fin del evento es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
+                'before:eventdate',
+                'after_or_equal:today' // La fecha de fin del evento es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
             ],
-            'Subjectevent' => 'required|string|max:5000' // El asunto del evento es requerido, debe ser una cadena con al menos un carácter
+            'Subjectevent' => 'required|string|between:2,7000', // El asunto del evento es requerido, debe ser una cadena con al menos un carácter
         ]);
     
         // Si la validación falla, se redirige de vuelta al formulario con los errores y los datos ingresados
@@ -193,7 +196,8 @@ class EventsController extends Controller
             return redirect()
                 ->back()
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->with('error', 'El evento no fue registrado!');
         }
     
         // Inicializa la variable para el nombre de la imagen
@@ -222,6 +226,7 @@ class EventsController extends Controller
             'eventname' => $request->get('eventname'),
             'picture' => $imageName,
             'eventdate' => $request->get('eventdate'),
+            'place' => $request->get('place'),
             'eventlimit' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),
             'dateendevent' => $request->get('dateendevent'),
