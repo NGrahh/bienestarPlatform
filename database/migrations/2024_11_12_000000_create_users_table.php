@@ -25,8 +25,8 @@ return new class extends Migration
             $table->unsignedBigInteger('rol_id'); // rol que cumple el usuario dentro de la plataforma
             $table->unsignedBigInteger('type_rh_id'); // id del tipo de rh
             $table->string('Program_id')->nullable(); // id del programa al que pertenece el usuario (en caso de ser aprendiz)
-
-            $table->string('yourToken')->nullable(); // token personal del usuario
+            $table->string('numberphone')->unique(); // nombre del programa al que pertenece
+            $table->string('yourToken')->nullable(); // Ficha programa formación del usuario
             $table->string('password'); // contraseña del usuario
             $table->rememberToken(); // token del usuario
             $table->timestamps(); // fecha de actualización / creación

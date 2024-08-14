@@ -32,7 +32,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','Program_id','yourToken','status')->with('role')->with('TypeDocument')->get();
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','numberphone','Program_id','yourToken','status')->with('role')->with('TypeDocument')->get();
         $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();
         $programas = Programas::all();
@@ -112,6 +112,7 @@ class UserController extends Controller
             'document' => 'required|numeric|unique:users|digits_between:8,15',
             'email' => 'required|string|email|max:100|unique:users',
             'type_rh_id' => 'required|string',
+            'numberphone' => 'required|numeric|unique:users|digits_between:8,15',
             'rol_id' => 'required|string',
             'Program_id' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
@@ -137,6 +138,7 @@ class UserController extends Controller
             'document' => $request->get('document'),
             'email' => $request->get('email'),
             'type_rh_id' => $request->get('type_rh_id'),
+            'numberphone' => $request->get('numberphone'),
             'password' => Hash::make($codigoContrasena),
             'rol_id' => $request->get('rol_id'),
             'Program_id' => $request->get('Program_id'),

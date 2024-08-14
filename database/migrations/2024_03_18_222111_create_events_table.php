@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('eventname'); // Nombre del evento
             $table->string('picture'); // Imagen del evento
+            $table->string('place'); // Imagen del evento
             $table->date('eventdate'); // Fecha del evento
             $table->integer('eventlimit'); // Límite de asistentes
             $table->date('datestar'); // Fecha de inicio del evento

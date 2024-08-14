@@ -135,7 +135,7 @@
                                                         @csrf
                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="apoyoSelect" class="form-label">Apoyo al cual se le abre inscripción</label>
-                                                            <select name="tipo_apoyo_id" class="form-control" id="apoyoSelect" required>
+                                                            <select name="tipo_apoyo_id" class="form-select" id="apoyoSelect" required>
                                                                 <option value="" selected>Seleccione un apoyo</option>
                                                                 @foreach($tipos_apoyos as $tipo)
                                                                 <option value="{{ $tipo->id }}" {{ old('tipo_apoyo_id') == $tipo->id ? 'selected' : '' }}>
