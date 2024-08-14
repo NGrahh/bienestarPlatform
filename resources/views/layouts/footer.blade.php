@@ -10,17 +10,19 @@
     .footer{
         
     }
-    img{
+    a{
+        color: white;
+    }
+    a:hover{
+        color: white;
+        text-decoration: underline;
+    }
+    .final-part-footer-gov img{
         height: 1.5rem;
     }
     .firts-part-footer-gray{
         width: auto;
         height: auto;
-    }
-    .second-part-footer{
-        background-color: var(--alternate-background);
-        width: auto;
-        height: 200px;
     }
     .third-part-footer-information{
 
@@ -38,51 +40,123 @@
         align-items: center;
         justify-content: left;
     }
+    .third-part-footer-information-text{
+        font-size: 12px;
+    }
+    .gobierno {
+        background-color: var(--alternate-background);
+    }
+
+    .gobierno__container {
+        max-width: var(--web-margin);
+        margin: auto;
+        display: grid;
+        grid-template-columns: 3fr repeat(6, 1fr);
+        align-items: center;
+        padding: 3rem 1.7rem;
+        gap: 24px;
+        background-color: var(--alternate-background)
+    }
+
+    .gobierno__ministerio-container {
+        display: flex;
+        font-size: 12px;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-end;
+    }
+
+    .gobierno__ministerio-container--img {
+        align-items: flex-start;
+
+    }
+
+    .gobierno__img {
+        max-width: 20.875rem;
+    }
+
+    .gobierno__ministerios-circle {
+        width: 0.8rem;
+        height: 0.8rem;
+        border-radius: 20%;
+        display: inline-block;
+    }
+
+    .gobierno__link {
+        text-decoration: none;
+        width: 109px;
+    }
+
+    .gobierno__link:hover {
+        text-decoration: underline;
+    }
+
+    .more-information {
+        background-color: white;
+        font-size: 0.75rem;
+        padding: 3rem 1.7rem;
+        
+    }
+
 </style>
 
 <footer id="footer" class="footer">
     <div class="firt-part-footer-gray">
 
     </div>
-    <div class="second-part-footer mb-4">
+    <div class="gobierno__container">
 
-    </div>
-    <div class="third-part-footer-information d-flex px-4">
-        <p>
-        Servicio Nacional de Aprendizaje SENA - Dirección General
-        <br>
-        Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia
-        <br>
-        Conmutador Nacional (57 1) 5461500 - Extensiones
-        <br>
-        Atención presencial: lunes a viernes 8:00 a.m. a 5:30 p.m.
-        <br>
-        Resto del país sedes y horarios
-        <br>
-        Atención telefónica: lunes a viernes 7:00 a.m. a 7:00 p.m. -
-        <br>
-        sábados 8:00 a.m. a 1:00 p.m.
-        <br>
-        Atención al ciudadano: Bogotá (57 1) 3430111 - Línea gratuita y resto del país 018000 910270
-        <br>
-        Atención al empresario: Bogotá (57 1) 3430101 - Línea gratuita y resto del país 018000 910682
-        <br>
-        PQRS
-        <br>
-        Chat en línea
-        <br>
-        Correo notificaciones judiciales: servicioalciudadano@sena.edu.co
-        <br>
-        Todos los derechos 2017 SENA - Políticas de privacidad y condiciones uso Portal Web SENA
-        <br>
-        Política de Tratamiento para Protección de Datos Personales -
-        <br>
-        Política de seguridad y privacidad de la información
-        <br>
-        </p>
-    </div>
+            <div class="gobierno__ministerio-container gobierno__ministerio-container--img">
+                <img loading="lazy" src="" alt="logogovcol logo" class="gobierno__img">
+            </div>
+            <div class="gobierno__ministerio-container">
+                <a href="https://petro.presidencia.gov.co" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #c61720;"></span>
+                    Presidencia</a>
+                <a href="https://www.minjusticia.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #01630c;"></span>
+                    MinJusticia</a>
+                <a href="https://www.mininterior.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #3e6300;"></span>
+                    MinInterior</a>
+            </div>
+            <div class="gobierno__ministerio-container">
+                <a href="https://www.mintic.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #990001;"></span> MinTic</a>
+                <a href="https://www.minsalud.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #410e99;"></span> MinSalud</a>
+                <a href="https://www.mincultura.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #38170c;"></span>
+                    MinCultura</a>
+            </div>
+            <div class="gobierno__ministerio-container">
+                <a href="https://www.minminas.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #151f99;"></span> MinMinas</a>
+                <a href="https://www.mindefensa.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #531400;"></span>
+                    MinDefensa</a>
+                <a href="https://www.mineducacion.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #531400;"></span>
+                    MinEducación</a>
+            </div>
+
+            <div class="gobierno__ministerio-container">
+                <a href="https://www.mintrabajo.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #0e3e99;"></span>
+                    MinTrabajo</a>
+                <a href="https://www.mintransporte.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #5c8301;"></span>
+                    MinTransporte</a>
+                <a href="https://www.urnadecristal.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #2b1399;"></span> Urna de
+                    Cristal</a>
+            </div>
+            <div class="gobierno__ministerio-container">
+                <a href="https://www.minhacienda.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #996201;"></span>
+                    MinHacienda</a>
+                <a href="https://www.mincit.gov.co/inicio" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #1e7373;"></span>
+                    MinComercio</a>
+                <a href="https://www.minvivienda.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #992900;"></span>
+                    MinVivienda</a>
+            </div>
+            <div class="gobierno__ministerio-container">
+                <a href="https://www.minagricultura.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #3b9901;"></span>
+                    MinAgricultura</a>
+                <a href="https://www.vicepresidencia.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #919191;"></span>
+                    Vicepresidencia</a>
+                <a href="https://www.minambiente.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #990001;"></span>
+                    MinAmbiente</a>
+            </div>
+        </div>
     <div class="final-part-footer-gov d-flex mt-3 p-4">
         <img src="{{asset('img/gov-logo.svg')}}" alt="">
     </div>
-</footer>
-<!-- End Footer -->
+</footer><!-- End Footer -->
