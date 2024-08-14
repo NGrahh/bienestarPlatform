@@ -97,7 +97,94 @@
         padding: 3rem 1.7rem;
         
     }
+    @media (max-width: 1200px) {
+    .entidades {
+        grid-template-columns: repeat(4, 1fr);
+        justify-items: center;
+    }
 
+    .entidades__link--ministerio {
+        grid-column: 1/-1;
+    }
+
+    .gobierno__container {
+        grid-template-columns: repeat(3, 1fr);
+        align-items: center;
+    }
+
+    .gobierno__ministerio-container {
+        align-items: center;
+    }
+
+    .gobierno__ministerio-container--img {
+        align-items: center;
+        margin: auto;
+        grid-column: span 3;
+        width: 100%;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .gobierno__ministerios {
+        font-size: 0.80rem;
+    }
+
+    .gobierno__ministerios--img {
+        justify-content: center;
+    }
+
+    .more-information__container {
+        display: flex;
+
+    }
+
+    .more-information__item--text {
+        align-items: start;
+    }
+
+    /* Reutilizable */
+
+
+    .more-information__container,
+    .more-information__item {
+        align-items: center;
+    }
+
+    .more-information__icontec-img,
+    .gobierno__img {
+        width: 100%;
+    }
+
+    .more-information__container {
+        gap: 1.5rem;
+    }
+
+    }
+
+    @media (max-width: 767px) {
+
+    .entidades {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+    }
+
+    .gobierno__container {
+        grid-template-columns: repeat(auto-fit, minmax(164px, 2fr));
+    }
+
+    .gobierno__ministerio-container--img {
+        grid-column: 1/-1;
+    }
+
+    .gobierno__ministerios {
+        font-size: 0.688rem;
+    }
+
+    .gobierno__ministerio-container {
+        width: 100%;
+    }
+    }
 </style>
 
 <footer id="footer" class="footer">
@@ -105,9 +192,8 @@
 
     </div>
     <div class="gobierno__container">
-
             <div class="gobierno__ministerio-container gobierno__ministerio-container--img">
-                <img loading="lazy" src="" alt="logogovcol logo" class="gobierno__img">
+                <img loading="lazy" src="{{asset('img/logoGovCol-logo.svg')}}" alt="logogovcol logo" class="gobierno__img">
             </div>
             <div class="gobierno__ministerio-container">
                 <a href="https://petro.presidencia.gov.co" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #c61720;"></span>
@@ -130,7 +216,6 @@
                 <a href="https://www.mineducacion.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #531400;"></span>
                     MinEducación</a>
             </div>
-
             <div class="gobierno__ministerio-container">
                 <a href="https://www.mintrabajo.gov.co/" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #0e3e99;"></span>
                     MinTrabajo</a>
@@ -156,7 +241,7 @@
                     MinAmbiente</a>
             </div>
         </div>
-    <div class="final-part-footer-gov d-flex mt-3 p-4">
+    <div class="final-part-footer-gov d-flex p-4">
         <img src="{{asset('img/gov-logo.svg')}}" alt="">
     </div>
 </footer><!-- End Footer -->
