@@ -3,17 +3,18 @@
 
 .sector-empleo {
     padding: 0.7rem 1.7rem;
-    background-color: var(--alternate-background);
+    background-color: #04324d;
 }
 
 .sector-empleo__text {
     margin: auto;
     max-width: var(--web-margin);
-    color: var(--color-info);
+    color: white;
     display: flex;
     gap: 0.625rem;
     justify-items: center;
     align-items: center;
+
 }
 
 .entidades {
@@ -50,6 +51,7 @@
     align-items: center;
     padding: 3rem 1.7rem;
     gap: 24px;
+    background-color: #04324d;
 }
 
 .gobierno__ministerio-container {
@@ -58,6 +60,7 @@
     flex-direction: column;
     gap: 6px;
     align-items: flex-end;
+    color: white;
 }
 
 .gobierno__ministerio-container--img {
@@ -259,6 +262,7 @@
 
 
 
+
 .azul{
     text-decoration: underline;
 }
@@ -279,8 +283,8 @@
         <a target="_blank" href="https://www.mintrabajo.gov.co/web/guest/inicio" class="entidades__link--ministerio"><img loading="lazy" src="{{asset('img/ministerio-logo-color.svg')}}" alt="ministerio logo" class="entidades__link-img "></a>
         <a target="_blank" href="https://www.unidadsolidaria.gov.co/"><img loading="lazy" src="{{asset('img/iOss-logo-color.svg')}}" alt="oss logo" class="entidades__link-img "></a>
         <a target="_blank" href="https://www.serviciodeempleo.gov.co/portada" class="entidades__link"><img loading="lazy" src="{{asset('img/iEmpleo-logo-color.svg')}}" alt="empleo logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.ssf.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iSuperSubsidio-logo-color.svg)}}" alt="supersubsidio logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.colpensiones.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset(img/iColpensiones-logo-color.svg')}}" alt="solpensiones logo" class="entidades__link-img "></a>
+        <a target="_blank" href="https://www.ssf.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iSuperSubsidio-logo-color.svg')}}" alt="supersubsidio logo" class="entidades__link-img "></a>
+        <a target="_blank" href="https://www.colpensiones.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iColpensiones-logo-color.svg')}}" alt="solpensiones logo" class="entidades__link-img "></a>
     </div>
     <div class="gobierno">
         <div class="gobierno__container">
