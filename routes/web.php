@@ -305,6 +305,10 @@ Route::get('/formulario-inscripcion-apoyo-transporte', function(){
 //     return view('layouts.inicio-pagina.pagina-principal');
 // });
 
+///////////////////// Error //////////////////////////////
+Route::get('/error', function(){
+    return view ('layouts.error.404');
+})-> name ('error');
 
 
 
