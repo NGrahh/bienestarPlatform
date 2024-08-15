@@ -71,7 +71,7 @@
                                         <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">{{ $cita->name }} {{ $cita->lastname }}</td>
                                         <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
                                         <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 90px;"> {{ $cita->email }}</td>
-                                        <td scope="row">{{ $cita->mobilenumber}}</td>
+                                        <td scope="row">{{ $cita->numberphone}}</td>
                                         <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 50px;">{{ $cita->date}}</td>
                                         <td scope="row">{{ $cita->hour}}</td>
                                         <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->subjectCita }}</td>

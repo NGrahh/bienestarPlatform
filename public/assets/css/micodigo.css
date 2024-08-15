@@ -247,7 +247,7 @@
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 40px;
-    color: #000000;
+    color: #ff7400  ;
     /* verde oscuro */
     font-weight: bold;
     padding-left: 10px;
@@ -267,7 +267,7 @@
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
-    color: #002133;
+    color: #ff7400 ;
     /* gris azulado */
     font-weight: bold;
 
@@ -717,22 +717,8 @@ p {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.sombra{
+    -webkit-box-shadow: 2px 3px 9px 7px rgba(102,102,102,1);
+    -moz-box-shadow: 2px 3px 9px 7px rgba(102,102,102,1);
+    box-shadow: 2px 3px 9px 7px rgba(102,102,102,1);
+}

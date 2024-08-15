@@ -37,7 +37,7 @@
                         
                         @forelse($upcomingEvents as $event)
                         <div class="col-sm-4 mt-4">
-                            <div class="eventocard card" style="width: 100%; max-width: 540px;">
+                            <div class="eventocard card sombra" style="width: 100%; max-width: 540px; ">
                                 <div class="row g-0">
                                     <div class="col-md-4">
                                         <img src="{{ asset('files/eventoimg/imgs/' . $event->picture) }}" class="rounded-start img-fluid" style="object-fit: cover; width: 100%; height: 100%;" width="100px" height="200px">
@@ -92,6 +92,8 @@
                                                                         <h6>{{ $event->eventname }}</h6>
                                                                         <p class="d-evento"><strong>Fecha del Evento: </strong> </p>
                                                                         <h6>{{ $event->eventdate }}</h6>
+                                                                        <p class="d-evento"><strong>Ubicación del Evento: </strong> </p>
+                                                                        <h6>{{ $event->place }}</h6>
                                                                         <p class="d-evento"><strong>Aforo Limite: </strong> </p>
                                                                         <h6>{{ $event->eventlimit }}</h6>
                                                                         <p class="d-evento"><strong>Fecha Inicial de Inscripción: </strong> </p>
@@ -188,6 +190,8 @@
                                                                         <h6>{{ $event->eventname }}</h6>
                                                                         <p class="d-evento"><strong>Fecha del Evento: </strong> </p>
                                                                         <h6>{{ $event->eventdate }}</h6>
+                                                                        <p class="d-evento"><strong>Ubicación del Evento: </strong> </p>
+                                                                        <h6>{{ $event->place }}</h6>
                                                                         <p class="d-evento"><strong>Aforo Limite: </strong> </p>
                                                                         <h6>{{ $event->eventlimit }}</h6>
                                                                         <p class="d-evento"><strong>Fecha Inicial de Inscripción: </strong> </p>

@@ -8,9 +8,11 @@
 @include('layouts.menu')
 
 <main id="main" class="main">
+  
   <div class="pagetitle">
     <h1>Creación de cita</h1>
   </div><!-- End Page Title -->
+
   @include('compartido.alertas')
   <section>
     <div class="row justify-content-center">
@@ -66,7 +68,7 @@
                     </div>
                     <div class="col-12 col-md-6 mt-2">
                       <label for="inputDate" class="form-label"><strong>Fecha</strong></label>
-                      <input name="date" type="date" class="form-control @error('date') is-invalid @enderror" value="{{ old('date') }}">
+                      <input name="date" type="date" class="form-control" value="{{ old('date') }}">
                       <div class="invalid-feedback">Ingrese una fecha.</div>
                       @error('date')
                       <li class="text-danger">{{ $message }}</li>
@@ -87,7 +89,7 @@
                     </div>
                     <div class="col-12 col-md-6 mt-2">
                       <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                      <input name="hour" type="time" class="form-control @error('hour') is-invalid @enderror" value="{{ old('hour') }}">
+                      <input name="hour" type="time" class="form-control" value="{{ old('hour') }}">
                       <div class="invalid-feedback">Ingrese una hora.</div>
                       @error('hour')
                       <li class="text-danger">{{ $message }}</li>

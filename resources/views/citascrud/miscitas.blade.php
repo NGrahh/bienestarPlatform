@@ -27,7 +27,7 @@
                                         <th>Nombre</th>
                                         <th>Dimensión</th>
                                         <th>C.electrónico</th>
-                                        <th>Número T.</th>
+                                        <th>Número</th>
                                         <th>Fecha</th>
                                         <th>Hora</th>
                                         <th>Asunto</th>
@@ -43,7 +43,7 @@
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">{{ $cita->name }} {{ $cita->lastname }}</td>
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 90px;"> {{ $cita->email }}</td>
-                                        <td>{{ $cita->mobilenumber}}</td>
+                                        <td>{{ $cita->numberphone}}</td>
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 50px;">{{ $cita->date}}</td>
                                         <td>{{ $cita->hour}}</td>
                                         <td style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->subjectCita }}</td>
@@ -69,33 +69,34 @@
                                                                     <form action="{{ route('citas.update', ['id' => $cita->id]) }}" class="row g-3 needs-validation" novalidate method="POST">
                                                                         @csrf
                                                                         @method('PUT')
-                                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                            <label for="yourName" class="form-label">Nombre</label>
+                                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                            <label for="yourName" class="form-label"><strong>Nombre</strong></label>
                                                                             <input value="{{$cita->name}}" type="text" name="name" class="form-control" id="yourName" disabled>
                                                                         </div>
-                                                                        <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                            <label for="yourlastname" class="form-label">Apellidos</label>
+                                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                            <label for="yourlastname" class="form-label"><strong>Apellidos</strong></label>
                                                                             <input value="{{$cita->lastname}}" type="text" name="lastname" class="form-control" id="yourlastname" disabled>
                                                                         </div>
+                                                                        <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+                                                                            <label for="yournumber" class="form-label"><strong>Número telefónico</strong></label>
+                                                                            <input value="{{$cita->numberphone}}" type="number" name="mobilenumber" class="form-control" id="yournumber" disabled>
+                                                                        </div>
                                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-                                                                            <label for="yourdimensions" class="form-label">Dimensión solicitada</label>
-                                                                            <select name="dimensions_id" class="form-select" id="yourdimensions" required>
+                                                                            <label for="yourdimensions" class="form-label"><strong>Dimensión solicitada</strong></label>
+                                                                            <select name="dimensions_id" class="form-select" id="yourdimensions" disabled>
                                                                                 @foreach ($dimensions as $dimension)
                                                                                 <option {{ $cita->dimensions_id == $dimension->id ? 'selected' : '' }} value="{{ $dimension->id }}">{{ $dimension->name }}</option>
                                                                                 @endforeach
                                                                             </select>
                                                                         </div>
                                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                                            <label for="yourEmail" class="form-label">Correo electrónico</label>
+                                                                            <label for="yourEmail" class="form-label"><strong>Correo electrónico</strong></label>
                                                                             <input value="{{$cita->email}}" type="email" name="email" class="form-control" id="yourEmail" disabled>
                                                                         </div>
-                                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pt-1">
-                                                                            <label for="yournumber" class="form-label">Número telefónico</label>
-                                                                            <input value="{{$cita->mobilenumber}}" type="number" name="mobilenumber" class="form-control" id="yournumber" required>
-                                                                        </div>
+                                                                        
                                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pt-1">
                                                                             <div class="row mb-3">
-                                                                                <label for="inputDate" class="form-label">Fecha</label>
+                                                                                <label for="inputDate" class="form-label"><strong>Fecha</strong></label>
                                                                                 <div class="col-sm-12">
                                                                                     <input name="date" type="date" class="form-control" value="{{$cita->date}}" required>
                                                                                 </div>
@@ -103,14 +104,14 @@
                                                                         </div>
                                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pt-1 mb-2">
                                                                             <div class="row mb-">
-                                                                                <label for="inputTime" class="form-label">Hora</label>
+                                                                                <label for="inputTime" class="form-label"><strong>Hora</strong></label>
                                                                                 <div class="col-sm-12">
                                                                                     <input name="hour" type="time" class="form-control" value="{{$cita->hour}}" required>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="col-sm-12 mb-5">
-                                                                            <label for="yourSubject" class="form-label">Asunto</label>
+                                                                            <label for="yourSubject" class="form-label"><strong>Asunto</strong></label>
                                                                             <textarea class="form-control" cols="30" rows="4" name="subjectCita" required>{{$cita->subjectCita}}</textarea >
                                                                         </div>
                                                                         <div class="modal-footer d-flex justify-content-center gap-2">

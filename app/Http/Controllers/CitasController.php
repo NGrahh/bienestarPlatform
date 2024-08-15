@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Rules\ValidHour;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon; // Importa Carbon
 
 class CitasController extends Controller
 {
@@ -53,7 +54,6 @@ class CitasController extends Controller
         // Validación de los campos del formulario
         $validator = Validator::make($request->all(), [
             'dimensions_id' => 'required|string', // ID de dimensión requerido y debe ser una cadena
-            'mobilenumber' => 'required|numeric|digits_between:7,12', // Número de móvil requerido, numérico y longitud entre 7 y 12 dígitos
             'date' => [
                 'required',
                 'date_format:Y-m-d', // Formato de fecha requerido
@@ -67,16 +67,16 @@ class CitasController extends Controller
             'hour' => [
                 'required',
                 'date_format:H:i', // Formato de hora requerido
-                function ($attribute, $value, $fail) use ($request) {
-                    // Validación personalizada para asegurar que la hora no sea anterior a la hora actual
-                    $currentDateTime = now();
-                    $appointmentDateTime = strtotime($request->input('date') . ' ' . $value);
-        
-                    if ($appointmentDateTime < $currentDateTime->timestamp) {
+                function ($attribute, $value, $fail) {
+                    // Obtener la fecha y hora actual en formato de Carbon
+                    $now = now();
+                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
+    
+                    // Comparar la hora proporcionada con la hora actual
+                    if ($providedTime <= $now) {
                         $fail('La hora ingresada ya ha pasado.');
                     }
                 },
-                new ValidHour, // Validación personalizada adicional
             ],
             'subjectCita' => 'required|string|min:1', // Asunto de la cita requerido, cadena con longitud mínima de 1
         ]);
@@ -112,7 +112,6 @@ class CitasController extends Controller
         Citas::create([
             'user_id' => Auth::id(), // ID del usuario autenticado
             'dimensions_id' => $request->get('dimensions_id'),
-            'mobilenumber' => $request->get('mobilenumber'),
             'date' => $request->get('date'),
             'hour' => $request->get('hour'),
             'subjectCita' => $request->get('subjectCita'),
@@ -124,6 +123,8 @@ class CitasController extends Controller
         // Redirige al formulario de cita
         return redirect(route('form-appointment'));
     }
+    
+    
 
     public function show($id)
     {
@@ -149,9 +150,21 @@ class CitasController extends Controller
         // Valida los datos del formulario
         $validator = Validator::make($request->all(), [
             'dimensions_id' => 'required|string', // ID de dimensión requerido y debe ser una cadena
-            'mobilenumber' => 'required|numeric|digits_between:7,12', // Número de móvil requerido, numérico y longitud entre 7 y 12 dígitos
             'date' => 'required|date_format:Y-m-d', // Formato de fecha requerido
-            'hour' => ['required', 'date_format:H:i:s', new ValidHour], // Formato de hora requerido con validación personalizada adicional
+            'hour' => [
+                'required',
+                'date_format:H:i', // Formato de hora requerido
+                function ($attribute, $value, $fail) {
+                    // Obtener la fecha y hora actual en formato de Carbon
+                    $now = now();
+                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
+    
+                    // Comparar la hora proporcionada con la hora actual
+                    if ($providedTime <= $now) {
+                        $fail('La hora ingresada ya ha pasado.');
+                    }
+                },
+            ],
             'subjectCita' => 'required|string|min:1', // Asunto de la cita requerido, cadena con longitud mínima de 1
         ]);
         
@@ -191,7 +204,7 @@ class CitasController extends Controller
             ->get(); // Obtener los resultados
     
         // Obtener las citas específicas del usuario autenticado
-        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'citas.reason', 'users.name', 'users.lastname', 'users.email')
+        $citas = Citas::select('citas.id', 'citas.dimensions_id','citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'citas.reason', 'users.name', 'users.lastname', 'users.email', 'users.numberphone')
             ->join('users', 'citas.user_id', '=', 'users.id') // Unir tablas 'citas' y 'users'
             ->where('citas.user_id', $userId) // Filtrar citas por el ID del usuario autenticado
             ->with('typeDimensions') // Cargar la relación 'typeDimensions' si es necesario
