@@ -9,21 +9,34 @@
 <style>
     .container-cartas {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(5, 12rem);
         grid-template-rows: repeat(2, 1fr);
-        grid-column-gap: 20px;
-        grid-row-gap: 20px;
-        
+    }
+
+    .c-1{
+        grid-area: 1/1;
+    }
+    .c-2{
+        grid-area: 1/3;
+    }
+    .c-3{
+        grid-area: 1/5;
+    }
+    .c-4{
+        grid-area: 2/2;
+    }
+    .c-5{
+        grid-area: 2/4;
     }
 
     .btn {
         margin: 0;
-        /* visibility: hidden; */
+       
     }
 
     img {
         margin: 0;
-
+        border-radius: 10px;
     }
 
     .cartita:hover {
@@ -39,10 +52,10 @@
         overflow: hidden;
         position: relative;
         background-color: white;
-        
+        border-radius: 10px;
 
     }
-    @media (max-width: 980px) {
+    @media (max-width: 1024px) {
         .container-cartas {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -187,6 +200,7 @@
    .regular{
     margin-left: 3.8rem;
    }
+   
 </style>
 
 <main id="main" class="main">
