@@ -3,7 +3,7 @@
 {{-- Item Eventos Proximos y Pasados --}} {{-- RF_USUARIO _01, RF_USUARIO 02 | Cumple: Si |--}}
 <li class="nav-item">
   <a class="nav-link collapsed" data-bs-target="#events-nav" data-bs-toggle="collapse" href="#">
-      <i class="ri-pages-line"></i><span>Información Eventos</span><i class="bi bi-chevron-down ms-auto"></i>
+      <i class="ri-pages-line"></i><span>Información eventos</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="events-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
       <li>
@@ -98,7 +98,7 @@
 <li class="nav-item">
   <a class="nav-link collapsed" href="{{route('Dimensiones')}}">
     <i class="ri-home-2-line"></i>
-    <span>Nuestra Dimensiones</span>
+    <span>Nuestras dimensiones</span>
   </a>
 </li>
 

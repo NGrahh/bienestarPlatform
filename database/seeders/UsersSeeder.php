@@ -115,8 +115,19 @@ class UsersSeeder extends Seeder
                 'rol_id' => 5,
             ]);
         }
+        User::create([
+            'name' => 'Nicolás',
+            'lastname' => 'Grajales',
+            'user_name' => 'Ngrajales',
+            'type_document_id' => 1,
+            'document' => 10895558523,
+            'email' => 'nicolasgrajales78@gmail.com',
+            'type_rh_id' => 1,
+            'password' => Hash::make('123456789'),
+            'rol_id' => 4,
+            
 
-
+        ]);
         // for ($x = 0; $x < 10; $x++) {
         //     User::create([
         //         'name' => $faker->firstName,

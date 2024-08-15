@@ -9,7 +9,7 @@
 
 
     <div class="section">
-        <div class=" row justify-content-center">
+        <div class=" row justify-content-center">|
             <div class="col-lg-12 my-2">
                 <div class="card mb-3">
                     <div align="center" class="card-body">

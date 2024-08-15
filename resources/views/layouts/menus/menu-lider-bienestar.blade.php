@@ -50,12 +50,12 @@
 
 <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#eventsBa-nav" data-bs-toggle="collapse" href="#">
-        <i class="bi bi-layout-text-window-reverse"></i><span>Información Eventos</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="bi bi-layout-text-window-reverse"></i><span>Información eventos</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="eventsBa-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
             <a href="{{route('events.index')}}">
-                <i class="bi bi-circle"></i><span>Portal de Eventos</span>
+                <i class="bi bi-circle"></i><span>Portal de eventos</span>
             </a>
         </li>
     </ul>
@@ -71,7 +71,7 @@
     <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
             <a href="{{route('citas.index')}}">
-                <i class="bi bi-circle"></i>Información Citas<span></span>
+                <i class="bi bi-circle"></i>Información citas<span></span>
             </a>
         </li>
     </ul>
