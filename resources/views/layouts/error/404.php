@@ -48,7 +48,7 @@
             background: transparent;
             border: 3px solid black;
             color: black;
-            transition: all 0.50s ease;
+            transition: all 0.51s ease;
         }
 
         a{
