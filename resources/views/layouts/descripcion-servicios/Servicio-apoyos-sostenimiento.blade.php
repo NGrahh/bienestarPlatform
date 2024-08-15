@@ -62,7 +62,7 @@
     @media (max-width: 1430px) {
         .container-cartas {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(4, 10rem);
         grid-template-rows: repeat(2, 1fr);
         grid-column-gap: 20px;
         grid-row-gap: 20px;
@@ -72,16 +72,16 @@
         grid-area: 1/1;
     }
     .c-2{
-        grid-area: 1/2;
+        grid-area: 1/3;
     }
     .c-3{
         grid-area: 2/1;
     }
     .c-4{
-        grid-area: 2/2;
+        grid-area: 2/3;
     }
     .c-5{
-        grid-area: 3/1;
+        grid-area: 3/2;
     }
     }
 
