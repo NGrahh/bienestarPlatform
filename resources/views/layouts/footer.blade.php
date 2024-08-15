@@ -355,12 +355,5 @@
         </div>
     </div>
 
-    <div class="gov" id="final">
-        <div class="gov__container">
-            <a href="https://www.gov.co/" target="_blank">
-                <img loading="lazy" src="{{asset('img/gov-logo.svg')}}" alt="Logo de la pagina gov.co" class="gov__img">
-            </a>
-
-        </div>
-    </div>
+    
 </footer><!-- End Footer -->
