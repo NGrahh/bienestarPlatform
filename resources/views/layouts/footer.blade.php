@@ -34,6 +34,7 @@
 
 .entidades__link-img:hover {
     filter: none;
+    
 }
 
 
@@ -82,6 +83,7 @@
 
 .gobierno__link:hover {
     text-decoration: underline;
+    color: var(--color-info);
 }
 
 .more-information {
