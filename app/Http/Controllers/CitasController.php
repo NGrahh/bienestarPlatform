@@ -26,7 +26,7 @@ class CitasController extends Controller
         $selectedDimensionId = $request->input('dimension_id');
         
         // Inicializar la consulta para obtener citas, realizando un join con la tabla 'users'
-        $query = Citas::select('citas.id', 'citas.dimensions_id', 'citas.mobilenumber', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.email')
+        $query = Citas::select('citas.id', 'citas.dimensions_id', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname','users.numberphone', 'users.email')
             ->join('users', 'citas.user_id', '=', 'users.id') // Realiza un join con la tabla 'users' usando 'user_id'
             ->orderBy('citas.status') // Ordenar los resultados por 'status'
             ->orderBy('citas.id')     // Luego ordenar por 'id'

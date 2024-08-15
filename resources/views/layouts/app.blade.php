@@ -53,9 +53,9 @@
 
 <body>
     <!-- Preloader -->
-    <div class="preloader-it">
+    {{-- <div class="preloader-it">
         <div class="loader-pendulums"></div>
-    </div>
+    </div> --}}
     <!-- /Preloader -->
     <main>
         @yield('content')

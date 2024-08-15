@@ -47,11 +47,12 @@
                                     <div class="col-md-8">
                                         <div class="card-body">
                                             <h5 class="card-title" style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ $event->eventname }}</h5>
-                                            <div class="text-center">
+                                            <div class="justify-content-center align-items-center fondo">
                                                 <div class="event-date">
                                                     <p class="eventday">{{ $event->dayOfWeek }}</p>
                                                     <div class="eventnumero day">{{ date('d', strtotime($event->eventdate)) }}</div>
-                                                    <p class="eventyear">{{ $event->monthName }} </p>
+                                                    <p class="eventmonth">{{ $event->monthName }} </p>
+                                                    <p class="eventyear">{{ $event->year }} </p>
                                                 </div>
                                             </div>
                                             @auth
@@ -155,7 +156,8 @@
                                                 <div class="event-date">
                                                     <p class="eventday">{{ $event->dayOfWeek }}</p>
                                                     <div class="eventnumero day">{{ date('d', strtotime($event->eventdate)) }}</div>
-                                                    <p class="eventyear">{{ $event->monthName }} </p>
+                                                    <p class="eventmonth">{{ $event->monthName }} </p>
+                                                    <p class="eventyear">{{ $event->year }} </p>
                                                 </div>
                                             </div>
                                             <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
