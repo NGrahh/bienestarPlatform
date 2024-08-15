@@ -9,8 +9,12 @@
 <style>
     .container-cartas {
         display: grid;
-        grid-template-columns: repeat(5, 12rem);
+        grid-template-columns: repeat(4, 12rem);
         grid-template-rows: repeat(2, 1fr);
+    }
+    .card-body{
+        display: grid;
+        place-items: center;
     }
 
     .c-1{
@@ -55,7 +59,7 @@
         border-radius: 10px;
 
     }
-    @media (max-width: 1024px) {
+    @media (max-width: 1430px) {
         .container-cartas {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
