@@ -121,8 +121,9 @@ class UsersSeeder extends Seeder
             'user_name' => 'Ngrajales',
             'type_document_id' => 1,
             'document' => 10895558523,
-            'email' => 'nicolasgrajales78@gmail.com',
+            'email' => 'nicolasgrajales@gmail.com',
             'type_rh_id' => 1,
+            'numberphone' => $faker->unique()->randomNumber(8),
             'password' => Hash::make('123456789'),
             'rol_id' => 4,
             

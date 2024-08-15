@@ -21,7 +21,6 @@ class CitasSeeder extends Seeder
             Citas::create([
                 'user_id' => \App\Models\User::inRandomOrder()->first()->id, // Asigna un ID de usuario aleatorio existente
                 'dimensions_id' => rand(1, 5), // Genera un ID de dimensión aleatorio entre 1 y 5
-                'mobilenumber' => $faker->numerify('###########'), // Genera un número de móvil aleatorio
                 'date' => $faker->date('Y-m-d', 'now'), // Genera una fecha entre hoy y el pasado
                 'hour' => $faker->time('H:i:s', rand(strtotime('08:00:00'), strtotime('18:00:00'))), // Genera una hora entre 08:00 y 18:00
                 'subjectCita' => $faker->sentence, // Genera un asunto aleatorio

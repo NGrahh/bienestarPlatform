@@ -373,7 +373,7 @@ class EventsController extends Controller
         // Obtiene todos los registros de la tabla 'TypeDimensions'
         $dimensions_types = TypeDimensions::all(); 
         $user = Auth::user();
-        session(['numberphone' => $user->phone_number ?? 'No disponible']);
+        session(['numberphone' => $user->numberphone ?? 'No disponible']);
         // Devuelve la vista 'formularios.citas.form-appointment' con los datos de los tipos de dimensiones
         // 'compact('dimensions_types')' crea un array con la clave 'dimensions_types' que contiene el valor de la variable $dimensions_types
         return view('formularios.citas.form-appointment', compact('dimensions_types'));

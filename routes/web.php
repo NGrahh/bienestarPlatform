@@ -454,7 +454,7 @@ Route::resource('perfil', PerfilController::class)->middleware('auth');
 Route::get('/mi-perfil', [PerfilController::class, 'index'])->name('perfil.index')->middleware('auth');
 Route::put('/perfil/{perfil}', [PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
 Route::put('/perfil/{perfil}', [PerfilController::class, 'update_user'])->name('perfil.update_user')->middleware('auth');
-Route::patch('/cambiar-contrasena', [PerfilController::class, 'cambiarContrasena'])->name('perfil.cambiar-contrasena')->middleware('auth');
+Route::patch('/cambiar-contrasena', [PerfilController::class, 'cambiarContrasena'])->name('perfil.cambiarcontrasena')->middleware('auth');
 
 
 
