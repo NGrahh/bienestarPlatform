@@ -85,7 +85,7 @@
     }
     }
 
-    @media (max-width: 680px) {
+    @media (max-width: 705px) {
         .container-cartas {
         display: grid;
         grid-template-columns: repeat(1, 1fr);
