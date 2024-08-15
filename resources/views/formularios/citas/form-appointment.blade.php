@@ -48,17 +48,30 @@
                   @csrf
   
                   <div class="row mt-2">
-                    <div class="col-12 col-md-6 mt-2">
+                    <div class="col-12 col-md-4 mt-2">
                       <label for="yourName" class="form-label"><strong>Nombre</strong></label>
                       <input value="{{session('name')}}" type="text" name="name" class="form-control" id="yourName" disabled>
                     </div>
-                    <div class="col-12 col-md-6 mt-2">
+                    <div class="col-12 col-md-4 mt-2">
                       <label for="yourlastname" class="form-label"><strong>Apellidos</strong></label>
                       <input value="{{session('lastname')}}" type="text" name="lastname" class="form-control" id="yourlastname" disabled>
                     </div>
-                  </div>
-  
-                  <div class="row mt-2">
+                    <div class="col-12 col-md-4 mt-2">
+                      <label for="numberphone" class="form-label"><strong>Número telefónico</strong></label>
+                      <input value="{{session('numberphone')}}" type="number" name="numberphone" class="form-control" id="numberphone" disabled>
+                    </div>
+                    <div class="col-12 col-md-6 mt-2">
+                      <label for="yourEmail" class="form-label"><strong>Correo electrónico</strong></label>
+                      <input value="{{session('email')}}" type="email" name="email" class="form-control" id="yourEmail" disabled>
+                    </div>
+                    <div class="col-12 col-md-6 mt-2">
+                      <label for="inputDate" class="form-label"><strong>Fecha</strong></label>
+                      <input name="date" type="date" class="form-control @error('date') is-invalid @enderror" value="{{ old('date') }}">
+                      <div class="invalid-feedback">Ingrese una fecha.</div>
+                      @error('date')
+                      <li class="text-danger">{{ $message }}</li>
+                      @enderror
+                    </div>
                     <div class="col-12 col-md-6 mt-2">
                       <label for="yourdimensions" class="form-label"><strong>Dimension solicitada</strong></label>
                       <select name="dimensions_id" class="form-select" id="yourdimensions" required>
@@ -73,32 +86,6 @@
                       @enderror
                     </div>
                     <div class="col-12 col-md-6 mt-2">
-                      <label for="yourEmail" class="form-label"><strong>Correo electrónico</strong></label>
-                      <input value="{{session('email')}}" type="email" name="email" class="form-control" id="yourEmail" disabled>
-                    </div>
-                  </div>
-  
-                  <div class="row mt-2">
-                    <div class="col-12 col-md-6 mt-2">
-                      <label for="yournumber" class="form-label"><strong>Número telefónico</strong></label>
-                      <input value="{{old('mobilenumber')}}" type="number" name="mobilenumber" class="form-control" id="yournumber" required>
-                      <div class="invalid-feedback">Ingrese un número telefónico.</div>
-                      @error('mobilenumber')
-                      <li class="text-danger">{{ $message}}</li>
-                      @enderror
-                    </div>
-                    <div class="col-12 col-md-6 mt-2">
-                      <label for="inputDate" class="form-label"><strong>Fecha</strong></label>
-                      <input name="date" type="date" class="form-control @error('date') is-invalid @enderror" value="{{ old('date') }}">
-                      <div class="invalid-feedback">Ingrese una fecha.</div>
-                      @error('date')
-                      <li class="text-danger">{{ $message }}</li>
-                      @enderror
-                    </div>
-                  </div>
-  
-                  <div class="row mt-2">
-                    <div class="col-12 col-md-6 mt-2">
                       <label for="inputTime" class="form-label"><strong>Hora</strong></label>
                       <input name="hour" type="time" class="form-control @error('hour') is-invalid @enderror" value="{{ old('hour') }}">
                       <div class="invalid-feedback">Ingrese una hora.</div>
@@ -106,7 +93,7 @@
                       <li class="text-danger">{{ $message }}</li>
                       @enderror
                     </div>
-                    <div class="col-12 col-md-6 mt-2">
+                    <div class="col-12 col-md-12 mt-2">
                       <label for="yourSubject" class="form-label"><strong>Asunto</strong></label>
                       <textarea class="form-control @error('subjectCita') is-invalid @enderror" cols="30" rows="4" name="subjectCita">{{ old('subjectCita') }}</textarea>
                       <div class="invalid-feedback">Ingrese un asunto.</div>
@@ -115,6 +102,8 @@
                       @enderror
                     </div>
                   </div>
+  
+                  
   
                   <div align="center" class="col-12 mt-4">
                     <button class="btn btn-ba w-50" type="submit">Solicitar</button>

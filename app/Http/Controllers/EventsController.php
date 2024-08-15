@@ -12,6 +12,7 @@ use App\Models\Event_registrations;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class EventsController extends Controller
 {
@@ -83,22 +84,28 @@ class EventsController extends Controller
         $pastEvents = Events::where('eventdate', '<', $currentDate)
                             ->where('status', true) // Filtrar por eventos activos
                             ->orderBy('eventdate', 'desc') // Ordenar por fecha del evento de manera descendente
-                            ->paginate(4); // Paginación con 4 eventos por página
+                            ->paginate(3); // Paginación con 4 eventos por página
         
-        // Traducir el día de la semana y el nombre del mes para cada evento futuro
+        // Traducir el día de la semana, el nombre del mes y el año para cada evento futuro
         foreach ($upcomingEvents as $event) {
+            $eventDate = strtotime($event->eventdate);
             // Obtener el día de la semana en español
-            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', $eventDate));
             // Obtener el nombre del mes en español
-            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', $eventDate));
+            // Obtener el año
+            $event->year = date('Y', $eventDate);
         }
         
-        // Traducir el día de la semana y el nombre del mes para cada evento pasado
+        // Traducir el día de la semana, el nombre del mes y el año para cada evento pasado
         foreach ($pastEvents as $event) {
+            $eventDate = strtotime($event->eventdate);
             // Obtener el día de la semana en español
-            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', $eventDate));
             // Obtener el nombre del mes en español
-            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', $eventDate));
+            // Obtener el año
+            $event->year = date('Y', $eventDate);
         }
         
         // Retornar la vista con los eventos futuros, pasados y la fecha actual
@@ -108,6 +115,7 @@ class EventsController extends Controller
             'currentDate' => $currentDate
         ]);
     }
+    
 
     public function viewEventUser()
     {
@@ -124,22 +132,28 @@ class EventsController extends Controller
         $pastEvents = Events::where('eventdate', '<', $currentDate)
                             ->where('status', true) // Filtrar por eventos activos
                             ->orderBy('eventdate', 'desc') // Ordenar por fecha del evento de manera descendente
-                            ->paginate(3); // Paginación con 3 eventos por página
+                            ->paginate(3); // Paginación con 4 eventos por página
         
-        // Traducir el día de la semana y el nombre del mes para cada evento futuro
+        // Traducir el día de la semana, el nombre del mes y el año para cada evento futuro
         foreach ($upcomingEvents as $event) {
+            $eventDate = strtotime($event->eventdate);
             // Obtener el día de la semana en español
-            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', $eventDate));
             // Obtener el nombre del mes en español
-            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', $eventDate));
+            // Obtener el año
+            $event->year = date('Y', $eventDate);
         }
         
-        // Traducir el día de la semana y el nombre del mes para cada evento pasado
+        // Traducir el día de la semana, el nombre del mes y el año para cada evento pasado
         foreach ($pastEvents as $event) {
+            $eventDate = strtotime($event->eventdate);
             // Obtener el día de la semana en español
-            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', strtotime($event->eventdate)));
+            $event->dayOfWeek = $this->spanishDayOfWeek(date('N', $eventDate));
             // Obtener el nombre del mes en español
-            $event->monthName = $this->spanishMonth(date('n', strtotime($event->eventdate)));
+            $event->monthName = $this->spanishMonth(date('n', $eventDate));
+            // Obtener el año
+            $event->year = date('Y', $eventDate);
         }
         
         // Retornar la vista con los eventos futuros, pasados y la fecha actual
@@ -287,7 +301,7 @@ class EventsController extends Controller
     
         // Busca el evento en la base de datos usando el ID proporcionado
         $event = Events::findOrFail($id);
-    // Inicializa $imageName como null
+        // Inicializa $imageName como null
         // Verifica si se ha subido un archivo de imagen
         if ($request->hasFile('picture')) {
             // Se comentaron las líneas anteriores de manejo de archivos y se agregaron nuevas líneas para almacenar la imagen
@@ -358,7 +372,8 @@ class EventsController extends Controller
     {
         // Obtiene todos los registros de la tabla 'TypeDimensions'
         $dimensions_types = TypeDimensions::all(); 
-    
+        $user = Auth::user();
+        session(['numberphone' => $user->phone_number ?? 'No disponible']);
         // Devuelve la vista 'formularios.citas.form-appointment' con los datos de los tipos de dimensiones
         // 'compact('dimensions_types')' crea un array con la clave 'dimensions_types' que contiene el valor de la variable $dimensions_types
         return view('formularios.citas.form-appointment', compact('dimensions_types'));

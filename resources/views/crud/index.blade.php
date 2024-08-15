@@ -1,10 +1,14 @@
 @extends('layouts.app')
 
+<!-- Preloader -->
+<div class="preloader-it">
+    <div class="loader-pendulums"></div>
+</div>
+<!-- /Preloader -->
+
 @section('content')
-
 @section('title-page','Información Usuarios')
-
-@include('layouts.header')
+@include('layouts.header_Crud')
 @include('layouts.menu')
 
 <main id="main" class="main">

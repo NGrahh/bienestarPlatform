@@ -5,7 +5,7 @@
 @include('layouts.header')
 @include('layouts.menu')
 
-
+{{-- 
 <style>
     .container-cartas {
         display: grid;
@@ -187,7 +187,7 @@
    .regular{
     margin-left: 3.8rem;
    }
-</style>
+</style> --}}
 
 <main id="main" class="main">
     <div class="pagetitle">

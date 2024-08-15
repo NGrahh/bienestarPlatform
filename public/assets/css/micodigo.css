@@ -237,7 +237,7 @@
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
-    color: #34A853;
+    color: #002133;
     /* verde oscuro */
     font-weight: bold;
     padding-left: 10px;
@@ -247,26 +247,43 @@
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 40px;
-    color: #34A853;
+    color: #000000;
     /* verde oscuro */
     font-weight: bold;
     padding-left: 10px;
 }
 
+.eventmonth {
+    align-items: center;
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 20px;
+    color: #002133;
+    /* gris azulado */
+    font-weight: bold;
+}
+
+
 .eventyear {
     align-items: center;
     font-family: "Roboto Condensed", sans-serif;
     font-size: 20px;
-    color: #455A64;
+    color: #002133;
     /* gris azulado */
     font-weight: bold;
 
 }
 
+/* .fondo{
+    background-color: #55a3e2;
+    border-radius: 10px;
+} */
+
+
+
 .event-date {
     text-align: center;
     padding: 5px;
-    background-color: #F7F7F7;
+    background-color: #ffffff;
     /* fondo claro */
     border-radius: 10px;
     /* bordes redondeados */
