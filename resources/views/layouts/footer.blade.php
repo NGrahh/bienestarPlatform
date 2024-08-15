@@ -26,6 +26,7 @@
     align-items: center;
     padding: 3rem 1.7rem;
     justify-items: start;
+    background-color: white;
 }
 
 .entidades__link-img {
