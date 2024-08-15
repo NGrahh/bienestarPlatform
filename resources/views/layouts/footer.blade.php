@@ -259,7 +259,7 @@
 <footer id="footer" class="footer">
     <div class="sector-empleo">
         <div class="sector-empleo__text">
-            <img loading="lazy" src="{{asset('img/trabajo-icon.svg')}}" alt="icono-trabajo">
+            <img loading="lazy" src="https://zajuna.sena.edu.co/img/icons/trabajo-icon.svg" alt="icono-trabajo">
             <h3>Sector Empleo</h3>
         </div>
     </div>
