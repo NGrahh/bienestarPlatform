@@ -1,10 +1,16 @@
 @extends('layouts.app')
 
+<!-- Preloader -->
+<div class="preloader-it">
+    <div class="loader-pendulums"></div>
+</div>
+<!-- /Preloader -->
+
 @section('content')
 
 @section('title-page','Mis Citas')
 
-@include('layouts.header')
+@include('layouts.header_Crud')
 @include('layouts.menu')
 
 <main id="main" class="main">
@@ -221,7 +227,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-grid gap-1 d-md-flex justify-content-md-end mt-5 mb-5">
 
+                                
+                                <a  href="{{route('form-appointment')}}"><button class="btn btn-ba">Solicitar Cita</button></a>
+                            </div>
                         </div>
 
                     </div>

@@ -23,6 +23,7 @@
                         <!-- Nota -->
                         @if (Auth::check())
                             @if ($tipo_apoyo_id == 1 && $status == '1')
+                            
                                 <p class="small mt-3">
                                     <strong>Nota:</strong> Actualmente, las inscripciones para el apoyo FIC están abiertas. Puedes proceder con la inscripción. Para más información, por favor, efectua la inscripción ¡Buena Suerte!.
                                 </p>

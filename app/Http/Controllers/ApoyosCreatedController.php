@@ -12,7 +12,7 @@ class ApoyosCreatedController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'Ap_fic','Ap_alimentacion', 'Ap_datos',' Ap_sostenimiento','Ap_transporte'  ]);
     }
 
     public function store_user(Request $request)

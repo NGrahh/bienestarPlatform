@@ -306,7 +306,7 @@
 
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
-                                <form action="{{ route('perfil.cambiar-contrasena')}}" class="row g-3 needs-validation mt-4" novalidate method="POST">
+                                <form action="{{ route('perfil.cambiarcontrasena')}}" class="row g-3 needs-validation mt-4" novalidate method="POST">
                                     @csrf
                                     @method('PUT')
                                     <div class="row mb-3">
