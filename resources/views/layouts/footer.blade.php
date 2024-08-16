@@ -267,8 +267,8 @@
         <a target="_blank" href="https://www.mintrabajo.gov.co/web/guest/inicio" class="entidades__link--ministerio"><img loading="lazy" src="{{asset('img/ministerio-logo-color.svg')}}" alt="ministerio logo" class="entidades__link-img "></a>
         <a target="_blank" href="https://www.unidadsolidaria.gov.co/"><img loading="lazy" src="{{asset('img/iOss-logo-color.svg')}}" alt="oss logo" class="entidades__link-img "></a>
         <a target="_blank" href="https://www.serviciodeempleo.gov.co/portada" class="entidades__link"><img loading="lazy" src="{{asset('img/iEmpleo-logo-color.svg')}}" alt="empleo logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.ssf.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iSuperSubsidio-logo-color.svg)}}" alt="supersubsidio logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.colpensiones.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset(img/iColpensiones-logo-color.svg')}}" alt="solpensiones logo" class="entidades__link-img "></a>
+        <a target="_blank" href="https://www.ssf.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iSuperSubsidio-logo-color.svg')}}" alt="supersubsidio logo" class="entidades__link-img "></a>
+        <a target="_blank" href="https://www.colpensiones.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iColpensiones-logo-color.svg')}}" alt="solpensiones logo" class="entidades__link-img "></a>
     </div>
     <div class="gobierno">
         <div class="gobierno__container">
