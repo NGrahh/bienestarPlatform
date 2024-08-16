@@ -54,7 +54,7 @@
 
 <li class="nav-item">
     <a class="nav-link collapsed" data-bs-target="#citas-nav" data-bs-toggle="collapse" href="#">
-        <i class="ri-customer-service-line"></i><span>Agendar Cita</span><i class="bi bi-chevron-down ms-auto"></i>
+        <i class="ri-customer-service-line"></i><span>Agendar cita</span><i class="bi bi-chevron-down ms-auto"></i>
     </a>
     <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
