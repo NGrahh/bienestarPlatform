@@ -44,12 +44,12 @@
                                     <label for="yourPassword" class="form-label">Contraseña</label>
                                     <div class="input-group has-validation">
                                         <input value="{{old('password')}}" type="password" name="password" class="form-control {{$errors->has('password') ? 'is-invalid':''}}" id="yourPassword" required>
-                                    </div>
-    
-                                    <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
+                                        <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
                                     @error('password')
                                     <li class="text-danger">{{ $message }}</li>
                                     @enderror
+                                    </div>
+                                    
                                 </div>
                                 
                                 

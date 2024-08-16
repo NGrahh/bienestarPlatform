@@ -121,7 +121,7 @@ class CitasController extends Controller
         session()->flash('success', 'Cita registrada correctamente!');
         
         // Redirige al formulario de cita
-        return redirect(route('form-appointment'));
+        return redirect(route('citas.citaview'));
     }
     
     

@@ -83,7 +83,8 @@ class UserController extends Controller
             // Almacenar el nombre, apellido, correo electrónico y rol en la sesión
             session(['name' => $user->name, 'lastname' => $user->lastname, 'email' => $user->email, 'rol_id' => $user->rol_id]);
 
-            return redirect(route('home')); // Redirigir a la página principal
+                   // Redirigir a la página original o a la página principal si no hay una página original
+            return redirect()->intended(route('home'));
         }
 
         // Autenticación fallida, redirigir de vuelta al formulario de login con un mensaje de error

@@ -416,15 +416,15 @@ Route::post('/apoyos/store', [ApoyosCreatedController::class, 'store'])->name('a
 
 Route::post('/apoyos/user/store', [ApoyosCreatedController::class, 'store_user'])->name('apoyos.store_user');
 
-Route::get('/Apoyo-FIC', [ApoyosCreatedController::class, 'Ap_fic'])->name('apoyo.fic')->middleware('auth');
+Route::get('/Apoyo-FIC', [ApoyosCreatedController::class, 'Ap_fic'])->name('apoyo.fic');
 
-Route::get('/Apoyo-Alimentacion', [ApoyosCreatedController::class, 'Ap_alimentacion'])->name('apoyo.alimentacion')->middleware('auth');
+Route::get('/Apoyo-Alimentacion', [ApoyosCreatedController::class, 'Ap_alimentacion'])->name('apoyo.alimentacion');
 
-Route::get('/Apoyo-Datos', [ApoyosCreatedController::class, 'Ap_datos'])->name('apoyo.datos')->middleware('auth');
+Route::get('/Apoyo-Datos', [ApoyosCreatedController::class, 'Ap_datos'])->name('apoyo.datos');
 
-Route::get('/Apoyo-Sostenimiento-Regular', [ApoyosCreatedController::class, 'Ap_sostenimiento'])->name('apoyo.sostenimiento')->middleware('auth');
+Route::get('/Apoyo-Sostenimiento-Regular', [ApoyosCreatedController::class, 'Ap_sostenimiento'])->name('apoyo.sostenimiento');
 
-Route::get('/Apoyo-Transporte', [ApoyosCreatedController::class, 'Ap_transporte'])->name('apoyo.transporte')->middleware('auth');
+Route::get('/Apoyo-Transporte', [ApoyosCreatedController::class, 'Ap_transporte'])->name('apoyo.transporte');
 
 
 
