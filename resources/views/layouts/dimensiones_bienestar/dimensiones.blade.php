@@ -37,7 +37,7 @@
                                 </div>
                                 <div class="col-12 col-md-4">
                                     <div class="card" style="width: 100%; max-width: 300px; margin: 0 auto;">
-                                        <img src="https://ethic.es/wp-content/uploads/2023/01/Ethic-2-1280x768.png" alt="Imagen promocional" class="img-thumbnail" style="width: 100%;">
+                                        <img src="{{asset('img/cuidadparatodos.png')}}" alt="Imagen promocional" class="img-thumbnail" style="width: 100%;">
                                     </div>
                                 </div>
                             </div>
@@ -58,7 +58,7 @@
                             <div class="row pt-4">
                                 <div class="col-12 col-md-4 mt-2">
                                     <div class="card" style="width: 100%; max-width: 300px; margin: 0 auto;">
-                                        <img src="https://img1.wsimg.com/isteam/ip/b783b172-8108-445e-96bf-774db9b574ea/blob-8bdd215.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:1280" alt="Imagen promocional" class="img-thumbnail" style="width: 100%;">
+                                        <img src="{{asset('img/consejeriaorientacion.png')}}" alt="Imagen promocional" class="img-thumbnail" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-8">
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="col-12 col-md-4 mt-2">
                                     <div class="card" style="width: 100%; max-width: 300px; margin: 0 auto;">
-                                        <img src="https://4.bp.blogspot.com/-yRnT-sWZC0E/Vz3l6uw8pYI/AAAAAAAAGR0/7G5WIeUqlMc58IP4RTwJwrkBxPE6FvPTACLcB/s320/areas%2Bartisticas-01.jpg" alt="Imagen promocional" class="img-thumbnail" style="width: 100%;">
+                                        <img src="{{asset('img/arteycultura.png')}}" alt="Imagen promocional" class="img-thumbnail" style="width: 100%;">
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                             <div class="row pt-4">
                                 <div class="col-12 col-md-4 mt-2">
                                     <div class="card" style="width: 100%; max-width: 300px; margin: 0 auto;">
-                                        <img src="https://cdn.euroinnova.edu.es/img/subidasEditor/35-1610993588.webp" class="img-thumbnail" style="width: 100%;">
+                                        <img src="{{asset('img/actividadrecre.png')}}" class="img-thumbnail" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-8">
@@ -179,7 +179,7 @@
                                 </div>
                                 <div class="col-12 col-md-4 mt-2">
                                     <div class="card" style="width: 100%; max-width: 300px; margin: 0 auto;">
-                                        <img src="https://www.formacionsmart.com/wp-content/uploads/2020/12/liderr.jpg" class="img-thumbnail" style="width: 100%;">
+                                        <img src="{{asset('img/exelencia.png')}}" class="img-thumbnail" style="width: 100%;">
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +201,7 @@
                             <div class="row pt-4">
                                 <div class="col-12 col-md-4 mt-2">
                                     <div class="card" style="width: 100%; max-width: 300px; margin: 0 auto;">
-                                        <img src="https://m.uninorte.edu.co/documents/13400067/21095885/graduandos-excelencia-grados-2022.jpg/9922cb6a-eb91-1597-64f8-69315c145956?t=1648222806951" class="img-thumbnail" style="width: 100%;">
+                                        <img src="{{asset('img/construccion.png')}}" class="img-thumbnail" style="width: 100%;">
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-8">
