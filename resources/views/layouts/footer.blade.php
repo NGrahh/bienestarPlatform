@@ -3,17 +3,18 @@
 
 .sector-empleo {
     padding: 0.7rem 1.7rem;
-    background-color: var(--alternate-background);
+    background-color: #04324d;
 }
 
 .sector-empleo__text {
     margin: auto;
     max-width: var(--web-margin);
-    color: var(--color-info);
+    color: white;
     display: flex;
     gap: 0.625rem;
     justify-items: center;
     align-items: center;
+
 }
 
 .entidades {
@@ -25,6 +26,7 @@
     align-items: center;
     padding: 3rem 1.7rem;
     justify-items: start;
+    background-color: white;
 }
 
 .entidades__link-img {
@@ -34,6 +36,7 @@
 
 .entidades__link-img:hover {
     filter: none;
+    
 }
 
 
@@ -49,6 +52,7 @@
     align-items: center;
     padding: 3rem 1.7rem;
     gap: 24px;
+    background-color: #04324d;
 }
 
 .gobierno__ministerio-container {
@@ -57,6 +61,7 @@
     flex-direction: column;
     gap: 6px;
     align-items: flex-end;
+    color: white;
 }
 
 .gobierno__ministerio-container--img {
@@ -82,6 +87,7 @@
 
 .gobierno__link:hover {
     text-decoration: underline;
+    color: var(--color-info);
 }
 
 .more-information {
@@ -254,6 +260,17 @@
         width: 100%;
     }
 }
+
+
+
+
+.azul{
+    text-decoration: underline;
+}
+
+.azul:hover{
+    text-decoration: underline;
+}
 </style>
 
 <footer id="footer" class="footer">
@@ -333,16 +350,16 @@
                 Calle 57 No. 8 - 69 Bogotá D.C. (Cundinamarca), Colombia<br>
                 Conmutador Nacional (57 1) 5461500 - Extensiones<br>
                 Atención presencial: lunes a viernes 8:00 a.m. a 5:30 p.m.<br>
-                <a style="color:#04324d;" href="http://www.sena.edu.co/es-co/sena/Paginas/directorio.aspx" target="_blank">Resto del país sedes y horarios</a><br>
+                <a style="color:#04324d;" href="http://www.sena.edu.co/es-co/sena/Paginas/directorio.aspx" target="_blank" class="azul">Resto del país sedes y horarios</a><br>
                 Atención telefónica: lunes a viernes 7:00 a.m. a 7:00 p.m. - <br>sábados 8:00 a.m. a 1:00 p.m.<br>
                 Atención al ciudadano: Bogotá (57 1) 3430111 - Línea gratuita y resto del país 018000 910270<br>
                 Atención al empresario: Bogotá (57 1) 3430101 - Línea gratuita y resto del país 018000 910682<br>
-                <a href="http://sciudadanos.sena.edu.co/SolicitudIndex.aspx" target="_blank" style="color: #04324d">PQRS</a><br>
-                <a href="http://www.sena.edu.co/es-co/ciudadano/Paginas/chat.aspx" target="_blank" style="color: #04324d">Chat en línea</a><br>
+                <a href="http://sciudadanos.sena.edu.co/SolicitudIndex.aspx" target="_blank" style="color: #04324d" class="azul">PQRS</a><br>
+                <a href="http://www.sena.edu.co/es-co/ciudadano/Paginas/chat.aspx" target="_blank" style="color: #04324d" class="azul">Chat en línea</a><br>
                 Correo notificaciones judiciales: servicioalciudadano@sena.edu.co<br>
-                Todos los derechos 2017 SENA - <a href="http://www.sena.edu.co/es-co/Paginas/politicasCondicionesUso.aspx" target="_blank" style="color: #04324d">Políticas de privacidad y condiciones uso Portal Web SENA</a><br>
-                <a href="http://www.sena.edu.co/es-co/transparencia/Documents/proteccion_datos_personales_sena_2016.pdf" target="_blank" style="color: #04324d">Política de Tratamiento para Protección de Datos
-                    Personales</a> - <a href="http://compromiso.sena.edu.co/index.php?text=inicio&amp;id=27" target="_blank" style="color:#04324d"><br>Política de seguridad y privacidad de la
+                Todos los derechos 2017 SENA - <a href="http://www.sena.edu.co/es-co/Paginas/politicasCondicionesUso.aspx" target="_blank" style="color: #04324d" class="azul">Políticas de privacidad y condiciones uso Portal Web SENA</a><br>
+                <a href="http://www.sena.edu.co/es-co/transparencia/Documents/proteccion_datos_personales_sena_2016.pdf" target="_blank" style="color: #04324d" class="azul">Política de Tratamiento para Protección de Datos
+                    Personales</a> - <a href="http://compromiso.sena.edu.co/index.php?text=inicio&amp;id=27" target="_blank" style="color:#04324d" class="azul"><br>Política de seguridad y privacidad de la
                     información</a>
             </div>
             <div class="more-information__icontec">
