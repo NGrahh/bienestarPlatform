@@ -7,6 +7,7 @@ use App\Models\Apoyos_created;
 use App\Models\tipos_apoyos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 class ApoyosCreatedController extends Controller
 {
 
@@ -19,6 +20,7 @@ class ApoyosCreatedController extends Controller
     {
         // Definir reglas de validación para los campos del formul+ario.
         $rules = [
+            'id' => 'required|exists:users,id', // Asegúrate de que 'apoyo_id' esté validado
             'apoyo_id' => 'required|exists:apoyos_createds,id', // Asegúrate de que 'apoyo_id' esté validado
             'mobilenumber' => 'required|numeric|digits_between:7,12', // Número de móvil obligatorio, numérico y con longitud entre 7 y 12 dígitos.
             'formatuser' => 'required|file|mimes:doc,docx,pdf|max:2048', // Archivo obligatorio con extensión doc, docx o pdf y tamaño máximo de 2048 KB.
@@ -64,6 +66,7 @@ class ApoyosCreatedController extends Controller
     
            // Crear un nuevo registro en la base de datos con los datos del formulario.
         $apoyo = Apoyos::create([
+            'id' => $request->input('id'), // Asegúrate de incluir el campo 'apoyo_id'
             'apoyo_id' => $request->input('apoyo_id'), // Asegúrate de incluir el campo 'apoyo_id'
             'user_id' => auth()->id(), // Obtiene el ID del usuario autenticado.
             'mobilenumber' => $request->input('mobilenumber'), // Número de móvil del formulario.
@@ -288,8 +291,9 @@ class ApoyosCreatedController extends Controller
     {
         // Opcionalmente, valida el ID o recupera el modelo si es necesario
         $apoyo = Apoyos_created::findOrFail($apoyo_id);
+        $user = Auth::user(); // Obtiene el usuario autenticado
         // dd($apoyo_id); // Esto mostrará el valor del apoyo_id y detendrá la ejecución
-        return view('formularios.apoyos.form-inscription-supports', ['apoyo_id' => $apoyo_id]);
+        return view('formularios.apoyos.form-inscription-supports', ['apoyo_id' => $apoyo_id],compact('user'));
     }
 
 }

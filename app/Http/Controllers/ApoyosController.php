@@ -34,7 +34,6 @@ class ApoyosController extends Controller
     {
         // Definir reglas de validación para los campos del formulario.
         $rules = [
-            'mobilenumber' => 'required|numeric|digits_between:7,12', // Número de móvil obligatorio, numérico y con longitud entre 7 y 12 dígitos.
             'formatuser' => 'required|file|mimes:doc,docx,pdf|max:2048', // Archivo obligatorio con extensión doc, docx o pdf y tamaño máximo de 2048 KB.
             'photocopy' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
             'receipt' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
@@ -81,7 +80,6 @@ class ApoyosController extends Controller
         // Crear un nuevo registro en la base de datos con los datos del formulario.
         Apoyos::create([
             'user_id' => auth()->id(), // Obtiene el ID del usuario autenticado.
-            'mobilenumber' => $request->get('mobilenumber'), // Número de móvil del formulario.
             'formatuser' => $formatuserPath, // Ruta del archivo Word o PDF.
             'photocopy' => $imageNames['photocopy'] ?? null, // Nombre de la imagen 'photocopy' o null si no se subió.
             'receipt' => $imageNames['receipt'] ?? null, // Nombre de la imagen 'receipt' o null si no se subió.
@@ -99,10 +97,6 @@ class ApoyosController extends Controller
         // Validar los datos del formulario con reglas específicas.
         // Se han corregido algunos errores en las reglas de validación.
         $request->validate([
-            'name' => 'required|string|between:2,100', // Nombre requerido, cadena de caracteres con longitud entre 2 y 100.
-            'lastname' => 'required|string|between:2,100', // Apellido requerido, cadena de caracteres con longitud entre 2 y 100.
-            'email' => 'required|email|max:100|unique:users,email,' . $id, // Email requerido, formato válido, longitud máxima de 100, debe ser único en la tabla 'users' excepto para el usuario actual.
-            'mobilenumber' => 'required|numeric|digits_between:7,12', // Número de móvil requerido, numérico y longitud entre 7 y 12 dígitos.
             'formatuser' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Archivo de imagen requerido con extensiones permitidas y tamaño máximo de 2048 KB.
             'photocopy' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen requerida con extensiones permitidas y tamaño máximo de 2048 KB.
             'receipt' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen requerida con extensiones permitidas y tamaño máximo de 2048 KB.
