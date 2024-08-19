@@ -95,18 +95,29 @@ class ApoyosCreatedController extends Controller
         return view('apoyosCCcrud.apoyosCC', compact('apoyos_created', 'tipos_apoyos'));
     }
 
+
     public function store(Request $request)
     {
-        // Validar los datos del formulario
-        $validatedData = $request->validate([
+        // Validar los datos del formulario usando Validator
+        $validator = Validator::make($request->all(), [
             'tipo_apoyo_id' => 'required|exists:tipos_apoyos,id',
-            'appoiment_date_start' => 'required|date',
+            'appoiment_date_start' => 'required|date|after_or_equal:today',
             'appoiment_date_end' => 'required|date|after_or_equal:appoiment_date_start',
         ]);
     
+        // Si la validación falla, redirigir con errores
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error' , 'Verifica los datos ingresados!');
+        }
+    
+        $validatedData = $validator->validated();
+    
         // Verificar si ya existe una inscripción con el mismo tipo de apoyo
         $existingApoyo = Apoyos_created::where('tipo_apoyo_id', $validatedData['tipo_apoyo_id'])
-            ->where('status', 1) // Asegurarse de que el status sea 0
+            ->where('status', 1)
             ->first();
     
         if ($existingApoyo) {
@@ -124,6 +135,38 @@ class ApoyosCreatedController extends Controller
         // Redirigir o devolver una respuesta
         return redirect()->route('apoyosCreated.index')->with('success', 'Apoyo creado exitosamente.');
     }
+    
+    public function update(Request $request, $id)
+    {
+        // Validar los datos del formulario usando Validator
+        $validator = Validator::make($request->all(), [
+            'tipo_apoyo_id' => 'required|exists:tipos_apoyos,id',
+            'appoiment_date_start' => 'required|date|after_or_equal:today',
+            'appoiment_date_end' => 'required|date|after_or_equal:appoiment_date_start',
+        ]);
+        // Si la validación falla, redirigir con errores
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput()
+                ->with('error', 'Verifica los datos ingresados!');
+        }
+    
+        $validatedData = $validator->validated();
+    
+        // Buscar el apoyo a actualizar
+        $apoyo = Apoyos_created::findOrFail($id);
+        // Actualizar la entrada en la base de datos sin modificar el status
+        $apoyo->update([
+            'tipo_apoyo_id' => $validatedData['tipo_apoyo_id'],
+            'appoiment_date_start' => $validatedData['appoiment_date_start'],
+            'appoiment_date_end' => $validatedData['appoiment_date_end'],
+        ]);
+    
+        // Redirigir o devolver una respuesta
+        return redirect()->route('apoyosCreated.index')->with('success', 'Apoyo actualizado exitosamente.');
+    }
+    
 
     public function show($id)
     {
@@ -176,21 +219,36 @@ class ApoyosCreatedController extends Controller
     {
         // Recupera un solo modelo basado en la condición
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 1)->first();
-        
+    
+        // Obtén la fecha actual
+        $fechaActual = \Carbon\Carbon::now()->format('Y-m-d');
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
-            // Si el registro existe, pasar los datos a la vista
+            // Define las fechas de apertura y clausura
+            $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start)->format('Y-m-d');
+            $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end)->format('Y-m-d');
+    
+            // Determina si el botón debe mostrarse
+            $mostrarBoton = ($fechaActual >= $fechaApertura && $fechaActual <= $fechaClausura);
+            // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-fic', [
                 'apoyo_id' => $apoyo->id,
                 'status' => $apoyo->status,
-                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id
+                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
+                'fecha_apertura' => $fechaApertura,
+                'fecha_clausura' => $fechaClausura,
+                'mostrarBoton' => $mostrarBoton,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-fic', [
                 'apoyo_id' => null,
                 'status' => null,
-                'tipo_apoyo_id' => null
+                'tipo_apoyo_id' => null,
+                'fecha_apertura' => null,
+                'fecha_clausura' => null,
+                'mostrarBoton' => false,
             ]);
         }
     }
@@ -200,20 +258,36 @@ class ApoyosCreatedController extends Controller
         // Recupera un solo modelo basado en la condición
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 2)->first();
         
+    
+        // Obtén la fecha actual
+        $fechaActual = \Carbon\Carbon::now()->format('Y-m-d');
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
-            // Si el registro existe, pasar los datos a la vista
+            // Define las fechas de apertura y clausura
+            $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start)->format('Y-m-d');
+            $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end)->format('Y-m-d');
+    
+            // Determina si el botón debe mostrarse
+            $mostrarBoton = ($fechaActual >= $fechaApertura && $fechaActual <= $fechaClausura);
+            // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-alimentacion', [
                 'apoyo_id' => $apoyo->id,
                 'status' => $apoyo->status,
-                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id
+                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
+                'fecha_apertura' => $fechaApertura,
+                'fecha_clausura' => $fechaClausura,
+                'mostrarBoton' => $mostrarBoton,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-alimentacion', [
                 'apoyo_id' => null,
                 'status' => null,
-                'tipo_apoyo_id' => null
+                'tipo_apoyo_id' => null,
+                'fecha_apertura' => null,
+                'fecha_clausura' => null,
+                'mostrarBoton' => false,
             ]);
         }
     }
@@ -223,20 +297,35 @@ class ApoyosCreatedController extends Controller
         // Recupera un solo modelo basado en la condición
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 3)->first();
         
+         // Obtén la fecha actual
+        $fechaActual = \Carbon\Carbon::now()->format('Y-m-d');
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
-            // Si el registro existe, pasar los datos a la vista
+            // Define las fechas de apertura y clausura
+            $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start)->format('Y-m-d');
+            $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end)->format('Y-m-d');
+    
+            // Determina si el botón debe mostrarse
+            $mostrarBoton = ($fechaActual >= $fechaApertura && $fechaActual <= $fechaClausura);
+            // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-datos', [
                 'apoyo_id' => $apoyo->id,
                 'status' => $apoyo->status,
-                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id
+                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
+                'fecha_apertura' => $fechaApertura,
+                'fecha_clausura' => $fechaClausura,
+                'mostrarBoton' => $mostrarBoton,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-datos', [
                 'apoyo_id' => null,
                 'status' => null,
-                'tipo_apoyo_id' => null
+                'tipo_apoyo_id' => null,
+                'fecha_apertura' => null,
+                'fecha_clausura' => null,
+                'mostrarBoton' => false,
             ]);
         }
     }
@@ -246,20 +335,35 @@ class ApoyosCreatedController extends Controller
         // Recupera un solo modelo basado en la condición
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 4)->first();
         
+         // Obtén la fecha actual
+        $fechaActual = \Carbon\Carbon::now()->format('Y-m-d');
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
-            // Si el registro existe, pasar los datos a la vista
+            // Define las fechas de apertura y clausura
+            $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start)->format('Y-m-d');
+            $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end)->format('Y-m-d');
+    
+            // Determina si el botón debe mostrarse
+            $mostrarBoton = ($fechaActual >= $fechaApertura && $fechaActual <= $fechaClausura);
+            // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-regular', [
                 'apoyo_id' => $apoyo->id,
                 'status' => $apoyo->status,
-                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id
+                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
+                'fecha_apertura' => $fechaApertura,
+                'fecha_clausura' => $fechaClausura,
+                'mostrarBoton' => $mostrarBoton,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-regular', [
                 'apoyo_id' => null,
                 'status' => null,
-                'tipo_apoyo_id' => null
+                'tipo_apoyo_id' => null,
+                'fecha_apertura' => null,
+                'fecha_clausura' => null,
+                'mostrarBoton' => false,
             ]);
         }
     }
@@ -269,20 +373,35 @@ class ApoyosCreatedController extends Controller
         // Recupera un solo modelo basado en la condición
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 5)->first();
         
+        // Obtén la fecha actual
+        $fechaActual = \Carbon\Carbon::now()->format('Y-m-d');
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
-            // Si el registro existe, pasar los datos a la vista
+            // Define las fechas de apertura y clausura
+            $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start)->format('Y-m-d');
+            $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end)->format('Y-m-d');
+    
+            // Determina si el botón debe mostrarse
+            $mostrarBoton = ($fechaActual >= $fechaApertura && $fechaActual <= $fechaClausura);
+            // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-transporte', [
                 'apoyo_id' => $apoyo->id,
                 'status' => $apoyo->status,
-                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id
+                'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
+                'fecha_apertura' => $fechaApertura,
+                'fecha_clausura' => $fechaClausura,
+                'mostrarBoton' => $mostrarBoton,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-transporte', [
                 'apoyo_id' => null,
                 'status' => null,
-                'tipo_apoyo_id' => null
+                'tipo_apoyo_id' => null,
+                'fecha_apertura' => null,
+                'fecha_clausura' => null,
+                'mostrarBoton' => false,
             ]);
         }
     }

@@ -94,12 +94,12 @@
                                 </div>
                             </div>
 
-                            <div class="col-lg-12  mt-5">
+                            <div class="col-lg-12 mt-5">
                                 <div class="pagetitle mx-3">
                                     <h1>Información Importante!</h1>
                                 </div><!-- End Page Title -->
-
-                                @if ($tipo_apoyo_id == 1 && $status == '1')
+                            
+                                @if ($tipo_apoyo_id == 1 && $status == '1' && $mostrarBoton)
                                     <p class="text-justify mx-3">
                                         Actualmente, el apoyo FIC se encuentra habilitado para nuevas inscripciones.
                                     </p>
@@ -114,11 +114,8 @@
                                         Actualmente, el apoyo FIC no se encuentra habilitado para nuevas inscripciones. Por favor, mantente atento a las futuras actualizaciones o contacta con la administración para más detalles.
                                     </p>
                                 @endif
-
-
-
-                                
                             </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -412,9 +412,11 @@ Route::get('/show/{id}',[ApoyosCreatedController::class, 'show'])-> name('apoyos
 
 Route::patch('/apoyos/{id}/disable', [ApoyosCreatedController::class, 'disable'])->name('apoyos_created.disable')->middleware('auth');
 
-Route::post('/apoyos/store', [ApoyosCreatedController::class, 'store'])->name('apoyos.store');
+Route::post('/apoyos/store', [ApoyosCreatedController::class, 'store'])->name('apoyos.store')->middleware('auth');
 
-Route::post('/apoyos/user/store', [ApoyosCreatedController::class, 'store_user'])->name('apoyos.store_user');
+Route::patch('/apoyos/update/{id}', [ApoyosCreatedController::class, 'update'])->name('apoyos.update')->middleware('auth');
+
+Route::post('/apoyos/user/store', [ApoyosCreatedController::class, 'store_user'])->name('apoyos.store_user')->middleware('auth');
 
 Route::get('/Apoyo-FIC', [ApoyosCreatedController::class, 'Ap_fic'])->name('apoyo.fic');
 

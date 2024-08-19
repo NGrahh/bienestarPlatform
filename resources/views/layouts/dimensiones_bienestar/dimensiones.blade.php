@@ -193,9 +193,9 @@
                                                 <p class="small">
                                                     Fomenta el desarrollo de las habilidades socioemocionales en los aprendices, con el fin de promover su sentido de pertenencia hacia la institución, la sana convivencia, el relacionamiento positivo con el entorno y la construcción de espacios para el liderazgo, la representación y participación.
                                                 </p>
-                                                <p>
+                                                {{-- <p>
                                                     <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar Cita</button></a>
-                                                </p>
+                                                </p> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -237,9 +237,9 @@
                                                 <p class="small">
                                                     Propende por la permanencia de los aprendices a través de reconocimientos de tipo social otorgados a aquellos que se destaquen dentro de su proceso de formación. Además, contempla la gestión de alianzas y convenios que brinden estímulos para exaltar la excelencia académica, según la normatividad vigente.
                                                 </p>
-                                                <p>
+                                                {{-- <p>
                                                     <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar Cita</button></a>
-                                                </p>
+                                                </p> --}}
                                             </div>
                                         </div>
                                     </div>

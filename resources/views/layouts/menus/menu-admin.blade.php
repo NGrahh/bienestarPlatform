@@ -74,9 +74,9 @@
       <i class="ri-pantone-line"></i><span>Apoyos</span><i class="bi bi-chevron-down ms-auto"></i>
   </a>
   <ul id="supports-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="{{route('apoyos-sostenimiento')}}">
-          <i class="ri-pantone-line"></i>
+    <li>
+        <a href="{{route('apoyos-sostenimiento')}}">
+          <i class="bi bi-circle"></i>
           <span>Apoyos de sostenimiento</span>
         </a>
     </li>
