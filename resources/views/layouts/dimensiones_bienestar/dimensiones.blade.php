@@ -32,7 +32,7 @@
                                                     Desarrolla acciones relacionadas con la promoción de la salud física, mental y del cuidado de los aprendices, así como con la prevención de la enfermedad.
                                                 </p>
                                                 <p>
-                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar Cita</button></a>
+                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar cita</button></a>
                                                 </p>
                                             </div>
                                         </div>
@@ -77,7 +77,7 @@
 
 
                                                 <p>
-                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar Cita</button></a>
+                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar cita</button></a>
                                                 </p>
                                                 
                                         
@@ -113,7 +113,7 @@
                                                     Fomenta la expresión artística y cultural de los aprendices,partiendo del reconocimiento de la diversidad de la comunidad SENA y fortaleciendo las tradiciones culturales propias de cada región.
                                                 </p>
                                                 <p class="small">
-                                                    <a href="https://chat.whatsapp.com/CVVXlVZlMgn8QzTHmHCLBA"><button class="btn btn-ba" >Unete!</button></a>
+                                                    <a href="https://chat.whatsapp.com/CVVXlVZlMgn8QzTHmHCLBA"><button class="btn btn-ba" >¡Unete a nosotros!</button></a>
                                                 </p>
 
 
@@ -193,9 +193,15 @@
                                                 <p class="small">
                                                     Fomenta el desarrollo de las habilidades socioemocionales en los aprendices, con el fin de promover su sentido de pertenencia hacia la institución, la sana convivencia, el relacionamiento positivo con el entorno y la construcción de espacios para el liderazgo, la representación y participación.
                                                 </p>
+
                                                 {{-- <p>
                                                     <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar Cita</button></a>
                                                 </p> --}}
+
+                                                <p>
+                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar cita</button></a>
+                                                </p>
+
                                             </div>
                                         </div>
                                     </div>
