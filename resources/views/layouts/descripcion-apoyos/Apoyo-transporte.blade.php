@@ -85,7 +85,7 @@
                                 <div class="pagetitle mx-3">
                                     <h1>Información Importante!</h1>
                                 </div><!-- End Page Title -->
-                                @if ($tipo_apoyo_id == 4 && $status == '1')
+                                @if ($tipo_apoyo_id == 5 && $status == '1')
                                 <p class="text-justify mx-3">
                                     Actualmente, el apoyo de transporte se encuentra habilitado para nuevas inscripciones.
                                 </p>
