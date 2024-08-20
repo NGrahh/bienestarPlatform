@@ -108,11 +108,11 @@
                                                 </div>
                                                 <!-- Fin del modal de deshabilitación -->
 
-                                                <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editEventModal{{ $apoyos_created->id }}" title="Editar Evento">
+                                                <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editInsModal{{ $apoyos_created->id }}" title="Editar Evento">
                                                     <i class="ri-article-line"></i>
                                                 </button>
                                                 <!-- Modal de edición para cada evento -->
-                                                <div class="modal fade" id="editEventModal{{ $apoyos_created->id }}" tabindex="-1">
+                                                <div class="modal fade" id="editInsModal{{ $apoyos_created->id }}" tabindex="-1">
                                                     <div class="modal-dialog modal-dialog-centered modal-lg">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
@@ -125,7 +125,7 @@
                                                                         <h5 class="text-center card-title-ba-azul">Ingrese los datos para editar apertura de inscripciones</h5>
                                                                     </div>
                                                                     
-                                                                    <form id="form-new-user" action="{{ route('apoyos.update', $apoyos_created->id) }}" class="row g-3 needs-validation registro-usuario" novalidate method="POST">
+                                                                    <form action="{{ route('apoyos.update_Ins', $apoyos_created->id) }}" class="row g-3 needs-validation" novalidate method="POST">
                                                                         @csrf
                                                                         @method('PATCH')
                                                                         <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">

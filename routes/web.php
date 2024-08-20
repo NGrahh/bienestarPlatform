@@ -414,7 +414,7 @@ Route::patch('/apoyos/{id}/disable', [ApoyosCreatedController::class, 'disable']
 
 Route::post('/apoyos/store', [ApoyosCreatedController::class, 'store'])->name('apoyos.store')->middleware('auth');
 
-Route::patch('/apoyos/update/{id}', [ApoyosCreatedController::class, 'update'])->name('apoyos.update')->middleware('auth');
+Route::patch('/apoyos/update/{id}', [ApoyosCreatedController::class, 'update'])->name('apoyos.update_Ins')->middleware('auth');
 
 Route::post('/apoyos/user/store', [ApoyosCreatedController::class, 'store_user'])->name('apoyos.store_user')->middleware('auth');
 
