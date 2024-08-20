@@ -16,7 +16,6 @@ return new class extends Migration
         $table->id();
         $table->unsignedBigInteger('apoyo_id'); // Agregar el campo 'apoyo_id'
         $table->unsignedBigInteger('user_id');
-        $table->string('mobilenumber');
         $table->string('formatuser');
         $table->string('photocopy');
         $table->string('receipt');

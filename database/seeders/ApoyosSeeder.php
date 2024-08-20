@@ -22,7 +22,6 @@ class ApoyosSeeder extends Seeder
         for ($i = 0; $i < 4; $i++) {
             Apoyos::create([
                 'user_id' => \App\Models\User::inRandomOrder()->first()->id, // Asigna un ID de usuario aleatorio existente
-                'mobilenumber' => $faker->numerify('###########'),
                 'formatuser' => $faker->imageUrl(400, 400, 'events', true), // URL de una imagen de evento
                 'photocopy' => $faker->imageUrl(400, 400, 'events', true), // URL de una imagen de evento
                 'receipt' => $faker->imageUrl(400, 400, 'events', true),  

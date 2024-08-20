@@ -20,18 +20,16 @@ class ApoyosCreatedController extends Controller
 
     public function store_user(Request $request)
     {
-        // Definir reglas de validación para los campos del formul+ario.
+        // Definir reglas de validación para los campos del formulario.
         $rules = [
-            'id' => 'required|exists:users,id', // Asegúrate de que 'apoyo_id' esté validado
-            'apoyo_id' => 'required|exists:apoyos_createds,id', // Asegúrate de que 'apoyo_id' esté validado
-            'mobilenumber' => 'required|numeric|digits_between:7,12', // Número de móvil obligatorio, numérico y con longitud entre 7 y 12 dígitos.
+            'apoyo_id' => 'required|exists:apoyos_createds,id', // Asegúrate de que 'apoyo_id' esté validado.
             'formatuser' => 'required|file|mimes:doc,docx,pdf|max:2048', // Archivo obligatorio con extensión doc, docx o pdf y tamaño máximo de 2048 KB.
             'photocopy' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
             'receipt' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
             'sisben' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
             'support' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen opcional con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
         ];
-        // dd($request->all());
+
         // Validar la petición según las reglas definidas.
         $validator = Validator::make($request->all(), $rules);
 
@@ -42,7 +40,7 @@ class ApoyosCreatedController extends Controller
 
         // Manejar el archivo 'formatuser' (Word o PDF).
         $formatuserPath = null;
-        if ($request->file('formatuser')->isValid()) {
+        if ($request->hasFile('formatuser') && $request->file('formatuser')->isValid()) {
             $file = $request->file('formatuser');
             // Mueve el archivo a la carpeta pública 'images/archivos' y guarda el nombre del archivo.
             $formatuserPath = $file->storeAs('images/archivos', $file->getClientOriginalName(), 'public');
@@ -67,11 +65,9 @@ class ApoyosCreatedController extends Controller
         }
 
         // Crear un nuevo registro en la base de datos con los datos del formulario.
-        $apoyo = Apoyos::create([
-            'id' => $request->input('id'), // Asegúrate de incluir el campo 'apoyo_id'
+        Apoyos::create([
             'apoyo_id' => $request->input('apoyo_id'), // Asegúrate de incluir el campo 'apoyo_id'
             'user_id' => auth()->id(), // Obtiene el ID del usuario autenticado.
-            'mobilenumber' => $request->input('mobilenumber'), // Número de móvil del formulario.
             'formatuser' => $formatuserPath, // Ruta del archivo Word o PDF.
             'photocopy' => $imageNames['photocopy'] ?? null, // Nombre de la imagen 'photocopy' o null si no se subió.
             'receipt' => $imageNames['receipt'] ?? null, // Nombre de la imagen 'receipt' o null si no se subió.
@@ -81,7 +77,7 @@ class ApoyosCreatedController extends Controller
 
         // Establece un mensaje de éxito en la sesión y redirige a la ruta 'form-inscription-supports'.
         session()->flash('success', 'Inscripción exitosa.');
-        return redirect()->route('formulario_p', ['apoyo_id' => $apoyo->apoyo_id]);
+        return redirect()->route('formulario_p', ['apoyo_id' => $request->input('apoyo_id')]);
     }
 
     public function index()
@@ -266,18 +262,30 @@ class ApoyosCreatedController extends Controller
     {
         // Recupera un solo modelo basado en la condición
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 2)->first();
+    
+        // Obtiene el usuario autenticado
+        $user = Auth::user();
+    
+        // Verifica si el apoyo y el usuario están disponibles
+        $inscrito = false;
+        if ($apoyo && $user) {
+            // Verifica si el usuario ya está inscrito en este apoyo
+            $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
+                              ->where('user_id', $user->id)
+                              ->exists();
+        }
+    
         // Establece la zona horaria a Colombia
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
-
-        // Verifica si el modelo fue encontrado
+    
         if ($apoyo) {
             // Define las fechas de apertura y clausura con hora
             $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start . ' 00:00:00', 'America/Bogota');
             $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end . ' 23:59:59', 'America/Bogota');
-
+    
             // Determina si el botón debe mostrarse
             $mostrarBoton = ($fechaActual->greaterThanOrEqualTo($fechaApertura) && $fechaActual->lessThanOrEqualTo($fechaClausura));
-
+    
             // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-alimentacion', [
                 'apoyo_id' => $apoyo->id,
@@ -286,6 +294,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
                 'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
                 'mostrarBoton' => $mostrarBoton,
+                'inscrito' => $inscrito,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
@@ -296,9 +305,12 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => null,
                 'fecha_clausura' => null,
                 'mostrarBoton' => false,
+                'inscrito' => $inscrito, // No puede estar inscrito si no hay apoyo
             ]);
         }
     }
+    
+    
 
     public function Ap_datos()
     {
@@ -418,10 +430,23 @@ class ApoyosCreatedController extends Controller
 
     public function formulario_p($apoyo_id)
     {
-        // Opcionalmente, valida el ID o recupera el modelo si es necesario
+        // Recupera el apoyo por ID
         $apoyo = Apoyos_created::findOrFail($apoyo_id);
-        $user = Auth::user(); // Obtiene el usuario autenticado
-        // dd($apoyo_id); // Esto mostrará el valor del apoyo_id y detendrá la ejecución
-        return view('formularios.apoyos.form-inscription-supports', ['apoyo_id' => $apoyo_id], compact('user'));
+        
+        // Obtiene el usuario autenticado
+        $user = Auth::user();
+        
+        // Verifica si el usuario ya está inscrito en este apoyo
+        $inscrito = Apoyos::where('apoyo_id', $apoyo_id)
+                            ->where('user_id', $user->id)
+                            ->exists();
+        
+        // Retorna la vista con los datos necesarios
+        return view('formularios.apoyos.form-inscription-supports', [
+            'apoyo_id' => $apoyo_id,
+            'user' => $user,
+            'inscrito' => $inscrito
+        ]);
     }
+    
 }

@@ -85,20 +85,26 @@
                                     <h1>Información Importante!</h1>
                                 </div><!-- End Page Title -->
                                 @if ($tipo_apoyo_id == 2 && $status == '1' && $mostrarBoton)
-                                    <p class="text-justify mx-3">
-                                        Actualmente, el apoyo de alimentación se encuentra habilitado para nuevas inscripciones.
-                                    </p>
-                                    <div class="d-flex justify-content-center align-items-center pt-2">
+                                <p class="text-justify mx-3">
+                                    Actualmente, el apoyo de alimentación se encuentra habilitado para nuevas inscripciones.
+                                </p>
+                                <div class="d-flex justify-content-center align-items-center pt-2">
+                                    <!-- Verificar si el usuario ya está inscrito -->
+                                    @if($inscrito)
+                                        <button class="btn btn-success" disabled>Ya estás inscrito</button>
+                                    @else
                                         <!-- Enlace con el ID del apoyo en la URL -->
                                         <a href="{{ route('formulario_p', ['apoyo_id' => $apoyo_id]) }}" class="btn btn-ba">
                                             Inscribirse Ahora
                                         </a>
-                                    </div>
-                                @else
-                                    <p class="text-justify mx-3">
-                                        Actualmente, el apoyo de alimentación no se encuentra habilitado para nuevas inscripciones. Por favor, mantente atento a las futuras actualizaciones o contacta con la administración para más detalles.
-                                    </p>
-                                @endif
+                                    @endif
+                                </div>
+                            @else
+                                <p class="text-justify mx-3">
+                                    Actualmente, el apoyo de alimentación no se encuentra habilitado para nuevas inscripciones. Por favor, mantente atento a las futuras actualizaciones o contacta con la administración para más detalles.
+                                </p>
+                            @endif
+                            
                             </div>
                         </div>
                     </div>

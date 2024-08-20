@@ -34,13 +34,13 @@
                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
                                         <input value="{{old('email')}}" type="text" name="email" class="form-control {{$errors->has('email') ? 'is-invalid':''}}" id="yourUsername" required>
                                         <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
-                                        {{-- @error('email')
+                                        @error('email')
                                         <li class="text-danger">{{ $message}}</li>
-                                        @enderror --}}
+                                        @enderror
                                     </div>
                                 </div>
 
-                                <div class="col-12 position-relative">
+                                <div class="col-12">
                                     <label for="yourPassword" class="form-label">Contraseña</label>
                                     <div class="input-group has-validation">
                                         <input value="{{old('password')}}" type="password" name="password" class="form-control {{$errors->has('password') ? 'is-invalid':''}}" id="yourPassword" required>
