@@ -80,9 +80,9 @@ Route::get('/', function () {
     return view('layouts.inicio-pagina.pagina-principal');
 })->name('home');
 
-Route::get('/Bienvenido', function () {
-    return view('layouts.inicio-pagina.pagina-principal');
-})->name('home');
+// Route::get('/Bienvenido', function () {
+//     return view('layouts.inicio-pagina.pagina-principal');
+// })->name('home');
 
 
 //RUTA INDEX
