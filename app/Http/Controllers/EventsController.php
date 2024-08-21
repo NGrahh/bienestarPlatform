@@ -143,6 +143,14 @@ class EventsController extends Controller
             $event->monthName = $this->spanishMonth(date('n', $eventDate));
             // Obtener el año
             $event->year = date('Y', $eventDate);
+    
+            // Verificar si el usuario ya está inscrito en el evento
+            $registration = Event_registrations::where('event_id', $event->id)
+                ->where('user_id', auth()->id())
+                ->first();
+    
+            // Si el usuario está inscrito, agregar una propiedad para mostrar "Ver detalles"
+            $event->isUserRegistered = $registration ? true : false;
         }
         
         // Traducir el día de la semana, el nombre del mes y el año para cada evento pasado
@@ -154,6 +162,14 @@ class EventsController extends Controller
             $event->monthName = $this->spanishMonth(date('n', $eventDate));
             // Obtener el año
             $event->year = date('Y', $eventDate);
+    
+            // Verificar si el usuario ya está inscrito en el evento
+            $registration = Event_registrations::where('event_id', $event->id)
+                ->where('user_id', auth()->id())
+                ->first();
+    
+            // Si el usuario está inscrito, agregar una propiedad para mostrar "Ver detalles"
+            $event->isUserRegistered = $registration ? true : false;
         }
         
         // Retornar la vista con los eventos futuros, pasados y la fecha actual
@@ -163,6 +179,7 @@ class EventsController extends Controller
             'currentDate' => $currentDate
         ]);
     }
+    
 
     public function index()
     {
@@ -449,7 +466,10 @@ class EventsController extends Controller
         ]);
     
         // Redirige de vuelta con un mensaje de éxito indicando que la inscripción fue exitosa
-        return redirect()->back()->with('success', 'Te has inscrito en el evento exitosamente.');
+        session()->flash('success', 'Te has inscrito en el evento exitosamente.');
+        // return view('events.viewEventUser');
+        return redirect()->route('events.viewEventUser');
+        // return redirect()->back()->with();
     }
 
     public function showRegistrations($eventId)

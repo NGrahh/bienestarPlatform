@@ -23,31 +23,27 @@ class CitasController extends Controller
 
     public function index(Request $request)
     {
-        // Obtener el ID de la dimensión seleccionada de la solicitud
-        $selectedDimensionId = $request->input('dimension_id');
+        // Obtener el usuario autenticado
+        $user = auth()->user();
         
-        // Inicializar la consulta para obtener citas, realizando un join con la tabla 'users'
-        $query = Citas::select('citas.id', 'citas.dimensions_id', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname','users.numberphone', 'users.email')
-            ->join('users', 'citas.user_id', '=', 'users.id') // Realiza un join con la tabla 'users' usando 'user_id'
+        // Obtener solo las citas que coinciden con el 'type_dimensions_id' del usuario autenticado
+        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.numberphone', 'users.email', 'users.type_dimensions_id')
+            ->join('users', 'citas.dimensions_id', '=', 'users.type_dimensions_id') // Relacionar 'dimensions_id' con 'type_dimensions_id'
+            ->where('users.type_dimensions_id', $user->type_dimensions_id) // Filtrar por 'type_dimensions_id' del usuario autenticado
             ->orderBy('citas.status') // Ordenar los resultados por 'status'
             ->orderBy('citas.id')     // Luego ordenar por 'id'
-            ->with('typeDimensions'); // Cargar la relación 'typeDimensions' si es necesario
-        
-        // Si se seleccionó una dimensión, aplicar el filtro correspondiente
-        if ($selectedDimensionId) {
-            $query->where('citas.dimensions_id', $selectedDimensionId);
-        }
-        
-        // Ejecutar la consulta y obtener los resultados
-        $citas = $query->get();
+            ->with('typeDimensions')  // Cargar la relación 'typeDimensions' si es necesario
+            ->get();
         
         // Obtener todas las dimensiones y acciones disponibles
         $dimensions = TypeDimensions::all();
         $acciones = accionesCitas::all();
         
         // Pasar los datos a la vista 'citascrud.citasindex' con las variables disponibles
-        return view('citascrud.citasindex', compact('citas', 'acciones', 'dimensions', 'selectedDimensionId'));
+        return view('citascrud.citasindex', compact('citas', 'acciones', 'dimensions', 'user'));
     }
+    
+    
 
     public function store(Request $request)
     {

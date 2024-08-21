@@ -355,7 +355,6 @@
                                                                             <table class="table datatable rounded-table">
                                                                                 <thead>
                                                                                     <tr class="custom-header">
-                                                                                        <th>ID de Usuario</th>
                                                                                         <th>Nombre de Usuario</th>
                                                                                         <th>Tipo de Documento</th>
                                                                                         <th>Documento</th>
@@ -366,7 +365,6 @@
                                                                                 <tbody>
                                                                                     @foreach($event->registrations as $registration)
                                                                                         <tr>
-                                                                                            <td>{{ $registration->user->id }}</td>
                                                                                             <td>{{ $registration->user->name }} {{ $registration->user->lastname }}</td>
                                                                                             <td>{{ $registration->user->TypeDocument->name }}</td>
                                                                                             <td>{{ $registration->user->document }}</td>

@@ -92,7 +92,6 @@ class ApoyosCreatedController extends Controller
         return view('apoyosCCcrud.apoyosCC', compact('apoyos_created', 'tipos_apoyos'));
     }
 
-
     public function store(Request $request)
     {
         // Validar los datos del formulario usando Validator
@@ -309,8 +308,6 @@ class ApoyosCreatedController extends Controller
             ]);
         }
     }
-    
-    
 
     public function Ap_datos()
     {

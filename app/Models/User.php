@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'lastname',
         'type_document_id',
+        'type_dimensions_id',
         'document',
         'email',
         'type_rh_id',

@@ -28,6 +28,12 @@ return new class extends Migration
                     ->references('id')
                     ->on('users')
                     ->onDelete('cascade');
+
+             // Definir las claves foráneas
+            $table->foreign('dimensions_id')
+                ->references('id')
+                ->on('type_dimensions')
+                ->onDelete('cascade');
         });
     }
     /**

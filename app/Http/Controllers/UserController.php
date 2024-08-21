@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Roles;
+use App\Models\TypeDimensions;
 use App\Models\TypeDocuments;
 use App\Models\typeRh;
 use App\Models\User;
@@ -37,8 +38,9 @@ class UserController extends Controller
         $type_documents = TypeDocuments::all();
         $programas = Programas::all();
         $type_rhs = typeRh::all();
+        $type_dimensions = TypeDimensions::all();
 
-        return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs, 'programas' => $programas], compact('users'));
+        return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs, 'programas' => $programas ,'type_dimensions'=>$type_dimensions], compact('users'));
 
     }
 
@@ -107,17 +109,26 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string|between:2,100',
-            'lastname' => 'required|string|between:2,100',
-            'type_document_id' => 'required|string',
-            'document' => 'required|numeric|unique:users|digits_between:8,15',
-            'email' => 'required|string|email|max:100|unique:users',
-            'type_rh_id' => 'required|string',
-            'numberphone' => 'required|numeric|unique:users|digits_between:8,15',
-            'rol_id' => 'required|string',
-            'Program_id' => 'required_if:rol_id,5|string', // El programa de formación, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
-            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // El numero de ficha, sera solamente requerido cuando el rol escogido sea el numero 5, en este caso "Aprendiz"
-
+            // Información personal
+            'name' => 'required|string|between:2,100', // Nombre del usuario
+            'lastname' => 'required|string|between:2,100', // Apellido del usuario
+            
+            // Identificación
+            'type_document_id' => 'required|string', // Tipo de documento
+            'type_dimensions_id' => 'required|string', // Tipo Dimensión
+            'document' => 'required|numeric|unique:users|digits_between:8,15', // Número del documento
+            
+            // Contacto
+            'email' => 'required|string|email|max:100|unique:users', // Email del usuario
+            'numberphone' => 'required|numeric|unique:users|digits_between:8,15', // Número de teléfono
+            
+            // Información adicional
+            'type_rh_id' => 'required|string', // Tipo de RH
+            'rol_id' => 'required|string', // Rol del usuario en la plataforma
+            
+            // Campos condicionales
+            'Program_id' => 'required_if:rol_id,5|string', // Programa de formación, requerido si el rol es 5 (Aprendiz)
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // Número de ficha, requerido si el rol es 5 (Aprendiz)
         ]);
 
         if ($validator->fails()) {
@@ -132,19 +143,31 @@ class UserController extends Controller
         $codigoContrasena = $this->generarCodigoContrasena();
 
         User::create([
+            // Información personal
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),
-            'user_name' => $this->setUserNameAttribute($request->get('name'), $request->get('lastname')),
-            'type_document_id' => $request->get('type_document_id'),
-            'document' => $request->get('document'),
-            'email' => $request->get('email'),
+            'user_name' => $this->setUserNameAttribute($request->get('name'), $request->get('lastname')), // Genera el nombre de usuario a partir del nombre y apellido
+        
+            // Identificación
             'type_rh_id' => $request->get('type_rh_id'),
+            'type_document_id' => $request->get('type_document_id'),
+            'type_dimensions_id' => $request->get('type_dimensions_id'),
+            'document' => $request->get('document'),
+        
+            // Contacto
+            'email' => $request->get('email'),
             'numberphone' => $request->get('numberphone'),
-            'password' => Hash::make($codigoContrasena),
+        
+            // Seguridad
+            'password' => Hash::make($codigoContrasena), // Cifra la contraseña antes de almacenarla
+        
+            // Rol y programa
             'rol_id' => $request->get('rol_id'),
             'Program_id' => $request->get('Program_id'),
             'yourToken' => $request->get('yourToken'),
-            'status' => true, 
+        
+            // Estado
+            'status' => true, // El usuario se crea con estado activo
         ]);
 
         $dataUser = ['name_user' => $request->get('name'), 

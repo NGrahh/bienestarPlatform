@@ -32,7 +32,9 @@
                                                     Desarrolla acciones relacionadas con la promoción de la salud física, mental y del cuidado de los aprendices, así como con la prevención de la enfermedad.
                                                 </p>
                                                 <p>
-                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar cita</button></a>
+                                                    <div style="text-align: justify;">
+                                                        <a><button class="btn btn-ba" disabled >No es necesario solicitar una cita; simplemente acuda a enfermería, donde será atendido de inmediato.</button></a>
+                                                    </div>
                                                 </p>
                                             </div>
                                         </div>

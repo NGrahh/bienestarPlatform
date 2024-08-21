@@ -12,34 +12,42 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Se crea una nueva tabla dentro de la base de datos con el nombre de 'users'
-        Schema::create('users', function (Blueprint $table) { // nombre de la tabla
-            $table->id(); // id del usuario
-            $table->string('name'); // nombre del usuario
-            $table->string('lastname'); // apellido del usuario
-            $table->string('user_name')->unique(); // nombre de usuario del usuario
-            $table->string('email')->unique(); // email del usuario
-            $table->string('document')->unique(); // documento del usuario (número del documento)
-            $table->timestamp('email_verified_at')->nullable(); // fecha de verificación del usuario
-            $table->unsignedBigInteger('type_document_id'); // id del tipo de documento
-            $table->unsignedBigInteger('rol_id'); // rol que cumple el usuario dentro de la plataforma
-            $table->unsignedBigInteger('type_rh_id'); // id del tipo de rh
-            $table->string('Program_id')->nullable(); // id del programa al que pertenece el usuario (en caso de ser aprendiz)
-            $table->string('numberphone')->unique(); // nombre del programa al que pertenece
-            $table->string('yourToken')->nullable(); // Ficha programa formación del usuario
-            $table->string('password'); // contraseña del usuario
-            $table->rememberToken(); // token del usuario
-            $table->timestamps(); // fecha de actualización / creación
+        // Tabla dentro de la base de datos con el nombre de 'users'
+        Schema::create('users', function (Blueprint $table) {
 
-            $table->boolean('status')->default(true); // status de activación del usuario
-            $table->foreign('type_document_id')->references('id')->on('type_documents'); // id del tipo de documento
-            $table->foreign('rol_id')->references('id')->on('roles'); // el rol que cumple el usuario dentro de la plataforma
-            $table->foreign('type_rh_id')->references('id')->on('type_rhs'); // id de tipo de rh
-
-            
-            
-
+            // Información básica del usuario
+            $table->id(); // ID del usuario
+            $table->string('name'); // Nombre del usuario
+            $table->string('lastname'); // Apellido del usuario
+            $table->string('user_name')->unique(); // Nombre de usuario
+            $table->string('email')->unique(); // Email del usuario
+            $table->string('document')->unique(); // Número del documento del usuario
+            $table->string('numberphone')->unique(); // Número de teléfono del usuario
+        
+            // Relaciones y referencias
+            $table->unsignedBigInteger('type_document_id'); // ID del tipo de documento
+            $table->unsignedBigInteger('type_dimensions_id')->nullable(); // ID de las dimensiones del tipo de documento
+            $table->unsignedBigInteger('rol_id'); // ID del rol que cumple el usuario
+            $table->unsignedBigInteger('type_rh_id'); // ID del tipo de RH
+            $table->string('Program_id')->nullable(); // ID del programa al que pertenece el usuario (en caso de ser aprendiz)
+        
+            // Autenticación y tokens
+            $table->timestamp('email_verified_at')->nullable(); // Fecha de verificación del email
+            $table->string('yourToken')->nullable(); // Ficha del programa de formación del usuario
+            $table->string('password'); // Contraseña del usuario
+            $table->rememberToken(); // Token de "recordar usuario" (Remember Me)
+        
+            // Metadatos
+            $table->boolean('status')->default(true); // Estado de activación del usuario
+            $table->timestamps(); // Fechas de creación y actualización del registro
+        
+            // Definición de claves foráneas
+            $table->foreign('type_document_id')->references('id')->on('type_documents'); // Relación con la tabla de tipos de documento
+            $table->foreign('type_dimensions_id')->references('id')->on('type_dimensions'); // Relación con la tabla de dimensiones de tipo de documento
+            $table->foreign('rol_id')->references('id')->on('roles'); // Relación con la tabla de roles
+            $table->foreign('type_rh_id')->references('id')->on('type_rhs'); // Relación con la tabla de tipos de RH
         });
+        
     }
 
     /**

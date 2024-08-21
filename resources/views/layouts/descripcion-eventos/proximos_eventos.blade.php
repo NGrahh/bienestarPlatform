@@ -10,7 +10,7 @@
     <div class="pagetitle">
         <h1>Eventos</h1>
     </div>
-    
+    @include('compartido.alertas')
     <div class="row justify-content-center">
         <div class="col-lg-12 my-2">
             <div class="card mb-3">
@@ -55,10 +55,21 @@
                                                     <p class="eventyear">{{ $event->year }} </p>
                                                 </div>
                                             </div>
+
+
+
+
+                                            
                                             @auth
-                                                <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
-                                                    Inscribirse
-                                                </button>
+                                                @if($event->isUserRegistered)
+                                                    <button type="button" class="btn btn-ba w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
+                                                        Ver detalles
+                                                    </button>
+                                                @else
+                                                    <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
+                                                        Inscribirse
+                                                    </button>
+                                                @endif
                                             @else
                                                 <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
                                                     - Ver más - 
@@ -107,9 +118,20 @@
                                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                                                                     
                                                                         @auth
-                                                                            <button type="button" class="btn btn-ba">
-                                                                                <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
-                                                                            </button>
+
+                                                                            @if($event->isUserRegistered)
+                                                                                <button type="button" class="btn btn-ba" data-bs-toggle="modal" disabled>
+                                                                                    Ya estas inscrito
+                                                                                </button>
+                                                                            @else
+                                                                                <button type="button" class="btn btn-ba">
+                                                                                    <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
+                                                                                </button>
+                                                                            @endif
+
+
+
+                                                                            
                                                                         @else
                                                                             <button type="button" class="btn btn-ba">
                                                                                 <a style="color: white" href="{{ route('login') }}">Iniciar Sesión</a>

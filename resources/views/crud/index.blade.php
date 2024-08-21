@@ -156,6 +156,15 @@
                                                                                     <li class="text-danger">{{ $message}}</li>
                                                                                     @enderror
                                                                                 </div>
+
+
+
+
+
+
+
+
+
                                                                                 
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
                                                                                     <label for="yourTraining_update" class="form-label"><strong>Programa de formación</strong></label>
@@ -346,7 +355,7 @@
                                                             <label for="yourDocument" class="form-label"><strong>Número documento</strong></label>
                                                             <div class="input-group has-validation">
                                                                 <span class="input-group-text" id="inputGroupPrepend">#</span>
-                                                                <input value="{{old('document')}}" type="text" name="document" class="form-control" id="yourDocument" required>
+                                                                <input value="{{old('document')}}" type="text" name="document" class="form-control border-end" id="yourDocument" required>
                                                                 <div class="invalid-feedback">Ingrese el número de documento.</div>
                                                             </div>
                                                             @error('document')
@@ -377,6 +386,19 @@
                                                             @enderror
                                                         </div>
                                                     
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-created" style="{{ old('rol_id') != 4 ? 'display: none;' : '' }}" >
+                                                            <label for="type_dimensions_id" class="form-label"><strong>Rol en el Área de Bienestar</strong></label>
+                                                            <select name="type_dimensions_id" class="form-select" id="type_dimensions_id" required  {{ old('rol_id') != 4 ? 'disabled' : '' }}>
+                                                                <option value="">- Seleccione -</option>
+                                                                @foreach ($type_dimensions as $type_dimension)
+                                                                    <option {{ $user->type_dimensions_id == $type_dimension->id ? 'selected' : '' }} value="{{ $type_dimension->id }}">{{ $type_dimension->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <div class="invalid-feedback">Por favor ingrese el type_dimension de formación.</div>
+                                                            @error('type_dimensions_id')
+                                                                <li class="text-danger">{{ $message }}</li>
+                                                            @enderror
+                                                        </div>
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-create" id="training_program" style="{{ old('rol_id') != 5 ? 'display: none;' : '' }}">
                                                             <label for="yourTraining" class="form-label"><strong>Programa de formación</strong></label>
                                                             <select name="Program_id" class="form-select" id="yourTraining" required {{ old('rol_id') != 5 ? 'disabled' : '' }}>
@@ -416,7 +438,7 @@
                                                     
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="phonenumber" class="form-label"><Strong>Número telefónico</Strong> </label>
-                                                            <input type="number" name="numberphone" class="form-control" id="phonenumber" required>
+                                                            <input  value="{{ old('numberphone') }}" type="number" name="numberphone" class="form-control" id="phonenumber" required>
                                                             <div class="invalid-feedback">Por favor ingresa el número telefónico.</div> 
                                                             @error('numberphone')
                                                             <li class="text-danger">{{ $message}}</li>

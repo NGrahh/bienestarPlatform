@@ -375,7 +375,6 @@ Route::get('files/eventoimg/imgs/{image}', [EventsController::class, 'getImage']
 // Registrar persona a un EVENTO
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
 Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
-
 // Ruta para visualizar los inscritos para cada evento
 Route::get('/events/{eventId}/registrations', [EventsController::class, 'showRegistrations'])->name('event.registrations')->middleware('auth');
 
