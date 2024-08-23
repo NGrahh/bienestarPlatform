@@ -25,4 +25,10 @@ class Apoyos extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Relación con Apoyos_created
+    public function apoyoCreated()
+    {
+        return $this->belongsTo(Apoyos_created::class, 'apoyo_id');
+    }
+
 }

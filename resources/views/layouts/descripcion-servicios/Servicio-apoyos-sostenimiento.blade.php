@@ -203,7 +203,7 @@
     <div class="pagetitle">
         <h1>Apoyos</h1>
     </div><!-- End Page Title -->
-
+    @include('compartido.alertas')
     <div class="section">
         <div class="row justify-content-center">
             <div class="col-lg-12 my-4">

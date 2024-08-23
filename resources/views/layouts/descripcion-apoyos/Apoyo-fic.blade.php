@@ -104,10 +104,14 @@
                                         Actualmente, el apoyo FIC se encuentra habilitado para nuevas inscripciones.
                                     </p>
                                     <div class="d-flex justify-content-center align-items-center pt-2">
+                                    @if($inscrito)
+                                        <button class="btn btn-success" disabled>Ya estás inscrito</button>
+                                    @else
                                         <!-- Enlace con el ID del apoyo en la URL -->
                                         <a href="{{ route('formulario_p', ['apoyo_id' => $apoyo_id]) }}" class="btn btn-ba">
                                             Inscribirse Ahora
                                         </a>
+                                    @endif
                                     </div>
                                 @else
                                     <p class="text-justify mx-3">

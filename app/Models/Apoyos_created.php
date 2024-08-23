@@ -23,4 +23,11 @@ class Apoyos_created extends Model
         return $this->belongsTo(tipos_apoyos::class, 'tipo_apoyo_id');
     }
 
+    // Relación con Apoyos
+    public function inscripciones()
+    {
+        return $this->hasMany(Apoyos::class, 'apoyo_id');
+    }
+
+
 }

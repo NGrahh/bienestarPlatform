@@ -302,10 +302,10 @@ class EventsController extends Controller
         $validator = Validator::make($request->all(), [
             'eventname' => 'required|string|between:2,100',
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'eventdate' => 'required|date',
+            'eventdate' => 'required|date|after_or_equal:today',
             'eventlimit' => 'required|numeric|digits_between:1,1000',
-            'datestar' => 'required|date',
-            'dateendevent' => 'required|date',
+            'datestar' => 'required|date|after_or_equal:today',
+            'dateendevent' => 'required|date|after_or_equal:datestar',
             'Subjectevent' => 'required|string|between:2,4000'
         ]);
     
@@ -318,11 +318,12 @@ class EventsController extends Controller
     
         // Busca el evento en la base de datos usando el ID proporcionado
         $event = Events::findOrFail($id);
-        // Inicializa $imageName como null
+    
+        // Inicializa $imageName con el valor actual de la imagen del evento
+        $imageName = $event->picture;
+    
         // Verifica si se ha subido un archivo de imagen
         if ($request->hasFile('picture')) {
-            // Se comentaron las líneas anteriores de manejo de archivos y se agregaron nuevas líneas para almacenar la imagen
-    
             // Obtiene el archivo de imagen de la solicitud
             $image = $request->file('picture');
             // Crea un nombre único para la imagen usando el timestamp actual y la extensión del archivo
@@ -339,8 +340,8 @@ class EventsController extends Controller
             }
         }
     
-        // Actualiza los datos del evento con la información proporcionada
-        $event->update([
+        // Verifica si hay cambios en los datos
+        $inputData = [
             'eventname' => $request->get('eventname'),
             'picture' => $imageName,
             'eventdate' => $request->get('eventdate'),
@@ -348,11 +349,24 @@ class EventsController extends Controller
             'datestar' => $request->get('datestar'),
             'dateendevent' => $request->get('dateendevent'),
             'Subjectevent' => $request->get('Subjectevent')
-        ]);
+        ];
+    
+        // Asigna los nuevos valores a los atributos del modelo
+        $event->fill($inputData);
+    
+        // Verifica si hay cambios en los datos
+        if (!$event->isDirty()) {
+            return redirect()->back()->with('info', 'No se han realizado cambios en el evento.');
+        }
+    
+        // Actualiza los datos del evento con la información proporcionada
+        $event->save();
     
         // Redirige al índice de eventos con un mensaje de éxito
         return redirect()->route('events.index')->with('success', 'Evento actualizado correctamente.');
     }
+    
+    
 
     public function destroy($id)
     {

@@ -80,11 +80,6 @@
           <span>Apoyos de sostenimiento</span>
         </a>
     </li>
-      <li>
-        <a href="{{route('apoyos.index')}}">
-            <i class="bi bi-circle"></i><span>Información Inscritos</span>
-        </a>
-    </li>
     <li>
         <a href="{{route('apoyosCreated.index')}}">
           <i class="bi bi-circle"></i>Información Apoyos<span></span>

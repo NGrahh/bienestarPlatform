@@ -33,6 +33,10 @@ class UserController extends Controller
 
     public function index()
     {
+        // Verificar si el usuario es administrador
+        if (auth()->user()->rol_id != 'admin') {
+            return redirect('error')->with('error', 'No tienes permiso para acceder a esta página.');
+        }
         $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','numberphone','Program_id','yourToken','status')->with('role')->with('TypeDocument')->get();
         $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();

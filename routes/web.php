@@ -427,9 +427,7 @@ Route::get('/Apoyo-Sostenimiento-Regular', [ApoyosCreatedController::class, 'Ap_
 
 Route::get('/Apoyo-Transporte', [ApoyosCreatedController::class, 'Ap_transporte'])->name('apoyo.transporte');
 
-
-
-
+Route::get('/files/apoyos/{category}/{filename}', [ApoyosCreatedController::class, 'getFile'])->name('getFile')->middleware('auth');
 
 Route::get('/Formulario-Postulacion/{apoyo_id}', [ApoyosCreatedController::class, 'formulario_p'])->name('formulario_p')->middleware('auth');
 

@@ -8,7 +8,7 @@ use App\Models\tipos_apoyos;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
-use Carbon\Carbon;
+use Illuminate\Support\Facades\Storage;
 
 class ApoyosCreatedController extends Controller
 {
@@ -20,76 +20,59 @@ class ApoyosCreatedController extends Controller
 
     public function store_user(Request $request)
     {
-        // Definir reglas de validación para los campos del formulario.
-        $rules = [
-            'apoyo_id' => 'required|exists:apoyos_createds,id', // Asegúrate de que 'apoyo_id' esté validado.
-            'formatuser' => 'required|file|mimes:doc,docx,pdf|max:2048', // Archivo obligatorio con extensión doc, docx o pdf y tamaño máximo de 2048 KB.
-            'photocopy' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
-            'receipt' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
-            'sisben' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen obligatoria con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
-            'support' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:2048', // Imagen opcional con extensión jpg, png, jpeg o gif y tamaño máximo de 2048 KB.
-        ];
-
-        // Validar la petición según las reglas definidas.
-        $validator = Validator::make($request->all(), $rules);
-
-        // Si la validación falla, redirige de vuelta al formulario con los errores y los datos introducidos por el usuario.
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Existe un error en el formulario.');
-        }
-
-        // Manejar el archivo 'formatuser' (Word o PDF).
-        $formatuserPath = null;
-        if ($request->hasFile('formatuser') && $request->file('formatuser')->isValid()) {
-            $file = $request->file('formatuser');
-            // Mueve el archivo a la carpeta pública 'images/archivos' y guarda el nombre del archivo.
-            $formatuserPath = $file->storeAs('images/archivos', $file->getClientOriginalName(), 'public');
-        } else {
-            return redirect()->back()->withInput()->with('error', 'El archivo formatuser no es válido.');
-        }
-
-        // Array para almacenar los nombres de las imágenes.
-        $imageNames = [];
-
-        // Procesa cada archivo de imagen (si existe).
-        foreach (['photocopy', 'receipt', 'sisben', 'support'] as $file) {
-            if ($request->hasFile($file)) {
-                $image = $request->file($file);
-                // Genera un nombre único para el archivo usando el tiempo actual y la extensión del archivo.
-                $imageName = time() . '_' . $image->getClientOriginalName();
-                // Mueve la imagen a la carpeta pública 'images/apoyos'.
-                $image->storeAs('images/apoyos', $imageName, 'public');
-                // Guarda el nombre del archivo en el array.
-                $imageNames[$file] = $imageName;
-            }
-        }
-
-        // Crear un nuevo registro en la base de datos con los datos del formulario.
-        Apoyos::create([
-            'apoyo_id' => $request->input('apoyo_id'), // Asegúrate de incluir el campo 'apoyo_id'
-            'user_id' => auth()->id(), // Obtiene el ID del usuario autenticado.
-            'formatuser' => $formatuserPath, // Ruta del archivo Word o PDF.
-            'photocopy' => $imageNames['photocopy'] ?? null, // Nombre de la imagen 'photocopy' o null si no se subió.
-            'receipt' => $imageNames['receipt'] ?? null, // Nombre de la imagen 'receipt' o null si no se subió.
-            'sisben' => $imageNames['sisben'] ?? null, // Nombre de la imagen 'sisben' o null si no se subió.
-            'support' => $imageNames['support'] ?? null, // Nombre de la imagen 'support' o null si no se subió.
+        // Validación de los datos
+        $validatedData = $request->validate([
+            'apoyo_id' => 'required|exists:apoyos_createds,id',
+            'formatuser' => 'required|file|mimes:pdf,doc,docx',
+            'photocopy' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'receipt' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'sisben' => 'required|image|mimes:jpeg,png,jpg,gif',
+            'support' => 'nullable|image|mimes:jpeg,png,jpg,gif',
         ]);
+    
+        // Manejo de archivos
+        $formatuserPath = $this->uploadFile($request, 'formatuser', 'public/files/apoyoimg/archivos');
+        $photocopyPath = $this->uploadFile($request, 'photocopy', 'public/files/apoyoimg/imgs');
+        $receiptPath = $this->uploadFile($request, 'receipt', 'public/files/apoyoimg/imgs');
+        $sisbenPath = $this->uploadFile($request, 'sisben', 'public/files/apoyoimg/imgs');
+        $supportPath = $this->uploadFile($request, 'support', 'public/files/apoyoimg/imgs');
+    
+        // Creación del registro
+        Apoyos::create([
+            'apoyo_id' =>  $validatedData['apoyo_id'],
+            'user_id' =>  auth()->id(),
+            'formatuser' => $formatuserPath,
+            'photocopy' => $photocopyPath,
+            'receipt' => $receiptPath,
+            'sisben' => $sisbenPath,
+            'support' => $supportPath,
+        ]);
+    
+        // Redirección o respuesta
+        return redirect()->route('apoyos-sostenimiento')->with('success', 'Datos guardados correctamente.');
+    }
 
-        // Establece un mensaje de éxito en la sesión y redirige a la ruta 'form-inscription-supports'.
-        session()->flash('success', 'Inscripción exitosa.');
-        return redirect()->route('formulario_p', ['apoyo_id' => $request->input('apoyo_id')]);
+    private function uploadFile(Request $request, $fieldName, $destination)
+    {
+        if ($request->hasFile($fieldName) && $request->file($fieldName)->isValid()) {
+            $fileName = time() . '_' . $request->file($fieldName)->getClientOriginalName();
+            $request->file($fieldName)->storeAs( $destination, $fileName);
+            return $fileName;
+        }
+    
+        return null;
     }
 
     public function index()
     {
-        // Obtiene todos los registros de la tabla 'Apoyos_created'
-        $apoyos_created = Apoyos_created::with('tipoApoyo')->get(); // Asegúrate de cargar la relación si es necesario
-
-        // Obtiene todos los registros de la tabla 'tipos_apoyos'
+        // Carga las aperturas de inscripciones junto con sus inscripciones y tipo de apoyo
+        $apoyos_created = Apoyos_created::with(['tipoApoyo'])->get();
+    
+        // Carga todos los tipos de apoyos
         $tipos_apoyos = tipos_apoyos::all();
-        // Devuelve la vista 'apoyosCCcrud.apoyosCC' con la variable 'apoyos_created' disponible para la vista.
-        // 'compact' crea un array asociativo con la variable 'apoyos_created' para pasarla a la vista.
-        return view('apoyosCCcrud.apoyosCC', compact('apoyos_created', 'tipos_apoyos'));
+        $apoyos_datos = Apoyos::all();
+        // Devuelve la vista con los datos
+        return view('apoyosCCcrud.apoyosCC', compact('apoyos_created', 'tipos_apoyos','apoyos_datos'));
     }
 
     public function store(Request $request)
@@ -136,17 +119,7 @@ class ApoyosCreatedController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'tipo_apoyo_id' => 'required|exists:tipos_apoyos,id',
-            'appoiment_date_start' => [
-                'required',
-                'date_format:Y-m-d', // Formato de fecha requerido
-                // Validación personalizada para asegurar que la fecha no sea en el pasado
-                function ($attribute, $value, $fail) {
-                    $today = now()->format('Y-m-d');
-                    if ($value < $today) {
-                        $fail('La fecha ingresada debe ser hoy o una fecha futura.');
-                    }
-                },
-            ],
+            'appoiment_date_start' => 'required|date|after_or_equal:today',
             'appoiment_date_end' => 'required|date|after_or_equal:appoiment_date_start',
         ]);
     
@@ -171,7 +144,7 @@ class ApoyosCreatedController extends Controller
     
         return redirect()->route('apoyosCreated.index')->with('success', 'Apoyo actualizado exitosamente.');
     }
-    
+
     public function show($id)
     {
         // Busca el registro en la tabla 'Apoyos_created' con el ID proporcionado.
@@ -225,7 +198,19 @@ class ApoyosCreatedController extends Controller
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 1)->first();
         // Establece la zona horaria a Colombia
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
-
+    
+        // Obtiene el usuario autenticado
+        $user = Auth::user();
+    
+        // Verifica si el apoyo y el usuario están disponibles
+        $inscrito = false;
+        if ($apoyo && $user) {
+            // Verifica si el usuario ya está inscrito en este apoyo
+            $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
+                            ->where('user_id', $user->id)
+                            ->exists();
+        }
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
             // Define las fechas de apertura y clausura con hora
@@ -243,6 +228,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
                 'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
                 'mostrarBoton' => $mostrarBoton,
+                'inscrito' => $inscrito,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
@@ -253,6 +239,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => null,
                 'fecha_clausura' => null,
                 'mostrarBoton' => false,
+                'inscrito' => $inscrito,
             ]);
         }
     }
@@ -270,8 +257,8 @@ class ApoyosCreatedController extends Controller
         if ($apoyo && $user) {
             // Verifica si el usuario ya está inscrito en este apoyo
             $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
-                              ->where('user_id', $user->id)
-                              ->exists();
+                            ->where('user_id', $user->id)
+                            ->exists();
         }
     
         // Establece la zona horaria a Colombia
@@ -316,6 +303,16 @@ class ApoyosCreatedController extends Controller
 
         // Establece la zona horaria a Colombia
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
+        // Obtiene el usuario autenticado
+        $user = Auth::user();
+        $inscrito = false;
+        if ($apoyo && $user) {
+            // Verifica si el usuario ya está inscrito en este apoyo
+            $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
+                            ->where('user_id', $user->id)
+                            ->exists();
+        }
+
 
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
@@ -334,6 +331,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
                 'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
                 'mostrarBoton' => $mostrarBoton,
+                'inscrito' => $inscrito,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
@@ -344,6 +342,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => null,
                 'fecha_clausura' => null,
                 'mostrarBoton' => false,
+                'inscrito' => $inscrito,
             ]);
         }
     }
@@ -354,7 +353,15 @@ class ApoyosCreatedController extends Controller
         $apoyo = Apoyos_created::where('tipo_apoyo_id', 4)->first();
         // Establece la zona horaria a Colombia
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
-
+        // Obtiene el usuario autenticado
+        $user = Auth::user();
+        $inscrito = false;
+        if ($apoyo && $user) {
+            // Verifica si el usuario ya está inscrito en este apoyo
+            $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
+                            ->where('user_id', $user->id)
+                            ->exists();
+        }
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
             // Define las fechas de apertura y clausura con hora
@@ -372,6 +379,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
                 'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
                 'mostrarBoton' => $mostrarBoton,
+                'inscrito' => $inscrito,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
@@ -382,6 +390,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => null,
                 'fecha_clausura' => null,
                 'mostrarBoton' => false,
+                'inscrito' => $inscrito,
             ]);
         }
     }
@@ -393,7 +402,15 @@ class ApoyosCreatedController extends Controller
 
         // Establece la zona horaria a Colombia
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
-
+        // Obtiene el usuario autenticado
+        $user = Auth::user();
+        $inscrito = false;
+        if ($apoyo && $user) {
+            // Verifica si el usuario ya está inscrito en este apoyo
+            $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
+                            ->where('user_id', $user->id)
+                            ->exists();
+        }
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
             // Define las fechas de apertura y clausura con hora
@@ -411,6 +428,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
                 'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
                 'mostrarBoton' => $mostrarBoton,
+                'inscrito' => $inscrito,
             ]);
         } else {
             // Si el registro no existe, pasar datos vacíos a la vista
@@ -421,6 +439,7 @@ class ApoyosCreatedController extends Controller
                 'fecha_apertura' => null,
                 'fecha_clausura' => null,
                 'mostrarBoton' => false,
+                'inscrito' => $inscrito,
             ]);
         }
     }
@@ -445,5 +464,42 @@ class ApoyosCreatedController extends Controller
             'inscrito' => $inscrito
         ]);
     }
+
+    public function getFile($category, $filename)
+    {
+        // Verifica si el usuario está autenticado
+        if (!Auth::check()) {
+            abort(403, 'Unauthorized');
+        }
     
+        // Define las rutas para archivos y para imágenes
+        $paths = [
+            'archivos' => 'public/files/apoyoimg/archivos',
+            'imgs' => 'public/files/apoyoimg/imgs',
+        ];
+    
+        // Verifica si la categoría es válida
+        if (!array_key_exists($category, $paths)) {
+            abort(404, 'Category not found');
+        }
+    
+        // Define la ruta base según la categoría
+        $path = $paths[$category];
+    
+        // Verifica si el archivo existe
+        if (Storage::exists($path . '/' . $filename)) {
+            // Detecta el tipo de archivo
+            $mimeType = Storage::mimeType($path . '/' . $filename);
+    
+            // Devuelve el archivo con el encabezado Content-Disposition configurado para inline
+            return Storage::response($path . '/' . $filename, $filename, [
+                'Content-Disposition' => 'inline; filename="' . $filename . '"',
+                'Content-Type' => $mimeType
+            ]);
+        } else {
+            // Retorna un error 404 si el archivo no existe
+            abort(404, 'File not found');
+        }
+    }
+
 }
