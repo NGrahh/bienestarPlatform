@@ -367,7 +367,7 @@ Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.up
 Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
 
 
-Route::get('files/eventoimg/imgs/{image}', [EventsController::class, 'getImage'])->name('getImage')->middleware('auth');
+Route::get('files/eventoimg/imgs/{image}', [EventsController::class, 'getImage'])->name('getImage');
 
 
 

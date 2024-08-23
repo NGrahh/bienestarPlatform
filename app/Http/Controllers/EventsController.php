@@ -19,7 +19,7 @@ class EventsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent','viewEventUser','showRegistrations','register','disable']);
+        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'home','viewevent','viewEventUser','showRegistrations','register','disable','getImage']);
     }
 
     private $daysOfWeek = [
@@ -183,14 +183,14 @@ class EventsController extends Controller
 
     public function index()
     {
-        // Recupera todos los eventos de la base de datos.
-        $events = Events::all();
+        // Recupera todos los eventos de la base de datos ordenados por la fecha de creación en orden ascendente.
+        $events = Events::orderBy('id', 'asc')->get();
     
         // Pasa los eventos a la vista 'eventoscrud.index' para su visualización.
         // La variable 'events' estará disponible en la vista con todos los eventos recuperados.
         return view('eventoscrud.index', compact('events'));
     }
-
+    
     public function create()
     {
         // Muestra el formulario para crear un nuevo evento.
@@ -303,10 +303,11 @@ class EventsController extends Controller
             'eventname' => 'required|string|between:2,100',
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'eventdate' => 'required|date|after_or_equal:today',
+            'place' => 'required|string|between:2,500',
             'eventlimit' => 'required|numeric|digits_between:1,1000',
             'datestar' => 'required|date|after_or_equal:today',
             'dateendevent' => 'required|date|after_or_equal:datestar',
-            'Subjectevent' => 'required|string|between:2,4000'
+            'Subjectevent' => 'required|string'
         ]);
     
         // Si la validación falla, redirige de vuelta con los errores y los datos ingresados
@@ -344,6 +345,7 @@ class EventsController extends Controller
         $inputData = [
             'eventname' => $request->get('eventname'),
             'picture' => $imageName,
+            'place' => $request->get('place'),
             'eventdate' => $request->get('eventdate'),
             'eventlimit' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),

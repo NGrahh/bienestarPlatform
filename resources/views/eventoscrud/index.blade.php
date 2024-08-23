@@ -104,7 +104,7 @@
                                                                             <div class="col-12 text-center">
                                                                                 <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
                                                                                 <div class="mb-3 image-container">
-                                                                                    <img src="{{ route('getImage', ['image' => $event->picture]) }}" alt="Imagen actual del evento" class="img-fluid">
+                                                                                    <img src="{{ route('getImage', ['image' => $event->picture]) }}" alt="Imagen actual del evento" class="img-fluid rounded">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="row mt-4">
@@ -115,7 +115,7 @@
                                                                                 </div>
                                                                                 <div class="col-6">
                                                                                     <label for="place" class="form-label"><strong>Ubicación evento</strong> </label>
-                                                                                    <input value="{{ $event->eventname }}" type="text" name="place" class="form-control" id="place" disabled>
+                                                                                    <input value="{{ $event->place }}" type="text" name="place" class="form-control" id="place" disabled>
                                                                                 </div>
                                                                             
                                                                             </div>
@@ -196,7 +196,7 @@
                                                                                 @enderror
                                                                             </div>
                                                                             <div class="col-6">
-                                                                                <label for="place" class="form-label"><strong>Nombre del evento</strong></label>
+                                                                                <label for="place" class="form-label"><strong>Ubicación del evento</strong></label>
                                                                                 <input value="{{ $event->place }}" type="text" name="place" class="form-control" id="place" required>
                                                                                 <div class="invalid-feedback">Ingrese el nombre del evento.</div>
                                                                                 @error('place')
@@ -224,8 +224,8 @@
 
                                                                             <div class="col-12 text-center">
                                                                                 <label for="picture" class="form-label"><strong>Foto del evento</strong></label>
-                                                                                <div class="mb-3 image-container">
-                                                                                    <img src="{{ route('getImage', ['image' => $event->picture]) }}" alt="Imagen del evento" class="img-fluid">
+                                                                                <div class="mb-3 image-container ">
+                                                                                    <img src="{{ route('getImage', ['image' => $event->picture]) }}" alt="Imagen del evento" class="img-fluid rounded">
 
 
                                                                                 </div>
