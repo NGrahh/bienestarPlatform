@@ -345,6 +345,7 @@ Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.de
 
 Route::patch('/users/{id}/disable', [UserController::class, 'disable'])->name('users.disable');
 
+Route::post('import', [UserController::class, 'import'])->name('import');
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////// (Rutas), Visualización eventos ///////////////////////////

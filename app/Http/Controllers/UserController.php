@@ -2,17 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Roles;
-use App\Models\TypeDimensions;
-use App\Models\TypeDocuments;
-use App\Models\typeRh;
-use App\Models\User;
-use App\Models\Programas;
+// Laravel Framework imports
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth as AuthFacade;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+
+// Model imports
+use App\Models\Roles;
+use App\Models\TypeDimensions;
+use App\Models\TypeDocuments;
+use App\Models\TypeRh;
+use App\Models\User;
+use App\Models\Programas;
+
+// Import Excel's
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
+
+
 
 class UserController extends Controller
 {
@@ -293,5 +302,33 @@ class UserController extends Controller
         // Concatena las iniciales y las almacena en el campo user_name sin espacios
         return $nameInitials . $lastnameInitials;
     }
+
+
+    public function importForm()
+    {
+        return view('import');
+    }
+
+    public function import(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|file|mimes:xlsx,csv',
+        ]);
+    
+        try {
+            Excel::import(new UsersImport, $request->file('file'));
+    
+            return redirect()->route('users.index')->with('success', 'Importación realizada con éxito.');
+        } catch (\Throwable $e) {
+            return redirect()->route('users.index')->with('error', 'Hubo un problema con el archivo: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            return redirect()->route('users.index')->with('error', 'Hubo un error inesperado: ' . $e->getMessage());
+        }
+    }
+    
+
+
+
+
 
 }

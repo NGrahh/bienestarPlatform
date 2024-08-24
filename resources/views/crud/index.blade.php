@@ -459,6 +459,55 @@
                                 </div>
                                 <!-- Fin del modal de creación para usuario-->
 
+                                <!-- Botón para abrir el modal de creación nuevo usuario -->
+                                <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#importuser" >
+                                    Importar Usuarios
+                                </button>
+
+                                <!-- Modal de creación para usuario -->
+                                <div class="modal fade" id="importuser" tabindex="-1">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="card-title-ba text-center pb-0 fs-4">Importar Usuarios</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                                            </div>
+                                            <div class="modal-body">
+
+                                                <div class="card-body">
+                                                    <div class="pt-2 pb-2">
+                                                        <h5 class="text-center card-title-ba-azul">Anexe el archvio Excel para importar los datos</h5>
+                                                    </div>
+                                                    
+                                                    <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                                                        @csrf
+                                                        {{-- <input type="file" name="file"  /> --}}
+                                                        
+
+                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5">
+                                                            <label for="importuser" class="form-label"><strong>Archivo Excel</strong></label>
+                                                            <input type="file" name="file" class="form-control" id="importuser" accept=".xlsx,.csv" required>
+                                                            <div class="invalid-feedback">Ingrese un archivo.</div>
+                                                            @error('file')
+                                                            <li class="text-danger">{{ $message }}</li>
+                                                            @enderror
+                                                        </div>
+                                                        {{-- <button type="submit" class="btn btn-ba">Importar</button> --}}
+                                                        <div class="modal-footer d-flex justify-content-center gap-2 ">
+                                                            <button type="submit" class="btn btn-ba px-2 mt-4">Importar usuario</button>
+                                                            <button type="button" class="btn btn-secondary mt-4" data-bs-dismiss="modal">Cerrar</button>
+                                                        </div>
+
+
+                                                    </form>
+                                                    
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Fin del modal de creación para usuario-->
                             </div>
 
                         </div>
@@ -471,5 +520,5 @@
 
 </main>
 
-@include('layouts.footer')
+@include('layouts.footer')import.form
 @endsection
