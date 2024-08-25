@@ -8,35 +8,47 @@ use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\ValidationException;
 
-class UsersImport implements ToModel, WithValidation
+class UsersImport implements ToModel, WithValidation, WithHeadingRow
 {
     use Importable;
 
     public function model(array $row)
     {
+        DB::beginTransaction();
+
         try {
+            $tipoDocumentoId = $this->obtenerTipoDocumento($row['tipo_documento']);
             $codigoContrasena = $this->generarCodigoContrasena();
+            $rolUsuarioId = $this->obtenerTipoRol($row['rol']);
+            $programaUsuario = $row['programa_de_formacion'] ? $this->obtenerProgramaFormacion($row['programa_de_formacion']) : null;
+            $tipoRhUsuario = $this->obtenerTipoRH($row['tipo_sangre']);
+            // Si 'tipo_dimension' no está en la fila o es nulo, se asigna null
+            $tipoDimensionUsuario = !empty($row['tipo_dimension']) ? $this->obtenerDimensionUsuario($row['tipo_dimension']) : null;
+
             $user = User::create([
-                'name' => $row[0],
-                'lastname' => $row[1],
-                'user_name' => $this->setUserNameAttribute($row[0], $row[1]),
-                'type_document_id' => $row[2],
-                'type_dimensions_id' => $row[3],
-                'document' => $row[4],
-                'email' => $row[5],
-                'numberphone' => $row[6],
-                'type_rh_id' => $row[7],
-                'rol_id' => $row[8],
-                'Program_id' => $row[9],
-                'yourToken' => $row[10],
+                'name' => $row['nombres'],
+                'lastname' => $row['apellidos'],
+                'user_name' => $this->setUserNameAttribute($row['nombres'], $row['apellidos']),
+                'type_document_id' => $tipoDocumentoId,
+                'type_dimensions_id' => $tipoDimensionUsuario,
+                'document' => $row['numero_de_documento'],
+                'email' => $row['correo'],
+                'numberphone' => $row['telefono'],
+                'type_rh_id' => $tipoRhUsuario,
+                'rol_id' => $rolUsuarioId,
+                'Program_id' => $programaUsuario,
+                'yourToken' => $row['ficha'],
                 'status' => true,
                 'password' => Hash::make($codigoContrasena),
             ]);
 
             $dataUser = [
-                'name_user' => $row[0],
-                'surnames_user' => $row[1], 
+                'name_user' => $row['nombres'],
+                'surnames_user' => $row['apellidos'],
                 'password' => $codigoContrasena,
             ];
 
@@ -45,9 +57,19 @@ class UsersImport implements ToModel, WithValidation
                 $message->to($user->email)->subject('Notificación: Creación de usuario');
             });
 
+            DB::commit();
+
             return $user;
+        } catch (ValidationException $e) {
+            $errores = $e->validator->errors();
+            $erroresDetallados = [];
+            foreach ($errores->messages() as $campo => $mensaje) {
+                $erroresDetallados[] = "Error en el campo '$campo': " . implode(', ', $mensaje);
+            }
+            $erroresDetallados = implode(' | ', $erroresDetallados);
+            throw new \Exception("Errores de validación en la fila: {$erroresDetallados}");
         } catch (\Exception $e) {
-            // Manejo del error, puedes registrar el error o devolver un mensaje adecuado
+            DB::rollBack();
             throw new \Exception("Error al procesar la fila: " . $e->getMessage());
         }
     }
@@ -55,17 +77,17 @@ class UsersImport implements ToModel, WithValidation
     public function rules(): array
     {
         return [
-            '0' => 'required|string|between:2,100',
-            '1' => 'required|string|between:2,100',
-            '2' => 'required|numeric',
-            '3' => 'required|numeric',
-            '4' => 'required|numeric|digits_between:8,15|unique:users,document',
-            '5' => 'required|string|email|max:100|unique:users,email',
-            '6' => 'required|numeric|digits_between:8,15|unique:users,numberphone',
-            '7' => 'required|numeric',
-            '8' => 'required|numeric',
-            '9' => 'required_if:8,5|numeric',
-            '10' => 'required_if:8,5|numeric|digits_between:7,12',
+            'nombres' => 'required|string|between:2,100',
+            'apellidos' => 'required|string|between:2,100',
+            'tipo_documento' => 'required|string',
+            'numero_de_documento' => 'required|numeric|digits_between:8,15|unique:users,document',
+            'correo' => 'required|string|email|max:100|unique:users,email',
+            'telefono' => 'required|numeric|digits_between:8,15|unique:users,numberphone',
+            'rol' => 'required|string',
+            'programa_de_formacion' => 'required_if:rol,5|string',
+            'ficha' => 'required_if:rol,5|numeric|digits_between:7,12',
+            'tipo_sangre' => 'required|string',
+            'tipo_dimension' => 'nullable|string',
         ];
     }
 
@@ -80,5 +102,70 @@ class UsersImport implements ToModel, WithValidation
         $lastnameInitials = strtolower(substr($lastname, 0, 2));
 
         return $nameInitials . $lastnameInitials;
+    }
+
+    private function obtenerTipoDocumento($tipoDocumento)
+    {
+        $id = DB::table('type_documents')
+            ->where('name', $tipoDocumento)
+            ->value('id');
+
+        if ($id === null) {
+            throw new \Exception("Tipo de documento no encontrado: " . $tipoDocumento);
+        }
+
+        return $id;
+    }
+
+    private function obtenerTipoRol($rolUsuario)
+    {
+        $id = DB::table('roles')
+            ->where('name', $rolUsuario)
+            ->value('id');
+
+        if ($id === null) {
+            throw new \Exception("Rol de usuario no encontrado: " . $rolUsuario);
+        }
+
+        return $id;
+    }
+
+    private function obtenerProgramaFormacion($programaUsuario)
+    {
+        $id = DB::table('programas')
+            ->where('name', $programaUsuario)
+            ->value('id');
+
+        if ($id === null) {
+            throw new \Exception("Programa de formación no encontrado: " . $programaUsuario);
+        }
+
+        return $id;
+    }
+
+    private function obtenerTipoRH($tipoRh)
+    {
+        $id = DB::table('type_rhs')
+            ->where('name', $tipoRh)
+            ->value('id');
+
+        if ($id === null) {
+            throw new \Exception("Tipo de RH no encontrado: " . $tipoRh);
+        }
+
+        return $id;
+    }
+
+    private function obtenerDimensionUsuario($tipoDimensions)
+    {
+        $id = DB::table('type_dimensions')
+            ->where('name', $tipoDimensions)
+            ->value('id');
+
+        if ($id === null) {
+            throw new \Exception("Dimensión del usuario no encontrada: " . $tipoDimensions);
+        }
+
+        return $id;
     }
 }
