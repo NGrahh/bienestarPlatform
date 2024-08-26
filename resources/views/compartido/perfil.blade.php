@@ -59,18 +59,17 @@
                                         <div class="col-lg-12 col-md-4  d-evento"><strong>Nombre completo: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->name }} {{ Auth::user()->perfil->user->lastname }}</div>
                                     </div>
-
-                                    <div class="col-lg-12 col-md-4 d-evento "><strong>Sobre mi: </strong></div>
-                                    <p class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->about_me }}</p>
-
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-4 d-evento "><strong>Sobre mi: </strong></div>
+                                        <p class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->about_me }}</p>
+                                    </div>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-4 d-evento"><strong>Rol: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->role->name }}</div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-lg-12 col-md-4 d-evento"><strong>Teléfono: </strong></div>
-                                        <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->phone_number }}</div>
+                                        <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->numberphone }}</div>
                                     </div>
 
                                     <div class="row">
@@ -78,7 +77,7 @@
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->email }}</div>
                                     </div>
                                     
-                                    <div class="row mb-3">
+                                    {{-- <div class="row mb-3">
                                         <div class="col-lg-6 col-md-6 d-evento">
                                             <strong>Inicio de la mañana:</strong>
                                             <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
@@ -106,7 +105,7 @@
                                                 {{ Auth::user()->perfil->afternoon_end ?? 'No establecido' }}
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                     
                                 @endif
                                 
@@ -121,7 +120,7 @@
                                     <div class="row mb-3 ">
                                         <label for="name" class="col-md-4 col-lg-3 form-label">Nombre completo</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="name" type="text" class="form-control" id="name" value="{{session('name')}} {{session('lastname')}}" required disabled>
+                                            <input name="name" type="text" class="form-control" id="name" value="{{session('name')}} {{session('lastname')}}" disabled>
                                         </div>
 
                                     </div>
@@ -132,22 +131,24 @@
                                         <label for="rol_id" class="col-md-4 col-lg-3 form-label">Rol</label>
                                         <div class="col-md-8 col-lg-9">
                                             @if(Auth::check() && Auth::user()->role)
-                                            <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}" required disabled>
+                                            <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}"disabled>
                                             @else
                                                 <h3>Rol no asignado</h3>
                                             @endif
                                             
                                         </div>
                                     </div>
+                                    <div class="row mb-3">
+                                        <label for="numberphone" class="col-md-4 col-lg-3 form-label">Teléfono</label>
+                                        <div class="col-md-8 col-lg-9">
+                                            <input name="numberphone" type="text" class="form-control" id="numberphone" value="{{ Auth::user()->numberphone }}"  disabled>
 
-                            
-
-                                    
-
+                                        </div>
+                                    </div>
                                     <div class="row mb-3">
                                         <label for="email" class="col-md-4 col-lg-3 form-label">Correo electrónico</label>
                                         <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="email" value="{{session('email')}}" disabled required>
+                                            <input name="email" type="email" class="form-control" id="email" value="{{session('email')}}" disabled >
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -171,16 +172,7 @@
                                         <li class="text-danger">{{ $message }}</li>
                                         @enderror
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="phone_number" class="col-md-4 col-lg-3 form-label">Teléfono</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="phone_number" type="text" class="form-control" id="phone_number" value="{{old('phone_number')}}">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese un telefono de contacto.</div>
-                                        @error('phone_number')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
+                                    
                                     <div class="row mb-3">
                                         <label for="Twitter_Profile" class="col-md-4 col-lg-3 form-label">Twitter</label>
                                         <div class="col-md-8 col-lg-9">
@@ -202,7 +194,7 @@
                                         <li class="text-danger">{{ $message }}</li>
                                         @enderror
                                     </div>
-                                    <strong><h5 class="card-title">Por favor, ingrese los horarios de inicio y fin para ambas jornadas (mañana y tarde).</h5></strong> 
+                                    {{-- <strong><h5 class="card-title">Por favor, ingrese los horarios de inicio y fin para ambas jornadas (mañana y tarde).</h5></strong> 
 
                                     <div class="row mb-3">
                                         <div class="col-lg-6 col-md-6">
@@ -240,10 +232,10 @@
                                             @enderror
                                         </div>
                                         
-                                    </div>
+                                    </div> --}}
 
 
-                                    <div class="row mb-3">
+                                    {{-- <div class="row mb-3">
                                         <div class="col-lg-3 col-md-4"></div>
                                         <div class="col-lg-9 col-md-8">
                                             <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
@@ -251,10 +243,10 @@
                                             <li class="text-danger">{{ $message }}</li>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="text-center">
-                                        <button type="submit" class="btn btn-ba">Guardar    Perfil</button>
+                                        <button type="submit" class="btn btn-ba">Guardar Perfil</button>
                                     </div>
                                 </form>
                             </div>

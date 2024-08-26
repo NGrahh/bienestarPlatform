@@ -21,12 +21,8 @@
                     <div class="card-body">
                         <div align="center" class="pt-4 pb-2">
                             <div class="col-12 col-sm-6">
-                                <div class="card bg-transparent h-100 mb-3 border-0 shadow-none">
-                                    <div align="justify" class="card-body">
-                                        <div class="pt-4 pb-2">
-                                            <img style="max-width: 100%; margin-left:50px;" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="Bienestar al Aprendiz">
-                                        </div>
-                                    </div>
+                                <div class="d-flex justify-content-center align-items-center pt-2">
+                                    <img style="max-width: 100%;" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="Bienestar al Aprendiz">
                                 </div>
                             </div>
 
@@ -163,60 +159,57 @@
                                     <h1>Conoce nuestro equipo!</h1>
                             </div><!-- End Page Title -->
                         
-                            <div class="col-12 col-lg-8 mt-5">
-                                <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
-                                    <div class="carousel-indicators">
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="6" aria-label="Slide 7"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="7" aria-label="Slide 8"></button>
-                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="8" aria-label="Slide 9"></button>
-                                    </div>
-                                    <div class="carousel-inner">
-                                        <div class="carousel-item active">
-                                            <img src="{{asset('img/BIENESTAR_EQUIPO.jpg')}}" class="d-block h-100 w-100" alt="Equipo Bienestar al Aprendiz">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/Beatriz.png')}}" class="d-block h-100 w-100" alt="Beatriz">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/Juan.png')}}" class="d-block h-100 w-100" alt="Juan">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/Carolina.png')}}" class="d-block h-100 w-100" alt="Carolina">
-                                        </div>
-                                        {{-- ///// --}}
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/JuanSantos.png')}}" class="d-block h-100 w-100" alt="Juan Santos">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/Juliana.png')}}" class="d-block h-100 w-100" alt="Juliana">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/Andres.png')}}" class="d-block h-100 w-100" alt="Andres">
-                                        </div>
-                                        <div class="carousel-item">
-                                            <img src="{{asset('img/Natalia.png')}}" class="d-block h-100 w-100" alt="Natalia">
-                                        </div>
-                                    </div>
+                            
+                            <div class="row">
 
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
 
-                                </div><!-- End Slides with indicators -->
+                                
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/RogerSail.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Roger" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/Beatriz.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#BeatrizUserModal" title="Beatriz" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/JuanCarlos.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juan" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/Natalia.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Natalia" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/Laura.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Laura" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/Carolina.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Carolina" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/Andres.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Andres" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                </div>
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/Juliana.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juliana" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <img src="{{asset('img/Bienestar/JuanC.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="JuanC " style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                </div>
+                                
+
+
+
+                                
+
+
+
+
+
                             </div>
-
-
+                            <div class="col-12 col-lg-12 mt-5">
+                                <div class="image-wrapper">
+                                    <img src="{{asset('img/Nuevo-Equipo.jpg')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow">
+                                </div>
+                            </div>
+                            
 
 
                         </div>

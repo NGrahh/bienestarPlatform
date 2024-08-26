@@ -125,7 +125,7 @@ class UserController extends Controller
             
             // Identificación
             'type_document_id' => 'required|string', // Tipo de documento
-            'type_dimensions_id' => 'required|string', // Tipo Dimensión
+            'type_dimensions_id' => 'nullable|string', // Tipo Dimensión
             'document' => 'required|numeric|unique:users|digits_between:8,15', // Número del documento
             
             // Contacto

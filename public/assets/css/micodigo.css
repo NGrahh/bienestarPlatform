@@ -722,3 +722,49 @@ p {
     -moz-box-shadow: 2px 3px 9px 7px rgba(102,102,102,1);
     box-shadow: 2px 3px 9px 7px rgba(102,102,102,1);
 }
+
+
+
+/* Sombra inicial */
+.img-with-shadow {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.644);
+    transition: box-shadow 0.3s ease-in-out; /* Suaviza la transición */
+}
+
+/* Sombra azul al pasar el mouse */
+.img-with-shadow:hover {
+    box-shadow: 0px 0px 40px rgb(21, 21, 107);
+}
+
+
+
+
+
+
+.img-with-shadow-green{
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.644);
+    transition: box-shadow 0.3s ease-in-out; /* Suaviza la transición */
+}
+.img-with-shadow-green:hover {
+    box-shadow: 0px 0px 40px rgb(47, 190, 11);
+}
+
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.custom-img-shadow {
+    width: 800px;
+    height: auto;
+    display: block;
+    border-radius: 5px;
+    box-shadow: 10px 10px 20px rgba(128, 128, 128, 0.6); /* Sombra gris */
+    transition: box-shadow 0.3s ease;
+}
+
+.image-wrapper:hover .custom-img-shadow {
+    box-shadow: 10px 10px 20px rgba(0, 255, 0, 0.6), 10px -10px 20px rgba(0, 0, 255, 0.6), -10px 10px 20px rgba(0, 255, 0, 0.6), -10px -10px 20px rgba(0, 0, 255, 0.6);
+    /* Sombra verde y azul en los cuatro lados */
+}

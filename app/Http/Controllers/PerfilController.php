@@ -65,13 +65,12 @@ class PerfilController extends Controller
         $validator = Validator::make($request->all(), [
             'pictureuser' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'about_me' => 'required|string|between:2,300',
-            'phone_number' => 'required|string|max:15',
             'Twitter_Profile' => 'required|url|max:255',
             'Linkedin_Profile' => 'required|url|max:255',
-            'morning_start' => ['nullable', 'date_format:H:i', new ValidHour],
-            'morning_end' => ['nullable', 'date_format:H:i', new ValidHour],
-            'afternoon_start' => ['nullable', 'date_format:H:i', new ValidHour],
-            'afternoon_end' => ['nullable', 'date_format:H:i', new ValidHour],
+            // 'morning_start' => ['nullable', 'date_format:H:i', new ValidHour],
+            // 'morning_end' => ['nullable', 'date_format:H:i', new ValidHour],
+            // 'afternoon_start' => ['nullable', 'date_format:H:i', new ValidHour],
+            // 'afternoon_end' => ['nullable', 'date_format:H:i', new ValidHour],
         ]);
 
         // Comprobar si hay errores de validación
@@ -96,13 +95,12 @@ class PerfilController extends Controller
             'user_id' => $userId,
             'pictureuser' => $imageName, // Guardar solo el nombre de la imagen
             'about_me' => $request->get('about_me'),
-            'phone_number' => $request->get('phone_number'),
             'Twitter_Profile' => $request->get('Twitter_Profile'),
             'Linkedin_Profile' => $request->get('Linkedin_Profile'),
-            'morning_start' => $request->get('morning_start'),
-            'morning_end' => $request->get('morning_end'),
-            'afternoon_start' => $request->get('afternoon_start'),
-            'afternoon_end' => $request->get('afternoon_end'),
+            // 'morning_start' => $request->get('morning_start'),
+            // 'morning_end' => $request->get('morning_end'),
+            // 'afternoon_start' => $request->get('afternoon_start'),
+            // 'afternoon_end' => $request->get('afternoon_end'),
         ]);
 
         // Redireccionar con un mensaje de éxito
@@ -123,13 +121,12 @@ class PerfilController extends Controller
         $validator = Validator::make($request->all(), [
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'about_me' => 'required|string|min:2',
-            'phone_number' => 'required|string|max:20',
             'Twitter_Profile' => 'required|string',
             'Linkedin_Profile' => 'required|string',
-            'morning_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
-            'morning_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
-            'afternoon_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
-            'afternoon_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
+            // 'morning_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
+            // 'morning_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
+            // 'afternoon_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
+            // 'afternoon_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
         ]);
 
         if ($validator->fails()) {
@@ -148,14 +145,14 @@ class PerfilController extends Controller
         }
 
         $perfil->update([
+            'picture' =>$imageName,
             'about_me' => $request->input('about_me'),
-            'phone_number' => $request->input('phone_number'),
             'Twitter_Profile' => $request->input('Twitter_Profile'),
             'Linkedin_Profile' => $request->input('Linkedin_Profile'),
-            'morning_start' => $request->input('morning_start'),
-            'morning_end' => $request->input('morning_end'),
-            'afternoon_start' => $request->input('afternoon_start'),
-            'afternoon_end' => $request->input('afternoon_end'),
+            // 'morning_start' => $request->input('morning_start'),
+            // 'morning_end' => $request->input('morning_end'),
+            // 'afternoon_start' => $request->input('afternoon_start'),
+            // 'afternoon_end' => $request->input('afternoon_end'),
         ]);
 
         session()->flash('success', 'Perfil actualizado correctamente.');
@@ -176,13 +173,12 @@ class PerfilController extends Controller
         $validator = Validator::make($request->all(), [
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'about_me' => 'required|string|min:2',
-            'phone_number' => 'required|string|max:20',
             'Twitter_Profile' => 'required|string',
             'Linkedin_Profile' => 'required|string',
-            'morning_start' => ['nullable', 'date_format:H:i:s'],
-            'morning_end' => ['nullable', 'date_format:H:i:s'],
-            'afternoon_start' => ['nullable', 'date_format:H:i:s'],
-            'afternoon_end' => ['nullable', 'date_format:H:i:s'],
+            // 'morning_start' => ['nullable', 'date_format:H:i:s'],
+            // 'morning_end' => ['nullable', 'date_format:H:i:s'],
+            // 'afternoon_start' => ['nullable', 'date_format:H:i:s'],
+            // 'afternoon_end' => ['nullable', 'date_format:H:i:s'],
         ]);
 
         if ($validator->fails()) {
@@ -194,16 +190,22 @@ class PerfilController extends Controller
 
         $perfil = Perfil::where('user_id', $user->id)->firstOrFail();
 
+        if ($request->hasFile('picture')) {
+            $imageName = time() . '.' . $request->picture->extension();
+            $request->picture->move(public_path('images/profile'), $imageName);
+            $perfil->picture = $imageName;
+        }
+
         // Actualizar campos según la solicitud, sin sobrescribir si están vacíos
         $perfil->update([
+            'picture' =>$imageName,
             'about_me' => $request->input('about_me'),
-            'phone_number' => $request->input('phone_number'),
             'Twitter_Profile' => $request->input('Twitter_Profile'),
             'Linkedin_Profile' => $request->input('Linkedin_Profile'),
-            'morning_start' => $request->input('morning_start') ?: $perfil->morning_start,
-            'morning_end' => $request->input('morning_end') ?: $perfil->morning_end,
-            'afternoon_start' => $request->input('afternoon_start') ?: $perfil->afternoon_start,
-            'afternoon_end' => $request->input('afternoon_end') ?: $perfil->afternoon_end,
+            // 'morning_start' => $request->input('morning_start') ?: $perfil->morning_start,
+            // 'morning_end' => $request->input('morning_end') ?: $perfil->morning_end,
+            // 'afternoon_start' => $request->input('afternoon_start') ?: $perfil->afternoon_start,
+            // 'afternoon_end' => $request->input('afternoon_end') ?: $perfil->afternoon_end,
         ]);
 
         session()->flash('success', 'Perfil actualizado correctamente.');
