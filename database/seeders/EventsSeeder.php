@@ -20,6 +20,7 @@ class EventsSeeder extends Seeder
             Events::create([
                 'eventname'    => $faker->sentence(3), // Nombre del evento
                 'place'    => $faker->sentence(3), // Nombre del evento
+                'hour' => $faker->time($format = 'H:i:s'), // Genera una hora en formato 24 horas (ej. 14:30)
                 'picture'      => $faker->imageUrl(400, 400, 'events', true), // URL de una imagen de evento
                 'eventdate'    => $faker->dateTimeBetween('-1 years', '+1 years'), // Fecha del evento
                 'eventlimit'   => $faker->numberBetween(50, 200), // Límite de participantes

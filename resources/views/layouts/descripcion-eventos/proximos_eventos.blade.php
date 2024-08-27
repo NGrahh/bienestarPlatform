@@ -105,6 +105,8 @@
                                                                         <h6>{{ $event->eventdate }}</h6>
                                                                         <p class="d-evento"><strong>Ubicación del Evento: </strong> </p>
                                                                         <h6>{{ $event->place }}</h6>
+                                                                        <p class="d-evento"><strong>Hora del Evento: </strong> </p>
+                                                                        <h6>{{ $event->hour }}</h6>
                                                                         <p class="d-evento"><strong>Aforo Limite: </strong> </p>
                                                                         <h6>{{ $event->eventlimit }}</h6>
                                                                         <p class="d-evento"><strong>Fecha Inicial de Inscripción: </strong> </p>

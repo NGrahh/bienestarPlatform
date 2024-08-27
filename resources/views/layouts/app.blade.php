@@ -92,6 +92,7 @@
     <!-- Scripts personalizados -->
     
     <script src="{{asset('assets/js/indexform.js')}}"></script>
+    <script src="{{asset('assets/js/edit_miembro.js')}}"></script>
     <script src="{{asset('assets/js/function_new_user.js')}}"></script>
     <script src="{{asset('assets/js/function_edit_user.js')}}"></script>
     <script src="{{asset('assets/js/function_register.js')}}"></script>

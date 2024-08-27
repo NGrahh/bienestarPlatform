@@ -12,6 +12,7 @@ class Events extends Model
     protected $fillable = [
         'eventname',
         'picture',
+        'hour',
         'place',
         'eventdate',
         'eventlimit',

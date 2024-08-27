@@ -269,14 +269,12 @@ Route::get('/Nuestras-dimensiones', function(){
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
-//RUTAS FORMULARIO INCRIPCIÓN A APOYOS DE SOSTENIMIENTO /
+//RUTAS FORMULARIO INSCRIPCIÓN A APOYOS DE SOSTENIMIENTO /
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/formulario-inscripcion-apoyos', function(){
     return view ('formularios.apoyos.form-inscription-supports');
 })-> name ('formulario-inscripcion-apoyos');
-
-
 
 Route::get('/formulario-inscripcion-apoyo-alimentacion', function(){
     return view ('formularios\apoyos\form-inscription-supports-food');
@@ -294,36 +292,18 @@ Route::get('/formulario-inscripcion-apoyo-transporte', function(){
     return view ('formularios\apoyos\form-inscription-supports-transport');
 })-> name ('formulario-inscripcion-apoyo-transporte');
 
-
-
-
-// Route::get('/inicial', function(){
-//     return view('layouts.inicio-pagina.inicial');
-// })-> name ('pagina-principal');
-
-// Route::get('/inicial2', function(){
-//     return view('layouts.inicio-pagina.pagina-principal');
-// });
-
 ///////////////////// Error //////////////////////////////
 Route::get('/error', function(){
     return view ('layouts.error.404');
 })-> name ('error');
 
-
-
-
 // Rutas de formularios para inscribirse a los apoyos existentes.
-
 
 //Ruta Formulario INSCRIBIRSE A UN APOYO
 
 Route::get('/form-inscription-supports', function () {
     return view('formularios.apoyos.form-inscription-supports');
 })->name('form-inscription-supports'); 
-
-
-
 
 // Rutas Crud's (Create, Read, Update, Delete)
 
@@ -351,6 +331,7 @@ Route::post('import', [UserController::class, 'import'])->name('import');
 /////////////////////////// (Rutas), Visualización eventos ///////////////////////////
 
 Route::get('/Eventos', [EventsController::class,'viewevent'])->name('events.viewevent')->middleware('auth');
+
 Route::get('/Informacion-eventos', [EventsController::class, 'viewEventUser'])->name('events.viewEventUser');
 
 /////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Eventos ///////////////////////////
@@ -367,16 +348,15 @@ Route::put('/events/{id}', [EventsController::class, 'update'])->name('events.up
 
 Route::patch('/events/{id}/disable', [EventsController::class, 'disable'])->name('events.disable')->middleware('auth');
 
-
 Route::get('files/eventoimg/imgs/{image}', [EventsController::class, 'getImage'])->name('getImage');
-
-
-
 
 // Registrar persona a un EVENTO
 Route::get('/events/{id}/register', [EventsController::class, 'showRegistrationForm'])->name('events.registerForm')->middleware('auth');
+
 Route::post('/events/{event}/register', [EventsController::class, 'register'])->name('events.register')->middleware('auth');
+
 // Ruta para visualizar los inscritos para cada evento
+
 Route::get('/events/{eventId}/registrations', [EventsController::class, 'showRegistrations'])->name('event.registrations')->middleware('auth');
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -399,10 +379,9 @@ Route::put('/citas/{id}/accion', [CitasController::class, 'handleAction'])->name
 
 Route::get('/citas', [CitasController::class, 'citaview'])->name('citas.citaview')->middleware('auth');
 
-// Route::put('/citas/{id}/rechazar', [CitasController::class, 'declineCita'])->name('citas.decline')->middleware('auth');
-
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/////////////////////////// Rutas CRUD (Create, Read, Update, Delete) Apoyos ///////////////////////////
 
 Route::resource('apoyos_created', ApoyosCreatedController::class)->middleware('auth');
 
@@ -432,32 +411,23 @@ Route::get('/files/apoyos/{category}/{filename}', [ApoyosCreatedController::clas
 
 Route::get('/Formulario-Postulacion/{apoyo_id}', [ApoyosCreatedController::class, 'formulario_p'])->name('formulario_p')->middleware('auth');
 
-
-
-
-
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////// Rutas CRUD ( Update, Delete) Perfil ///////////////////////////
-//Ruta para visualizar el perfil
-// Route::get('/mi-perfil', function () {
-//     return view('compartido.perfil');
-// })->name('perfil')->middleware('auth');
-
 
 Route::resource('perfil', PerfilController::class)->middleware('auth');
+
 Route::get('/mi-perfil', [PerfilController::class, 'index'])->name('perfil.index')->middleware('auth');
+
 Route::put('/perfil/{perfil}', [PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
+
 Route::put('/perfil/{perfil}', [PerfilController::class, 'update_user'])->name('perfil.update_user')->middleware('auth');
+
 Route::patch('/cambiar-contrasena', [PerfilController::class, 'cambiarContrasena'])->name('perfil.cambiarcontrasena')->middleware('auth');
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+/////////////////////////// Rutas CRUD ( Update, Delete) Apoyos ///////////////////////////
 
 Route::resource('apoyos', ApoyosController::class)->middleware('auth');
 
@@ -469,14 +439,4 @@ Route::put('/apoyos/{id}', [ApoyosController::class, 'update'])->name('apoyos.up
 
 Route::patch('/apoyos/{id}', [ApoyosController::class, 'disable'])->name('apoyos.disable')->middleware('auth');
 
-
-
 ///////////////////////////////////////////////////////////////////////////////////////////
-
-// Route::get('/apoyosindex', function () {
-//     return view('apoyoscrud.apoyosindex');
-// })->name('crud-apoyos');
-
-////////////////////////////////////////////////////////////////////////////////////////////
-
-// Route::resource('eventos', EventsController::class)->middleware('auth');

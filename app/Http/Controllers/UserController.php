@@ -42,16 +42,13 @@ class UserController extends Controller
 
     public function index()
     {
-
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id', 'rol_id', 'type_rh_id','numberphone','Program_id','yourToken','status')->with('role')->with('TypeDocument')->get();
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id','type_dimensions_id', 'rol_id', 'type_rh_id','numberphone','Program_id','yourToken','status')->with('role')->with('TypeDocument')->get();
         $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();
         $programas = Programas::all();
         $type_rhs = typeRh::all();
         $type_dimensions = TypeDimensions::all();
-
         return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs, 'programas' => $programas ,'type_dimensions'=>$type_dimensions], compact('users'));
-
     }
 
     // Esta función prepara datos relacionados con roles, tipos de documentos, programas y tipos de sangre, se seleccionan desde la base de datos
@@ -213,6 +210,7 @@ class UserController extends Controller
             'name' => 'required|string|between:2,100',
             'lastname' => 'required|string|between:2,100',
             'type_document_id' => 'required|string',
+            'type_dimensions_id' => 'required|string',
             'document' => 'required|numeric|unique:users,document,'.$id.'|digits_between:8,15',
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'type_rh_id' => 'required|string',
@@ -220,8 +218,7 @@ class UserController extends Controller
             'Program_id' => 'required_if:rol_id,5|string',
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12'
         ]);
-    
-        
+
         // Verificar si la validación falla
         if ($validator->fails()) {
             $user = User::findOrFail($id);
@@ -325,5 +322,4 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('error', 'Hubo un error inesperado: ' . $e->getMessage());
         }
     }
-    
 }

@@ -30,33 +30,33 @@ class UsersSeeder extends Seeder
         'type_dimensions_id' => null,
     ]);
 
-    // User::create([
-    //     'name' => 'Camilo',
-    //     'lastname' => 'Lopez',
-    //     'user_name' => 'camil',
-    //     'type_document_id' => 2,
-    //     'document' => 1212121221,
-    //     'email' => 'camil@example.com',
-    //     'type_rh_id' => 1,
-    //     'numberphone' => 30303030,
-    //     'password' => Hash::make('123456'),
-    //     'rol_id' => 2,
-        
-    // ]);
+    User::create([
+        'name' => 'LÍDER',
+        'lastname' => 'BIENESTAR',
+        'user_name' => 'LIDERB',
+        'type_document_id' => 2,
+        'document' => 1212121221,
+        'email' => 'liderb@net.com',
+        'type_rh_id' => 1,
+        'numberphone' => 30303030,
+        'password' => Hash::make('123456'),
+        'rol_id' => 3,
+        'type_dimensions_id' => 3,
+    ]);
 
-    // User::create([
-    //     'name' => 'Ivan Mauricio',
-    //     'lastname' => 'Duque Aricapa',
-    //     'user_name' => 'ivdu',
-    //     'type_document_id' => 1,
-    //     'document' => 1089577728,
-    //     'email' => 'duqueivan493@gmail.com',
-    //     'type_rh_id' => 1,
-    //     'numberphone' => 4040404040,
-    //     'password' => Hash::make('123456789'),
-    //     'rol_id' => 5,
+    User::create([
+        'name' => 'Ivan Mauricio',
+        'lastname' => 'Duque Aricapa',
+        'user_name' => 'ivdu',
+        'type_document_id' => 1,
+        'document' => 1089577728,
+        'email' => 'duqueivan493@gmail.com',
+        'type_rh_id' => 1,
+        'numberphone' => 4040404040,
+        'password' => Hash::make('123456789'),
+        'rol_id' => 5,
         
-    // ]);
+    ]);
 
     // // User::create([
     // //     'name' => 'Andres',

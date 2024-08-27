@@ -16,12 +16,38 @@
     </div><!-- End Logo -->
   
     {{-- <div style="justify-content: center"  class="search-bar">
-      <form  class="search-form d-flex align-items-center" method="POST" action="#">
-        <input style="type="text name="query" placeholder="- Buscar -" title="Enter search keyword">
-        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      <form id="searchForm" class="search-form d-flex align-items-center" method="POST" action="#">
+          <input style="type="text" id="searchInput" name="query" placeholder="- Buscar -" title="Enter search keyword">
+          <button type="submit" title="Search"><i class="bi bi-search"></i></button>
       </form>
     </div><!-- End Search Bar -->
-  --}}
+  
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const sections = document.querySelectorAll('section');
+    
+            let found = false;
+    
+            sections.forEach(section => {
+                const content = section.innerText.toLowerCase();
+                if(content.includes(query)) {
+                    found = true;
+                    section.scrollIntoView({ behavior: 'smooth' });
+                    section.style.border = "2px solid yellow"; // Resalta la sección
+                    setTimeout(() => {
+                        section.style.border = "none";
+                    }, 2000); // Quita el resaltado después de 2 segundos
+                }
+            });
+    
+            if (!found) {
+                alert('No se encontraron coincidencias.');
+            }
+        });
+    </script> --}}
+  
     <nav class="header-nav ms-auto">
       <ul class="d-flex align-items-center">
   

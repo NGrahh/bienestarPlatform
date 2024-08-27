@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon; // Importa Carbon
 
 class EventsController extends Controller
 {
@@ -200,29 +201,60 @@ class EventsController extends Controller
 
     public function store(Request $request)
     {
-        // Se crea una instancia del validador con las reglas para validar los datos de entrada
-        $validator = Validator::make($request->all(), [
-            'eventname' => 'required|string|between:2,100', // El nombre del evento es requerido, debe ser una cadena y tener entre 2 y 100 caracteres
-            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // La imagen es requerida, debe ser un archivo de imagen con las extensiones especificadas y no debe superar los 2MB
-            'place' => 'required|string|between:2,500',
-            'eventdate' => 'required|date|after_or_equal:today', // La fecha del evento es requerida, debe ser una fecha válida y no puede ser anterior a hoy
-            'eventlimit' => 'required|numeric|digits_between:1,1000', // El límite de eventos es requerido, debe ser un número con entre 1 y 1000 dígitos
-            'datestar' => [
+        $rules = [
+            'eventname' => 'required|between:2,100',
+            'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'place' => 'required|between:2,100',
+            'hour' => [
                 'required',
-                'date',
-                'before:eventdate',
-                'after_or_equal:today' // La fecha de inicio es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
-            ],
-            'dateendevent' => [
-                'required',
-                'date',
-                'before:eventdate',
-                'after_or_equal:today' // La fecha de fin del evento es requerida, debe ser una fecha válida y debe ser anterior a la fecha del evento
-            ],
-            'Subjectevent' => 'required|string|between:2,7000', // El asunto del evento es requerido, debe ser una cadena con al menos un carácter
-        ]);
+                'date_format:H:i', // Formato de hora requerido
+                function ($attribute, $value, $fail) {
+                    // Obtener la fecha y hora actual en formato de Carbon
+                    $now = now();
+                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
     
-        // Si la validación falla, se redirige de vuelta al formulario con los errores y los datos ingresados
+                    // Comparar la hora proporcionada con la hora actual
+                    if ($providedTime <= $now) {
+                        $fail('La hora ingresada ya ha pasado.');
+                    }
+                },
+            ],
+            'eventdate' => 'required|date|after_or_equal:today',
+            'eventlimit' => 'required|numeric|digits_between:1,1000',
+            'datestar' => 'required|date|after_or_equal:eventdate|after_or_equal:today',
+            'dateendevent' => 'required|date|after_or_equal:eventdate|after_or_equal:today',
+            'Subjectevent' => 'required|between:2,100',
+        ];
+    
+        $messages = [
+            'eventname.required' => 'El nombre del evento es obligatorio.',
+            'eventname.between' => 'El nombre del evento debe tener entre :min y :max caracteres.',
+            'picture.required' => 'La imagen es obligatoria.',
+            'picture.image' => 'El archivo debe ser una imagen.',
+            'picture.mimes' => 'La imagen debe tener una extensión: jpeg, png, jpg, gif.',
+            'picture.max' => 'La imagen no debe superar los 2MB.',
+            'place.required' => 'El lugar del evento es obligatorio.',
+            'place.between' => 'El lugar del evento debe tener entre :min y :max caracteres.',
+            'eventdate.required' => 'La fecha del evento es obligatoria.',
+            'eventdate.date' => 'La fecha del evento debe ser una fecha válida.',
+            'eventdate.after_or_equal' => 'La fecha del evento no puede ser anterior a hoy.',
+            'eventlimit.required' => 'El límite de participantes es obligatorio.',
+            'eventlimit.numeric' => 'El límite de participantes debe ser un número.',
+            'eventlimit.digits_between' => 'El límite de participantes debe tener entre 1 y 1000 dígitos.',
+            'datestar.required' => 'La fecha de inicio es obligatoria.',
+            'datestar.date' => 'La fecha de inicio debe ser una fecha válida.',
+            'datestar.before' => 'La fecha de inicio debe ser anterior a la fecha del evento.',
+            'datestar.after_or_equal' => 'La fecha de inicio no puede ser anterior a hoy.',
+            'dateendevent.required' => 'La fecha de fin del evento es obligatoria.',
+            'dateendevent.date' => 'La fecha de fin del evento debe ser una fecha válida.',
+            'dateendevent.before' => 'La fecha de fin debe ser anterior a la fecha del evento.',
+            'dateendevent.after_or_equal' => 'La fecha de fin no puede ser anterior a hoy.',
+            'Subjectevent.required' => 'El asunto del evento es obligatorio.',
+            'Subjectevent.between' => 'El asunto del evento debe tener entre :min y :max caracteres.',
+        ];
+    
+        $validator = Validator::make($request->all(), $rules, $messages);
+    
         if ($validator->fails()) {
             return redirect()
                 ->back()
@@ -230,6 +262,7 @@ class EventsController extends Controller
                 ->withInput()
                 ->with('error', 'El evento no fue registrado!');
         }
+    
     
         // Inicializa la variable para el nombre de la imagen
         $imageName = null;
@@ -257,6 +290,7 @@ class EventsController extends Controller
             'eventname' => $request->get('eventname'),
             'picture' => $imageName,
             'eventdate' => $request->get('eventdate'),
+            'hour' => $request->get('hour'),
             'place' => $request->get('place'),
             'eventlimit' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),
@@ -302,6 +336,20 @@ class EventsController extends Controller
         $validator = Validator::make($request->all(), [
             'eventname' => 'required|string|between:2,100',
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'hour' => [
+                'required',
+                'date_format:H:i', // Formato de hora requerido
+                function ($attribute, $value, $fail) {
+                    // Obtener la fecha y hora actual en formato de Carbon
+                    $now = now();
+                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
+    
+                    // Comparar la hora proporcionada con la hora actual
+                    if ($providedTime <= $now) {
+                        $fail('La hora ingresada ya ha pasado.');
+                    }
+                },
+            ],
             'eventdate' => 'required|date|after_or_equal:today',
             'place' => 'required|string|between:2,500',
             'eventlimit' => 'required|numeric|digits_between:1,1000',
@@ -345,6 +393,7 @@ class EventsController extends Controller
         $inputData = [
             'eventname' => $request->get('eventname'),
             'picture' => $imageName,
+            'hour' => $request->get('hour'),
             'place' => $request->get('place'),
             'eventdate' => $request->get('eventdate'),
             'eventlimit' => $request->get('eventlimit'),

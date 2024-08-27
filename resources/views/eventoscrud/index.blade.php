@@ -46,6 +46,7 @@
                                         <th class="ellipsis_th" >Id</th>
                                         <th class="ellipsis_th" >Nombre Evento</th>
                                         <th class="ellipsis_th" >Ubicación</th>
+                                        <th class="ellipsis_th" >Hora</th>
                                         <th class="ellipsis_th" >Fecha Evento</th>
                                         <th class="ellipsis_th" >Aforo</th>
                                         <th class="ellipsis_th" >Fecha Inicio I.</th>
@@ -65,6 +66,7 @@
                                         </td>
                                         <td class="ellipsis" >{{ $event->eventname }}</td>
                                         <td class="ellipsis" >{{ $event->place }}</td>
+                                        <td class="ellipsis" >{{ $event->hour }}</td>
                                         <td class="ellipsis" >{{ $event->eventdate }}</td>
                                         <td class="ellipsis" >{{ $event->eventlimit }}</td>
                                         <td class="ellipsis" >{{ $event->datestar }}</td>
@@ -204,7 +206,7 @@
                                                                                 @enderror
                                                                             </div>
 
-                                                                            <div class="col-12 col-md-6">
+                                                                            <div class="col-12 col-md-4">
                                                                                 <label for="eventlimit" class="form-label"><strong>Aforo</strong></label>
                                                                                 <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" required>
                                                                                 <div class="invalid-feedback">Ingrese un aforo.</div>
@@ -212,8 +214,15 @@
                                                                                 <li class="text-danger">{{ $message }}</li>
                                                                                 @enderror
                                                                             </div>
-
-                                                                            <div class="col-12 col-md-6">
+                                                                            <div class="col-12 col-sm-6 col-md-4">
+                                                                                <label for="inputTime" class="form-label"><strong>Hora</strong></label>
+                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}">
+                                                                                <div class="invalid-feedback">Ingrese una hora.</div>
+                                                                                @error('hour')
+                                                                                <li class="text-danger">{{ $message }}</li>
+                                                                                @enderror
+                                                                            </div>
+                                                                            <div class="col-12 col-md-4">
                                                                                 <label for="eventdate" class="form-label"><strong>Fecha del evento</strong></label>
                                                                                 <input value="{{ $event->eventdate }}" type="date" name="eventdate" class="form-control" id="eventdate" required>
                                                                                 <div class="invalid-feedback">Ingrese una fecha.</div>
@@ -426,15 +435,15 @@
                                                             @enderror
                                                         </div>
                                                         
-
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="pictureevent" class="form-label"><strong>Foto del evento</strong></label>
                                                             <input type="file" name="picture" class="form-control" id="pictureevent" required>
                                                             <div class="invalid-feedback">Ingrese una foto relacionada al evento.</div>
                                                             @error('picture')
-                                                            <li class="text-danger">{{ $message }}</li>
+                                                                <li class="text-danger">{{ $message }}</li>
                                                             @enderror
                                                         </div>
+                                                        
 
                                                         <div class="col-12 col-sm-4 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="dateevent" class="form-label"><strong>Fecha del evento</strong></label>
@@ -446,7 +455,8 @@
                                                         </div>
                                                         <div class="col-12 col-sm-4 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="limitcapacity" class="form-label"><strong>Aforo</strong> </label>
-                                                            <input value="{{ old('eventlimit') }}" type="number" name="eventlimit" class="form-control" id="limitcapacity">
+                                                            <input value="{{ old('eventlimit') }}" type="number" name="eventlimit" class="form-control" id="limitcapacity" required>
+                                                            <div class="invalid-feedback">Ingrese el limite del evento.</div>
                                                             @error('eventlimit')
                                                             <li class="text-danger">{{ $message }}</li>
                                                             @enderror
@@ -476,11 +486,19 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="placeevent" class="form-label"><strong>Ubicación del evento</strong></label>
                                                             <input value="{{ old('place') }}" type="text" name="place" class="form-control" id="placeevent" required>
-                                                            <div class="invalid-feedback">Ingrese el nombre del evento.</div>
+                                                            <div class="invalid-feedback">Ingrese la ubicación del evento.</div>
                                                             @error('place')
+                                                            <li class="text-danger">{{ $message }}</li>
+                                                            @enderror
+                                                        </div>
+                                                        <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                                                            <label for="inputTime" class="form-label"><strong>Hora</strong></label>
+                                                            <input name="hour" type="time" class="form-control" value="{{ old('hour') }}">
+                                                            <div class="invalid-feedback">Ingrese una hora.</div>
+                                                            @error('hour')
                                                             <li class="text-danger">{{ $message }}</li>
                                                             @enderror
                                                         </div>

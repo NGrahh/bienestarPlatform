@@ -157,15 +157,20 @@
                                                                                     @enderror
                                                                                 </div>
 
+                                                                                <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-area-{{$user->id}}" style="{{ old('rol_id', $user->rol_id) != 3 ? 'display: none;' : '' }}">
+                                                                                    <label for="type_dimensions_id" class="form-label"><strong>Rol en el Área de Bienestar</strong></label>
+                                                                                    <select name="type_dimensions_id" class="form-select" id="type_dimensions_id" required {{ old('rol_id', $user->rol_id) != 3 ? 'disabled' : '' }}>
+                                                                                        <option value="">- Seleccione -</option>
+                                                                                        @foreach ($type_dimensions as $type_dimension)
+                                                                                        <option {{ (old('type_dimensions_id') == $type_dimension->id || $user->type_dimensions_id == $type_dimension->id) ? 'selected' : '' }} value="{{ $type_dimension->id }}">{{ $type_dimension->name }}</option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                    <div class="invalid-feedback">Por favor ingrese el rol en el área de bienestar.</div>
+                                                                                    @error('type_dimensions_id')
+                                                                                        <li class="text-danger">{{ $message }}</li>
+                                                                                    @enderror
+                                                                                </div>
 
-
-
-
-
-
-
-
-                                                                                
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
                                                                                     <label for="yourTraining_update" class="form-label"><strong>Programa de formación</strong></label>
                                                                                     <select name="Program_id" class="form-select" id="yourTraining_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
@@ -394,7 +399,7 @@
                                                                     <option {{ $user->type_dimensions_id == $type_dimension->id ? 'selected' : '' }} value="{{ $type_dimension->id }}">{{ $type_dimension->name }}</option>
                                                                 @endforeach
                                                             </select>
-                                                            <div class="invalid-feedback">Por favor ingrese el type_dimension de formación.</div>
+                                                            <div class="invalid-feedback">Por favor ingrese el rol en el área de bienestar.</div>
                                                             @error('type_dimensions_id')
                                                                 <li class="text-danger">{{ $message }}</li>
                                                             @enderror
@@ -459,31 +464,28 @@
                                 </div>
                                 <!-- Fin del modal de creación para usuario-->
 
-                                <!-- Botón para abrir el modal de creación nuevo usuario -->
+                                <!-- Botón para abrir el modal de importación nuevo usuario -->
                                 <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#importuser" >
                                     Importar Usuarios
                                 </button>
 
-                                <!-- Modal de creación para usuario -->
+                                <!-- Modal de importación para usuario -->
                                 <div class="modal fade" id="importuser" tabindex="-1">
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
+                                                <i style="font-size: 30px;" class="ri-file-excel-2-line card-title-ba"></i>
+                                                <span style="margin: 0 10px;"></span>
                                                 <h5 class="card-title-ba text-center pb-0 fs-4">Importar Usuarios</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                             </div>
                                             <div class="modal-body">
-
                                                 <div class="card-body">
                                                     <div class="pt-2 pb-2">
-                                                        <h5 class="text-center card-title-ba-azul">Anexe el archvio Excel para importar los datos</h5>
+                                                        <h5 class="text-justify card-title-ba-azul">Por favor, adjunta el archivo Excel necesario para proceder con la importación de los datos correspondientes.</h5>
                                                     </div>
-                                                    
                                                     <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
                                                         @csrf
-                                                        {{-- <input type="file" name="file"  /> --}}
-                                                        
-
                                                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-5">
                                                             <label for="importuser" class="form-label"><strong>Archivo Excel</strong></label>
                                                             <input type="file" name="file" class="form-control" id="importuser" accept=".xlsx,.csv" required>
@@ -492,32 +494,24 @@
                                                             <li class="text-danger">{{ $message }}</li>
                                                             @enderror
                                                         </div>
-                                                        {{-- <button type="submit" class="btn btn-ba">Importar</button> --}}
                                                         <div class="modal-footer d-flex justify-content-center gap-2 ">
                                                             <button type="submit" class="btn btn-ba px-2 mt-4">Importar usuario</button>
                                                             <button type="button" class="btn btn-secondary mt-4" data-bs-dismiss="modal">Cerrar</button>
                                                         </div>
-
-
                                                     </form>
-                                                    
                                                 </div>
                                             </div>
-                                            
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Fin del modal de creación para usuario-->
+                                <!-- Fin del modal de importación para usuario-->
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 </main>
 
 @include('layouts.footer')import.form

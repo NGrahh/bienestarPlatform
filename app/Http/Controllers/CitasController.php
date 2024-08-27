@@ -21,28 +21,39 @@ class CitasController extends Controller
         $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'citaview','handleAction']);
     }
 
-    public function index(Request $request)
-    {
-        // Obtener el usuario autenticado
-        $user = auth()->user();
-        
-        // Obtener solo las citas que coinciden con el 'type_dimensions_id' del usuario autenticado
+public function index(Request $request)
+{
+    // Obtener el usuario autenticado
+    $user = auth()->user();
+    
+    // Verificar si el usuario es administrador
+    if ($user->id == 1) { // Asumiendo que '1' es el ID del rol de administrador
+        // Obtener todas las citas, incluyendo aquellas sin 'type_dimensions_id'
         $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.numberphone', 'users.email', 'users.type_dimensions_id')
-            ->join('users', 'citas.dimensions_id', '=', 'users.type_dimensions_id') // Relacionar 'dimensions_id' con 'type_dimensions_id'
-            ->where('users.type_dimensions_id', $user->type_dimensions_id) // Filtrar por 'type_dimensions_id' del usuario autenticado
-            ->orderBy('citas.status') // Ordenar los resultados por 'status'
-            ->orderBy('citas.id')     // Luego ordenar por 'id'
-            ->with('typeDimensions')  // Cargar la relación 'typeDimensions' si es necesario
+            ->leftJoin('users', 'citas.user_id', '=', 'users.id') // Usar leftJoin para incluir todas las citas
+            ->orderBy('citas.status')
+            ->orderBy('citas.id')
+            ->with('typeDimensions')
             ->get();
-        
-        // Obtener todas las dimensiones y acciones disponibles
-        $dimensions = TypeDimensions::all();
-        $acciones = accionesCitas::all();
-        
-        // Pasar los datos a la vista 'citascrud.citasindex' con las variables disponibles
-        return view('citascrud.citasindex', compact('citas', 'acciones', 'dimensions', 'user'));
+    } else {
+        // Filtrar las citas por 'type_dimensions_id' del usuario autenticado
+        $citas = Citas::select('citas.id', 'citas.dimensions_id', 'citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'users.name', 'users.lastname', 'users.numberphone', 'users.email', 'users.type_dimensions_id')
+            ->join('users', 'citas.dimensions_id', '=', 'users.type_dimensions_id')
+            ->where('users.type_dimensions_id', $user->type_dimensions_id)
+            ->orderBy('citas.status')
+            ->orderBy('citas.id')
+            ->with('typeDimensions')
+            ->get();
     }
     
+    // Obtener todas las dimensiones y acciones disponibles
+    $dimensions = TypeDimensions::all();
+    $acciones = accionesCitas::all();
+    
+    // Pasar los datos a la vista 'citascrud.citasindex' con las variables disponibles
+    return view('citascrud.citasindex', compact('citas', 'acciones', 'dimensions', 'user'));
+}
+
     
 
     public function store(Request $request)

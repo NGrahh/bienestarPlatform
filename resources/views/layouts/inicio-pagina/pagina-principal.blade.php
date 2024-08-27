@@ -6,8 +6,6 @@
 @include('layouts.menu')
 
 <main id="main" class="main">
-
-
     <div class="section">
         <div class=" row justify-content-center">
             <div class="col-lg-12 my-2">
@@ -95,28 +93,12 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
-                        
-                        
-
-
-
-                        
-
-
-
-
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
 </main><!-- End #main -->
-
 @include('layouts.footer')
 @endsection

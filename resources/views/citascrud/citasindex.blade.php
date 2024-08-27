@@ -76,7 +76,11 @@
                                     @foreach($citas as $cita)
                                         {{-- @if($cita->dimensions_id == $user->type_dimensions_id) --}}
                                             <tr>
-                                                <td scope="row">{{$cita->id}}</td>
+                                                <td class="ellipsis">
+                                                    <div class="d-flex justify-content-center align-items-center pt-2">
+                                                        <strong>{{$cita->id}}</strong>
+                                                    </div>
+                                                </td>
                                                 <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100px;">{{ $cita->name }} {{ $cita->lastname }}</td>
                                                 <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 150px;">{{ $cita->typeDimensions ? $cita->typeDimensions->name : 'Sin tipo de dimensión' }}</td>
                                                 <td scope="row" style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 90px;"> {{ $cita->email }}</td>
@@ -104,9 +108,9 @@
 
                                                 </td>
                                                 <td>
-                                                    <div class="d-flex gap-2">
+                                                    <div class="d-flex justify-content-center align-items-center pt-2">
                                                         {{-- Botón para abri modal --}}
-                                                        <button type="button" class="btn btn-ba-card px-2" data-bs-toggle="modal" data-bs-target="#showCitaModal{{ $cita->id }}" title="Visualizar Cita">
+                                                        <button type="button" class="btn btn-ba-card px-2 mx-2" data-bs-toggle="modal" data-bs-target="#showCitaModal{{ $cita->id }}" title="Visualizar Cita">
                                                             <i class="bx bxs-user-detail"></i>
                                                         </button>
                                                         
@@ -143,7 +147,7 @@
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pt-1">
                                                                                     <label for="yournumber" class="form-label">Número telefónico</label>
-                                                                                    <input value="{{$cita->mobilenumber}}" type="number" name="mobilenumber" class="form-control" id="yournumber" disabled>
+                                                                                    <input value="{{$cita->numberphone}}" type="number" name="mobilenumber" class="form-control" id="yournumber" disabled>
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 pt-1">
                                                                                     <div class="row mb-3">

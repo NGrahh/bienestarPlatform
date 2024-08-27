@@ -25,17 +25,11 @@
 {{-- Determinar horarios de atención al público --}} {{-- RF_MIEMBRO_BA_10 | Cumple: No | --}}
 {{-- Aceptar o posponer cita --}} {{-- RF_MIEMBRO_BA_11  | Cumple: No |--}}
 <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#citas-nav" data-bs-toggle="collapse" href="#">
-      <i class="ri-chat-3-line"></i><span>Citas</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="citas-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="{{route('citas.index')}}">
-          <i class="bi bi-circle"></i>Información Citas<span></span>
-        </a>
-      </li>
-    </ul>
-  </li>
+  <a class="nav-link collapsed" href="{{route('citas.index')}}">
+    <i class="ri-contacts-line"></i>
+    <span>Portal Citas</span>
+  </a>
+</li> 
   {{-- Final Item --}}
   {{-- Final Item Acceder a las distintas secciones del sitio web | Cumple: Si | --}}
 {{----------------------------------------------------------------------------------------}}
@@ -49,18 +43,15 @@
 {{-- Crear cuentas --- RF_ADMIN_08 | Cumple: Si | --}}
 {{-- Editar cuentas --- RF_ADMIN_09 | Cumple: Si | --}}
 {{-- Desactivar/activar cuentas --- RF_ADMIN_010 | Cumple: Si | --}}
+
+
+{{-- Item Visualizar las dimensiones de bienestar al aprendiz --}} {{-- RF_USUARIO 04 | Cumple: Si | --}}
 <li class="nav-item">
-    <a class="nav-link collapsed" data-bs-target="#account-nav" data-bs-toggle="collapse" href="#">
-      <i class="bx bxs-user-account"></i><span>Cuentas</span><i class="bi bi-chevron-down ms-auto"></i>
-    </a>
-    <ul id="account-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-      <li>
-        <a href="{{route('users.index')}}">
-          <i class="bi bi-circle"></i>Información Usuarios<span></span>
-        </a>
-      </li>
-    </ul>
-  </li>
+  <a class="nav-link collapsed" href="{{route('users.index')}}">
+    <i class="ri-account-box-line"></i>
+    <span>Portal Usuarios</span>
+  </a>
+</li>
   {{-- Final Item --}}
   {{----------------------------------------------------------------------------------------}}
   {{----------------------------------------------------------------------------------------}}
@@ -82,7 +73,7 @@
     </li>
     <li>
         <a href="{{route('apoyosCreated.index')}}">
-          <i class="bi bi-circle"></i>Información Apoyos<span></span>
+          <i class="bi bi-circle"></i>Portal Apoyos<span></span>
         </a>
     </li>
   </ul>
