@@ -31,7 +31,7 @@
                                     <label for="yourUsername" class="form-label">Correo electrónico</label>
                                     <div class="input-group has-validation">
                                         <span class="input-group-text" id="inputGroupPrepend">@</span>
-                                        <input value="{{session()->get('email')}}" type="text" name="email" class="form-control {{$errors->has('email') ? 'is-invalid':''}}" id="yourUsername" required>
+                                        <input value="{{session()->get('email')}}" type="text" name="email" class="form-control {{$errors->has('email') ? 'is-invalid':''}}" id="yourUsername" placeholder="Correo institucional" required>
                                         <div class="invalid-feedback">Ingrese una dirección de correo electrónico válida.</div>
                                         @error('email')
                                         <li class="text-danger">{{ $message}}</li>
@@ -40,7 +40,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn btn-ba w-100" type="submit">Solicitar cambio</button>
+                                    <button class="btn btn-ba w-100" type="submit">Enviar correo</button>
                                 </div>
                             </form>
                         </div>

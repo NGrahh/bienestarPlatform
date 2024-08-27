@@ -29,7 +29,7 @@
                                 @csrf
                                 <div class="col-12">
                                     <label for="yourCodigo" class="form-label">Codigo:</label>
-                                    <input value="{{ old('code') }}" type="code" name="code" class="form-control {{$errors->has('code')?'is-invalid':''}}" id="yourCodigo" required>
+                                    <input value="{{ old('code') }}" type="code" name="code" class="form-control {{$errors->has('code')?'is-invalid':''}}" id="yourCodigo" placeholder="Ingrese el código del correo" required>
                                     <div class="invalid-feedback">Por favor ingresa el codigo.</div>
                                     @error('code')
                                         <li class="text-danger">{{ $message}}</li>
@@ -37,7 +37,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <label for="yourPassword" class="form-label">Contraseña:</label>
+                                    <label for="yourPassword" class="form-label">Nueva contraseña:</label>
                                     <input value="{{old('password')}}" type="password" name="password" class="form-control {{$errors->has('password')?'is-invalid':''}}" id="yourPassword" required>
                                     <div class="invalid-feedback">Por favor ingresa la contraseña.</div>
                                     @error('password')
@@ -46,7 +46,7 @@
                                 </div>
 
                                 <div class="col-12">
-                                    <button class="btn btn-ba w-100" type="submit">Solicitar cambio</button>
+                                    <button class="btn btn-ba w-100" type="submit">Cambiar contraseña</button>
                                 </div>
                             </form>
                         </div>
