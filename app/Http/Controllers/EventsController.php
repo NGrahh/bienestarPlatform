@@ -116,7 +116,6 @@ class EventsController extends Controller
             'currentDate' => $currentDate
         ]);
     }
-    
 
     public function viewEventUser()
     {
@@ -180,7 +179,6 @@ class EventsController extends Controller
             'currentDate' => $currentDate
         ]);
     }
-    
 
     public function index()
     {
@@ -416,8 +414,6 @@ class EventsController extends Controller
         // Redirige al índice de eventos con un mensaje de éxito
         return redirect()->route('events.index')->with('success', 'Evento actualizado correctamente.');
     }
-    
-    
 
     public function destroy($id)
     {

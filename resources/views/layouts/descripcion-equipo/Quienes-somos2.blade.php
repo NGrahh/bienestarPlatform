@@ -166,47 +166,37 @@
                                 
 
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/RogerSail.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Roger" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    <img src="{{asset('assets/img/Bienestar/RogerSail.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Roger" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/Beatriz.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#BeatrizUserModal" title="Beatriz" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    <img src="{{asset('assets/img/Bienestar/Beatriz.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#BeatrizUserModal" title="Beatriz" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/JuanCarlos.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juan" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    <img src="{{asset('assets/img/Bienestar/JuanCarlos.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juan" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/Natalia.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Natalia" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    <img src="{{asset('assets/img/Bienestar/Natalia.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Natalia" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/Laura.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Laura" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    <img src="{{asset('assets/img/Bienestar/Laura.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Laura" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/Carolina.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Carolina" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    <img src="{{asset('assets/img/Bienestar/Carolina.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Carolina" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/Andres.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Andres" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    <img src="{{asset('assets/img/Bienestar/Andres.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Andres" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/Juliana.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juliana" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    <img src="{{asset('assets/img/Bienestar/Juliana.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juliana" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
 
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{asset('img/Bienestar/JuanC.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="JuanC " style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    <img src="{{asset('assets/img/Bienestar/JuanC.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="JuanC " style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
-                                
-
-
-
-                                
-
-
-
-
-
                             </div>
                             <div class="col-12 col-lg-12 mt-5">
                                 <div class="image-wrapper">
-                                    <img src="{{asset('img/Nuevo-Equipo.jpg')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow">
+                                    <img src="{{asset('assets/img/Bienestar/Nuevo-Equipo.jpg')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow">
                                 </div>
                             </div>
                             
