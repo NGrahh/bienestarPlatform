@@ -102,19 +102,19 @@ class UsersSeeder extends Seeder
     //     ]);
     // }
 
-    // User::create([
-    //     'name' => 'Nicolás',
-    //     'lastname' => 'Grajales',
-    //     'user_name' => 'Ngrajales',
-    //     'type_document_id' => 1,
-    //     'document' => 1089555852,
-    //     'email' => 'nicolasgrajales@gmail.com',
-    //     'type_rh_id' => 1,
-    //     'numberphone' => $faker->unique()->randomNumber(8),
-    //     'password' => Hash::make('123456789'),
-    //     'rol_id' => 4,
+    User::create([
+        'name' => 'Nicolás',
+        'lastname' => 'Grajales',
+        'user_name' => 'Ngrajales',
+        'type_document_id' => 1,
+        'document' => 1089555852,
+        'email' => 'nicolasgrajales@gmail.com',
+        'type_rh_id' => 1,
+        'numberphone' => $faker->unique()->randomNumber(8),
+        'password' => Hash::make('123456789'),
+        'rol_id' => 4,
         
-    // ]);
+    ]);
 
     // for ($x = 0; $x < 10; $x++) {
     //     User::create([
