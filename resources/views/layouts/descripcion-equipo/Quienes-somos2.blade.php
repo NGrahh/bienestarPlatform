@@ -192,7 +192,7 @@
                             </div>
                             <div class="col-12 col-lg-12 mt-5">
                                 <div class="image-wrapper">
-                                    <img src="{{url('equipo/Nuevo-Equipo.jpg')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow">
+                                    <img src="{{url('equipo/Nuevo-Equipo.jpg')}}" style="cursor:pointer; width: 500px; height: auto;" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow">
                                 </div>
                             </div>
                             
