@@ -76,6 +76,8 @@ Route::delete('/images/{id}', [CarouselController::class, 'deleteImage'])->name(
 
 Route::get('image/{filename}', [FotosController::class, 'show']);
 
+Route::get('equipo/{filename}', [FotosController::class, 'show_equipo']);
+
 
 // Route::get('/pagina-principal', function () {
 //     return view('layouts.inicio-pagina.pagina-principal');
