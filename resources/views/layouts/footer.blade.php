@@ -281,17 +281,27 @@
         </div>
     </div>
     <div class="entidades">
-        <a target="_blank" href="https://www.mintrabajo.gov.co/web/guest/inicio" class="entidades__link--ministerio"><img loading="lazy" src="{{asset('img/ministerio-logo-color.svg')}}" alt="ministerio logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.unidadsolidaria.gov.co/"><img loading="lazy" src="{{asset('img/iOss-logo-color.svg')}}" alt="oss logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.serviciodeempleo.gov.co/portada" class="entidades__link"><img loading="lazy" src="{{asset('img/iEmpleo-logo-color.svg')}}" alt="empleo logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.ssf.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iSuperSubsidio-logo-color.svg')}}" alt="supersubsidio logo" class="entidades__link-img "></a>
-        <a target="_blank" href="https://www.colpensiones.gov.co/" class="entidades__link"><img loading="lazy" src="{{asset('img/iColpensiones-logo-color.svg')}}" alt="solpensiones logo" class="entidades__link-img "></a>
+        <a target="_blank" href="https://www.mintrabajo.gov.co/web/guest/inicio" class="entidades__link--ministerio">
+            <img loading="lazy" src="{{ url('image/ministerio-logo-color.svg')}}" alt="ministerio logo" class="entidades__link-img ">
+        </a>
+        <a target="_blank" href="https://www.unidadsolidaria.gov.co/">
+            <img loading="lazy" src="{{ url('image/iOss-logo-color.svg')}}" alt="oss logo" class="entidades__link-img ">
+        </a>
+        <a target="_blank" href="https://www.serviciodeempleo.gov.co/portada" class="entidades__link">
+            <img loading="lazy" src="{{ url('image/iEmpleo-logo-color.svg')}}" alt="empleo logo" class="entidades__link-img ">
+        </a>
+        <a target="_blank" href="https://www.ssf.gov.co/" class="entidades__link">
+            <img loading="lazy" src="{{ url('image/iSuperSubsidio-logo-color.svg')}}" alt="supersubsidio logo" class="entidades__link-img ">
+        </a>
+        <a target="_blank" href="https://www.colpensiones.gov.co/" class="entidades__link">
+            <img loading="lazy" src="{{ url('image/iColpensiones-logo-color.svg') }}" alt="solpensiones logo" class="entidades__link-img ">
+        </a>
     </div>
     <div class="gobierno">
         <div class="gobierno__container">
 
             <div class="gobierno__ministerio-container gobierno__ministerio-container--img">
-                <img loading="lazy" src="{{asset('img/logoGovCol-logo.svg')}}" alt="logogovcol logo" class="gobierno__img">
+                <img loading="lazy" src="{{url('image/logoGovCol-logo.svg')}}" alt="logogovcol logo" class="gobierno__img">
             </div>
             <div class="gobierno__ministerio-container">
                 <a href="https://petro.presidencia.gov.co" class="gobierno__link" target="_blank"><span class="gobierno__ministerios-circle" style="background-color: #c61720;"></span>
@@ -364,7 +374,7 @@
             </div>
             <div class="more-information__icontec">
                 <div class="more-information__item more-information__item more-information__item--img">
-                    <img loading="lazy" class="more-information__icontec-img" src="{{asset('img/normas-iso-logos.svg')}}" alt="Certificación ISO 9001" title="Certificación ISO 9001">
+                    <img loading="lazy" class="more-information__icontec-img" src="{{url('image/normas-iso-logos.svg')}}" alt="Certificación ISO 9001" title="Certificación ISO 9001">
 
                 </div>
             </div>

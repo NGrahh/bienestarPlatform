@@ -9,7 +9,7 @@ use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ApoyosCreatedController;
 use App\Http\Controllers\imageController;
 use App\Http\Controllers\CarouselController;
-
+use App\Http\Controllers\FotosController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -72,6 +72,9 @@ Route::post('/upload-image', [CarouselController::class, 'uploadImage'])->name('
 
 Route::delete('/images/{id}', [CarouselController::class, 'deleteImage'])->name('images.delete');
 
+
+
+Route::get('image/{filename}', [FotosController::class, 'show']);
 
 
 // Route::get('/pagina-principal', function () {

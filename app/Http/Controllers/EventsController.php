@@ -219,8 +219,8 @@ class EventsController extends Controller
             ],
             'eventdate' => 'required|date|after_or_equal:today',
             'eventlimit' => 'required|numeric|digits_between:1,1000',
-            'datestar' => 'required|date|after_or_equal:eventdate|after_or_equal:today',
-            'dateendevent' => 'required|date|after_or_equal:eventdate|after_or_equal:today',
+            'datestar' => 'required|date|before:eventdate|after_or_equal:today',
+            'dateendevent' => 'required|date|before:eventdate|after_or_equal:today',
             'Subjectevent' => 'required|between:2,100',
         ];
     
@@ -351,8 +351,8 @@ class EventsController extends Controller
             'eventdate' => 'required|date|after_or_equal:today',
             'place' => 'required|string|between:2,500',
             'eventlimit' => 'required|numeric|digits_between:1,1000',
-            'datestar' => 'required|date|after_or_equal:today',
-            'dateendevent' => 'required|date|after_or_equal:datestar',
+            'datestar' => 'required|date|before:eventdate|after_or_equal:today',
+            'dateendevent' => 'required|date|before:eventdate|after_or_equal:today',
             'Subjectevent' => 'required|string'
         ]);
     

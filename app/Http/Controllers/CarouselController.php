@@ -15,7 +15,7 @@ class CarouselController extends Controller
         // Obtener todas las imágenes del carrusel desde la base de datos
         $images = CarouselImage::all();
         // Obtener el ID del usuario autenticado, si está autenticado
-        $userID = Auth::check() ? Auth::user()->id : null;
+        $userID = Auth::check() ? Auth::user()->rol_id : null;
         return view('layouts.inicio-pagina.pagina-principal', compact('images','userID'));
     }
 
