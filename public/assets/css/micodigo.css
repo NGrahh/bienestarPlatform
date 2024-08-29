@@ -771,3 +771,11 @@ p {
 .input-border-radius-right{
     border-radius: 0px 10px 10px 0px;
 }
+
+
+
+.custom-image-style {
+    cursor: pointer;
+    width: 500px;
+    height: auto;
+}
