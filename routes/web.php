@@ -8,6 +8,9 @@ use App\Http\Controllers\CitasController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\ApoyosCreatedController;
 use App\Http\Controllers\imageController;
+use App\Http\Controllers\CarouselController;
+
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -59,26 +62,30 @@ Route::post('/cambiar-contrasena', [PasswordController::class, 'restablecercontr
 
 ////////////////////////////////////////////////////////////////////////////////
 
+Route::get('/', [CarouselController::class, 'index'])->name('home');
+
+Route::get('/pagina-principal', [CarouselController::class, 'index'])->name('pagina-principal');
+
+Route::get('pagina-principal/{image}', [CarouselController::class, 'getImages'])->name('carousel.getImages');
+
+Route::post('/upload-image', [CarouselController::class, 'uploadImage'])->name('upload.image');
+
+Route::delete('/images/{id}', [CarouselController::class, 'deleteImage'])->name('images.delete');
 
 
 
-
-Route::get('/', function () {
-    return view('layouts.inicio-pagina.pagina-principal');
-})->name('pagina-principal');
-
-Route::get('/pagina-principal', function () {
-    return view('layouts.inicio-pagina.pagina-principal');
-})->name('pagina-principal');
+// Route::get('/pagina-principal', function () {
+//     return view('layouts.inicio-pagina.pagina-principal');
+// })->name('pagina-principal');
 
 Route::get('/block', function () {
     return view('welcome');
 })->name('block')->middleware('auth');
 
 
-Route::get('/', function () {
-    return view('layouts.inicio-pagina.pagina-principal');
-})->name('home');
+// Route::get('/', function () {
+//     return view('layouts.inicio-pagina.pagina-principal');
+// })->name('home');
 
 // Route::get('/Bienvenido', function () {
 //     return view('layouts.inicio-pagina.pagina-principal');

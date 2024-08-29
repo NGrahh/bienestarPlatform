@@ -336,11 +336,11 @@ class EventsController extends Controller
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'hour' => [
                 'required',
-                'date_format:H:i', // Formato de hora requerido
+                'date_format:H:i:s', // Formato de hora requerido
                 function ($attribute, $value, $fail) {
                     // Obtener la fecha y hora actual en formato de Carbon
                     $now = now();
-                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
+                    $providedTime = Carbon::createFromFormat('H:i:s', $value, 'America/Bogota');
     
                     // Comparar la hora proporcionada con la hora actual
                     if ($providedTime <= $now) {

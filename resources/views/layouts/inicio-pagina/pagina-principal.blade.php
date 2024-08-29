@@ -6,6 +6,7 @@
 @include('layouts.menu')
 
 <main id="main" class="main">
+    @include('compartido.alertas')
     <div class="section">
         <div class=" row justify-content-center">
             <div class="col-lg-12 my-2">
@@ -19,35 +20,34 @@
                         </div>
                         <div class="col-12 col-lg-8">
                             <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                                <!-- Indicadores del carrusel -->
                                 <div class="carousel-indicators">
-                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
-                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 5"></button>
-                                    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 6"></button>
+                                    @foreach($images as $key => $image)
+                                        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="{{ $key }}" class="{{ $key == 0 ? 'active' : '' }}" aria-current="{{ $key == 0 ? 'true' : 'false' }}" aria-label="Slide {{ $key + 1 }}"></button>
+                                    @endforeach
                                 </div>
+                        
+                                <!-- Elementos del carrusel -->
                                 <div class="carousel-inner">
-                                    <div class="carousel-item active">
-                                        <img src="{{asset('img/Deportes.png')}}" class="d-block w-100 rounded" alt="Deportes">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{asset('img/Consejeria.png')}}" class="d-block w-100 rounded" alt="Consejeria">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{asset('img/Arte.png')}}" class="d-block w-100 rounded" alt="Arte">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{asset('img/Salud.png')}}" class="d-block w-100 rounded" alt="Salud">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{asset('img/Apoyos.png')}}" class="d-block w-100 rounded" alt="Apoyos">
-                                    </div>
-                                    <div class="carousel-item">
-                                        <img src="{{asset('img/Liderazgo.png')}}" class="d-block w-100 rounded" alt="Liderazgo">
-                                    </div>
+                                    @foreach($images as $key => $image)
+                                        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                            <img src="{{ route('carousel.getImages', ['image' => basename($image->image)]) }}" class="d-block w-100 rounded" alt="Imagen {{ $key + 1 }}">
+                        
+                                            <!-- Botón de eliminación debajo de la imagen -->
+                                            @if(in_array($userID, [1, 2, 3, 4]))
+                                                <div class="carousel-item-overlay">
+                                                    <form action="{{ route('images.delete', ['id' => $image->id]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que quieres eliminar esta imagen?');">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm">Eliminar Imagen</button>
+                                                    </form>
+                                                </div>
+                                            @endif
+                                        </div>
+                                    @endforeach
                                 </div>
-
+                        
+                                <!-- Controles del carrusel -->
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Anterior</span>
@@ -56,9 +56,54 @@
                                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                                     <span class="visually-hidden">Siguiente</span>
                                 </button>
-
                             </div><!-- End Slides with indicators -->
                         </div>
+                        
+                        <!-- CSS para posicionar el botón debajo de la imagen -->
+                        <style>
+                        .carousel-item {
+                            position: relative;
+                        }
+                        
+                        .carousel-item-overlay {
+                            position: absolute;
+                            bottom: 30px;
+                            left: 30%;
+                            transform: translateX(-50%);
+                            width: 100%;
+                            text-align: center;
+                        }
+                        
+                        .carousel-item-overlay form {
+                            margin: 0;
+                        }
+                        </style>
+                        
+                            <!-- Formulario para subir imágenes -->
+                        
+                        @if(in_array($userID, [1, 2, 3, 4]))
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12 d-flex justify-content-center pt-2">
+                                    <form action="{{ route('upload.image') }}" method="POST" enctype="multipart/form-data" class="mt-4">
+                                        @csrf
+                                        <div class="mb-3">
+                                            <div class="pagetitle">
+                                                <h1>Subir nueva imagen al carrusel</h1>
+                                            </div><!-- End Page Title -->
+                                            <!-- Aquí aplicamos clases de validación de Bootstrap -->
+                                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror" id="image" required>
+                                            
+                                        </div>
+                                        <button type="submit" class="btn btn-ba">Subir Imagen</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        @endif
+                        
+            
+
                         <div class="row pt-4">
                             <div class="col-12 col-sm-6">
                                 <div class="card bg-transparent h-100 mb-3 border-0 shadow-none">
