@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Roles;
 use App\Models\TypeDimensions;
 use App\Models\TypeDocuments;
-use App\Models\TypeRh;
+use App\Models\typeRh;
 use App\Models\User;
 use App\Models\Programas;
 
