@@ -162,37 +162,37 @@
                             
                             <div class="row">
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/RogerSail.png')}}" title="Roger"  class="rounded custom-image-style img-with-shadow-green">
+                                    <img src="{{url('equipo/RogerSail.png')}}" title="Roger" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Beatriz.png')}}"  title="Beatriz"  class="rounded custom-image-style img-with-shadow">
+                                    <img src="{{url('equipo/Beatriz.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#BeatrizUserModal" title="Beatriz" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/JuanCarlos.png')}}"  title="Juan"  class="rounded custom-image-style img-with-shadow-green">
+                                    <img src="{{url('equipo/JuanCarlos.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juan" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Natalia.png')}}"  title="Natalia"  class="rounded custom-image-style img-with-shadow">
+                                    <img src="{{url('equipo/Natalia.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Natalia" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Laura.png')}}"  title="Laura"  class="rounded custom-image-style img-with-shadow">
+                                    <img src="{{url('equipo/Laura.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Laura" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Carolina.png')}}"  title="Carolina"  class="rounded custom-image-style img-with-shadow">
+                                    <img src="{{url('equipo/Carolina.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Carolina" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Andres.png')}}"  title="Andres"  class="rounded custom-image-style img-with-shadow-green">
+                                    <img src="{{url('equipo/Andres.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Andres" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Juliana.png')}}"  title="Juliana"  class="rounded custom-image-style img-with-shadow">
+                                    <img src="{{url('equipo/Juliana.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Juliana" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
                                 </div>
 
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/JuanC.png')}}"  title="JuanC "  class="rounded custom-image-style img-with-shadow-green">
+                                    <img src="{{url('equipo/JuanC.png')}}" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="JuanC " style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-12 mt-5">
                                 <div class="image-wrapper">
-                                    <img src="{{url('equipo/Nuevo-Equipo.jpg')}}"  title="Equipo Bienestar" class="rounded  custom-image-style custom-img-shadow">
+                                    <img src="{{url('equipo/Nuevo-Equipo.jpg')}}" style="cursor:pointer; width: 500px; height: auto;" alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow">
                                 </div>
                             </div>
                             
