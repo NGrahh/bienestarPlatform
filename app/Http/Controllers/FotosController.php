@@ -25,4 +25,15 @@ class FotosController extends Controller
             // Debugging line
         return Response::file($path);
     }
+
+    public function show_apoyos($filename)
+    {
+        $path = public_path('imagenesApoyos/' . $filename);
+        if (!file_exists($path)) {
+            abort(404);
+        }
+            // Debugging line
+        return Response::file($path);
+    }
+
 }

@@ -42,7 +42,7 @@
                         <div class="row">
                             <!-- Imagen -->
                             <div class="col-lg-12 d-flex justify-content-center align-items-center my-4">
-                                <img src="{{ asset('imagenesApoyos/Apoyo_Datos.png') }}" class="img-fluid rounded shadow-lg" alt="Apoyo Fic" style="max-width: 50%;">
+                                <img src="{{ url('Apoyos/Apoyo_Datos.png') }}" class="img-fluid rounded shadow-lg" alt="Apoyo Fic" style="max-width: 50%;">
                             </div>
 
                             <div class="col-lg-12 mt-5">
