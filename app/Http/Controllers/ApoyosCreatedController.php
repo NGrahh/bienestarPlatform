@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\Storage;
 class ApoyosCreatedController extends Controller
 {
 
-    public function __construct()
-    {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'Ap_fic', 'Ap_alimentacion', 'Ap_datos', ' Ap_sostenimiento', 'Ap_transporte']);
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'Ap_fic', 'Ap_alimentacion', 'Ap_datos', ' Ap_sostenimiento', 'Ap_transporte']);
+    // }
 
     public function store_user(Request $request)
     {
@@ -305,6 +305,7 @@ class ApoyosCreatedController extends Controller
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
         // Obtiene el usuario autenticado
         $user = Auth::user();
+
         $inscrito = false;
         if ($apoyo && $user) {
             // Verifica si el usuario ya está inscrito en este apoyo
@@ -355,22 +356,25 @@ class ApoyosCreatedController extends Controller
         $fechaActual = \Carbon\Carbon::now('America/Bogota');
         // Obtiene el usuario autenticado
         $user = Auth::user();
+    
         $inscrito = false;
+        
         if ($apoyo && $user) {
             // Verifica si el usuario ya está inscrito en este apoyo
             $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
                             ->where('user_id', $user->id)
                             ->exists();
         }
+    
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
             // Define las fechas de apertura y clausura con hora
             $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start . ' 00:00:00', 'America/Bogota');
             $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end . ' 23:59:59', 'America/Bogota');
-
+    
             // Determina si el botón debe mostrarse
             $mostrarBoton = ($fechaActual->greaterThanOrEqualTo($fechaApertura) && $fechaActual->lessThanOrEqualTo($fechaClausura));
-
+    
             // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-regular', [
                 'apoyo_id' => $apoyo->id,
@@ -394,6 +398,65 @@ class ApoyosCreatedController extends Controller
             ]);
         }
     }
+    
+
+
+
+
+
+
+
+    // public function Ap_sostenimiento()
+    // {
+    //     // Recupera un solo modelo basado en la condición
+    //     $apoyo = Apoyos_created::where('tipo_apoyo_id', 4)->first();
+    //     // Establece la zona horaria a Colombia
+    //     $fechaActual = \Carbon\Carbon::now('America/Bogota');
+    //     // Obtiene el usuario autenticado
+    //     $user = Auth::user();
+
+    //     $inscrito = false;
+        
+    //     if ($apoyo && $user) {
+    //         // Verifica si el usuario ya está inscrito en este apoyo
+    //         $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
+    //                         ->where('user_id', $user->id)
+    //                         ->exists();
+    //     }
+
+    //     // Verifica si el modelo fue encontrado
+    //     if ($apoyo) {
+    //         // Define las fechas de apertura y clausura con hora
+    //         $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start . ' 00:00:00', 'America/Bogota');
+    //         $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end . ' 23:59:59', 'America/Bogota');
+
+    //         // Determina si el botón debe mostrarse
+    //         $mostrarBoton = ($fechaActual->greaterThanOrEqualTo($fechaApertura) && $fechaActual->lessThanOrEqualTo($fechaClausura));
+
+    //         // Pasa los datos a la vista
+    //         return view('layouts.descripcion-apoyos.Apoyo-regular', [
+    //             'apoyo_id' => $apoyo->id,
+    //             'status' => $apoyo->status,
+    //             'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
+    //             'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
+    //             'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
+    //             'mostrarBoton' => $mostrarBoton,
+    //             'inscrito' => $inscrito,
+    //         ]);
+    //     } else {
+    //         // Si el registro no existe, pasar datos vacíos a la vista
+    //         return view('layouts.descripcion-apoyos.Apoyo-regular', [
+    //             'apoyo_id' => null,
+    //             'status' => null,
+    //             'tipo_apoyo_id' => null,
+    //             'fecha_apertura' => null,
+    //             'fecha_clausura' => null,
+    //             'mostrarBoton' => false,
+    //             'inscrito' => $inscrito,
+    //         ]);
+    //     }
+    // }
+
 
     public function Ap_transporte()
     {
