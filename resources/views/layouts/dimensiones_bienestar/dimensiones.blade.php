@@ -78,9 +78,9 @@
                                                 </p>
 
 
-                                                <p>
-                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar cita</button></a>
-                                                </p>
+                                                <a href="{{ route('form-appointment', ['dimension' => 'Consejería y atención psicosocial']) }}">
+                                                    <button class="btn btn-ba">Solicitar cita</button>
+                                                </a>
                                                 
                                         
                                             </div>
@@ -200,9 +200,7 @@
                                                     <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar Cita</button></a>
                                                 </p> --}}
 
-                                                <p>
-                                                    <a href="{{route('form-appointment')}}"><button class="btn btn-ba" >Solicitar cita</button></a>
-                                                </p>
+    
 
                                             </div>
                                         </div>
