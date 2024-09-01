@@ -85,9 +85,10 @@
                                                     <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No ser o haber sido beneficiario de apoyos de sostenimiento en otro programa de formación.</strong></li>
                                                     <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>Foto de documento de identidad.</strong></li>
                                                     <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No ser o haber sido beneficiario de apoyos de sostenimiento del FIC en otros programas de formación.</strong></li>
-                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No tener otro tipo de subsidio asignado por alcaldía, Juntas Comunales, Organismos del estado (Jóvenes en Acción), ni otro apoyo del SENA.</strong></li>
+                                                    <li class="list-group-item"><i class="bi bi-collection me-1 text-primary"></i><strong>No tener otro tipo de subsidio asignado por alcaldía, Juntas Comunales, Organismos del Estado (Jóvenes en Acción), ni otro apoyo del SENA.</strong></li>
                                                     <li class="list-group-item mb-3"><i class="bi bi-collection me-1 text-primary"></i><strong>Soportes de la condición de vulnerabilidad "en caso de ser así, se le pedirá foto de la condición."</strong></li>
                                                 </ul><!-- End List group Numbered -->
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -97,12 +98,19 @@
                             <div class="col-lg-12 mt-5">
                                 <div class="pagetitle mx-3">
                                     <h1>Información Importante!</h1>
-                                </div><!-- End Page Title -->
+                                </div>
                             
                                 @if ($tipo_apoyo_id == 1 && $status == '1' && $mostrarBoton)
+                                    <div class=" p-3 mb-3  rounded text-justify">
+                                        <p class="text-dark">
+                                            La inscripción ha dado inicio el día de hoy, <strong class="text-success">{{ $fecha_apertura }}</strong>, y estará disponible hasta la fecha límite establecida, <strong class="text-danger">{{ $fecha_clausura }}</strong>. Le recomendamos completar el proceso de inscripción dentro de este período para asegurar su participación.
+                                        </p>
+                                    </div>
+                                
+                                
                                     <p class="text-justify mx-3">
-                                        Actualmente, el apoyo FIC se encuentra habilitado para nuevas inscripciones.
-                                    </p>
+                                        
+
                                     <div class="d-flex justify-content-center align-items-center pt-2">
                                     @if($inscrito)
                                         <button class="btn btn-success" disabled>Ya estás inscrito</button>
