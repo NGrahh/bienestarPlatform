@@ -259,7 +259,7 @@
                                             <div class="d-flex justify-content-center align-items-center pt-2">
                                                 @if ($apoyos_created->status)
                                                 <!-- Botón para abrir el modal de Des-habilitar -->
-                                                <button type="button" class="btn btn-ba px-2 me-2" data-bs-toggle="modal" data-bs-target="#disableApoyoModal{{ $apoyos_created->id }}" title="Deshabilitar Usuario">
+                                                <button type="button" class="btn btn-ba px-2 me-2" data-bs-toggle="modal" data-bs-target="#disableApoyoModal{{ $apoyos_created->id }}" title="Deshabilitar Apoyo">
                                                     <i class="ri-chat-check-line"></i>
                                                 </button>
                                                 @else
@@ -309,7 +309,7 @@
                                                 </div>
                                                 <!-- Fin del modal de deshabilitación -->
 
-                                                <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editInsModal{{ $apoyos_created->id }}" title="Editar Evento">
+                                                <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editInsModal{{ $apoyos_created->id }}" title="Editar Apoyo">
                                                     <i class="ri-article-line"></i>
                                                 </button>
                                                 <!-- Modal de edición para cada evento -->
@@ -402,7 +402,7 @@
 
                                 <!-- Botón para abrir el modal de creación nuevo usuario -->
                                 <button type="button" class="btn btn-ba me-md-2" data-bs-toggle="modal" data-bs-target="#newinsModal">
-                                    Abri Inscripción
+                                    Abrir Inscripción
                                 </button>
 
                                 <!-- Modal de creación para usuario -->
