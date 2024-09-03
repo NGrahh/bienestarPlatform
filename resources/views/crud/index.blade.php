@@ -312,7 +312,7 @@
                                     <div class="modal-dialog modal-lg">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="card-title-ba text-center pb-0 fs-4">Crear nuevo Usuario</h5>
+                                                <h5 class="card-title-ba text-center fs-4">Crear nuevo Usuario</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                                             </div>
                                             <div class="modal-body">
