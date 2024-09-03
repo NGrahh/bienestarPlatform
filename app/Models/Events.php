@@ -16,6 +16,7 @@ class Events extends Model
         'place',
         'eventdate',
         'eventlimit',
+        'count',
         'datestar',
         'dateendevent',
         'Subjectevent',

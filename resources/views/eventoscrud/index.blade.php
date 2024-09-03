@@ -68,7 +68,11 @@
                                         <td class="ellipsis" >{{ $event->place }}</td>
                                         <td class="ellipsis" >{{ $event->hour }}</td>
                                         <td class="ellipsis" >{{ $event->eventdate }}</td>
-                                        <td class="ellipsis" >{{ $event->eventlimit }}</td>
+                                        @if ($event->eventlimit === null)
+                                            <td class="ellipsis"><strong>No Aplica </strong></td>
+                                        @else
+                                            <td class="ellipsis" >{{ $event->eventlimit }}</td>
+                                        @endif
                                         <td class="ellipsis" >{{ $event->datestar }}</td>
                                         <td class="ellipsis" >{{ $event->dateendevent }}</td>
                                         <td class="ellipsis" >{{ $event->Subjectevent }}</td>
@@ -132,7 +136,11 @@
                                                                                 {{-- Aforo del evento --}}
                                                                                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                                                                                     <label for="eventlimit" class="form-label"><strong>Aforo</strong></label>
+                                                                                    @if ($event->eventlimit === null)
+                                                                                    <input value="No Aplica" type="text" name="eventlimit" class="form-control" id="eventlimit" disabled>
+                                                                                    @else
                                                                                     <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" disabled>
+                                                                                    @endif
                                                                                 </div>
                                                                                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                                                                                     <label for="datestar" class="form-label "><strong>Fecha Inicio (Inscripción)</strong></label>
@@ -162,11 +170,6 @@
                                                         </div>
                                                     </div>
                                                     <!-- Fin del modal de visualizar -->
-
-
-
-
-
 
                                                     <button type="button" class="btn btn-ba-amarillo px-2 " data-bs-toggle="modal" data-bs-target="#editEventModal{{ $event->id }}" title="Editar Evento">
                                                         <i class="ri-article-line"></i>
@@ -208,7 +211,11 @@
 
                                                                             <div class="col-12 col-md-4">
                                                                                 <label for="eventlimit" class="form-label"><strong>Aforo</strong></label>
-                                                                                <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" required>
+                                                                                @if ($event->eventlimit === null)
+                                                                                    <input value="" type="text" name="eventlimit" class="form-control" id="eventlimit" >
+                                                                                    @else
+                                                                                    <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" >
+                                                                                    @endif
                                                                                 <div class="invalid-feedback">Ingrese un aforo.</div>
                                                                                 @error('eventlimit')
                                                                                 <li class="text-danger">{{ $message }}</li>
@@ -216,7 +223,7 @@
                                                                             </div>
                                                                             <div class="col-12 col-sm-6 col-md-4">
                                                                                 <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}">
+                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}"  min="06:00" max="20:00" pattern="[0-9]{2}:[0-9]{2}">
                                                                                 <div class="invalid-feedback">Ingrese una hora.</div>
                                                                                 @error('hour')
                                                                                 <li class="text-danger">{{ $message }}</li>
@@ -455,7 +462,7 @@
                                                         </div>
                                                         <div class="col-12 col-sm-4 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="limitcapacity" class="form-label"><strong>Aforo</strong> </label>
-                                                            <input value="{{ old('eventlimit') }}" type="number" name="eventlimit" class="form-control" id="limitcapacity" required>
+                                                            <input value="{{ old('eventlimit') }}" type="number" name="eventlimit" class="form-control" id="limitcapacity">
                                                             <div class="invalid-feedback">Ingrese el limite del evento.</div>
                                                             @error('eventlimit')
                                                             <li class="text-danger">{{ $message }}</li>
@@ -496,8 +503,8 @@
                                                         </div>
                                                         <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                             <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                                                            <input name="hour" type="time" class="form-control" value="{{ old('hour') }}">
-                                                            <div class="invalid-feedback">Ingrese una hora.</div>
+                                                            <input name="hour" type="time" class="form-control" value="{{ old('hour') }}"   min="06:00" max="20:00" pattern="[0-9]{2}:[0-9]{2}">
+                                                            <div class="invalid-feedback">La hora del evento debe estar entre las 6:00 AM y las 8:00 PM.</div>
                                                             @error('hour')
                                                             <li class="text-danger">{{ $message }}</li>
                                                             @enderror
@@ -526,18 +533,13 @@
                                     </div>
                                 </div>
                                 <!-- Final modal de creación para Evento-->
-
                             </div>
-
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
 </main>
-
 @include('layouts.footer')
 @endsection

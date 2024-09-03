@@ -200,27 +200,61 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'eventname' => 'required|between:2,100',
+            'eventname' => 'required|between:2,1000',
             'picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'place' => 'required|between:2,100',
             'hour' => [
                 'required',
                 'date_format:H:i', // Formato de hora requerido
-                function ($attribute, $value, $fail) {
-                    // Obtener la fecha y hora actual en formato de Carbon
+                function ($attribute, $value, $fail) use ($request) {
+                    // Obtener la fecha y hora actual
                     $now = now();
-                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
-    
-                    // Comparar la hora proporcionada con la hora actual
-                    if ($providedTime <= $now) {
-                        $fail('La hora ingresada ya ha pasado.');
+                    
+                    // Obtener la fecha del evento proporcionada en la solicitud
+                    $eventDate = Carbon::createFromFormat('Y-m-d', $request->get('eventdate'), 'America/Bogota');
+                    
+                    // Concatenar la fecha y hora proporcionada
+                    $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                    
+                    // Si la fecha es hoy, verificar que la hora no haya pasado
+                    if ($eventDate->isToday()) {
+                        if ($providedDateTime <= $now) {
+                            $fail('La hora ingresada ya ha pasado.');
+                        }
                     }
                 },
             ],
-            'eventdate' => 'required|date|after_or_equal:today',
-            'eventlimit' => 'required|numeric|digits_between:1,1000',
-            'datestar' => 'required|date|before:eventdate|after_or_equal:today',
-            'dateendevent' => 'required|date|before:eventdate|after_or_equal:today',
+            'eventdate' => [
+                'required',
+                'date',
+                'after_or_equal:today',
+                function ($attribute, $value, $fail) {
+                    $date = Carbon::parse($value);
+
+                    // Verifica si es domingo
+                    if ($date->isSunday()) {
+                        $fail('La fecha no puede ser un domingo.');
+                    }
+                },
+            ],
+            'eventlimit' => 'nullable|numeric|digits_between:1,1000',
+            'datestar' => 'required|date|before_or_equal:eventdate|after_or_equal:today',
+            'dateendevent' => [
+                'required',
+                'date',
+                'after_or_equal:datestar',
+                'before_or_equal:eventdate',
+                'after_or_equal:today',
+                function ($attribute, $value, $fail) use ($request) {
+                    $endDate = Carbon::parse($value);
+                    $startDate = Carbon::parse($request->get('datestar'));
+
+                    // Verifica que la fecha de fin no sea anterior a la fecha de inicio
+                    if ($endDate->lessThan($startDate)) {
+                        $fail('La fecha de fin del evento no puede ser anterior a la fecha de inicio.');
+                    }
+                },
+            ],
             'Subjectevent' => 'required|between:2,100',
         ];
     
@@ -249,16 +283,20 @@ class EventsController extends Controller
             'dateendevent.after_or_equal' => 'La fecha de fin no puede ser anterior a hoy.',
             'Subjectevent.required' => 'El asunto del evento es obligatorio.',
             'Subjectevent.between' => 'El asunto del evento debe tener entre :min y :max caracteres.',
+            'hour.required' => 'La hora del evento es obligatoria.',
+            'hour.date_format' => 'El formato de la hora debe ser HH:MM.',
+            'hour.custom' => 'La hora del evento debe estar entre las 6:00 AM y las 8:00 PM, y no puede haber pasado si la fecha del evento es hoy.'
         ];
     
         $validator = Validator::make($request->all(), $rules, $messages);
     
         if ($validator->fails()) {
-            return redirect()
-                ->back()
+            return redirect()->route('events.index')
                 ->withErrors($validator)
                 ->withInput()
-                ->with('error', 'El evento no fue registrado!');
+                ->with('error', 'Hubo un problema con uno de los campos. Por favor, verifica los datos ingresados.')
+                ->with('open_modal')
+                ->with('open_modal', true);
         }
     
     
@@ -291,6 +329,7 @@ class EventsController extends Controller
             'hour' => $request->get('hour'),
             'place' => $request->get('place'),
             'eventlimit' => $request->get('eventlimit'),
+            'count' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),
             'dateendevent' => $request->get('dateendevent'),
             'Subjectevent' => $request->get('Subjectevent')
@@ -336,23 +375,57 @@ class EventsController extends Controller
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'hour' => [
                 'required',
-                'date_format:H:i:s', // Formato de hora requerido
-                function ($attribute, $value, $fail) {
-                    // Obtener la fecha y hora actual en formato de Carbon
+                'date_format:H:i', // Formato de hora requerido
+                function ($attribute, $value, $fail) use ($request) {
+                    // Obtener la fecha y hora actual
                     $now = now();
-                    $providedTime = Carbon::createFromFormat('H:i:s', $value, 'America/Bogota');
-    
-                    // Comparar la hora proporcionada con la hora actual
-                    if ($providedTime <= $now) {
-                        $fail('La hora ingresada ya ha pasado.');
+                    
+                    // Obtener la fecha del evento proporcionada en la solicitud
+                    $eventDate = Carbon::createFromFormat('Y-m-d', $request->get('eventdate'), 'America/Bogota');
+                    
+                    // Concatenar la fecha y hora proporcionada
+                    $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                    
+                    // Si la fecha es hoy, verificar que la hora no haya pasado
+                    if ($eventDate->isToday()) {
+                        if ($providedDateTime <= $now) {
+                            $fail('La hora ingresada ya ha pasado.');
+                        }
                     }
                 },
             ],
-            'eventdate' => 'required|date|after_or_equal:today',
+            'eventdate' => [
+                'required',
+                'date',
+                'after_or_equal:today',
+                function ($attribute, $value, $fail) {
+                    $date = Carbon::parse($value);
+
+                    // Verifica si es domingo
+                    if ($date->isSunday()) {
+                        $fail('La fecha no puede ser un domingo.');
+                    }
+                },
+            ],
             'place' => 'required|string|between:2,500',
-            'eventlimit' => 'required|numeric|digits_between:1,1000',
+            'eventlimit' => 'nullable|numeric|digits_between:1,1000',
             'datestar' => 'required|date|before:eventdate|after_or_equal:today',
-            'dateendevent' => 'required|date|before:eventdate|after_or_equal:today',
+            'dateendevent' => [
+                'required',
+                'date',
+                'after_or_equal:datestar',
+                'before_or_equal:eventdate',
+                'after_or_equal:today',
+                function ($attribute, $value, $fail) use ($request) {
+                    $endDate = Carbon::parse($value);
+                    $startDate = Carbon::parse($request->get('datestar'));
+
+                    // Verifica que la fecha de fin no sea anterior a la fecha de inicio
+                    if ($endDate->lessThan($startDate)) {
+                        $fail('La fecha de fin del evento no puede ser anterior a la fecha de inicio.');
+                    }
+                },
+            ],
             'Subjectevent' => 'required|string'
         ]);
     
@@ -360,7 +433,8 @@ class EventsController extends Controller
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
-                ->withInput();
+                ->withInput()
+                ->with('error', 'Hubo un problema con uno de los campos. Por favor, verifica los datos ingresados.');
         }
     
         // Busca el evento en la base de datos usando el ID proporcionado
@@ -395,6 +469,7 @@ class EventsController extends Controller
             'place' => $request->get('place'),
             'eventdate' => $request->get('eventdate'),
             'eventlimit' => $request->get('eventlimit'),
+            'count' => $request->get('eventlimit'),
             'datestar' => $request->get('datestar'),
             'dateendevent' => $request->get('dateendevent'),
             'Subjectevent' => $request->get('Subjectevent')
@@ -508,15 +583,29 @@ class EventsController extends Controller
             return redirect()->back()->with('error', 'Ya estás inscrito en este evento.');
         }
     
-        // Verifica si quedan cupos disponibles para el evento
-        if ($event->eventlimit <= 0) {
-            // Si el evento ha alcanzado su límite de inscripciones, redirige de vuelta con un mensaje de error
-            return redirect()->back()->with('error', 'Este evento ha alcanzado su límite de inscripciones.');
+        // Verifica si hay un límite establecido (eventlimit no es null)
+        if ($event->eventlimit !== null) {
+            // Verifica si aún hay cupos disponibles
+            if ($event->count <= 0) {
+                // Si no hay cupos, redirige de vuelta con un mensaje de error
+                return redirect()->back()->with('error', 'Este evento ha alcanzado su límite de inscripciones.');
+            }
+            // Resta 1 al contador de cupos disponibles
+            $event->count -= 1;
+        } else {
+            // Si no hay límite (eventlimit es null), simplemente incrementa el contador
+            $event->count += 1;
         }
+
+        // Guarda los cambios en el evento
+        $event->save();
     
-        // Reduce el límite de aforo del evento en una unidad
-        $event->eventlimit -= 1;
-    
+
+
+
+
+
+        
         // Guarda el evento actualizado en la base de datos
         $event->save();
     

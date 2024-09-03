@@ -129,7 +129,16 @@ class ApoyosCreatedController extends Controller
                 ->withInput()
                 ->with('error', 'Verifica los datos ingresados!');
         }
-    
+        // Verificar si ya existe una inscripción con el mismo tipo de apoyo
+        $existingApoyo = Apoyos_created::where('tipo_apoyo_id', $request->input('tipo_apoyo_id'))
+        ->where('status', 1)
+        ->first();
+
+        if ($existingApoyo) {
+            return redirect()->back()->withErrors(['tipo_apoyo_id' => 'No se puede actualizar el tipo de apoyo seleccionado porque ya se encuentra activo y abierto en el sistema']);
+        }
+
+
         $validatedData = $validator->validated();
     
         // Buscar el apoyo a actualizar

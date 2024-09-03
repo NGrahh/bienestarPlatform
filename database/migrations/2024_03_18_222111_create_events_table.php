@@ -20,7 +20,8 @@ return new class extends Migration
             $table->time('hour'); // Hora del evento
             $table->string('place'); // Imagen del evento
             $table->date('eventdate'); // Fecha del evento
-            $table->integer('eventlimit'); // Límite de asistentes
+            $table->integer('eventlimit')->nullable(); // Límite de asistentes, permitido null
+            $table->integer('count')->nullable(); // Límite de asistentes, permitido null
             $table->date('datestar'); // Fecha de inicio del evento
             $table->date('dateendevent'); // Fecha de fin del evento
             $table->string('Subjectevent'); // Asunto del evento

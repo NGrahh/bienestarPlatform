@@ -98,7 +98,7 @@
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
     {{-- Función para cuando exista un error en las validaciones del formulario de actualizar Usuario --}}
 
-    <!-- {{-- script>
+    {{-- <script>
         $(document).ready(function() {
             let table = $('.datatable').DataTable();
     
@@ -111,23 +111,22 @@
             // Verificar si hay errores de validación y si la sesión contiene la variable 'reopen_modal'
             @if (session('reopen_modal'))
                 // Obtener el ID del modal desde la sesión
-                let modalId = "#editUserModal{{ session('modal_open') }}";
+                let modalId = "#newEventModal{{ session('modal_open') }}";
                 // Abrir el modal correspondiente
                 let modal = new bootstrap.Modal(document.getElementById(modalId.substring(1)));
                 modal.show();
             @endif
         });
-    </script> --}} -->
-
+    </script>  --}}
     {{-- //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
-    {{-- Función para abrir modal cuando surge error en las validaciones del formulario al crear un usuario
+    {{-- {{-- Función para abrir modal cuando surge error en las validaciones del formulario al crear un usuario --}}
 
     <script>
         $(document).ready(function() {
             // Verificar si hay errores de validación y si la sesión contiene la variable 'reopen_modal'
-            @if (session('reopen_modal'))
+            @if (session('open_modal'))
                 // Obtener el ID del modal desde la sesión
-                var modalId = "#newUserModal";
+                var modalId = "#newEventModal";
                 // Abrir el modal correspondiente
                 var modal = new bootstrap.Modal(document.getElementById(modalId.substring(1)));
                 modal.show();
@@ -135,7 +134,7 @@
         });
 
     </script> 
-    //////////////////////////////////////////////////////////////////////////////////////////////////// --}}
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
     <!-- Template Main JS File -->

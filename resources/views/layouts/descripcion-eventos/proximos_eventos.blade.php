@@ -107,8 +107,13 @@
                                                                         <h6>{{ $event->place }}</h6>
                                                                         <p class="d-evento"><strong>Hora del Evento: </strong> </p>
                                                                         <h6>{{ $event->hour }}</h6>
-                                                                        <p class="d-evento"><strong>Aforo Limite: </strong> </p>
-                                                                        <h6>{{ $event->eventlimit }}</h6>
+                                                                        @if ($event->eventlimit === null)
+                                                                            <p class="d-evento"><strong>Inscritos: </strong></p>
+                                                                            <h6>{{ $event->count }}</h6>
+                                                                        @else
+                                                                            <p class="d-evento"><strong>Aforo Limite: </strong></p>
+                                                                            <h6>{{ $event->count }}</h6>
+                                                                        @endif
                                                                         <p class="d-evento"><strong>Fecha Inicial de Inscripción: </strong> </p>
                                                                         <h6>{{ $event->datestar }}</h6>
                                                                         <p class="d-evento"><strong>Fecha Final de la Inscripción: </strong> </p>
@@ -216,8 +221,13 @@
                                                                         <h6>{{ $event->eventdate }}</h6>
                                                                         <p class="d-evento"><strong>Ubicación del Evento: </strong> </p>
                                                                         <h6>{{ $event->place }}</h6>
-                                                                        <p class="d-evento"><strong>Aforo Limite: </strong> </p>
-                                                                        <h6>{{ $event->eventlimit }}</h6>
+                                                                        @if ($event->eventlimit === null)
+                                                                            <p class="d-evento"><strong>Inscritos: </strong></p>
+                                                                            <h6>{{ $event->count }}</h6>
+                                                                        @else
+                                                                            <p class="d-evento"><strong>Aforo Limite: </strong></p>
+                                                                            <h6>{{ $event->count }}</h6>
+                                                                        @endif
                                                                         <p class="d-evento"><strong>Fecha Inicial de Inscripción: </strong> </p>
                                                                         <h6>{{ $event->datestar }}</h6>
                                                                         <p class="d-evento"><strong>Fecha Final de la Inscripción: </strong> </p>
