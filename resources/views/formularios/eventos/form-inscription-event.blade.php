@@ -42,10 +42,13 @@
                                 <label class="form-check-label" for="check_no"> <strong>No estoy de acuerdo.</strong></label>
                             </div>
                             <br>
-
-                            <div class="col-12">
-                                <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
+                            <div class="d-flex justify-content-center align-items-center pt-2">
+                                <div class="col-12 d-flex justify-content-center align-items-center">
+                                    <a href="{{ route('home')}}"><button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al Inicio</button></a>
+                                </div>
                             </div>
+                            
+
                             <div id="form" style="display: none; ">
                                 <hr class="mt-4 mb-4 border-top border-dark" style="height: 3px;">
                                 <div class="row  mt-5">

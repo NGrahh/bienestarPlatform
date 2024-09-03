@@ -64,9 +64,9 @@ class PerfilController extends Controller
         // Definir las reglas de validación
         $validator = Validator::make($request->all(), [
             'pictureuser' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'required|string|between:2,300',
-            'Twitter_Profile' => 'required|url|max:255',
-            'Linkedin_Profile' => 'required|url|max:255',
+            'about_me' => 'nullable|string|between:2,300',
+            'Twitter_Profile' => 'nullable|url|max:255',
+            'Linkedin_Profile' => 'nullable|url|max:255',
             // 'morning_start' => ['nullable', 'date_format:H:i', new ValidHour],
             // 'morning_end' => ['nullable', 'date_format:H:i', new ValidHour],
             // 'afternoon_start' => ['nullable', 'date_format:H:i', new ValidHour],
@@ -80,7 +80,8 @@ class PerfilController extends Controller
                 ->withInput()
                 ->with('error', 'Existe un error en el formulario.');
         }
-
+        // Inicializa la variable para el nombre de la imagen
+        $imageName = null;
         // Si pasa la validación, proceder con el almacenamiento
         if ($request->hasFile('pictureuser')) {
             $imageName = time() . '.' . $request->pictureuser->extension();
@@ -120,9 +121,9 @@ class PerfilController extends Controller
 
         $validator = Validator::make($request->all(), [
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'required|string|min:2',
-            'Twitter_Profile' => 'required|string',
-            'Linkedin_Profile' => 'required|string',
+            'about_me' => 'string|min:2',
+            'Twitter_Profile' => 'string',
+            'Linkedin_Profile' => 'string',
             // 'morning_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
             // 'morning_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
             // 'afternoon_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
@@ -172,9 +173,9 @@ class PerfilController extends Controller
 
         $validator = Validator::make($request->all(), [
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'required|string|min:2',
-            'Twitter_Profile' => 'required|string',
-            'Linkedin_Profile' => 'required|string',
+            'about_me' => 'string|min:2',
+            'Twitter_Profile' => 'string',
+            'Linkedin_Profile' => 'string',
             // 'morning_start' => ['nullable', 'date_format:H:i:s'],
             // 'morning_end' => ['nullable', 'date_format:H:i:s'],
             // 'afternoon_start' => ['nullable', 'date_format:H:i:s'],

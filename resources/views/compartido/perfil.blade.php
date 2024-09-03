@@ -115,8 +115,6 @@
                             <div class="tab-pane fade profile-create pt-3 mt-5" id="profile-create">
                                 <form action="{{ route('perfil.store')}}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    
-
                                     <div class="row mb-3 ">
                                         <label for="name" class="col-md-4 col-lg-3 form-label">Nombre completo</label>
                                         <div class="col-md-8 col-lg-9">
@@ -124,9 +122,6 @@
                                         </div>
 
                                     </div>
-
-                                    
-
                                     <div class="row mb-3">
                                         <label for="rol_id" class="col-md-4 col-lg-3 form-label">Rol</label>
                                         <div class="col-md-8 col-lg-9">
@@ -335,44 +330,6 @@
                                         <li class="text-danger">{{ $message }}</li>
                                         @enderror
                                     </div>
-                                    <strong><h5 class="card-title">Por favor, ingrese los horarios de inicio y fin para ambas jornadas, si desea cambiarlos. (mañana y tarde).</h5></strong>
-
-                                        <div class="row mb-3">
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="morningStart" class="form-label">Inicio de la mañana</label>
-                                                <input type="time" class="form-control" id="morningStart" name="morning_start" value="{{ Auth::user()->perfil->morning_start ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('morningStart')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="morningEnd" class="form-label">Fin de la mañana</label>
-                                                <input type="time" class="form-control" id="morningEnd" name="morning_end" value="{{ Auth::user()->perfil->morning_end ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('morning_end')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="row mb-3">
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="afternoonStart" class="form-label">Inicio de la tarde</label>
-                                                <input type="time" class="form-control" id="afternoonStart" name="afternoon_start" value="{{ Auth::user()->perfil->afternoon_start ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('afternoon_start')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                            <div class="col-lg-6 col-md-6">
-                                                <label for="afternoonEnd" class="form-label">Fin de la tarde</label> 
-                                                <input type="time" class="form-control" id="afternoonEnd" name="afternoon_end" value="{{ Auth::user()->perfil->afternoon_end ?? '' }}">
-                                                <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                                @error('afternoon_end')
-                                                <li class="text-danger">{{ $message }}</li>
-                                                @enderror
-                                            </div>
-                                        </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-ba">Actualizar Perfil</button>
                                     </div>

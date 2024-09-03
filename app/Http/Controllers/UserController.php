@@ -42,12 +42,13 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id','type_dimensions_id', 'rol_id', 'type_rh_id','numberphone','Program_id','yourToken','status')->with('role')->with('TypeDocument')->get();
+        $users = User::select('users.id', 'name', 'lastname', 'document', 'email', 'type_document_id','type_dimensions_id', 'rol_id', 'type_rh_id','numberphone','Program_id','yourToken','status')->with('role')->with('TypeDocument')->orderBy('users.id')->get();
         $roles = Roles::where('name', '!=', 'Admin')->get();
         $type_documents = TypeDocuments::all();
         $programas = Programas::all();
         $type_rhs = typeRh::all();
         $type_dimensions = TypeDimensions::all();
+
         return view('crud.index', ['user' => $users, 'roles' => $roles, 'type_documents' => $type_documents, 'type_rhs' => $type_rhs, 'programas' => $programas ,'type_dimensions'=>$type_dimensions], compact('users'));
     }
 

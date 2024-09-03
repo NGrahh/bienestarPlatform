@@ -141,7 +141,7 @@
                                                                             
                                                                         @else
                                                                             <button type="button" class="btn btn-ba">
-                                                                                <a style="color: white" href="{{ route('login') }}">Iniciar Sesión</a>
+                                                                                <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Iniciar Sesión</a>
                                                                             </button>
                                                                         @endauth
                                                                     </div>
@@ -194,6 +194,7 @@
                                             <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
                                                 Ver detalles
                                             </button>
+
                                             <div class="modal fade" id="largeModal{{ $event->id }}" tabindex="-1">
                                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                                     <div class="modal-content">

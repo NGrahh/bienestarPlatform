@@ -74,14 +74,22 @@ public function index(Request $request)
             'hour' => [
                 'required',
                 'date_format:H:i', // Formato de hora requerido
-                function ($attribute, $value, $fail) {
-                    // Obtener la fecha y hora actual en formato de Carbon
+                function ($attribute, $value, $fail) use ($request) {
+                    // Obtener la fecha y hora actual
                     $now = now();
-                    $providedTime = Carbon::createFromFormat('H:i', $value, 'America/Bogota');
-    
-                    // Comparar la hora proporcionada con la hora actual
-                    if ($providedTime <= $now) {
-                        $fail('La hora ingresada ya ha pasado.');
+                    
+                    // Obtener la fecha del evento proporcionada en la solicitud
+                    $eventDate = Carbon::createFromFormat('Y-m-d', $request->get('date'), 'America/Bogota');
+
+                    $startTime = strtotime($request->get('hour')) - 60;
+                    // Concatenar la fecha y hora proporcionada
+                    $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                    
+                    // Si la fecha es hoy, verificar que la hora no haya pasado
+                    if ($eventDate->isToday()) {
+                        if ($providedDateTime <= $now) {
+                            $fail('La hora ingresada ya ha pasado.');
+                        }
                     }
                 },
             ],

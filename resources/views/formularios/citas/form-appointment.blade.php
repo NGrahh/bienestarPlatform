@@ -31,18 +31,23 @@
             <p class="card-text px-3" align="justify">Con el envío de su información personal a través de este formulario, se entiende que está manifestando expresamente su autorización al SENA para proceder al tratamiento de sus datos personales en los términos arriba expuestos.</p>
             <div class="form-check px-5 pt-4">
               <input class="form-check-input" type="checkbox" id="check_si" name="option" value="something" required>
-              <label class="form-check-label" for="check_si">Estoy de acuerdo.</label>
+              <label class="form-check-label" for="check_si"><strong>Estoy de acuerdo.</strong></label>
             </div>
             <br>
             <div class="form-check px-5">
               <input class="form-check-input" type="checkbox" id="check_no" name="option" value="something" required>
-              <label class="form-check-label" for="check_no">No estoy de acuerdo.</label>
+              <label class="form-check-label" for="check_no"><strong>No estoy de acuerdo.</strong></label>
             </div>
             <br>
-            <div class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-12">
+            {{-- <div class="">
               <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
+            </div> --}}
+            <div class="d-flex justify-content-center align-items-center pt-2">
+              <div class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center align-items-center">
+                  <a href="{{ route('home')}}"><button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al Inicio</button></a>
+              </div>
             </div>
-  
+          </div>
             <div id="form" style="display: none;" class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
               <hr class="mt-4 mb-4 border-top border-dark" style="height: 3px;">
               <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -111,7 +116,7 @@
   
                   
   
-                  <div align="center" class="col-12 mt-4">
+                  <div align="center" class="col-12 mt-4 mb-5">
                     <button class="btn btn-ba w-50" type="submit">Solicitar</button>
                   </div>
                 </form>

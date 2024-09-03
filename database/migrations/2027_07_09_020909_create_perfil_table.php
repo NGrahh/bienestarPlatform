@@ -19,11 +19,8 @@ return new class extends Migration
             $table->text('about_me')->nullable(); // descripción que tiene que el perfil del usuario
             $table->string('Twitter_Profile')->nullable(); // twitter del perfill (redes sociales)
             $table->string('Linkedin_Profile')->nullable(); // Linkedin del perfill (redes sociales)
-            $table->time('morning_start')->nullable(); // inicio de  jornada en la que se encuentra el usuario (disponible en el perfil, a que horas inicia)
-            $table->time('morning_end')->nullable(); //  jornada a la que finaliza la jornada del usuario
-            $table->time('afternoon_start')->nullable(); // 
-            $table->time('afternoon_end')->nullable(); // 
             $table->timestamps();
+            
 
             // Añade la restricción si user_id hace referencia a la tabla users
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

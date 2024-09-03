@@ -14,22 +14,11 @@
 @include('layouts.menu')
 
 <main id="main" class="main">
-
     <div class="pagetitle">
         <h1>Gestión de eventos</h1>
     </div><!-- End Page Title -->
-
     @include('compartido.alertas')
-
-
-
-
-
-
-
-
     <section class="section">
-
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
@@ -416,12 +405,12 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="d-md-flex justify-content-md-end">
-
+                            
                             <!-- Botón para abrir el modal de creación nuevo Evento -->
                             <button type="button" class="btn btn-ba me-md-2 mt-5 mb-4" data-bs-toggle="modal" data-bs-target="#newEventModal" title="Crear Evento">
                                 Crear Evento
                             </button>
-                    
+
                             <!-- Modal de creación para Evento -->
                             <div class="modal fade" id="newEventModal" tabindex="-1">
                                 <div class="modal-dialog modal-lg">
@@ -539,13 +528,14 @@
                                 </div>
                             </div>
                             <!-- Final modal de creación para Evento-->
+
                         </div>
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
 </main>
+
 @include('layouts.footer')
 @endsection

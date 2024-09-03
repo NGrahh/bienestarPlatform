@@ -44,8 +44,10 @@
               </div>
               <br>
               
-              <div class="col-12">
-                <button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al inicio</button>
+              <div class="d-flex justify-content-center align-items-center pt-2">
+                <div class="col-6 col-sm-6 col-md-12 col-lg-12 col-xl-12 d-flex justify-content-center align-items-center">
+                    <a href="{{ route('home')}}"><button class="btn btn-ba w-100" id="button_volver" style="display: none;" type="submit">Volver al Inicio</button></a>
+                </div>
               </div>
               
               <div id="form" style="display: none;">

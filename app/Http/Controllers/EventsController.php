@@ -230,7 +230,6 @@ class EventsController extends Controller
                 'after_or_equal:today',
                 function ($attribute, $value, $fail) {
                     $date = Carbon::parse($value);
-
                     // Verifica si es domingo
                     if ($date->isSunday()) {
                         $fail('La fecha no puede ser un domingo.');
