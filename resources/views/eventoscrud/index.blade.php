@@ -391,19 +391,16 @@
                                                         </div>
                                                     </div>
                                                     <!-- Fin del modal de Inscripciones-->
-
                                                 </div>
                                             </div>
                                         </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
-
                             </table>
-
                         </div>
                     </div>
-                    <div class="col-lg-12">
+                    <div class="col-lg-12 ml-2">
                         <div class="d-md-flex justify-content-md-end">
                             
                             <!-- Botón para abrir el modal de creación nuevo Evento -->
