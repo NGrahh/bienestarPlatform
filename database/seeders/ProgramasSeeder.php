@@ -62,7 +62,7 @@ class ProgramasSeeder extends Seeder
             ['name' => 'Producción Audio Digital'],
             ['name' => 'Producción de Componentes Mecanicos Con Maquinade Control Numerico Computarizado'],
             ['name' => 'Producción de Medios Audiovisuales Digitales'],
-            ['name' => 'Programación d Software'],
+            ['name' => 'Programación de Software'],
             ['name' => 'Sistemas'],
             ['name' => 'Sistemas Teleinformaticos'],
             ['name' => 'Soldadura de Productos Metalicos en Platina'],
