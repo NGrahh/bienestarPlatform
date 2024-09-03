@@ -25,6 +25,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-body">
+
                         <h5 class="card-title">Mis Citas</h5>
                         <div class="table-responsive">
                             <table class="table datatable rounded-table">
@@ -227,11 +228,12 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <div class="d-grid gap-1 d-md-flex justify-content-md-end mt-5 mb-5">
 
-                                
-                                <a  href="{{route('form-appointment')}}"><button class="btn btn-ba">Solicitar Cita</button></a>
                             </div>
+                            <div class="col-lg-12 ml-2">
+                        <div class="d-grid gap-1 d-md-flex justify-content-md-end mt-5 mb-5">
+                            <a  href="{{route('form-appointment')}}"><button class="btn btn-ba">Solicitar Cita</button></a>
+                        </div>
                         </div>
 
                     </div>
