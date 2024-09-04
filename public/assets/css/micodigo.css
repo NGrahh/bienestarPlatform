@@ -765,7 +765,7 @@ p {
 }
 
 .image-wrapper:hover .custom-img-shadow {
-    box-shadow: 10px 10px 20px rgba(0, 255, 0, 0.6), 10px -10px 20px rgba(0, 0, 255, 0.6), -10px 10px 20px rgba(0, 255, 0, 0.6), -10px -10px 20px rgba(0, 0, 255, 0.6);
+    box-shadow: 10px 10px 20px rgba(0, 255, 0, 0.171), 10px -10px 20px rgba(0, 0, 255, 0.082), -10px 10px 20px rgba(0, 255, 0, 0.185), -10px -10px 20px rgba(0, 0, 255, 0.6);
     /* Sombra verde y azul en los cuatro lados */
 }
 .input-border-radius-right{
