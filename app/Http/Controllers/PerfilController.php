@@ -12,207 +12,60 @@ use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
-    /**
-    * La función __construct() en el código proporcionado configura el middleware 'auth' para aplicarse a todas las rutas 
-    * del controlador donde se encuentra este constructor. Sin embargo, excluye ciertas rutas específicas de la aplicación del middleware 
-    * 'auth'. Las rutas excluidas son index, update, update_user. 
-    * Esto significa que todas las rutas de este controlador estarán protegidas por autenticación.
-    * excepto las mencionadas anteriormente, que probablemente sean accesibles públicamente o requieran una lógica de acceso diferente
-    */
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create','update_user','cambiarContrasena']);
+        $this->middleware('auth')->except(['index','update','cambiarContrasena']);
     }
 
-    /**
-    *   Muestra la página de perfil del usuario.
-    *   Esta función comprueba si el usuario está autenticado y redirige a la página de inicio en caso contrario.
-    *   Si el usuario está autenticado, comprueba el rol del usuario y devuelve la vista de perfil apropiada.
-    */
+
 
     public function index()
     {
         // Obtener el usuario autenticado
         $user = Auth::user();
-    
-        // Verificar si el usuario está autenticado
-        if ($user) {
-            // Verificar el rol del usuario
-            if ($user->rol_id == 5) {
-                // Si el rol es 5, retornar la vista para perfil de aprendiz
-                return view('compartido.perfil_Aprendiz');
-            } else {
-                // Si no es rol 5, retornar la vista para perfil normal
-                return view('compartido.perfil');
-            }
-        }
-    
-        // Manejar el caso donde el usuario no está autenticado
-        return redirect()->route('home')->with('error', 'Debe iniciar sesión para acceder a su perfil.');
+
+        // Pasar el objeto $user a la vista
+        return view('compartido.perfil', ['user' => $user]);
+
     }
-
-    /**
-    * Crea el perfil del usuario autenticado.
-    *
-    *  Este método valida los datos de la solicitud, crea el perfil del usuario
-    *  con la nueva información y almacena cualquier imagen de perfil subida.
-    */
-
-    public function store(Request $request)
-    {
-        // Definir las reglas de validación
-        $validator = Validator::make($request->all(), [
-            'pictureuser' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'nullable|string|between:2,300',
-            'Twitter_Profile' => 'nullable|url|max:255',
-            'Linkedin_Profile' => 'nullable|url|max:255',
-            // 'morning_start' => ['nullable', 'date_format:H:i', new ValidHour],
-            // 'morning_end' => ['nullable', 'date_format:H:i', new ValidHour],
-            // 'afternoon_start' => ['nullable', 'date_format:H:i', new ValidHour],
-            // 'afternoon_end' => ['nullable', 'date_format:H:i', new ValidHour],
-        ]);
-
-        // Comprobar si hay errores de validación
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with('error', 'Existe un error en el formulario.');
-        }
-        // Inicializa la variable para el nombre de la imagen
-        $imageName = null;
-        // Si pasa la validación, proceder con el almacenamiento
-        if ($request->hasFile('pictureuser')) {
-            $imageName = time() . '.' . $request->pictureuser->extension();
-            $request->pictureuser->move(public_path('images/profile'), $imageName);
-        }
-
-        // Obtener el ID del usuario autenticado
-        $userId = Auth::id();
-
-        // Crear el perfil
-        Perfil::create([
-            'user_id' => $userId,
-            'pictureuser' => $imageName, // Guardar solo el nombre de la imagen
-            'about_me' => $request->get('about_me'),
-            'Twitter_Profile' => $request->get('Twitter_Profile'),
-            'Linkedin_Profile' => $request->get('Linkedin_Profile'),
-            // 'morning_start' => $request->get('morning_start'),
-            // 'morning_end' => $request->get('morning_end'),
-            // 'afternoon_start' => $request->get('afternoon_start'),
-            // 'afternoon_end' => $request->get('afternoon_end'),
-        ]);
-
-        // Redireccionar con un mensaje de éxito
-        return redirect()->route('perfil.index')->with('success', 'Perfil creado exitosamente.');
-    }
-
-    /**
-    * Actualiza el perfil del Aprendiz autenticado.
-    *
-    *  Este método valida los datos de la solicitud, actualiza el perfil del Aprendiz
-    *  con la nueva información y almacena cualquier imagen de perfil subida.
-    */
 
     public function update(Request $request)
     {
         $user = Auth::user(); // Obtener el usuario autenticado
-
+    
         $validator = Validator::make($request->all(), [
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'string|min:2',
-            'Twitter_Profile' => 'string',
-            'Linkedin_Profile' => 'string',
-            // 'morning_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
-            // 'morning_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
-            // 'afternoon_start' =>  ['nullable', 'date_format:H:i', new ValidHour],
-            // 'afternoon_end' =>  ['nullable', 'date_format:H:i', new ValidHour],
         ]);
-
+    
         if ($validator->fails()) {
             return redirect()->back()
                 ->withErrors($validator)
                 ->withInput()
                 ->with('error', 'Existe un error en el formulario.');
         }
-
+    
         $perfil = Perfil::where('user_id', $user->id)->firstOrFail();
-
+    
+        // Variable para almacenar el nombre de la imagen
+        $imageName = $perfil->picture;
+    
         if ($request->hasFile('picture')) {
+            // Generar el nombre de la nueva imagen
             $imageName = time() . '.' . $request->picture->extension();
+            // Mover la imagen a la carpeta pública
             $request->picture->move(public_path('images/profile'), $imageName);
-            $perfil->picture = $imageName;
         }
-
+    
+        // Actualizar el perfil con el nuevo nombre de imagen
         $perfil->update([
-            'picture' =>$imageName,
-            'about_me' => $request->input('about_me'),
-            'Twitter_Profile' => $request->input('Twitter_Profile'),
-            'Linkedin_Profile' => $request->input('Linkedin_Profile'),
-            // 'morning_start' => $request->input('morning_start'),
-            // 'morning_end' => $request->input('morning_end'),
-            // 'afternoon_start' => $request->input('afternoon_start'),
-            // 'afternoon_end' => $request->input('afternoon_end'),
+            'picture' => $imageName,
         ]);
-
+    
         session()->flash('success', 'Perfil actualizado correctamente.');
         return redirect(route('perfil.index'));
     }
-
-    /**
-    * Actualiza el perfil del usuario con rol autenticado.
-    *
-    *  Este método valida los datos de la solicitud, actualiza el perfil del usuario con rol,
-    *  con la nueva información y almacena cualquier imagen de perfil subida.
-    */
-
-    public function update_user(Request $request)
-    {
-        $user = Auth::user();
-
-        $validator = Validator::make($request->all(), [
-            'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'about_me' => 'string|min:2',
-            'Twitter_Profile' => 'string',
-            'Linkedin_Profile' => 'string',
-            // 'morning_start' => ['nullable', 'date_format:H:i:s'],
-            // 'morning_end' => ['nullable', 'date_format:H:i:s'],
-            // 'afternoon_start' => ['nullable', 'date_format:H:i:s'],
-            // 'afternoon_end' => ['nullable', 'date_format:H:i:s'],
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput()
-                ->with('error', 'Existe un error en el formulario.');
-        }
-
-        $perfil = Perfil::where('user_id', $user->id)->firstOrFail();
-
-        if ($request->hasFile('picture')) {
-            $imageName = time() . '.' . $request->picture->extension();
-            $request->picture->move(public_path('images/profile'), $imageName);
-            $perfil->picture = $imageName;
-        }
-
-        // Actualizar campos según la solicitud, sin sobrescribir si están vacíos
-        $perfil->update([
-            'picture' =>$imageName,
-            'about_me' => $request->input('about_me'),
-            'Twitter_Profile' => $request->input('Twitter_Profile'),
-            'Linkedin_Profile' => $request->input('Linkedin_Profile'),
-            // 'morning_start' => $request->input('morning_start') ?: $perfil->morning_start,
-            // 'morning_end' => $request->input('morning_end') ?: $perfil->morning_end,
-            // 'afternoon_start' => $request->input('afternoon_start') ?: $perfil->afternoon_start,
-            // 'afternoon_end' => $request->input('afternoon_end') ?: $perfil->afternoon_end,
-        ]);
-
-        session()->flash('success', 'Perfil actualizado correctamente.');
-        return redirect(route('perfil.index'));
-    }
-
+    
     public function cambiarContrasena(Request $request)
     {
 

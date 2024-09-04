@@ -16,9 +16,6 @@ return new class extends Migration
         Schema::create('perfil', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->primary(); // id del perfil de usuario
             $table->string('pictureuser')->nullable(); // fotografía del perfil que tendrá el usuario
-            $table->text('about_me')->nullable(); // descripción que tiene que el perfil del usuario
-            $table->string('Twitter_Profile')->nullable(); // twitter del perfill (redes sociales)
-            $table->string('Linkedin_Profile')->nullable(); // Linkedin del perfill (redes sociales)
             $table->timestamps();
             
 

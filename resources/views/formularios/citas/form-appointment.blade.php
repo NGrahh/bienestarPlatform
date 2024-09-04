@@ -98,8 +98,8 @@
                     </div>
                     <div class="col-12 col-md-6 mt-2">
                       <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                      <input name="hour" type="time" class="form-control" value="{{ old('hour') }}">
-                      <div class="invalid-feedback">Ingrese una hora.</div>
+                      <input name="hour" type="time" class="form-control" min="07:00" max="20:00" step="1" value="{{ old('hour') }}">
+                      <div class="invalid-feedback">La hora del evento debe estar entre las 7:00 AM y las 8:00 PM.</div>
                       @error('hour')
                       <li class="text-danger">{{ $message }}</li>
                       @enderror

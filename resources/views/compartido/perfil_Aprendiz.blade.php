@@ -24,21 +24,21 @@
                         <!-- Bordered Tabs -->
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Descripción</button>
-                            </li>
-                            @if (Auth::check())
+                            </li> --}}
+                            {{-- @if (Auth::check())
                                 @if (!Auth::user()->perfil)
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-create">Crear Perfil</button>
                                     </li>
                                 @else
-                                    <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
-                                    </li>
+                                    
                                 @endif
-                            @endif
-
+                            @endif --}}
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
+                            </li>
                             {{-- <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ajustes</button>
                             </li> --}}
@@ -50,7 +50,7 @@
                         </ul>
                         <div class="tab-content pt-2">
 
-                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            {{-- <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 
 
                                 
@@ -79,8 +79,8 @@
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->email }}</div>
                                     </div>
                                 @endif
-                            </div>
-                            
+                            </div> --}}
+{{--                             
                             <div class="tab-pane fade profile-create pt-3 mt-5" id="profile-create">
                                 <form action="{{ route('perfil.store')}}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -179,7 +179,7 @@
                                         <button type="submit" class="btn btn-ba">Crear Perfil</button>
                                     </div>
                                 </form>
-                            </div>
+                            </div> --}}
                             
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
@@ -192,7 +192,7 @@
                                         <div class="col-md-8 col-lg-9">
                                             <input type="file" name="picture" class="form-control" id="pictureuser">
                                         </div>
-                                        <div class="invalid-feedback">Ingrese una foto relacionada al evento.</div>
+                                        <div class="invalid-feedback">Ingrese una foto relacionada.</div>
                                         @error('picture')
                                         <li class="text-danger">{{ $message }}</li>
                                         @enderror
@@ -221,12 +221,7 @@
                                             <input name="email" type="email" class="form-control" id="email" value="{{session('email')}}" disabled required>
                                         </div>
                                     </div>
-                                    <div class="row mb-3">
-                                        <label for="about_me" class="col-md-4 col-lg-3 form-label">Sobre mi</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <textarea name="about_me" class="form-control" id="about_me" style="height: 100px">{{ Auth::user()->perfil->about_me ?? 'No hay una descripción existente!' }}</textarea>
-                                        </div>
-                                    </div>
+                                    
 
                                     
                             

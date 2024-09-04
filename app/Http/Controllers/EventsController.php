@@ -205,25 +205,36 @@ class EventsController extends Controller
             'place' => 'required|between:2,100',
             'hour' => [
                 'required',
-                'date_format:H:i', // Formato de hora requerido
                 function ($attribute, $value, $fail) use ($request) {
-                    // Obtener la fecha y hora actual
-                    $now = now();
+                    // Obtener la fecha y hora actual en la zona horaria de Bogotá
+                    $now = now('America/Bogota');
                     
                     // Obtener la fecha del evento proporcionada en la solicitud
                     $eventDate = Carbon::createFromFormat('Y-m-d', $request->get('eventdate'), 'America/Bogota');
-                    
-                    // Concatenar la fecha y hora proporcionada
-                    $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
-                    
-                    // Si la fecha es hoy, verificar que la hora no haya pasado
-                    if ($eventDate->isToday()) {
-                        if ($providedDateTime <= $now) {
-                            $fail('La hora ingresada ya ha pasado.');
+
+                    // Inicializar la variable para la fecha y hora proporcionada
+                    $providedDateTime = null;
+
+                    // Intentar crear la fecha y hora con formato H:i:s
+                    try {
+                        $providedDateTime = Carbon::createFromFormat('Y-m-d H:i:s', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                    } catch (\Exception $e) {
+                        // Si falla, intentar con formato H:i
+                        try {
+                            $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                        } catch (\Exception $e) {
+                            // Si ninguno de los dos formatos es válido, falla la validación
+                            return $fail('El formato de la hora no es válido. Debe ser H:i o H:i:s.');
                         }
+                    }
+
+                    // Si la fecha es hoy, verificar que la hora no haya pasado
+                    if ($eventDate->isToday() && $providedDateTime <= $now) {
+                        $fail('La hora ingresada ya ha pasado.');
                     }
                 },
             ],
+
             'eventdate' => [
                 'required',
                 'date',
@@ -374,25 +385,36 @@ class EventsController extends Controller
             'picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             'hour' => [
                 'required',
-                'date_format:H:i', // Formato de hora requerido
                 function ($attribute, $value, $fail) use ($request) {
-                    // Obtener la fecha y hora actual
-                    $now = now();
+                    // Obtener la fecha y hora actual en la zona horaria de Bogotá
+                    $now = now('America/Bogota');
                     
                     // Obtener la fecha del evento proporcionada en la solicitud
                     $eventDate = Carbon::createFromFormat('Y-m-d', $request->get('eventdate'), 'America/Bogota');
-                    
-                    // Concatenar la fecha y hora proporcionada
-                    $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
-                    
-                    // Si la fecha es hoy, verificar que la hora no haya pasado
-                    if ($eventDate->isToday()) {
-                        if ($providedDateTime <= $now) {
-                            $fail('La hora ingresada ya ha pasado.');
+
+                    // Inicializar la variable para la fecha y hora proporcionada
+                    $providedDateTime = null;
+
+                    // Intentar crear la fecha y hora con formato H:i:s
+                    try {
+                        $providedDateTime = Carbon::createFromFormat('Y-m-d H:i:s', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                    } catch (\Exception $e) {
+                        // Si falla, intentar con formato H:i
+                        try {
+                            $providedDateTime = Carbon::createFromFormat('Y-m-d H:i', "{$eventDate->format('Y-m-d')} {$value}", 'America/Bogota');
+                        } catch (\Exception $e) {
+                            // Si ninguno de los dos formatos es válido, falla la validación
+                            return $fail('El formato de la hora no es válido. Debe ser H:i o H:i:s.');
                         }
+                    }
+
+                    // Si la fecha es hoy, verificar que la hora no haya pasado
+                    if ($eventDate->isToday() && $providedDateTime <= $now) {
+                        $fail('La hora ingresada ya ha pasado.');
                     }
                 },
             ],
+
             'eventdate' => [
                 'required',
                 'date',

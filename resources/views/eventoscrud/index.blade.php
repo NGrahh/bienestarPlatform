@@ -131,6 +131,7 @@
                                                                                     <input value="{{ $event->eventlimit }}" type="text" name="eventlimit" class="form-control" id="eventlimit" disabled>
                                                                                     @endif
                                                                                 </div>
+                                                                                
                                                                                 <div class="col-12 col-md-6 col-lg-6 mb-3">
                                                                                     <label for="datestar" class="form-label "><strong>Fecha Inicio (Inscripción)</strong></label>
                                                                                     <input value="{{ $event->datestar }}" type="date" name="datestar" class="form-control" id="datestar" disabled>
@@ -213,7 +214,7 @@
                                                                             </div>
                                                                             <div class="col-12 col-sm-6 col-md-4">
                                                                                 <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}" min="06:00" max="20:00" pattern="[0-9]{2}:[0-9]{2}">
+                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}" min="06:00" max="20:00" step="1">
                                                                                 <div class="invalid-feedback">Ingrese una hora.</div>
                                                                                 @error('hour')
                                                                                 <li class="text-danger">{{ $message }}</li>
@@ -495,8 +496,8 @@
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                         <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                                                        <input name="hour" type="time" class="form-control" value="{{ old('hour') }}" min="06:00" max="20:00" pattern="[0-9]{2}:[0-9]{2}">
-                                                        <div class="invalid-feedback">La hora del evento debe estar entre las 6:00 AM y las 8:00 PM.</div>
+                                                        <input name="hour" type="time" class="form-control" value="{{ old('hour') }}" min="07:00" max="20:00" step="1">
+                                                        <div class="invalid-feedback">La hora del evento debe estar entre las 7:00 AM y las 8:00 PM.</div>
                                                         @error('hour')
                                                         <li class="text-danger">{{ $message }}</li>
                                                         @enderror

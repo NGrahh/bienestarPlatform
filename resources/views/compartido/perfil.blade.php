@@ -25,21 +25,9 @@
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
                             
-                            @if (Auth::check())
-                                @if (!Auth::user()->perfil)
-                                    <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-create">Crear Perfil</button>
-                                    </li>
-                                    
-                                @else
-                                    <li class="nav-item">
-                                        <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Descripción</button>
-                                    </li>
-                                    <li class="nav-item">
-                                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
-                                    </li>
-                                @endif
-                            @endif
+                            <li class="nav-item">
+                                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
+                            </li>
 
                             {{-- <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Ajustes</button>
@@ -52,204 +40,9 @@
                         </ul>
                         <div class="tab-content pt-2">
 
-                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                @if (Auth::check() && Auth::user()->perfil)
-                                    <h5 class="card-title">Detalles del perfil</h5>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-4  d-evento"><strong>Nombre completo: </strong></div>
-                                        <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->name }} {{ Auth::user()->perfil->user->lastname }}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-4 d-evento "><strong>Sobre mi: </strong></div>
-                                        <p class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->about_me }}</p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-4 d-evento"><strong>Rol: </strong></div>
-                                        <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->role->name }}</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-4 d-evento"><strong>Teléfono: </strong></div>
-                                        <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->numberphone }}</div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-4 d-evento"><strong>Correo electrónico: </strong></div>
-                                        <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->email }}</div>
-                                    </div>
-                                    
-                                    {{-- <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Inicio de la mañana:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->morning_start ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Fin de la mañana:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->morning_end ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Inicio de la tarde:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->afternoon_start ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-6 col-md-6 d-evento">
-                                            <strong>Fin de la tarde:</strong>
-                                            <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">
-                                                {{ Auth::user()->perfil->afternoon_end ?? 'No establecido' }}
-                                            </div>
-                                        </div>
-                                    </div> --}}
-                                    
-                                @endif
-                                
-                                
-                            </div>
-                            
-                            <div class="tab-pane fade profile-create pt-3 mt-5" id="profile-create">
-                                <form action="{{ route('perfil.store')}}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
-                                    @csrf
-                                    <div class="row mb-3 ">
-                                        <label for="name" class="col-md-4 col-lg-3 form-label">Nombre completo</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="name" type="text" class="form-control" id="name" value="{{session('name')}} {{session('lastname')}}" disabled>
-                                        </div>
-
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="rol_id" class="col-md-4 col-lg-3 form-label">Rol</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            @if(Auth::check() && Auth::user()->role)
-                                            <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}"disabled>
-                                            @else
-                                                <h3>Rol no asignado</h3>
-                                            @endif
-                                            
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="numberphone" class="col-md-4 col-lg-3 form-label">Teléfono</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="numberphone" type="text" class="form-control" id="numberphone" value="{{ Auth::user()->numberphone }}"  disabled>
-
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="email" class="col-md-4 col-lg-3 form-label">Correo electrónico</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="email" type="email" class="form-control" id="email" value="{{session('email')}}" disabled >
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <label for="about_me" class="col-md-4 col-lg-3 form-label">Sobre mi</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <textarea name="about_me" class="form-control" id="about_me" style="height: 100px">{{old('about_me')}}</textarea>
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese una descripción.</div>
-                                        @error('about_me')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
-                                    
-                                    <div class="row mb-3 mt-5">
-                                        <label for="pictureuser" class="col-md-4 col-lg-3 form-label">Foto de Perfil</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input type="file" name="pictureuser" class="form-control" id="pictureuser">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese una foto de perfil.</div>
-                                        @error('pictureuser')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
-                                    
-                                    <div class="row mb-3">
-                                        <label for="Twitter_Profile" class="col-md-4 col-lg-3 form-label">Twitter</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="Twitter_Profile" type="text" class="form-control" id="Twitter_Profile" value="{{old('Twitter_Profile')}}">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese el link de la cuenta de twitter.</div>
-                                        @error('Twitter_Profile')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Linkedin_Profile" class="col-md-4 col-lg-3 form-label">Linkedin Perfil</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="Linkedin_Profile" type="text" class="form-control" id="Linkedin_Profile" value="{{old('Linkedin_Profile')}}">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                        @error('Linkedin_Profile')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
-                                    {{-- <strong><h5 class="card-title">Por favor, ingrese los horarios de inicio y fin para ambas jornadas (mañana y tarde).</h5></strong> 
-
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="morningStart" class="form-label">Inicio de la mañana</label>
-                                            <input type="time" class="form-control" id="morningStart" name="morning_start" value="{{ old('morning_end') }}"required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('morning_start')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="morningEnd" class="form-label">Fin de la mañana</label>
-                                            <input type="time" class="form-control" id="morningEnd" name="morning_end" value="{{ old('morning_end') }}" required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('morning_end')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3">
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="afternoonStart" class="form-label">Inicio de la tarde</label>
-                                            <input type="time" class="form-control" id="afternoonStart" name="afternoon_start" value="{{ old('afternoon_start') }}" required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('afternoon_start')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-6 col-md-6">
-                                            <label for="afternoonEnd" class="form-label">Fin de la tarde</label>
-                                            <input type="time" class="form-control" id="afternoonEnd" name="afternoon_end" value="{{ old('afternoon_end') }}"required>
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('afternoon_end')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                        
-                                    </div> --}}
-
-
-                                    {{-- <div class="row mb-3">
-                                        <div class="col-lg-3 col-md-4"></div>
-                                        <div class="col-lg-9 col-md-8">
-                                            <div class="invalid-feedback">Ingrese correctamente los horarios de oficina.</div>
-                                            @error('office_hours')
-                                            <li class="text-danger">{{ $message }}</li>
-                                            @enderror
-                                        </div>
-                                    </div> --}}
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-ba">Guardar Perfil</button>
-                                    </div>
-                                </form>
-                            </div>
-                            
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
-
                                 <!-- Profile Edit Form -->
-                                <form action="{{ route('perfil.update_user', ['perfil' => auth()->user()->id]) }}" class="row g-3 needs-validation mt-3" novalidate method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('perfil.update', ['perfil' => auth()->user()->id]) }}" class="row g-3 needs-validation mt-3" novalidate method="POST" enctype="multipart/form-data">
                                     @csrf
                                     @method('PUT')
                                     <div class="row mb-3 ">
@@ -267,17 +60,11 @@
                                         <div class="col-md-8 col-lg-9">
                                             <input name="name" type="text" class="form-control" id="name" value="{{session('name')}} {{session('lastname')}}"  disabled>
                                         </div>
-
                                     </div>
                                     <div class="row mb-3">
                                         <label for="rol_id" class="col-md-4 col-lg-3 form-label">Rol</label>
                                         <div class="col-md-8 col-lg-9">
-                                            @if(Auth::check() && Auth::user()->role)
-                                            <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}"  disabled>
-                                            @else
-                                                <h3>Rol no asignado</h3>
-                                            @endif
-                                            
+                                                <input name="rol_id" type="text" class="form-control" id="rol_id" value="{{ Auth::user()->role->name }}"  disabled>
                                         </div>
                                     </div>
                                     <div class="row mb-3">
@@ -287,87 +74,18 @@
                                         </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label for="about_me" class="col-md-4 col-lg-3 form-label">Sobre mi</label>
+                                        <label for="name" class="col-md-4 col-lg-3 form-label">N. Telefónico </label>
                                         <div class="col-md-8 col-lg-9">
-                                            <textarea name="about_me" class="form-control" id="about_me" style="height: 100px">{{ Auth::user()->perfil->about_me ?? 'No hay una descripción existente!' }}</textarea>
+                                            <input name="name" type="text" class="form-control" id="name" value="{{session('numberphone')}}"  disabled>
                                         </div>
                                     </div>
-
                                     
-                            
-
-                                    <div class="row mb-3">
-                                        <label for="phone_number" class="col-md-4 col-lg-3 form-label">Teléfono</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="phone_number" type="text" class="form-control" id="phone_number" value="{{ Auth::user()->perfil->phone_number ?? '' }}">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese un telefono de contacto.</div>
-                                        @error('phone_number')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
-
-                                    
-
-                                    <div class="row mb-3">
-                                        <label for="Twitter_Profile" class="col-md-4 col-lg-3 form-label">Twitter</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="Twitter_Profile" type="text" class="form-control" id="Twitter_Profile" value="{{ Auth::user()->perfil->Twitter_Profile ?? '' }}">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese el link de la cuenta de twitter.</div>
-                                        @error('Twitter_Profile')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label for="Linkedin_Profile" class="col-md-4 col-lg-3 form-label">Linkedin Perfil</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <input name="Linkedin_Profile" type="text" class="form-control" id="Linkedin_Profile" value="{{ Auth::user()->perfil->Linkedin_Profile ?? '' }}">
-                                        </div>
-                                        <div class="invalid-feedback">Ingrese el link de la cuenta de Linkedin.</div>
-                                        @error('Linkedin_Profile')
-                                        <li class="text-danger">{{ $message }}</li>
-                                        @enderror
-                                    </div>
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-ba">Actualizar Perfil</button>
                                     </div>
                                 </form>
-
                             </div>
 
-                            {{-- <div class="tab-pane fade pt-3" id="profile-settings">
-
-                                <!-- Settings Form -->
-                                <form>
-
-                                    <div class="row mb-3">
-                                        <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Notificaciónes de Correo Electrónico</label>
-                                        <div class="col-md-8 col-lg-9">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                                                <label class="form-check-label" for="changesMade">
-                                                    Cambios realizados en su cuenta
-                                                </label>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                                                <label class="form-check-label" for="newProducts">
-                                                    Información sobre nuevos eventos y apoyos
-                                                </label>
-                                            </div>
-                                            
-                            
-                                        </div>
-                                    </div>
-
-                                    <div class="text-center">
-                                        <button type="submit" class="btn btn-ba">Guardar cambios</button>
-                                    </div>
-                                </form><!-- End settings Form -->
-
-                            </div> --}}
                             <div class="tab-pane fade pt-3" id="profile-change-password">
                                 <!-- Change Password Form -->
                                 <form action="{{ route('perfil.cambiarcontrasena') }}" class="row g-3 needs-validation mt-3" novalidate method="POST">
@@ -418,19 +136,14 @@
                                     </div>
                                 </form><!-- End Change Password Form -->
                             </div>
+                            <div align="center" class="pt-4 pb-2">
+                                <div class="col-12 col-sm-6">
+                                    <div class="d-flex justify-content-center align-items-center pt-2">
+                                        <img style="max-width: 100%;" src="{{asset('img/Bienestar-al-Aprendiz.png')}}" alt="Bienestar al Aprendiz">
+                                    </div>
+                                </div>
+                            </div>
                             
-                            
-                            {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-                            <script>
-                            
-                            </script>
-                            
-                            <style>
-                            
-                            </style> --}}
-                            
-                            
-
                         </div><!-- End Bordered Tabs -->
 
                     </div>
@@ -458,10 +171,8 @@
                     </div>
                 </div>
             </div>
-            
         </div>
     </section>
-
 </main>
 
 @include('layouts.footer')
