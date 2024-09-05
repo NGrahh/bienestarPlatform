@@ -30,19 +30,19 @@ class UsersSeeder extends Seeder
         'type_dimensions_id' => null,
     ]);
 
-    User::create([
-        'name' => 'LÍDER',
-        'lastname' => 'BIENESTAR',
-        'user_name' => 'LIDERB',
-        'type_document_id' => 2,
-        'document' => 1212121221,
-        'email' => 'liderb@net.com',
-        'type_rh_id' => 1,
-        'numberphone' => 30303030,
-        'password' => Hash::make('123456'),
-        'rol_id' => 3,
-        'type_dimensions_id' => 3,
-    ]);
+    // User::create([
+    //     'name' => 'LÍDER',
+    //     'lastname' => 'BIENESTAR',
+    //     'user_name' => 'LIDERB',
+    //     'type_document_id' => 2,
+    //     'document' => 1212121221,
+    //     'email' => 'liderb@net.com',
+    //     'type_rh_id' => 1,
+    //     'numberphone' => 30303030,
+    //     'password' => Hash::make('123456'),
+    //     'rol_id' => 3,
+    //     'type_dimensions_id' => 3,
+    // ]);
 
     User::create([
         'name' => 'Ivan Mauricio',

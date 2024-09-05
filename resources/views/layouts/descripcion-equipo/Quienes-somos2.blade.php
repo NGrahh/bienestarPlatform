@@ -162,33 +162,59 @@
                             
                             <div class="row">
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/RogerSail.png')}}" title="Roger" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Beatriz.png')}}" alt="Editar usuario"   title="Beatriz" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/JuanCarlos.png')}}" alt="Editar usuario"   title="Juan" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Natalia.png')}}" alt="Editar usuario"   title="Natalia" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Laura.png')}}" alt="Editar usuario"   title="Laura" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Carolina.png')}}" alt="Editar usuario"   title="Carolina" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Andres.png')}}" alt="Editar usuario"   title="Andres" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
-                                </div>
-                                <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/Juliana.png')}}" alt="Editar usuario"   title="Juliana" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    <a href="whatsapp://send?phone=573154530095" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/RogerSail.png')}}" title="Roger" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    </a>
                                 </div>
 
                                 <div class="col-12 col-lg-4 mt-5">
-                                    <img src="{{url('equipo/JuanC.png')}}" alt="Editar usuario"   title="JuanC " style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    <a href="whatsapp://send?phone=573104021404" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/Beatriz.png')}}" alt="Editar usuario"   title="Beatriz" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    </a>
                                 </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573128705874" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/JuanCarlos.png')}}" alt="Editar usuario"   title="Juan" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    </a>
+                                </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573116318220" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/Natalia.png')}}" alt="Editar usuario"   title="Natalia" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    </a>
+                                </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573013176532" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/Laura.png')}}" alt="Editar usuario"   title="Laura" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    </a>
+                                </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573192261043" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/Carolina.png')}}" alt="Editar usuario"   title="Carolina" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    </a>
+                                </div>
+                                
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573115309815" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/Andres.png')}}" alt="Editar usuario"   title="Andres" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    </a>
+                                </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573006512777" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/Juliana.png')}}" alt="Editar usuario"   title="Juliana" style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow">
+                                    </a>
+                                </div>
+
+                                <div class="col-12 col-lg-4 mt-5">
+                                    <a href="whatsapp://send?phone=573115566251" title="Enviar mensaje por WhatsApp">
+                                        <img src="{{url('equipo/JuanC.png')}}" alt="Editar usuario"   title="JuanC " style="cursor:pointer; width: 300px; height: auto;" class="rounded img-with-shadow-green">
+                                    </a>
+                                </div>
+
                                 <div class="col-12 col-lg-12 mt-5">
                                     <div class="image-wrapper">
                                         <img src="{{url('equipo/Nuevo-Equipo.jpg')}}"  alt="Editar usuario" data-bs-toggle="modal" data-bs-target="#editUserModal" title="Equipo Bienestar" class="rounded custom-img-shadow img-fluid">

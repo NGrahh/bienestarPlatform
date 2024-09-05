@@ -66,9 +66,22 @@
                                                         Ver detalles
                                                     </button>
                                                 @else
-                                                    <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
-                                                        Inscribirse
-                                                    </button>
+                                                    @php
+                                                        // Convertir las fechas a objetos de Carbon para compararlas
+                                                        $eventDate = \Carbon\Carbon::parse($event->datestar);
+                                                        $currentDate = \Carbon\Carbon::now();
+                                                        $currentTime = \Carbon\Carbon::now()->format('H:i');
+                                                    @endphp
+                                                    @if ($currentTime >= $event->hour)
+                                                        {{-- Si la hora actual es igual a la hora del evento, el botón está deshabilitado --}}
+                                                        <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" disabled>
+                                                            En Progreso
+                                                        </button>
+                                                    @else
+                                                        <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
+                                                            Inscribirse
+                                                        </button>
+                                                    @endif
                                                 @endif
                                             @else
                                                 <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
@@ -131,9 +144,31 @@
                                                                                     Ya estas inscrito
                                                                                 </button>
                                                                             @else
-                                                                                <button type="button" class="btn btn-ba">
-                                                                                    <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
-                                                                                </button>
+                                                                                @php
+                                                                                    // Convertir las fechas a objetos de Carbon para compararlas
+                                                                                    $eventDate = \Carbon\Carbon::parse($event->datestar);
+                                                                                    $currentDate = \Carbon\Carbon::now();
+                                                                                    $currentTime = \Carbon\Carbon::now()->format('H:i');
+                                                                                @endphp
+
+                                                                                @if ($eventDate->isSameDay($currentDate))
+                                                                                    @if ($currentTime >= $event->hour)
+                                                                                        {{-- Si la hora actual es igual a la hora del evento, el botón está deshabilitado --}}
+                                                                                        <button type="button" class="btn btn-ba" disabled>
+                                                                                            <span style="color: white">Inscripción cerrada</span>
+                                                                                        </button>
+                                                                                    @else
+                                                                                        {{-- Si no es la misma hora, el botón es funcional --}}
+                                                                                        <button type="button" class="btn btn-ba">
+                                                                                            <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
+                                                                                        </button>
+                                                                                    @endif
+                                                                                @else
+                                                                                    <!-- Si la fecha de inicio no es hoy, el botón estará deshabilitado -->
+                                                                                    <button type="button" class="btn btn-ba" disabled>
+                                                                                        <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
+                                                                                    </button>
+                                                                                @endif
                                                                             @endif
 
 

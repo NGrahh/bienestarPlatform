@@ -213,8 +213,8 @@
                                                                                 @enderror
                                                                             </div>
                                                                             <div class="col-12 col-sm-6 col-md-4">
-                                                                                <label for="inputTime" class="form-label"><strong>Hora</strong></label>
-                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}" min="06:00" max="20:00" step="1">
+                                                                                <label for="inputTime" class="form-label"><strong>Hora del Evento</strong></label>
+                                                                                <input name="hour" type="time" class="form-control" value="{{ $event->hour }}" min="07:00" max="20:00" step="1">
                                                                                 <div class="invalid-feedback">Ingrese una hora.</div>
                                                                                 @error('hour')
                                                                                 <li class="text-danger">{{ $message }}</li>
@@ -495,7 +495,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-                                                        <label for="inputTime" class="form-label"><strong>Hora</strong></label>
+                                                        <label for="inputTime" class="form-label"><strong>Hora del Evento</strong></label>
                                                         <input name="hour" type="time" class="form-control" value="{{ old('hour') }}" min="07:00" max="20:00" step="1">
                                                         <div class="invalid-feedback">La hora del evento debe estar entre las 7:00 AM y las 8:00 PM.</div>
                                                         @error('hour')

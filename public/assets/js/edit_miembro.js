@@ -4,9 +4,11 @@ $(document).on('change', '.rol_edit', function() {
 
     if (rol == 3) {
         $('.inputs-to-area-' + dataIdUser + ' input').prop('disabled', false);
+        $('.inputs-to-area-' + dataIdUser + ' select').prop('disabled', false);
         $('.inputs-to-area-' + dataIdUser).show();
     } else {
         $('.inputs-to-area-' + dataIdUser + ' input').prop('disabled', true);
+        $('.inputs-to-area-' + dataIdUser + ' select').prop('disabled', true);
         $('.inputs-to-area-' + dataIdUser).hide();
     }
 });
