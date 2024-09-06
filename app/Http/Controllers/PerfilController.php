@@ -43,8 +43,8 @@ class PerfilController extends Controller
         $imageName = time() . '.' . $request->pictureuser->extension();
     
         // Mover la imagen a la carpeta pública
-        $request->pictureuser->move(public_path('images/profile'), $imageName);
-    
+        $request->pictureuser->move(public_path('assets/img/perfilfotos'), $imageName);
+        // C:\xampp\htdocs\plataformaBA\public\images\profile ya la ruta es esta
         // Crear el perfil con la imagen
         Perfil::create([
             'user_id' => $user->id,
@@ -94,7 +94,7 @@ class PerfilController extends Controller
             // Generar el nombre de la nueva imagen
             $imageName = time() . '.' . $request->pictureuser->extension();
             // Mover la imagen a la carpeta pública
-            $request->pictureuser->move(public_path('images/profile'), $imageName);
+            $request->pictureuser->move(public_path('assets/img/perfilfotos'), $imageName);
         }
     
         // Actualizar el perfil con el nuevo nombre de imagen

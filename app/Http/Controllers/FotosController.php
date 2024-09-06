@@ -29,7 +29,7 @@ class FotosController extends Controller
 
     public function show_perfil($filename)
     {
-        $path = public_path('images/profile/' . $filename);
+        $path = public_path('assets/img/perfilfotos/' . $filename);
         if (!file_exists($path)) {
             abort(404);
         }
