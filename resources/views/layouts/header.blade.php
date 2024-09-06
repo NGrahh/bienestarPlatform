@@ -61,7 +61,7 @@
   
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
-                <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile"  style="border-radius: 50%; width: 40px; height: 40px; object-fit: cover;">
+                <img src="{{ asset('perfil/' . Auth::user()->perfil->pictureuser) }}" alt="Profile"  style="border-radius: 50%; width: 40px; height: 40px; object-fit: cover;">
             @else
             <i class='bx bxs-user' style="color: white"></i>
             @endif

@@ -78,6 +78,8 @@ Route::get('image/{filename}', [FotosController::class, 'show']);
 
 Route::get('equipo/{filename}', [FotosController::class, 'show_equipo']);
 
+Route::get('perfil/{filename}', [FotosController::class, 'show_perfil']);
+
 Route::get('Apoyos/{filename}', [FotosController::class, 'show_apoyos']);
 
 

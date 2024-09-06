@@ -226,7 +226,7 @@
                 <div class="card">
                     <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                         @if (Auth::user()->perfil && Auth::user()->perfil->pictureuser)
-                        <img src="{{ asset('images/profile/' . Auth::user()->perfil->pictureuser) }}" alt="Profile"  style="border-radius: 50%; width: 150px; height: 120px; object-fit: cover;">
+                            <img src="{{ url('perfil/' . Auth::user()->perfil->pictureuser) }}" alt="Profile"  style="border-radius: 50%; width: 150px; height: 120px; object-fit: cover;">
                         @else
                         <img src="{{ asset('assets/img/perfil_predeterminado.png') }}" alt="Default Profile" style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
 
