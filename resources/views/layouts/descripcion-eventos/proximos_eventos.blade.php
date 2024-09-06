@@ -159,14 +159,10 @@
                                                                                 @else
                                                                                     <!-- Si la fecha de inicio no es hoy, el botón estará deshabilitado -->
                                                                                     <button type="button" class="btn btn-ba" disabled>
-                                                                                        <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
+                                                                                        <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Ya falta poco!</a>
                                                                                     </button>
                                                                                 @endif
-                                                                            @endif
-
-
-
-                                                                            
+                                                                            @endif                  
                                                                         @else
                                                                             <button type="button" class="btn btn-ba">
                                                                                 <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Iniciar Sesión</a>
