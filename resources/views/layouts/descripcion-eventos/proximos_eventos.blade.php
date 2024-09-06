@@ -60,36 +60,29 @@
 
 
                                             
-                                            @auth
-                                                @if($event->isUserRegistered)
-                                                    <button type="button" class="btn btn-ba w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
-                                                        Ver detalles
+                                            @php
+                                                $currentDateTime = \Carbon\Carbon::now(); // Obtener la fecha y hora actual
+                                                $eventDate = \Carbon\Carbon::parse($event->eventdate); // Fecha del evento
+                                                $eventTime = \Carbon\Carbon::parse($event->hour); // Hora del evento
+                                            @endphp
+                                            
+                                            @if($event->isUserRegistered)
+                                                <button type="button" class="btn btn-ba w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
+                                                    Ver detalles
+                                                </button>
+                                            @else
+                                                @if ($currentDateTime->isSameDay($eventDate) && $currentDateTime->greaterThanOrEqualTo($eventTime))
+                                                    {{-- Si la fecha actual es la misma que la del evento y la hora ha pasado o es igual, el evento está en progreso --}}
+                                                    <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" disabled>
+                                                        En Progreso
                                                     </button>
                                                 @else
-                                                    @php
-                                                        // Convertir las fechas a objetos de Carbon para compararlas
-                                                        $eventDate = \Carbon\Carbon::parse($event->datestar);
-                                                        $currentDate = \Carbon\Carbon::now();
-                                                        $currentTime = \Carbon\Carbon::now()->format('H:i');
-                                                    @endphp
-                                                    @if ($currentTime >= $event->hour)
-                                                        {{-- Si la hora actual es igual a la hora del evento, el botón está deshabilitado --}}
-                                                        <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" disabled>
-                                                            En Progreso
-                                                        </button>
-                                                    @else
-                                                        <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
-                                                            Inscribirse
-                                                        </button>
-                                                    @endif
+                                                    <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
+                                                        Inscribirse
+                                                    </button>
                                                 @endif
-                                            @else
-                                                <button type="button" class="btn btn-ba-card w-100" data-bs-toggle="modal" data-bs-target="#largeModal{{ $event->id }}">
-                                                    - Ver más - 
-                                                </button>
-                                                
-                                            @endauth
-                                            
+                                            @endif
+                                        
                                             <div class="modal fade" id="largeModal{{ $event->id }}" tabindex="-1">
                                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                                     <div class="modal-content">
