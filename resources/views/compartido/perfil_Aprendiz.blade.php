@@ -24,10 +24,10 @@
                         <!-- Bordered Tabs -->
                         <ul class="nav nav-tabs nav-tabs-bordered">
 
-                            {{-- <li class="nav-item">
+                            <li class="nav-item">
                                 <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#profile-overview">Descripción</button>
-                            </li> --}}
-                            {{-- @if (Auth::check())
+                            </li>
+                            @if (Auth::check())
                                 @if (!Auth::user()->perfil)
                                     <li class="nav-item">
                                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-create">Crear Perfil</button>
@@ -35,7 +35,7 @@
                                 @else
                                     
                                 @endif
-                            @endif --}}
+                            @endif
                             <li class="nav-item">
                                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Editar perfil</button>
                             </li>
@@ -50,7 +50,7 @@
                         </ul>
                         <div class="tab-content pt-2">
 
-                            {{-- <div class="tab-pane fade show active profile-overview" id="profile-overview">
+                            <div class="tab-pane fade show active profile-overview" id="profile-overview">
                                 
 
                                 
@@ -79,8 +79,7 @@
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->email }}</div>
                                     </div>
                                 @endif
-                            </div> --}}
-{{--                             
+                            </div>
                             <div class="tab-pane fade profile-create pt-3 mt-5" id="profile-create">
                                 <form action="{{ route('perfil.store')}}" class="row g-3 needs-validation" novalidate method="POST" enctype="multipart/form-data">
                                     @csrf
@@ -179,7 +178,7 @@
                                         <button type="submit" class="btn btn-ba">Crear Perfil</button>
                                     </div>
                                 </form>
-                            </div> --}}
+                            </div> 
                             
                             <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 

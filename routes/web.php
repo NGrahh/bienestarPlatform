@@ -78,6 +78,8 @@ Route::get('image/{filename}', [FotosController::class, 'show']);
 
 Route::get('equipo/{filename}', [FotosController::class, 'show_equipo']);
 
+Route::get('perfil/{filename}', [FotosController::class, 'show_perfil']);
+
 Route::get('Apoyos/{filename}', [FotosController::class, 'show_apoyos']);
 
 
@@ -428,7 +430,9 @@ Route::resource('perfil', PerfilController::class)->middleware('auth');
 
 Route::get('/mi-perfil', [PerfilController::class, 'index'])->name('perfil.index')->middleware('auth');
 
-// Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
+Route::put('/perfil', [PerfilController::class, 'update'])->name('perfil.update')->middleware('auth');
+
+Route::put('/perfil', [PerfilController::class, 'store'])->name('perfil.store')->middleware('auth');
 
 Route::patch('/cambiar-contrasena', [PerfilController::class, 'cambiarContrasena'])->name('perfil.cambiarcontrasena')->middleware('auth');
 

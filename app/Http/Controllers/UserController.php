@@ -118,27 +118,70 @@ class UserController extends Controller
     {
         $validator = Validator::make($request->all(), [
             // Información personal
-            'name' => 'required|string|between:2,100', // Nombre del usuario
-            'lastname' => 'required|string|between:2,100', // Apellido del usuario
+            'name' => 'required|string|between:2,100',
+            'lastname' => 'required|string|between:2,100',
             
             // Identificación
-            'type_document_id' => 'required|string', // Tipo de documento
-            'type_dimensions_id' => 'nullable|string', // Tipo Dimensión
-            'document' => 'required|numeric|unique:users|digits_between:8,15', // Número del documento
+            'type_document_id' => 'required|string',
+            'type_dimensions_id' => 'nullable|string',
+            'document' => 'required|numeric|unique:users|digits_between:8,15',
             
             // Contacto
-            'email' => 'required|string|email|max:100|unique:users', // Email del usuario
-            'numberphone' => 'required|numeric|unique:users|digits_between:8,15', // Número de teléfono
+            'email' => 'required|string|email|max:100|unique:users',
+            'numberphone' => 'required|numeric|unique:users|digits_between:8,15',
             
             // Información adicional
-            'type_rh_id' => 'required|string', // Tipo de RH
-            'rol_id' => 'required|string', // Rol del usuario en la plataforma
+            'type_rh_id' => 'required|string',
+            'rol_id' => 'required|string',
             
             // Campos condicionales
-            'Program_id' => 'required_if:rol_id,5|string', // Programa de formación, requerido si el rol es 5 (Aprendiz)
-            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12' // Número de ficha, requerido si el rol es 5 (Aprendiz)
+            'Program_id' => 'required_if:rol_id,5|string',
+            'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12'
+        ], [
+            // Mensajes personalizados
+            'name.required' => 'El campo nombre es obligatorio.',
+            'name.string' => 'El campo nombre debe ser una cadena de texto.',
+            'name.between' => 'El campo nombre debe tener entre 2 y 100 caracteres.',
+            
+            'lastname.required' => 'El campo apellido es obligatorio.',
+            'lastname.string' => 'El campo apellido debe ser una cadena de texto.',
+            'lastname.between' => 'El campo apellido debe tener entre 2 y 100 caracteres.',
+            
+            'type_document_id.required' => 'El tipo de documento es obligatorio.',
+            'type_document_id.string' => 'El tipo de documento debe ser una cadena de texto.',
+            
+            'type_dimensions_id.string' => 'El campo tipo de dimensión debe ser una cadena de texto.',
+            
+            'document.required' => 'El número de documento es obligatorio.',
+            'document.numeric' => 'El número de documento debe ser numérico.',
+            'document.unique' => 'El número de documento ya está registrado.',
+            'document.digits_between' => 'El número de documento debe tener entre 8 y 15 dígitos.',
+            
+            'email.required' => 'El campo correo electrónico es obligatorio.',
+            'email.string' => 'El correo electrónico debe ser una cadena de texto.',
+            'email.email' => 'El correo electrónico no tiene un formato válido.',
+            'email.max' => 'El correo electrónico no puede exceder los 100 caracteres.',
+            'email.unique' => 'El correo electrónico ya está registrado.',
+            
+            'numberphone.required' => 'El número de teléfono es obligatorio.',
+            'numberphone.numeric' => 'El número de teléfono debe ser numérico.',
+            'numberphone.unique' => 'El número de teléfono ya está registrado.',
+            'numberphone.digits_between' => 'El número de teléfono debe tener entre 8 y 15 dígitos.',
+            
+            'type_rh_id.required' => 'El tipo de RH es obligatorio.',
+            'type_rh_id.string' => 'El tipo de RH debe ser una cadena de texto.',
+            
+            'rol_id.required' => 'El campo rol es obligatorio.',
+            'rol_id.string' => 'El campo rol debe ser una cadena de texto.',
+            
+            'Program_id.required_if' => 'El programa de formación es obligatorio cuando el rol es Aprendiz.',
+            'Program_id.string' => 'El programa de formación debe ser una cadena de texto.',
+            
+            'yourToken.required_if' => 'El número de ficha es obligatorio cuando el rol es Aprendiz.',
+            'yourToken.numeric' => 'El número de ficha debe ser numérico.',
+            'yourToken.digits_between' => 'El número de ficha debe tener entre 7 y 12 dígitos.'
         ]);
-
+    
         if ($validator->fails()) {
             return redirect()->route('users.index')
                 ->withErrors($validator)
@@ -147,53 +190,51 @@ class UserController extends Controller
                 ->with('modal_open')
                 ->with('modal_reopen', true);
         }
-            
+        
         $codigoContrasena = $this->generarCodigoContrasena();
-
+    
         User::create([
             // Información personal
             'name' => $request->get('name'),
             'lastname' => $request->get('lastname'),
-            'user_name' => $this->setUserNameAttribute($request->get('name'), $request->get('lastname')), // Genera el nombre de usuario a partir del nombre y apellido
-        
+            'user_name' => $this->setUserNameAttribute($request->get('name'), $request->get('lastname')),
+            
             // Identificación
             'type_rh_id' => $request->get('type_rh_id'),
             'type_document_id' => $request->get('type_document_id'),
             'type_dimensions_id' => $request->get('type_dimensions_id'),
             'document' => $request->get('document'),
-        
+            
             // Contacto
             'email' => $request->get('email'),
             'numberphone' => $request->get('numberphone'),
-        
+            
             // Seguridad
-            'password' => Hash::make($codigoContrasena), // Cifra la contraseña antes de almacenarla
-        
+            'password' => Hash::make($codigoContrasena),
+            
             // Rol y programa
             'rol_id' => $request->get('rol_id'),
             'Program_id' => $request->get('Program_id'),
             'yourToken' => $request->get('yourToken'),
-        
+            
             // Estado
-            'status' => true, // El usuario se crea con estado activo
+            'status' => true,
         ]);
-
+    
         $dataUser = ['name_user' => $request->get('name'), 
                     'surnames_user' => $request->get('lastname'), 
                     'password' => $codigoContrasena ];
-
-
-
-
+    
         Mail::send('emails.creacion-cuenta', $dataUser, function ($message) use ($request) {
             $message->from('bienestardlaprendiz@gmail.com', 'Nuevo Usuario');
             $message->to($request->get('email'))->subject('Notificación: Creación de usuario');
         });
-
+    
         session()->flash('success', 'Usuario registrado correctamente!');
-
+    
         return redirect(route('users.index'));
     }
+    
 
     public function show(string $id)
     {
@@ -211,7 +252,7 @@ class UserController extends Controller
             'name' => 'required|string|between:2,100',
             'lastname' => 'required|string|between:2,100',
             'type_document_id' => 'required|string',
-            'type_dimensions_id' => 'required|string',
+            'type_dimensions_id' => 'required_if:rol_id,4|string',
             'document' => 'required|numeric|unique:users,document,'.$id.'|digits_between:8,15',
             'email' => 'required|string|email|max:100|unique:users,email,'.$id,
             'type_rh_id' => 'required|string',
@@ -219,7 +260,7 @@ class UserController extends Controller
             'Program_id' => 'required_if:rol_id,5|string',
             'yourToken' => 'required_if:rol_id,5|numeric|digits_between:7,12'
         ]);
-
+    
         // Verificar si la validación falla
         if ($validator->fails()) {
             $user = User::findOrFail($id);
@@ -236,8 +277,27 @@ class UserController extends Controller
         // Obtener el usuario que deseas actualizar
         $user = User::findOrFail($id);
     
-        // Actualizar los campos del usuario con los datos del formulario
-        $user->update($request->except(['password']));
+        // Actualizar los campos del usuario con los datos del formulario, sin cambiar la contraseña ni el nombre de usuario
+        $user->update([
+            // Información personal
+            'name' => $request->get('name'),
+            'lastname' => $request->get('lastname'),
+            
+            // Identificación
+            'type_rh_id' => $request->get('type_rh_id'),
+            'type_document_id' => $request->get('type_document_id'),
+            'type_dimensions_id' => $request->get('type_dimensions_id'),
+            'document' => $request->get('document'),
+            
+            // Contacto
+            'email' => $request->get('email'),
+            'numberphone' => $request->get('numberphone'),
+            
+            // Rol y programa
+            'rol_id' => $request->get('rol_id'),
+            'Program_id' => $request->get('Program_id'),
+            'yourToken' => $request->get('yourToken'),
+        ]);
     
         // Redireccionar a una página específica o retornar algún mensaje de éxito
         return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');

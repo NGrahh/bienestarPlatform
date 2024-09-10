@@ -13,14 +13,9 @@ use Illuminate\Support\Facades\Storage;
 class ApoyosCreatedController extends Controller
 {
 
-    // public function __construct()
-    // {
-    //     $this->middleware('auth')->except(['index', 'show', 'update', 'destroy', 'store', 'create', 'Ap_fic', 'Ap_alimentacion', 'Ap_datos', ' Ap_sostenimiento', 'Ap_transporte']);
-    // }
-
     public function store_user(Request $request)
     {
-        // Validación de los datos
+            // Validación de los datos
         $validatedData = $request->validate([
             'apoyo_id' => 'required|exists:apoyos_createds,id',
             'formatuser' => 'required|file|mimes:pdf,doc,docx',
@@ -28,6 +23,24 @@ class ApoyosCreatedController extends Controller
             'receipt' => 'required|image|mimes:jpeg,png,jpg,gif',
             'sisben' => 'required|image|mimes:jpeg,png,jpg,gif',
             'support' => 'nullable|image|mimes:jpeg,png,jpg,gif',
+        ], [
+            // Mensajes personalizados en español
+            'apoyo_id.required' => 'El tipo de apoyo es obligatorio.',
+            'apoyo_id.exists' => 'El apoyo seleccionado no es válido.',
+            'formatuser.required' => 'El formato del usuario es obligatorio.',
+            'formatuser.file' => 'El formato del usuario debe ser un archivo.',
+            'formatuser.mimes' => 'El formato del usuario debe ser un archivo PDF, DOC o DOCX.',
+            'photocopy.required' => 'La fotocopia es obligatoria.',
+            'photocopy.image' => 'La fotocopia debe ser una imagen.',
+            'photocopy.mimes' => 'La fotocopia debe ser un archivo JPEG, PNG, JPG o GIF.',
+            'receipt.required' => 'El recibo es obligatorio.',
+            'receipt.image' => 'El recibo debe ser una imagen.',
+            'receipt.mimes' => 'El recibo debe ser un archivo JPEG, PNG, JPG o GIF.',
+            'sisben.required' => 'El certificado de Sisbén es obligatorio.',
+            'sisben.image' => 'El certificado de Sisbén debe ser una imagen.',
+            'sisben.mimes' => 'El certificado de Sisbén debe ser un archivo JPEG, PNG, JPG o GIF.',
+            'support.image' => 'El archivo de soporte debe ser una imagen.',
+            'support.mimes' => 'El archivo de soporte debe ser un archivo JPEG, PNG, JPG o GIF.',
         ]);
     
         // Manejo de archivos
@@ -82,6 +95,16 @@ class ApoyosCreatedController extends Controller
             'tipo_apoyo_id' => 'required|exists:tipos_apoyos,id',
             'appoiment_date_start' => 'required|date|after_or_equal:today',
             'appoiment_date_end' => 'required|date|after_or_equal:appoiment_date_start',
+        ], [
+            // Mensajes personalizados en español
+            'tipo_apoyo_id.required' => 'El tipo de apoyo es obligatorio.',
+            'tipo_apoyo_id.exists' => 'El tipo de apoyo seleccionado no es válido.',
+            'appoiment_date_start.required' => 'La fecha de inicio es obligatoria.',
+            'appoiment_date_start.date' => 'La fecha de inicio debe ser una fecha válida.',
+            'appoiment_date_start.after_or_equal' => 'La fecha de inicio no puede ser anterior a hoy.',
+            'appoiment_date_end.required' => 'La fecha de fin es obligatoria.',
+            'appoiment_date_end.date' => 'La fecha de fin debe ser una fecha válida.',
+            'appoiment_date_end.after_or_equal' => 'La fecha de fin debe ser posterior o igual a la fecha de inicio.',
         ]);
 
         // Si la validación falla, redirigir con errores
@@ -117,10 +140,21 @@ class ApoyosCreatedController extends Controller
 
     public function update(Request $request, string $id)
     {
+        // Validar los datos del formulario usando Validator
         $validator = Validator::make($request->all(), [
             'tipo_apoyo_id' => 'required|exists:tipos_apoyos,id',
             'appoiment_date_start' => 'required|date|after_or_equal:today',
             'appoiment_date_end' => 'required|date|after_or_equal:appoiment_date_start',
+        ], [
+            // Mensajes personalizados en español
+            'tipo_apoyo_id.required' => 'El tipo de apoyo es obligatorio.',
+            'tipo_apoyo_id.exists' => 'El tipo de apoyo seleccionado no es válido.',
+            'appoiment_date_start.required' => 'La fecha de inicio es obligatoria.',
+            'appoiment_date_start.date' => 'La fecha de inicio debe ser una fecha válida.',
+            'appoiment_date_start.after_or_equal' => 'La fecha de inicio no puede ser anterior a hoy.',
+            'appoiment_date_end.required' => 'La fecha de fin es obligatoria.',
+            'appoiment_date_end.date' => 'La fecha de fin debe ser una fecha válida.',
+            'appoiment_date_end.after_or_equal' => 'La fecha de fin debe ser posterior o igual a la fecha de inicio.',
         ]);
     
         if ($validator->fails()) {
@@ -219,7 +253,7 @@ class ApoyosCreatedController extends Controller
                             ->where('user_id', $user->id)
                             ->exists();
         }
-    
+        
         // Verifica si el modelo fue encontrado
         if ($apoyo) {
             // Define las fechas de apertura y clausura con hora
@@ -229,6 +263,10 @@ class ApoyosCreatedController extends Controller
             // Determina si el botón debe mostrarse
             $mostrarBoton = ($fechaActual->greaterThanOrEqualTo($fechaApertura) && $fechaActual->lessThanOrEqualTo($fechaClausura));
 
+            // Si la fecha de clausura ha pasado, cambiar el estado a 0
+            if ($fechaActual->greaterThan($fechaClausura) && $apoyo->status == 1) {
+                $apoyo->update(['status' => 0]);
+            }
             // Pasa los datos a la vista
             return view('layouts.descripcion-apoyos.Apoyo-fic', [
                 'apoyo_id' => $apoyo->id,
@@ -407,65 +445,6 @@ class ApoyosCreatedController extends Controller
             ]);
         }
     }
-    
-
-
-
-
-
-
-
-    // public function Ap_sostenimiento()
-    // {
-    //     // Recupera un solo modelo basado en la condición
-    //     $apoyo = Apoyos_created::where('tipo_apoyo_id', 4)->first();
-    //     // Establece la zona horaria a Colombia
-    //     $fechaActual = \Carbon\Carbon::now('America/Bogota');
-    //     // Obtiene el usuario autenticado
-    //     $user = Auth::user();
-
-    //     $inscrito = false;
-        
-    //     if ($apoyo && $user) {
-    //         // Verifica si el usuario ya está inscrito en este apoyo
-    //         $inscrito = Apoyos::where('apoyo_id', $apoyo->id)
-    //                         ->where('user_id', $user->id)
-    //                         ->exists();
-    //     }
-
-    //     // Verifica si el modelo fue encontrado
-    //     if ($apoyo) {
-    //         // Define las fechas de apertura y clausura con hora
-    //         $fechaApertura = \Carbon\Carbon::parse($apoyo->appoiment_date_start . ' 00:00:00', 'America/Bogota');
-    //         $fechaClausura = \Carbon\Carbon::parse($apoyo->appoiment_date_end . ' 23:59:59', 'America/Bogota');
-
-    //         // Determina si el botón debe mostrarse
-    //         $mostrarBoton = ($fechaActual->greaterThanOrEqualTo($fechaApertura) && $fechaActual->lessThanOrEqualTo($fechaClausura));
-
-    //         // Pasa los datos a la vista
-    //         return view('layouts.descripcion-apoyos.Apoyo-regular', [
-    //             'apoyo_id' => $apoyo->id,
-    //             'status' => $apoyo->status,
-    //             'tipo_apoyo_id' => $apoyo->tipo_apoyo_id,
-    //             'fecha_apertura' => $fechaApertura->format('Y-m-d H:i:s'),
-    //             'fecha_clausura' => $fechaClausura->format('Y-m-d H:i:s'),
-    //             'mostrarBoton' => $mostrarBoton,
-    //             'inscrito' => $inscrito,
-    //         ]);
-    //     } else {
-    //         // Si el registro no existe, pasar datos vacíos a la vista
-    //         return view('layouts.descripcion-apoyos.Apoyo-regular', [
-    //             'apoyo_id' => null,
-    //             'status' => null,
-    //             'tipo_apoyo_id' => null,
-    //             'fecha_apertura' => null,
-    //             'fecha_clausura' => null,
-    //             'mostrarBoton' => false,
-    //             'inscrito' => $inscrito,
-    //         ]);
-    //     }
-    // }
-
 
     public function Ap_transporte()
     {

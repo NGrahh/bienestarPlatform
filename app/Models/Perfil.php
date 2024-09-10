@@ -15,15 +15,7 @@ class Perfil extends Model
 
     protected $fillable = [
         'user_id',
-        'about_me',
         'pictureuser',
-        'phone_number',
-        'Twitter_Profile',
-        'Linkedin_Profile',
-        'morning_start',
-        'morning_end',
-        'afternoon_start',
-        'afternoon_end',
     ];
     // Relación con el modelo User
     public function user()

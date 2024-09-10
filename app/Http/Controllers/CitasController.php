@@ -224,12 +224,12 @@ public function index(Request $request)
             ->select('citas.date', 'citas.hour') // Seleccionar solo la fecha y hora
             ->get(); // Obtener los resultados
         
-        // Obtener perfiles de usuarios con roles 2, 3 y 4
-        $responsibles = DB::table('perfil')
-            ->join('users', 'perfil.user_id', '=', 'users.id') // Unir tablas 'perfil' y 'users'
-            ->whereIn('users.rol_id', [2, 3, 4]) // Filtrar usuarios con roles 2, 3 y 4
-            ->select('users.name', 'users.lastname', 'perfil.morning_start', 'perfil.morning_end', 'perfil.afternoon_start', 'perfil.afternoon_end') // Seleccionar campos necesarios
-            ->get(); // Obtener los resultados
+        // // Obtener perfiles de usuarios con roles 2, 3 y 4
+        // $responsibles = DB::table('perfil')
+        //     ->join('users', 'perfil.user_id', '=', 'users.id') // Unir tablas 'perfil' y 'users'
+        //     ->whereIn('users.rol_id', [2, 3, 4]) // Filtrar usuarios con roles 2, 3 y 4
+        //     ->select('users.name', 'users.lastname') // Seleccionar campos necesarios
+        //     ->get(); // Obtener los resultados
     
         // Obtener las citas específicas del usuario autenticado
         $citas = Citas::select('citas.id', 'citas.dimensions_id','citas.hour', 'citas.date', 'citas.subjectCita', 'citas.status', 'citas.reason', 'users.name', 'users.lastname', 'users.email', 'users.numberphone')
@@ -242,7 +242,7 @@ public function index(Request $request)
         $dimensions = TypeDimensions::all();
         
         // Pasar los datos a la vista 'citascrud.miscitas'
-        return view('citascrud.miscitas', compact('citas', 'dimensions', 'responsibles', 'generalAppointments'));
+        return view('citascrud.miscitas', compact('citas', 'dimensions','generalAppointments'));
     }
 
     // CÓDIGO DE LA CITA: 

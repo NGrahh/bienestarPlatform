@@ -23,7 +23,7 @@ class CarouselController extends Controller
     {
         // Validar la imagen
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
 
         // Asignar un nombre único a la imagen

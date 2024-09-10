@@ -253,7 +253,7 @@ class EventsController extends Controller
                 'required',
                 'date',
                 'after_or_equal:datestar',
-                'before_or_equal:eventdate',
+                'before:eventdate',
                 'after_or_equal:today',
                 function ($attribute, $value, $fail) use ($request) {
                     $endDate = Carbon::parse($value);
@@ -430,12 +430,12 @@ class EventsController extends Controller
             ],
             'place' => 'required|string|between:2,500',
             'eventlimit' => 'nullable|numeric|digits_between:1,1000',
-            'datestar' => 'required|date|before:eventdate|after_or_equal:today',
+            'datestar' => 'required|date|before_or_equal:eventdate|after_or_equal:today',
             'dateendevent' => [
                 'required',
                 'date',
                 'after_or_equal:datestar',
-                'before_or_equal:eventdate',
+                'before:eventdate',
                 'after_or_equal:today',
                 function ($attribute, $value, $fail) use ($request) {
                     $endDate = Carbon::parse($value);
