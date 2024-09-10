@@ -582,7 +582,11 @@ class EventsController extends Controller
             // Si la clave 'yourToken' no está en la sesión, la establece con el valor del token del usuario
             session(['yourToken' => $user->yourToken]); 
         }
-        
+            // Verifica el rol del usuario y redirige si es necesario
+        if ($user->rol_id == 1) {
+            return redirect()->route('events.viewEventUser', ['id' => $id]);
+        }
+
         // Devuelve la vista 'formularios.eventos.form-inscription-event' con los datos necesarios
         // 'compact(...)' crea un array con las claves y valores de las variables proporcionadas
         return view('formularios.eventos.form-inscription-event', compact('event', 'days_training', 'programas', 'document', 'user'));
