@@ -145,17 +145,27 @@
                                                                                 </div>
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                                                                                     <label for="yourRol_update" class="form-label"><strong>Rol</strong></label>
-                                                                                    <select name="rol_id" data-id-user="{{$user->id}}" class="form-select rol_edit" id="yourRol_update" required>
+                                                                                
+                                                                                    <select name="rol_id" data-id-user="{{ $user->id }}" class="form-select rol_edit" id="yourRol_update"
+                                                                                        @if(Auth::user()->id == $user->id && Auth::user()->rol_id == 1) disabled @endif>
                                                                                         <option value="">- Seleccione -</option>
                                                                                         @foreach ($roles as $role)
                                                                                             <option {{ $user->rol_id == $role->id ? 'selected' : '' }} value="{{ $role->id }}">{{ $role->name }}</option>
                                                                                         @endforeach
                                                                                     </select>
+                                                                                
+                                                                                    <!-- Campo oculto para enviar el rol_id si el select está deshabilitado -->
+                                                                                    @if(Auth::user()->id == $user->id && Auth::user()->rol_id == 1)
+                                                                                        <input type="hidden" name="rol_id" value="1">
+                                                                                    @endif
+                                                                                
                                                                                     <div class="invalid-feedback">Ingrese un rol.</div>
                                                                                     @error('rol_id')
-                                                                                    <li class="text-danger">{{ $message}}</li>
+                                                                                    <li class="text-danger">{{ $message }}</li>
                                                                                     @enderror
                                                                                 </div>
+                                                                                
+                                                                                
 
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-area-{{$user->id}}" style="{{ old('rol_id', $user->rol_id) != 3 ? 'display: none;' : '' }}">
                                                                                     <label for="type_dimensions_id" class="form-label"><strong>Rol en el Área de Bienestar</strong></label>
@@ -170,7 +180,7 @@
                                                                                         <li class="text-danger">{{ $message }}</li>
                                                                                     @enderror
                                                                                 </div>
-
+                                                                                        
                                                                                 <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 inputs-to-rol-{{$user->id}}" id="training_program_update" style="{{ $user->rol_id != 5 ? 'display: none;' : '' }}">
                                                                                     <label for="yourTraining_update" class="form-label"><strong>Programa de formación</strong></label>
                                                                                     <select name="Program_id" class="form-select" id="yourTraining_update" required {{ $user->rol_id != 5 ? 'disabled' : '' }}>
@@ -226,12 +236,14 @@
                                                             </div>
                                                         </div>
                                                         <!-- Fin del modal de actualizar -->
-
+                                                        
                                                         @if ($user->status)
-                                                            <!-- Botón para abrir el modal de Des-habilitar -->
-                                                            <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Deshabilitar Usuario">
-                                                                <i class="ri-chat-check-line"></i> 
-                                                            </button>
+                                                            @if (Auth::user()->rol_id != 1 || Auth::user()->id != $user->id)
+                                                                <!-- Botón para abrir el modal de Des-habilitar -->
+                                                                <button type="button" class="btn btn-ba px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Deshabilitar Usuario">
+                                                                    <i class="ri-chat-check-line"></i> 
+                                                                </button>
+                                                            @endif
                                                         @else
                                                             <!-- Botón para abrir el modal de Habilitar -->
                                                             <button type="button" class="btn btn-ba-rojo px-2" data-bs-toggle="modal" data-bs-target="#disableUserModal{{ $user->id }}" title="Habilitar Usuario">
@@ -239,7 +251,7 @@
                                                             </button>
                                                         @endif
                                                         
-
+                                    
                                                         <!-- Modal de deshabilitación para cada usuario -->
                                                         <div class="modal fade" id="disableUserModal{{ $user->id }}" tabindex="-1">
                                                             <div class="modal-dialog modal-dialog-centered">
