@@ -223,10 +223,6 @@ Route::get('/apoyo-transporte', function(){
     return view ('layouts.descripcion-apoyos.Apoyo-transporte');
 })-> name ('Apoyo-transporte');
 
-Route::get('/apoyo-monitoria', function(){
-    return view ('layouts.descripcion-apoyos.Apoyo-monitoria');
-})-> name ('Apoyo-monitoria');
-
 // Route::get('/apoyo-fic', function(){
 //     return view ('layouts.descripcion-apoyos.Apoyo-fic');
 // })-> name ('Apoyo-fic');
@@ -242,7 +238,6 @@ Route::get('/apoyo-alimentacion', function(){
 Route::get('/Nuestro-equipo', function(){
     return view('layouts.descripcion-equipo.Quienes-somos2');
 })-> name ('Nosotros');
-
 
 Route::get('/sostenimiento-fic', function(){
     return view ('layouts.descripcion-apoyos.sostenimiento-fic');
