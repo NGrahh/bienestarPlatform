@@ -93,10 +93,12 @@
                                     @if($inscrito)
                                         <button class="btn btn-success" disabled>Ya estás inscrito</button>
                                     @else
-                                        <!-- Enlace con el ID del apoyo en la URL -->
-                                        <a href="{{ route('formulario_p', ['apoyo_id' => $apoyo_id]) }}" class="btn btn-ba">
-                                            Inscribirse Ahora
-                                        </a>
+                                        @if (auth()->user()->rol_id == 5)
+                                            <!-- Enlace con el ID del apoyo en la URL -->
+                                            <a href="{{ route('formulario_p', ['apoyo_id' => $apoyo_id]) }}" class="btn btn-ba">
+                                                Inscribirse Ahora
+                                            </a>
+                                        @endif
                                     @endif
                                 </div>
                                 @else

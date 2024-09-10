@@ -150,7 +150,7 @@
                                                                                         <button type="button" class="btn btn-ba" disabled>
                                                                                             <span style="color: white">Inscripción cerrada</span>
                                                                                         </button>
-                                                                                    @else
+                                                                                    @elseif (auth()->user()->rol_id == 5)
                                                                                         {{-- Si no es la misma hora, el botón es funcional --}}
                                                                                         <button type="button" class="btn btn-ba">
                                                                                             <a style="color: white" href="{{ route('events.registerForm', ['id' => $event->id]) }}">Inscribirse</a>
