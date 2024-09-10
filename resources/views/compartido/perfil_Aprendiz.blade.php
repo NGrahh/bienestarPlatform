@@ -55,7 +55,7 @@
 
                                 
                                 @if (Auth::check() && Auth::user()->perfil)
-                                <h5 class="card-title">Detalles del perfil</h5>
+                                <h5 class="card-title">Detalles del perfil del aprendiz</h5>
                                     <div class="row">
                                         <div class="col-lg-12 col-md-4  d-evento"><strong>Nombre completo: </strong></div>
                                         <div class="fst-italic" style="font-family: Arial, sans-serif; font-size: 15px;">{{ Auth::user()->perfil->user->name }} {{ Auth::user()->perfil->user->lastname }}</div>
